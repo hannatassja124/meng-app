@@ -14,6 +14,9 @@
 		F995E4FE26A99E9700DA5C50 /* meng_app.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F995E4FC26A99E9700DA5C50 /* meng_app.xcdatamodeld */; };
 		F995E50026A99E9800DA5C50 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F995E4FF26A99E9800DA5C50 /* Assets.xcassets */; };
 		F995E50326A99E9800DA5C50 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F995E50126A99E9800DA5C50 /* LaunchScreen.storyboard */; };
+		F995E51626A9A9D000DA5C50 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F995E51526A9A9D000DA5C50 /* DashboardViewController.swift */; };
+		F995E51B26A9AA5200DA5C50 /* DashboardCellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F995E51926A9AA5200DA5C50 /* DashboardCellViewController.swift */; };
+		F995E51C26A9AA5200DA5C50 /* DashboardCellViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F995E51A26A9AA5200DA5C50 /* DashboardCellViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +29,9 @@
 		F995E4FF26A99E9800DA5C50 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F995E50226A99E9800DA5C50 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F995E50426A99E9800DA5C50 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F995E51526A9A9D000DA5C50 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
+		F995E51926A9AA5200DA5C50 /* DashboardCellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardCellViewController.swift; sourceTree = "<group>"; };
+		F995E51A26A9AA5200DA5C50 /* DashboardCellViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DashboardCellViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,18 +64,15 @@
 		F995E4F226A99E9700DA5C50 /* meng-app */ = {
 			isa = PBXGroup;
 			children = (
+				F995E51026A9A88E00DA5C50 /* Delegate */,
 				F995E50F26A9A01300DA5C50 /* Helper */,
 				F995E50E26A99FAA00DA5C50 /* Extensions */,
 				F995E50D26A99F9800DA5C50 /* CoreData */,
 				F995E50B26A99EC100DA5C50 /* Model */,
 				F995E50C26A99EC700DA5C50 /* Controller */,
 				F995E50A26A99EBC00DA5C50 /* View */,
-				F995E4F326A99E9700DA5C50 /* AppDelegate.swift */,
-				F995E4F526A99E9700DA5C50 /* SceneDelegate.swift */,
 				F995E4FF26A99E9800DA5C50 /* Assets.xcassets */,
-				F995E50126A99E9800DA5C50 /* LaunchScreen.storyboard */,
 				F995E50426A99E9800DA5C50 /* Info.plist */,
-				F995E4FC26A99E9700DA5C50 /* meng_app.xcdatamodeld */,
 			);
 			path = "meng-app";
 			sourceTree = "<group>";
@@ -77,7 +80,8 @@
 		F995E50A26A99EBC00DA5C50 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				F995E4F926A99E9700DA5C50 /* Main.storyboard */,
+				F995E51326A9A9AC00DA5C50 /* Dashboards */,
+				F995E50126A99E9800DA5C50 /* LaunchScreen.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -92,6 +96,7 @@
 		F995E50C26A99EC700DA5C50 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				F995E51426A9A9B500DA5C50 /* Dashboard */,
 				F995E4F726A99E9700DA5C50 /* ViewController.swift */,
 			);
 			path = Controller;
@@ -100,6 +105,7 @@
 		F995E50D26A99F9800DA5C50 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				F995E4FC26A99E9700DA5C50 /* meng_app.xcdatamodeld */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -116,6 +122,41 @@
 			children = (
 			);
 			path = Helper;
+			sourceTree = "<group>";
+		};
+		F995E51026A9A88E00DA5C50 /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				F995E4F526A99E9700DA5C50 /* SceneDelegate.swift */,
+				F995E4F326A99E9700DA5C50 /* AppDelegate.swift */,
+			);
+			path = Delegate;
+			sourceTree = "<group>";
+		};
+		F995E51326A9A9AC00DA5C50 /* Dashboards */ = {
+			isa = PBXGroup;
+			children = (
+				F995E51826A9AA1A00DA5C50 /* DashboardCell */,
+				F995E4F926A99E9700DA5C50 /* Main.storyboard */,
+			);
+			path = Dashboards;
+			sourceTree = "<group>";
+		};
+		F995E51426A9A9B500DA5C50 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				F995E51526A9A9D000DA5C50 /* DashboardViewController.swift */,
+			);
+			path = Dashboard;
+			sourceTree = "<group>";
+		};
+		F995E51826A9AA1A00DA5C50 /* DashboardCell */ = {
+			isa = PBXGroup;
+			children = (
+				F995E51926A9AA5200DA5C50 /* DashboardCellViewController.swift */,
+				F995E51A26A9AA5200DA5C50 /* DashboardCellViewController.xib */,
+			);
+			path = DashboardCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -178,6 +219,7 @@
 				F995E50326A99E9800DA5C50 /* LaunchScreen.storyboard in Resources */,
 				F995E50026A99E9800DA5C50 /* Assets.xcassets in Resources */,
 				F995E4FB26A99E9700DA5C50 /* Main.storyboard in Resources */,
+				F995E51C26A9AA5200DA5C50 /* DashboardCellViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -190,6 +232,8 @@
 			files = (
 				F995E4FE26A99E9700DA5C50 /* meng_app.xcdatamodeld in Sources */,
 				F995E4F826A99E9700DA5C50 /* ViewController.swift in Sources */,
+				F995E51626A9A9D000DA5C50 /* DashboardViewController.swift in Sources */,
+				F995E51B26A9AA5200DA5C50 /* DashboardCellViewController.swift in Sources */,
 				F995E4F426A99E9700DA5C50 /* AppDelegate.swift in Sources */,
 				F995E4F626A99E9700DA5C50 /* SceneDelegate.swift in Sources */,
 			);
