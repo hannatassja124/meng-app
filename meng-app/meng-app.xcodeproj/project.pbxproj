@@ -58,16 +58,64 @@
 		F995E4F226A99E9700DA5C50 /* meng-app */ = {
 			isa = PBXGroup;
 			children = (
+				F995E50F26A9A01300DA5C50 /* Helper */,
+				F995E50E26A99FAA00DA5C50 /* Extensions */,
+				F995E50D26A99F9800DA5C50 /* CoreData */,
+				F995E50B26A99EC100DA5C50 /* Model */,
+				F995E50C26A99EC700DA5C50 /* Controller */,
+				F995E50A26A99EBC00DA5C50 /* View */,
 				F995E4F326A99E9700DA5C50 /* AppDelegate.swift */,
 				F995E4F526A99E9700DA5C50 /* SceneDelegate.swift */,
-				F995E4F726A99E9700DA5C50 /* ViewController.swift */,
-				F995E4F926A99E9700DA5C50 /* Main.storyboard */,
 				F995E4FF26A99E9800DA5C50 /* Assets.xcassets */,
 				F995E50126A99E9800DA5C50 /* LaunchScreen.storyboard */,
 				F995E50426A99E9800DA5C50 /* Info.plist */,
 				F995E4FC26A99E9700DA5C50 /* meng_app.xcdatamodeld */,
 			);
 			path = "meng-app";
+			sourceTree = "<group>";
+		};
+		F995E50A26A99EBC00DA5C50 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F995E4F926A99E9700DA5C50 /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F995E50B26A99EC100DA5C50 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F995E50C26A99EC700DA5C50 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				F995E4F726A99E9700DA5C50 /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		F995E50D26A99F9800DA5C50 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		F995E50E26A99FAA00DA5C50 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		F995E50F26A9A01300DA5C50 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
