@@ -1,4 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="false" userDefinedModelVersionIdentifier="">
-    <elements/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20D64" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Activity" representedClassName="Activity" syncable="YES" codeGenerationType="class">
+        <attribute name="activityDateTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="activityDetail" optional="YES" attributeType="String"/>
+        <attribute name="activityTitle" optional="YES" attributeType="String"/>
+        <attribute name="activityType" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="Cats" representedClassName="Cats" syncable="YES" codeGenerationType="class">
+        <attribute name="allergies" optional="YES" attributeType="String"/>
+        <attribute name="dateOfBirth" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="food" optional="YES" attributeType="String"/>
+        <attribute name="gender" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="isNeutered" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="race" optional="YES" attributeType="String"/>
+        <attribute name="vetName" optional="YES" attributeType="String"/>
+        <attribute name="vetPhoneNo" optional="YES" attributeType="String"/>
+        <attribute name="weight" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+    </entity>
+    <elements>
+        <element name="Cats" positionX="-63" positionY="-18" width="128" height="179"/>
+        <element name="Activity" positionX="-54" positionY="-9" width="128" height="89"/>
+    </elements>
 </model>
