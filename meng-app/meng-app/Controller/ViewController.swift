@@ -18,4 +18,5 @@ class ViewController: UIViewController {
 }
 
 
-//
+//tassja tidur
+//tassja main game
