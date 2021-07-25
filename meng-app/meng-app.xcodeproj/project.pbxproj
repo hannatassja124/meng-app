@@ -20,6 +20,10 @@
 		F9A45AC526AD390D00B64134 /* Calendar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9A45AC326AD390D00B64134 /* Calendar.storyboard */; };
 		F9A45AC726AD392E00B64134 /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9A45AC626AD392E00B64134 /* Dashboard.storyboard */; };
 		F9A45ACA26AD393D00B64134 /* Cats.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9A45AC826AD393D00B64134 /* Cats.storyboard */; };
+		F9A45ADA26AD3FB100B64134 /* Activity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A45AD626AD3FB100B64134 /* Activity+CoreDataClass.swift */; };
+		F9A45ADB26AD3FB100B64134 /* Activity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A45AD726AD3FB100B64134 /* Activity+CoreDataProperties.swift */; };
+		F9A45ADC26AD3FB100B64134 /* Cats+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A45AD826AD3FB100B64134 /* Cats+CoreDataClass.swift */; };
+		F9A45ADD26AD3FB100B64134 /* Cats+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A45AD926AD3FB100B64134 /* Cats+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +42,10 @@
 		F9A45AC426AD390D00B64134 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "meng-app/View/Dashboards/Base.lproj/Calendar.storyboard"; sourceTree = "<group>"; };
 		F9A45AC626AD392E00B64134 /* Dashboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Dashboard.storyboard; sourceTree = "<group>"; };
 		F9A45AC926AD393D00B64134 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "meng-app/View/Dashboards/Base.lproj/Cats.storyboard"; sourceTree = "<group>"; };
+		F9A45AD626AD3FB100B64134 /* Activity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Activity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		F9A45AD726AD3FB100B64134 /* Activity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Activity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		F9A45AD826AD3FB100B64134 /* Cats+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cats+CoreDataClass.swift"; sourceTree = "<group>"; };
+		F9A45AD926AD3FB100B64134 /* Cats+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cats+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +106,10 @@
 		F995E50B26A99EC100DA5C50 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F9A45AD626AD3FB100B64134 /* Activity+CoreDataClass.swift */,
+				F9A45AD726AD3FB100B64134 /* Activity+CoreDataProperties.swift */,
+				F9A45AD826AD3FB100B64134 /* Cats+CoreDataClass.swift */,
+				F9A45AD926AD3FB100B64134 /* Cats+CoreDataProperties.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -262,7 +274,11 @@
 				F995E4F826A99E9700DA5C50 /* ViewController.swift in Sources */,
 				F995E51626A9A9D000DA5C50 /* DashboardViewController.swift in Sources */,
 				F995E51B26A9AA5200DA5C50 /* DashboardCellViewController.swift in Sources */,
+				F9A45ADB26AD3FB100B64134 /* Activity+CoreDataProperties.swift in Sources */,
+				F9A45ADA26AD3FB100B64134 /* Activity+CoreDataClass.swift in Sources */,
+				F9A45ADD26AD3FB100B64134 /* Cats+CoreDataProperties.swift in Sources */,
 				F995E4F426A99E9700DA5C50 /* AppDelegate.swift in Sources */,
+				F9A45ADC26AD3FB100B64134 /* Cats+CoreDataClass.swift in Sources */,
 				F995E4F626A99E9700DA5C50 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
