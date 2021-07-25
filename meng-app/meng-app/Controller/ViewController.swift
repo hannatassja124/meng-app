@@ -18,4 +18,4 @@ class ViewController: UIViewController {
 }
 
 
-//tassja laper
+//tassja tidur
