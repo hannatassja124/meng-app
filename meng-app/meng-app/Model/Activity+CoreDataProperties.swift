@@ -2,7 +2,7 @@
 //  Activity+CoreDataProperties.swift
 //  meng-app
 //
-//  Created by Hannatassja Hardjadinata on 25/07/21.
+//  Created by Hannatassja Hardjadinata on 26/07/21.
 //
 //
 
@@ -16,10 +16,10 @@ extension Activity {
         return NSFetchRequest<Activity>(entityName: "Activity")
     }
 
-    @NSManaged public var activityType: String?
-    @NSManaged public var activityTitle: String?
-    @NSManaged public var activityDetail: String?
     @NSManaged public var activityDateTime: Date?
+    @NSManaged public var activityDetail: String?
+    @NSManaged public var activityTitle: String?
+    @NSManaged public var activityType: String?
     @NSManaged public var cats: NSSet?
 
 }

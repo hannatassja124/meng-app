@@ -2,7 +2,7 @@
 //  Cats+CoreDataProperties.swift
 //  meng-app
 //
-//  Created by Hannatassja Hardjadinata on 25/07/21.
+//  Created by Hannatassja Hardjadinata on 26/07/21.
 //
 //
 
@@ -16,16 +16,18 @@ extension Cats {
         return NSFetchRequest<Cats>(entityName: "Cats")
     }
 
-    @NSManaged public var name: String?
-    @NSManaged public var gender: Int16
-    @NSManaged public var race: String?
-    @NSManaged public var isNeutered: Bool
     @NSManaged public var dateOfBirth: Date?
-    @NSManaged public var weight: Double
+    @NSManaged public var feeding: String?
+    @NSManaged public var gender: Int16
+    @NSManaged public var isNeutered: Bool
+    @NSManaged public var name: String?
+    @NSManaged public var breed: String?
     @NSManaged public var vetName: String?
     @NSManaged public var vetPhoneNo: String?
-    @NSManaged public var food: String?
-    @NSManaged public var allergies: String?
+    @NSManaged public var weight: Double
+    @NSManaged public var image: Data?
+    @NSManaged public var colorTags: Int16
+    @NSManaged public var notes: String?
     @NSManaged public var activities: NSSet?
 
 }
