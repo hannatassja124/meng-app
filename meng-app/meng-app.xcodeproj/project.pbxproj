@@ -25,6 +25,10 @@
 		F9A45AC526AD390D00B64134 /* Calendar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9A45AC326AD390D00B64134 /* Calendar.storyboard */; };
 		F9A45AC726AD392E00B64134 /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9A45AC626AD392E00B64134 /* Dashboard.storyboard */; };
 		F9A45ACA26AD393D00B64134 /* Cats.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9A45AC826AD393D00B64134 /* Cats.storyboard */; };
+		F9B6085C26AFEA2F005EF315 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B6085B26AFEA2F005EF315 /* CalendarViewController.swift */; };
+		F9B6086026AFEAC9005EF315 /* ActivitiesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B6085E26AFEAC9005EF315 /* ActivitiesTableViewCell.swift */; };
+		F9B6086126AFEAC9005EF315 /* ActivitiesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9B6085F26AFEAC9005EF315 /* ActivitiesTableViewCell.xib */; };
+		F9B6086326AFFEDD005EF315 /* Activities.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B6086226AFFEDD005EF315 /* Activities.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +52,10 @@
 		F9A45AC426AD390D00B64134 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "meng-app/View/Dashboards/Base.lproj/Calendar.storyboard"; sourceTree = "<group>"; };
 		F9A45AC626AD392E00B64134 /* Dashboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Dashboard.storyboard; sourceTree = "<group>"; };
 		F9A45AC926AD393D00B64134 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "meng-app/View/Dashboards/Base.lproj/Cats.storyboard"; sourceTree = "<group>"; };
+		F9B6085B26AFEA2F005EF315 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		F9B6085E26AFEAC9005EF315 /* ActivitiesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesTableViewCell.swift; sourceTree = "<group>"; };
+		F9B6085F26AFEAC9005EF315 /* ActivitiesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivitiesTableViewCell.xib; sourceTree = "<group>"; };
+		F9B6086226AFFEDD005EF315 /* Activities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activities.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +104,7 @@
 		F995E50A26A99EBC00DA5C50 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F9B6085D26AFEAA7005EF315 /* ActivitiesCell */,
 				F9A45ACC26AD395700B64134 /* Calendar */,
 				F9A45ACB26AD395100B64134 /* Cats */,
 				F995E51326A9A9AC00DA5C50 /* Dashboards */,
@@ -112,6 +121,7 @@
 				F94AD29026AEEDCA005686ED /* Cats+CoreDataProperties.swift */,
 				F94AD29126AEEDCA005686ED /* Activity+CoreDataClass.swift */,
 				F94AD29226AEEDCA005686ED /* Activity+CoreDataProperties.swift */,
+				F9B6086226AFFEDD005EF315 /* Activities.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -119,6 +129,7 @@
 		F995E50C26A99EC700DA5C50 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				F9B6085A26AFE987005EF315 /* Calendar */,
 				F995E51426A9A9B500DA5C50 /* Dashboard */,
 				F995E4F726A99E9700DA5C50 /* ViewController.swift */,
 			);
@@ -199,6 +210,23 @@
 			path = Calendar;
 			sourceTree = "<group>";
 		};
+		F9B6085A26AFE987005EF315 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				F9B6085B26AFEA2F005EF315 /* CalendarViewController.swift */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
+		F9B6085D26AFEAA7005EF315 /* ActivitiesCell */ = {
+			isa = PBXGroup;
+			children = (
+				F9B6085E26AFEAC9005EF315 /* ActivitiesTableViewCell.swift */,
+				F9B6085F26AFEAC9005EF315 /* ActivitiesTableViewCell.xib */,
+			);
+			path = ActivitiesCell;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -260,6 +288,7 @@
 				F9A45AC726AD392E00B64134 /* Dashboard.storyboard in Resources */,
 				F9A45ACA26AD393D00B64134 /* Cats.storyboard in Resources */,
 				F995E50026A99E9800DA5C50 /* Assets.xcassets in Resources */,
+				F9B6086126AFEAC9005EF315 /* ActivitiesTableViewCell.xib in Resources */,
 				F995E4FB26A99E9700DA5C50 /* Main.storyboard in Resources */,
 				F9A45AC526AD390D00B64134 /* Calendar.storyboard in Resources */,
 				F995E51C26A9AA5200DA5C50 /* DashboardCellViewController.xib in Resources */,
@@ -273,7 +302,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F9B6085C26AFEA2F005EF315 /* CalendarViewController.swift in Sources */,
 				F94AD29326AEEDCA005686ED /* Cats+CoreDataClass.swift in Sources */,
+				F9B6086326AFFEDD005EF315 /* Activities.swift in Sources */,
+				F9B6086026AFEAC9005EF315 /* ActivitiesTableViewCell.swift in Sources */,
 				F94AD29826AEF19D005686ED /* UiCustom.swift in Sources */,
 				F995E4FE26A99E9700DA5C50 /* meng_app.xcdatamodeld in Sources */,
 				F94AD29626AEEDCA005686ED /* Activity+CoreDataProperties.swift in Sources */,
