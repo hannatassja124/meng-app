@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1920066D26B032BF00BAD2D0 /* CatProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1920066B26B032BF00BAD2D0 /* CatProfileCollectionViewCell.swift */; };
+		1920066E26B032BF00BAD2D0 /* CatProfileCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1920066C26B032BF00BAD2D0 /* CatProfileCollectionViewCell.xib */; };
 		19636ECD26AF9E4100EBD377 /* AddNewCatCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19636ECB26AF9E4100EBD377 /* AddNewCatCollectionViewCell.swift */; };
 		19636ECE26AF9E4100EBD377 /* AddNewCatCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19636ECC26AF9E4100EBD377 /* AddNewCatCollectionViewCell.xib */; };
 		F94AD29326AEEDCA005686ED /* Cats+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94AD28F26AEEDCA005686ED /* Cats+CoreDataClass.swift */; };
@@ -30,6 +32,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1920066B26B032BF00BAD2D0 /* CatProfileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatProfileCollectionViewCell.swift; sourceTree = "<group>"; };
+		1920066C26B032BF00BAD2D0 /* CatProfileCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CatProfileCollectionViewCell.xib; sourceTree = "<group>"; };
 		19636ECB26AF9E4100EBD377 /* AddNewCatCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewCatCollectionViewCell.swift; sourceTree = "<group>"; };
 		19636ECC26AF9E4100EBD377 /* AddNewCatCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddNewCatCollectionViewCell.xib; sourceTree = "<group>"; };
 		F94AD28F26AEEDCA005686ED /* Cats+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cats+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -86,6 +90,8 @@
 		19636ECA26AF9E2C00EBD377 /* CatProfileCell */ = {
 			isa = PBXGroup;
 			children = (
+				1920066B26B032BF00BAD2D0 /* CatProfileCollectionViewCell.swift */,
+				1920066C26B032BF00BAD2D0 /* CatProfileCollectionViewCell.xib */,
 			);
 			path = CatProfileCell;
 			sourceTree = "<group>";
@@ -284,6 +290,7 @@
 				F995E50026A99E9800DA5C50 /* Assets.xcassets in Resources */,
 				F995E4FB26A99E9700DA5C50 /* Main.storyboard in Resources */,
 				F9A45AC526AD390D00B64134 /* Calendar.storyboard in Resources */,
+				1920066E26B032BF00BAD2D0 /* CatProfileCollectionViewCell.xib in Resources */,
 				19636ECE26AF9E4100EBD377 /* AddNewCatCollectionViewCell.xib in Resources */,
 				F995E51C26A9AA5200DA5C50 /* DashboardCellViewController.xib in Resources */,
 			);
@@ -300,6 +307,7 @@
 				F94AD29826AEF19D005686ED /* UiCustom.swift in Sources */,
 				19636ECD26AF9E4100EBD377 /* AddNewCatCollectionViewCell.swift in Sources */,
 				F995E4FE26A99E9700DA5C50 /* meng_app.xcdatamodeld in Sources */,
+				1920066D26B032BF00BAD2D0 /* CatProfileCollectionViewCell.swift in Sources */,
 				F94AD29626AEEDCA005686ED /* Activity+CoreDataProperties.swift in Sources */,
 				F995E4F826A99E9700DA5C50 /* ViewController.swift in Sources */,
 				F995E51626A9A9D000DA5C50 /* DashboardViewController.swift in Sources */,
