@@ -16,14 +16,14 @@ class CatProfileCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        setupView()
     }
     
     func setupView(){
         let gradient: CAGradientLayer = CAGradientLayer()
         gradient.frame = petImage.frame
-        gradient.colors = [UIColor.black.cgColor, UIColor.clear
-                            .cgColor]
-        gradient.locations = [0.0, 0.1]
+        gradient.colors = [UIColor.clear.cgColor, UIColor.black.cgColor]
+        gradient.locations = [0.8, 1.1]
         petImage.layer.insertSublayer(gradient, at: 0)
         
     }
