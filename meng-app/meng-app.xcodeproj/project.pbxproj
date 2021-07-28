@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		07D0954726B03EAE00491BD0 /* ActivityLog.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07D0954626B03EAE00491BD0 /* ActivityLog.storyboard */; };
+		07D0954926B03EE100491BD0 /* ActivityLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D0954826B03EE100491BD0 /* ActivityLogViewController.swift */; };
 		F94AD29326AEEDCA005686ED /* Cats+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94AD28F26AEEDCA005686ED /* Cats+CoreDataClass.swift */; };
 		F94AD29426AEEDCA005686ED /* Cats+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94AD29026AEEDCA005686ED /* Cats+CoreDataProperties.swift */; };
 		F94AD29526AEEDCA005686ED /* Activity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94AD29126AEEDCA005686ED /* Activity+CoreDataClass.swift */; };
@@ -28,6 +30,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		07D0954626B03EAE00491BD0 /* ActivityLog.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ActivityLog.storyboard; sourceTree = "<group>"; };
+		07D0954826B03EE100491BD0 /* ActivityLogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityLogViewController.swift; sourceTree = "<group>"; };
 		F94AD28F26AEEDCA005686ED /* Cats+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cats+CoreDataClass.swift"; sourceTree = "<group>"; };
 		F94AD29026AEEDCA005686ED /* Cats+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cats+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		F94AD29126AEEDCA005686ED /* Activity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Activity+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -61,6 +65,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		07D0954426B03E3700491BD0 /* ActivityLog */ = {
+			isa = PBXGroup;
+			children = (
+				07D0954626B03EAE00491BD0 /* ActivityLog.storyboard */,
+			);
+			path = ActivityLog;
+			sourceTree = "<group>";
+		};
+		07D0954526B03E7200491BD0 /* ActivityLog */ = {
+			isa = PBXGroup;
+			children = (
+				07D0954826B03EE100491BD0 /* ActivityLogViewController.swift */,
+			);
+			path = ActivityLog;
+			sourceTree = "<group>";
+		};
 		F995E4E726A99E9700DA5C50 = {
 			isa = PBXGroup;
 			children = (
@@ -96,6 +116,7 @@
 		F995E50A26A99EBC00DA5C50 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				07D0954426B03E3700491BD0 /* ActivityLog */,
 				F9A45ACC26AD395700B64134 /* Calendar */,
 				F9A45ACB26AD395100B64134 /* Cats */,
 				F995E51326A9A9AC00DA5C50 /* Dashboards */,
@@ -119,6 +140,7 @@
 		F995E50C26A99EC700DA5C50 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				07D0954526B03E7200491BD0 /* ActivityLog */,
 				F995E51426A9A9B500DA5C50 /* Dashboard */,
 				F995E4F726A99E9700DA5C50 /* ViewController.swift */,
 			);
@@ -260,6 +282,7 @@
 				F9A45AC726AD392E00B64134 /* Dashboard.storyboard in Resources */,
 				F9A45ACA26AD393D00B64134 /* Cats.storyboard in Resources */,
 				F995E50026A99E9800DA5C50 /* Assets.xcassets in Resources */,
+				07D0954726B03EAE00491BD0 /* ActivityLog.storyboard in Resources */,
 				F995E4FB26A99E9700DA5C50 /* Main.storyboard in Resources */,
 				F9A45AC526AD390D00B64134 /* Calendar.storyboard in Resources */,
 				F995E51C26A9AA5200DA5C50 /* DashboardCellViewController.xib in Resources */,
@@ -273,6 +296,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07D0954926B03EE100491BD0 /* ActivityLogViewController.swift in Sources */,
 				F94AD29326AEEDCA005686ED /* Cats+CoreDataClass.swift in Sources */,
 				F94AD29826AEF19D005686ED /* UiCustom.swift in Sources */,
 				F995E4FE26A99E9700DA5C50 /* meng_app.xcdatamodeld in Sources */,
