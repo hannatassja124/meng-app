@@ -16,7 +16,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="176" height="320"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GMt-VX-xwk">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CatProfileDefault" translatesAutoresizingMaskIntoConstraints="NO" id="GMt-VX-xwk">
                         <rect key="frame" x="0.0" y="0.0" width="176" height="320"/>
                         <color key="backgroundColor" name="Melon"/>
                     </imageView>
@@ -85,6 +85,7 @@
         </collectionViewCell>
     </objects>
     <resources>
+        <image name="CatProfileDefault" width="160" height="320"/>
         <image name="Male" width="512" height="512"/>
         <image name="circlebadge.fill" catalog="system" width="128" height="120"/>
         <namedColor name="Melon">
