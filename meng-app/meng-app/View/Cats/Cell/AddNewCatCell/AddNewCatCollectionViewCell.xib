@@ -20,7 +20,7 @@
                         <rect key="frame" x="47" y="128" width="82" height="64"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add New Cat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Zr-M7-w01">
-                                <rect key="frame" x="0.0" y="49" width="80" height="16"/>
+                                <rect key="frame" x="1" y="49" width="80" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="16" id="m15-ol-oc3"/>
                                 </constraints>
@@ -29,7 +29,7 @@
                                 <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plus.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="fA1-NV-h1N">
-                                <rect key="frame" x="24" y="0.3333333333333357" width="32" height="32.666666666666671"/>
+                                <rect key="frame" x="25" y="0.33333333333333576" width="32" height="32.666666666666671"/>
                                 <color key="tintColor" name="NeutralLight"/>
                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="bold"/>
                                 <userDefinedRuntimeAttributes>
@@ -42,11 +42,12 @@
                         <color key="backgroundColor" red="0.1042111292" green="0.26606833930000001" blue="0.3153784275" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="82" id="4Bx-Fj-Ru0"/>
-                            <constraint firstItem="3Zr-M7-w01" firstAttribute="leading" secondItem="r48-Tj-Oi0" secondAttribute="leading" id="ENu-mg-1FC"/>
+                            <constraint firstItem="fA1-NV-h1N" firstAttribute="centerX" secondItem="r48-Tj-Oi0" secondAttribute="centerX" id="CT8-eu-W2H"/>
+                            <constraint firstItem="3Zr-M7-w01" firstAttribute="leading" secondItem="r48-Tj-Oi0" secondAttribute="leading" constant="1" id="ENu-mg-1FC"/>
                             <constraint firstAttribute="bottom" secondItem="3Zr-M7-w01" secondAttribute="bottom" constant="-1" id="NQr-SQ-WAt"/>
                             <constraint firstItem="fA1-NV-h1N" firstAttribute="top" secondItem="r48-Tj-Oi0" secondAttribute="top" constant="-0.49999999999999822" id="PPJ-ZI-y34"/>
                             <constraint firstItem="fA1-NV-h1N" firstAttribute="centerX" secondItem="3Zr-M7-w01" secondAttribute="centerX" id="Q7i-cd-kWw"/>
-                            <constraint firstItem="fA1-NV-h1N" firstAttribute="leading" secondItem="r48-Tj-Oi0" secondAttribute="leading" constant="24" id="TU2-zX-FPI"/>
+                            <constraint firstItem="fA1-NV-h1N" firstAttribute="leading" secondItem="r48-Tj-Oi0" secondAttribute="leading" constant="25" id="TU2-zX-FPI"/>
                             <constraint firstItem="3Zr-M7-w01" firstAttribute="top" secondItem="fA1-NV-h1N" secondAttribute="bottom" constant="16.166666666666671" id="Xf9-5S-7dN"/>
                             <constraint firstAttribute="height" constant="64" id="pVt-pA-yZK"/>
                         </constraints>
