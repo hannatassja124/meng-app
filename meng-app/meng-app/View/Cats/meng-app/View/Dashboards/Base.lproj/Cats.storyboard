@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JwW-aE-maw">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Xtg-IF-2qc">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="lym-Vq-PLQ">
-                                <rect key="frame" x="0.0" y="52" width="390" height="750"/>
+                                <rect key="frame" x="0.0" y="96" width="390" height="706"/>
                                 <color key="backgroundColor" name="NeutralLight"/>
                                 <color key="tintColor" name="NeutralLight"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="16" minimumInteritemSpacing="16" id="REE-Uc-13S">
@@ -72,13 +72,31 @@
                             <constraint firstItem="lym-Vq-PLQ" firstAttribute="top" secondItem="9hv-uQ-X3w" secondAttribute="top" constant="8" id="riy-EC-abu"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Cats" id="nwG-bq-j8s"/>
-                    <navigationItem key="navigationItem" id="NJt-iH-WsQ"/>
+                    <navigationItem key="navigationItem" title="Cats" id="NJt-iH-WsQ"/>
                     <connections>
                         <outlet property="catsCollectionView" destination="lym-Vq-PLQ" id="w8h-Df-HbW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g3g-ca-g3u" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="966.15384615384608" y="714.45497630331749"/>
+        </scene>
+        <!--Cats-->
+        <scene sceneID="oiJ-ga-LuL">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Xtg-IF-2qc" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Cats" id="nwG-bq-j8s"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Acv-eV-akr">
+                        <rect key="frame" x="0.0" y="44" width="390" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="JwW-aE-maw" kind="relationship" relationship="rootViewController" id="9Md-m4-o3b"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eC6-g1-5uY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="36.92307692307692" y="714.45497630331749"/>
         </scene>
