@@ -8,6 +8,8 @@
 import UIKit
 
 class CatDetailViewController: UIViewController {
+    
+    var currCat: Cats?
 
     override func viewDidLoad() {
         super.viewDidLoad()
