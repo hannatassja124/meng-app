@@ -27,5 +27,12 @@ class CatProfileCollectionViewCell: UICollectionViewCell {
         petImage.layer.insertSublayer(gradient, at: 0)
         
     }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        petImage.image = UIImage(named: "CatProfileDefault")
+        petGenderIcon.image = UIImage(named: "Male")
+        petNameLabel.text = "CatName"
+    }
 
 }
