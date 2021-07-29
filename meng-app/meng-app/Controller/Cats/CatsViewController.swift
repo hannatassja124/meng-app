@@ -29,11 +29,12 @@ class CatsViewController: UIViewController, UICollectionViewDelegate {
         
         print(cats.count)
     }
-    
+//
 //    private func genDummyData(){
 //        let cat = Cats(context: context)
 //
 //        cat.name = "udin"
+//        cat.image = UIImage(named: "Meng-2")?.jpegData(compressionQuality: 1.0)
 //
 //        do {
 //            try context.save()
@@ -41,7 +42,7 @@ class CatsViewController: UIViewController, UICollectionViewDelegate {
 //            //error
 //        }
 //    }
-    
+//
     private func initNib(){
         
         let addCatNib = UINib(nibName: "\(AddNewCatCollectionViewCell.self)", bundle: nil)
@@ -82,9 +83,9 @@ extension CatsViewController: UICollectionViewDataSource{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CatProfileCell", for: indexPath) as! CatProfileCollectionViewCell
             
 //             assign data ke CollectionView
-//            if let image = cats[indexPath.row - 1].image {
-//                cell.petImage.image = UIImage(data: image)
-//            }
+            if let image = cats[indexPath.row - 1].image {
+                cell.petImage.image = UIImage(data: image)
+            }
             cell.petNameLabel.text = "\(cats[indexPath.row - 1].name!)"
             cell.petGenderIcon.image = UIImage(named: (cats[indexPath.row - 1].gender == 0 ? "Male" : "Female"))
             cell.petTagsColor.tintColor = .red
