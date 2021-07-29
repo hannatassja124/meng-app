@@ -29,13 +29,13 @@ class CatsViewController: UIViewController, UICollectionViewDelegate {
         
         print(cats.count)
     }
-//
+
 //    private func genDummyData(){
 //        let cat = Cats(context: context)
 //
-//        cat.name = "udin"
+//        cat.name = "scooter"
 //        cat.image = UIImage(named: "Meng-2")?.jpegData(compressionQuality: 1.0)
-//
+//        cat.colorTags = 7
 //        do {
 //            try context.save()
 //        } catch {
@@ -82,16 +82,14 @@ extension CatsViewController: UICollectionViewDataSource{
         else{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CatProfileCell", for: indexPath) as! CatProfileCollectionViewCell
             
-//             assign data ke CollectionView
+//          assign data ke CollectionView cell
             if let image = cats[indexPath.row - 1].image {
                 cell.petImage.image = UIImage(data: image)
             }
             cell.petNameLabel.text = "\(cats[indexPath.row - 1].name!)"
             cell.petGenderIcon.image = UIImage(named: (cats[indexPath.row - 1].gender == 0 ? "Male" : "Female"))
-            cell.petTagsColor.tintColor = .red
-            
-//            cell.petNameLabel.text = "test"
-            
+            cell.petTagsColor.tintColor = TagsHelper.checkColor(tagsNumber: cats[indexPath.row-1].colorTags)
+                        
             return cell
         }
     }
