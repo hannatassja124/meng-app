@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		191E4FB426B1907B00836145 /* CatDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 191E4FB326B1907B00836145 /* CatDetail.storyboard */; };
+		191E4FB626B1908A00836145 /* CatDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191E4FB526B1908A00836145 /* CatDetailViewController.swift */; };
+		1920066D26B032BF00BAD2D0 /* CatProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1920066B26B032BF00BAD2D0 /* CatProfileCollectionViewCell.swift */; };
+		1920066E26B032BF00BAD2D0 /* CatProfileCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1920066C26B032BF00BAD2D0 /* CatProfileCollectionViewCell.xib */; };
+		1920067126B0440900BAD2D0 /* CatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1920067026B0440900BAD2D0 /* CatsViewController.swift */; };
+		1932CFD026B2494800E7FE06 /* TagsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1932CFCF26B2494800E7FE06 /* TagsHelper.swift */; };
+		19636ECD26AF9E4100EBD377 /* AddNewCatCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19636ECB26AF9E4100EBD377 /* AddNewCatCollectionViewCell.swift */; };
+		19636ECE26AF9E4100EBD377 /* AddNewCatCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19636ECC26AF9E4100EBD377 /* AddNewCatCollectionViewCell.xib */; };
 		F94AD29326AEEDCA005686ED /* Cats+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94AD28F26AEEDCA005686ED /* Cats+CoreDataClass.swift */; };
 		F94AD29426AEEDCA005686ED /* Cats+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94AD29026AEEDCA005686ED /* Cats+CoreDataProperties.swift */; };
 		F94AD29526AEEDCA005686ED /* Activity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94AD29126AEEDCA005686ED /* Activity+CoreDataClass.swift */; };
@@ -28,6 +36,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		191E4FB326B1907B00836145 /* CatDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CatDetail.storyboard; sourceTree = "<group>"; };
+		191E4FB526B1908A00836145 /* CatDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatDetailViewController.swift; sourceTree = "<group>"; };
+		1920066B26B032BF00BAD2D0 /* CatProfileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatProfileCollectionViewCell.swift; sourceTree = "<group>"; };
+		1920066C26B032BF00BAD2D0 /* CatProfileCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CatProfileCollectionViewCell.xib; sourceTree = "<group>"; };
+		1920067026B0440900BAD2D0 /* CatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatsViewController.swift; sourceTree = "<group>"; };
+		1932CFCF26B2494800E7FE06 /* TagsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsHelper.swift; sourceTree = "<group>"; };
+		19636ECB26AF9E4100EBD377 /* AddNewCatCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewCatCollectionViewCell.swift; sourceTree = "<group>"; };
+		19636ECC26AF9E4100EBD377 /* AddNewCatCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddNewCatCollectionViewCell.xib; sourceTree = "<group>"; };
 		F94AD28F26AEEDCA005686ED /* Cats+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cats+CoreDataClass.swift"; sourceTree = "<group>"; };
 		F94AD29026AEEDCA005686ED /* Cats+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cats+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		F94AD29126AEEDCA005686ED /* Activity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Activity+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -61,6 +77,66 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		191E4FAD26B18EA900836145 /* Cat Detail */ = {
+			isa = PBXGroup;
+			children = (
+				191E4FB326B1907B00836145 /* CatDetail.storyboard */,
+			);
+			path = "Cat Detail";
+			sourceTree = "<group>";
+		};
+		191E4FAE26B18EB500836145 /* Cat Detail */ = {
+			isa = PBXGroup;
+			children = (
+				191E4FB526B1908A00836145 /* CatDetailViewController.swift */,
+			);
+			path = "Cat Detail";
+			sourceTree = "<group>";
+		};
+		1920066F26B043CF00BAD2D0 /* Cats */ = {
+			isa = PBXGroup;
+			children = (
+				1932CFCE26B2493300E7FE06 /* Helper */,
+				1920067026B0440900BAD2D0 /* CatsViewController.swift */,
+			);
+			path = Cats;
+			sourceTree = "<group>";
+		};
+		1932CFCE26B2493300E7FE06 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				1932CFCF26B2494800E7FE06 /* TagsHelper.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		19636EC726AF9E1000EBD377 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				19636ECA26AF9E2C00EBD377 /* CatProfileCell */,
+				19636EC826AF9E1800EBD377 /* AddNewCatCell */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		19636EC826AF9E1800EBD377 /* AddNewCatCell */ = {
+			isa = PBXGroup;
+			children = (
+				19636ECB26AF9E4100EBD377 /* AddNewCatCollectionViewCell.swift */,
+				19636ECC26AF9E4100EBD377 /* AddNewCatCollectionViewCell.xib */,
+			);
+			path = AddNewCatCell;
+			sourceTree = "<group>";
+		};
+		19636ECA26AF9E2C00EBD377 /* CatProfileCell */ = {
+			isa = PBXGroup;
+			children = (
+				1920066B26B032BF00BAD2D0 /* CatProfileCollectionViewCell.swift */,
+				1920066C26B032BF00BAD2D0 /* CatProfileCollectionViewCell.xib */,
+			);
+			path = CatProfileCell;
+			sourceTree = "<group>";
+		};
 		F995E4E726A99E9700DA5C50 = {
 			isa = PBXGroup;
 			children = (
@@ -81,7 +157,6 @@
 			isa = PBXGroup;
 			children = (
 				F995E51026A9A88E00DA5C50 /* Delegate */,
-				F995E50F26A9A01300DA5C50 /* Helper */,
 				F995E50E26A99FAA00DA5C50 /* Extensions */,
 				F995E50D26A99F9800DA5C50 /* CoreData */,
 				F995E50B26A99EC100DA5C50 /* Model */,
@@ -96,6 +171,7 @@
 		F995E50A26A99EBC00DA5C50 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				191E4FAD26B18EA900836145 /* Cat Detail */,
 				F9A45ACC26AD395700B64134 /* Calendar */,
 				F9A45ACB26AD395100B64134 /* Cats */,
 				F995E51326A9A9AC00DA5C50 /* Dashboards */,
@@ -119,6 +195,8 @@
 		F995E50C26A99EC700DA5C50 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				191E4FAE26B18EB500836145 /* Cat Detail */,
+				1920066F26B043CF00BAD2D0 /* Cats */,
 				F995E51426A9A9B500DA5C50 /* Dashboard */,
 				F995E4F726A99E9700DA5C50 /* ViewController.swift */,
 			);
@@ -139,13 +217,6 @@
 				F94AD29726AEF19D005686ED /* UiCustom.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		F995E50F26A9A01300DA5C50 /* Helper */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Helper;
 			sourceTree = "<group>";
 		};
 		F995E51026A9A88E00DA5C50 /* Delegate */ = {
@@ -186,6 +257,7 @@
 		F9A45ACB26AD395100B64134 /* Cats */ = {
 			isa = PBXGroup;
 			children = (
+				19636EC726AF9E1000EBD377 /* Cell */,
 				F9A45AC826AD393D00B64134 /* Cats.storyboard */,
 			);
 			path = Cats;
@@ -256,12 +328,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				191E4FB426B1907B00836145 /* CatDetail.storyboard in Resources */,
 				F995E50326A99E9800DA5C50 /* LaunchScreen.storyboard in Resources */,
 				F9A45AC726AD392E00B64134 /* Dashboard.storyboard in Resources */,
 				F9A45ACA26AD393D00B64134 /* Cats.storyboard in Resources */,
 				F995E50026A99E9800DA5C50 /* Assets.xcassets in Resources */,
 				F995E4FB26A99E9700DA5C50 /* Main.storyboard in Resources */,
 				F9A45AC526AD390D00B64134 /* Calendar.storyboard in Resources */,
+				1920066E26B032BF00BAD2D0 /* CatProfileCollectionViewCell.xib in Resources */,
+				19636ECE26AF9E4100EBD377 /* AddNewCatCollectionViewCell.xib in Resources */,
 				F995E51C26A9AA5200DA5C50 /* DashboardCellViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -274,11 +349,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				F94AD29326AEEDCA005686ED /* Cats+CoreDataClass.swift in Sources */,
+				1920067126B0440900BAD2D0 /* CatsViewController.swift in Sources */,
+				191E4FB626B1908A00836145 /* CatDetailViewController.swift in Sources */,
 				F94AD29826AEF19D005686ED /* UiCustom.swift in Sources */,
+				19636ECD26AF9E4100EBD377 /* AddNewCatCollectionViewCell.swift in Sources */,
 				F995E4FE26A99E9700DA5C50 /* meng_app.xcdatamodeld in Sources */,
+				1920066D26B032BF00BAD2D0 /* CatProfileCollectionViewCell.swift in Sources */,
 				F94AD29626AEEDCA005686ED /* Activity+CoreDataProperties.swift in Sources */,
 				F995E4F826A99E9700DA5C50 /* ViewController.swift in Sources */,
 				F995E51626A9A9D000DA5C50 /* DashboardViewController.swift in Sources */,
+				1932CFD026B2494800E7FE06 /* TagsHelper.swift in Sources */,
 				F94AD29526AEEDCA005686ED /* Activity+CoreDataClass.swift in Sources */,
 				F995E51B26A9AA5200DA5C50 /* DashboardCellViewController.swift in Sources */,
 				F995E4F426A99E9700DA5C50 /* AppDelegate.swift in Sources */,
@@ -447,7 +527,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = KBSYTU5GMJ;
+				DEVELOPMENT_TEAM = 282R274LXF;
 				INFOPLIST_FILE = "meng-app/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -466,7 +546,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = KBSYTU5GMJ;
+				DEVELOPMENT_TEAM = 282R274LXF;
 				INFOPLIST_FILE = "meng-app/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
