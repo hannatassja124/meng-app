@@ -28,7 +28,9 @@
 		F9B6085C26AFEA2F005EF315 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B6085B26AFEA2F005EF315 /* CalendarViewController.swift */; };
 		F9B6086026AFEAC9005EF315 /* ActivitiesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B6085E26AFEAC9005EF315 /* ActivitiesTableViewCell.swift */; };
 		F9B6086126AFEAC9005EF315 /* ActivitiesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9B6085F26AFEAC9005EF315 /* ActivitiesTableViewCell.xib */; };
-		F9B6086326AFFEDD005EF315 /* Activities.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B6086226AFFEDD005EF315 /* Activities.swift */; };
+		F9CAC8A426B2A4E200D46ED8 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CAC8A326B2A4E200D46ED8 /* CalendarCell.swift */; };
+		F9CAC8A626B2DF1800D46ED8 /* CalendarCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CAC8A526B2DF1800D46ED8 /* CalendarCollectionViewController.swift */; };
+		F9D98ECE26B391B200707871 /* CalendarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D98ECD26B391B200707871 /* CalendarHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,7 +57,9 @@
 		F9B6085B26AFEA2F005EF315 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		F9B6085E26AFEAC9005EF315 /* ActivitiesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesTableViewCell.swift; sourceTree = "<group>"; };
 		F9B6085F26AFEAC9005EF315 /* ActivitiesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivitiesTableViewCell.xib; sourceTree = "<group>"; };
-		F9B6086226AFFEDD005EF315 /* Activities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activities.swift; sourceTree = "<group>"; };
+		F9CAC8A326B2A4E200D46ED8 /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
+		F9CAC8A526B2DF1800D46ED8 /* CalendarCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCollectionViewController.swift; sourceTree = "<group>"; };
+		F9D98ECD26B391B200707871 /* CalendarHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,7 +125,6 @@
 				F94AD29026AEEDCA005686ED /* Cats+CoreDataProperties.swift */,
 				F94AD29126AEEDCA005686ED /* Activity+CoreDataClass.swift */,
 				F94AD29226AEEDCA005686ED /* Activity+CoreDataProperties.swift */,
-				F9B6086226AFFEDD005EF315 /* Activities.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -155,6 +158,7 @@
 		F995E50F26A9A01300DA5C50 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				F9D98ECD26B391B200707871 /* CalendarHelper.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -205,6 +209,7 @@
 		F9A45ACC26AD395700B64134 /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
+				F9D98ECF26B40C1400707871 /* CalendarCell */,
 				F9A45AC326AD390D00B64134 /* Calendar.storyboard */,
 			);
 			path = Calendar;
@@ -214,6 +219,7 @@
 			isa = PBXGroup;
 			children = (
 				F9B6085B26AFEA2F005EF315 /* CalendarViewController.swift */,
+				F9CAC8A526B2DF1800D46ED8 /* CalendarCollectionViewController.swift */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -225,6 +231,14 @@
 				F9B6085F26AFEAC9005EF315 /* ActivitiesTableViewCell.xib */,
 			);
 			path = ActivitiesCell;
+			sourceTree = "<group>";
+		};
+		F9D98ECF26B40C1400707871 /* CalendarCell */ = {
+			isa = PBXGroup;
+			children = (
+				F9CAC8A326B2A4E200D46ED8 /* CalendarCell.swift */,
+			);
+			path = CalendarCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -303,13 +317,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				F9B6085C26AFEA2F005EF315 /* CalendarViewController.swift in Sources */,
+				F9CAC8A426B2A4E200D46ED8 /* CalendarCell.swift in Sources */,
 				F94AD29326AEEDCA005686ED /* Cats+CoreDataClass.swift in Sources */,
-				F9B6086326AFFEDD005EF315 /* Activities.swift in Sources */,
 				F9B6086026AFEAC9005EF315 /* ActivitiesTableViewCell.swift in Sources */,
 				F94AD29826AEF19D005686ED /* UiCustom.swift in Sources */,
 				F995E4FE26A99E9700DA5C50 /* meng_app.xcdatamodeld in Sources */,
 				F94AD29626AEEDCA005686ED /* Activity+CoreDataProperties.swift in Sources */,
+				F9CAC8A626B2DF1800D46ED8 /* CalendarCollectionViewController.swift in Sources */,
 				F995E4F826A99E9700DA5C50 /* ViewController.swift in Sources */,
+				F9D98ECE26B391B200707871 /* CalendarHelper.swift in Sources */,
 				F995E51626A9A9D000DA5C50 /* DashboardViewController.swift in Sources */,
 				F94AD29526AEEDCA005686ED /* Activity+CoreDataClass.swift in Sources */,
 				F995E51B26A9AA5200DA5C50 /* DashboardCellViewController.swift in Sources */,
