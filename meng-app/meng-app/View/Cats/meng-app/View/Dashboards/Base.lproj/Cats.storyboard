@@ -41,11 +41,20 @@
                     <navigationItem key="navigationItem" title="Cats" id="NJt-iH-WsQ"/>
                     <connections>
                         <outlet property="catsCollectionView" destination="lym-Vq-PLQ" id="w8h-Df-HbW"/>
+                        <segue destination="dS3-03-GQC" kind="showDetail" identifier="CatDetail" id="nO5-zK-AjG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g3g-ca-g3u" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="966.15384615384608" y="714.45497630331749"/>
+        </scene>
+        <!--CatDetail-->
+        <scene sceneID="gBe-ic-2AR">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="CatDetail" storyboardName="CatDetail" id="dS3-03-GQC" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NtN-Sz-kF0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2278" y="689"/>
         </scene>
         <!--Cats-->
         <scene sceneID="oiJ-ga-LuL">

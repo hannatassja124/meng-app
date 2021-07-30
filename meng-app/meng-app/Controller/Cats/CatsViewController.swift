@@ -121,8 +121,13 @@ extension CatsViewController: UICollectionViewDataSource{
         else{
             print("cat detail")
             //bakal buka Cat Profile Detail
-            let CatDetailViewController = CatDetailViewController()
-            self.navigationController?.pushViewController(CatDetailViewController, animated: true)
+//            let catDetailViewController = CatDetailViewController(nibName: "CatDetail", bundle: nil)
+//            catDetailViewController.currCat = cats[indexPath.row-1]
+//            self.navigationController?.pushViewController(catDetailViewController, animated: true)
+//            
+            let vc = self.storyboard!.instantiateViewController(identifier: "CatDetail") as! CatDetailViewController
+            vc.currCat = cats[indexPath.row - 1]
+            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
     
