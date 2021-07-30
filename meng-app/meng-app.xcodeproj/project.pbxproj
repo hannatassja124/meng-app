@@ -162,6 +162,7 @@
 				03437BBA26B25CB40070BF1E /* AddNewCatTableView.swift */,
 			);
 			path = AddNewCat;
+		};
 		191E4FAD26B18EA900836145 /* Cat Detail */ = {
 			isa = PBXGroup;
 			children = (
