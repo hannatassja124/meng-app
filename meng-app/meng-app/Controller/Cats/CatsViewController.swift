@@ -14,6 +14,8 @@ class CatsViewController: UIViewController, UICollectionViewDelegate {
     //variables
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var cats:[Cats] = [Cats()]
+    var originalCats:[Cats] = []
+    let searchController = UISearchController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,23 +28,24 @@ class CatsViewController: UIViewController, UICollectionViewDelegate {
         catsCollectionView.dataSource = self
         
         initNib()
-        
+        initSearchController()
         print(cats.count)
     }
 
 //    private func genDummyData(){
 //        let cat = Cats(context: context)
 //
-//        cat.name = "scooter"
+//        cat.name = "stella"
 //        cat.image = UIImage(named: "Meng-2")?.jpegData(compressionQuality: 1.0)
-//        cat.colorTags = 7
+//        cat.colorTags = 10
+//        cat.gender = 1
 //        do {
 //            try context.save()
 //        } catch {
 //            //error
 //        }
 //    }
-//
+
     private func initNib(){
         
         let addCatNib = UINib(nibName: "\(AddNewCatCollectionViewCell.self)", bundle: nil)
@@ -52,6 +55,20 @@ class CatsViewController: UIViewController, UICollectionViewDelegate {
         catsCollectionView.register(catProfileNib, forCellWithReuseIdentifier: "CatProfileCell")
 
     }
+    
+    func initSearchController(){
+        searchController.loadViewIfNeeded()
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.enablesReturnKeyAutomatically = false
+        searchController.searchBar.returnKeyType = UIReturnKeyType.done
+        definesPresentationContext = true
+        
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
+        searchController.searchBar.delegate = self
+    }
+
 
     private func retrieveData(){
         do {
@@ -63,6 +80,7 @@ class CatsViewController: UIViewController, UICollectionViewDelegate {
             //error
             print("Error when retrieving data from CoreData")
         }
+        originalCats = cats
     }
 }
 
@@ -110,3 +128,23 @@ extension CatsViewController: UICollectionViewDataSource{
     
     
 }
+
+extension CatsViewController: UISearchResultsUpdating, UISearchBarDelegate{
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let text = searchController.searchBar.text else {
+            return
+        }
+        print(text)
+       
+        if text != ""{
+            cats = originalCats.filter{ (cats: Cats) -> Bool in
+                return (cats.name?.lowercased().contains(text.lowercased()))!
+            }
+        }
+        else{
+            cats = originalCats
+        }
+        catsCollectionView.reloadData()
+    }
+}
+
