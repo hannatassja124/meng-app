@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ActivityLogViewController: UIViewController {
+class ActivityLogViewController: UIViewController{
     
     @IBOutlet var TableView: UITableView!
 
@@ -16,6 +16,9 @@ class ActivityLogViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
+    
+    
+    
     
 
     /*

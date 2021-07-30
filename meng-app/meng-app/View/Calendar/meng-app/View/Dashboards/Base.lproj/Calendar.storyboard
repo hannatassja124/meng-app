@@ -73,6 +73,10 @@
                     <navigationItem key="navigationItem" title="Calendar" id="0fD-yZ-TW4">
                         <barButtonItem key="rightBarButtonItem" image="plus" catalog="system" id="Agw-oq-e3f">
                             <color key="tintColor" name="NeutralLight"/>
+                            <connections>
+                                <action selector="addActivityPage:" destination="BYZ-38-t0r" id="kRY-9w-d3i"/>
+                                <segue destination="XNa-4A-7Fe" kind="presentation" id="FlN-Fb-QD9"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -269,10 +273,19 @@
             </objects>
             <point key="canvasLocation" x="948" y="88"/>
         </scene>
+        <!--ActivityLog-->
+        <scene sceneID="Bpg-cd-JIM">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="activityLog" storyboardName="ActivityLog" id="XNa-4A-7Fe" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="ugJ-Zm-6Vw"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sEQ-Op-GCQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2467" y="312"/>
+        </scene>
         <!--Calendar Collection View Controller-->
         <scene sceneID="NAu-ez-TdE">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Jpp-aF-Sgg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="OrA-tw-tYo" customClass="CalendarCollectionViewController" customModule="meng_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Q3b-XQ-UL7">
                         <rect key="frame" x="0.0" y="0.0" width="348" height="414"/>
@@ -325,11 +338,11 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" contentInsetAdjustmentBehavior="never" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="TUh-hh-tNr">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" contentInsetAdjustmentBehavior="never" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="TUh-hh-tNr">
                                 <rect key="frame" x="3" y="89" width="342" height="305"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="pGL-WC-eTd">
-                                    <size key="itemSize" width="49" height="50"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="pGL-WC-eTd">
+                                    <size key="itemSize" width="32" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -357,7 +370,7 @@
                                         <size key="customSize" width="49" height="50"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="25"/>
+                                                <real key="value" value="21"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
@@ -397,6 +410,7 @@
                                 </connections>
                             </button>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="brJ-Ey-yr1"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="fps-MX-lOi" firstAttribute="top" secondItem="Q3b-XQ-UL7" secondAttribute="top" constant="20" symbolic="YES" id="6VI-RR-dJh"/>
@@ -424,6 +438,7 @@
                         <outlet property="monthLabel" destination="hOA-fV-pQ0" id="sDb-DI-Ffm"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jpp-aF-Sgg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2708.6956521739135" y="87.723214285714278"/>
         </scene>

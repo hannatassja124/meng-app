@@ -14,7 +14,7 @@ class CalendarViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var calendarUIView: UIView!
-    
+
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var activities:[Activity] = [Activity()]
     
@@ -50,6 +50,17 @@ class CalendarViewController: UIViewController {
 //        }
         
         tableView.reloadData()
+        
+    }
+    
+    
+    @IBAction func addActivityPage(_ sender: Any) {
+//        let vc = self.storyboard!.instantiateViewController(identifier: "activityLog") as! ActivityLogViewController
+//    
+//        
+//        self.navigationController?.pushViewController(vc, animated: true)
+//        
+//        
         
     }
     

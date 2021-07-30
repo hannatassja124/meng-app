@@ -42,11 +42,22 @@
                     <connections>
                         <outlet property="catsCollectionView" destination="lym-Vq-PLQ" id="w8h-Df-HbW"/>
                         <segue destination="dS3-03-GQC" kind="showDetail" identifier="CatDetail" id="nO5-zK-AjG"/>
+                        <segue destination="Ikt-rV-hqD" kind="presentation" identifier="addNewCat" id="91J-AI-Apu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g3g-ca-g3u" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="966.15384615384608" y="714.45497630331749"/>
+        </scene>
+        <!--addNewCat-->
+        <scene sceneID="QGp-AL-SQX">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="addNewCat" storyboardName="AddNewCat" referencedIdentifier="addNewCat" id="Ikt-rV-hqD" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="hiZ-SO-FwO"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Py9-bn-158" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1580" y="490"/>
         </scene>
         <!--CatDetail-->
         <scene sceneID="gBe-ic-2AR">

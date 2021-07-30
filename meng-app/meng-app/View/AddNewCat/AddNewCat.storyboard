@@ -11,7 +11,7 @@
         <!--AddNewCatTableViewController-->
         <scene sceneID="Mp8-3b-jqC">
             <objects>
-                <tableViewController title="AddNewCatTableViewController" id="C9J-F4-dVO" customClass="AddNewCatTableView" customModule="meng_app" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="addNewCat" title="AddNewCatTableViewController" id="C9J-F4-dVO" customClass="AddNewCatTableView" customModule="meng_app" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="insetGrouped" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="4" id="sNs-jh-erQ">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

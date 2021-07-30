@@ -117,6 +117,8 @@ extension CatsViewController: UICollectionViewDataSource{
         if indexPath.row == 0{
             //bakal buka Add New Cat Page
             print("add new cat")
+            let vc = self.storyboard!.instantiateViewController(identifier: "addNewCat") as! AddNewCatTableView
+            self.navigationController?.pushViewController(vc, animated: true)
         }
         else{
             print("cat detail")
