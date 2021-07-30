@@ -7,7 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-
+		073E332A26B3AF150015C24F /* ActivityLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073E332926B3AF150015C24F /* ActivityLogViewController.swift */; };
+		0747674426B253D20054D268 /* ActivityLogDatePickerHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0747674326B253D20054D268 /* ActivityLogDatePickerHeader.swift */; };
+		0747674626B253FB0054D268 /* ActivityLogDatePickerHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0747674526B253FB0054D268 /* ActivityLogDatePickerHeader.xib */; };
+		0779832426B1A06200BFFD57 /* ActivityLogTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0779832326B1A06200BFFD57 /* ActivityLogTableViewController.swift */; };
+		0779832626B1B36400BFFD57 /* SelectCatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0779832526B1B36400BFFD57 /* SelectCatViewController.swift */; };
+		07D0954726B03EAE00491BD0 /* ActivityLog.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07D0954626B03EAE00491BD0 /* ActivityLog.storyboard */; };
 		03274CEB26B039CE00B78A54 /* AddNewCat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03274CEA26B039CE00B78A54 /* AddNewCat.storyboard */; };
 		03437BBB26B25CB40070BF1E /* AddNewCatTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03437BBA26B25CB40070BF1E /* AddNewCatTableView.swift */; };
 		191E4FB426B1907B00836145 /* CatDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 191E4FB326B1907B00836145 /* CatDetail.storyboard */; };
@@ -39,6 +44,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		073E332926B3AF150015C24F /* ActivityLogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityLogViewController.swift; sourceTree = "<group>"; };
+		0747674326B253D20054D268 /* ActivityLogDatePickerHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityLogDatePickerHeader.swift; sourceTree = "<group>"; };
+		0747674526B253FB0054D268 /* ActivityLogDatePickerHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityLogDatePickerHeader.xib; sourceTree = "<group>"; };
+		0779832326B1A06200BFFD57 /* ActivityLogTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityLogTableViewController.swift; sourceTree = "<group>"; };
+		0779832526B1B36400BFFD57 /* SelectCatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCatViewController.swift; sourceTree = "<group>"; };
+		07D0954626B03EAE00491BD0 /* ActivityLog.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ActivityLog.storyboard; sourceTree = "<group>"; };
 		03274CEA26B039CE00B78A54 /* AddNewCat.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddNewCat.storyboard; sourceTree = "<group>"; };
 		03437BBA26B25CB40070BF1E /* AddNewCatTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewCatTableView.swift; sourceTree = "<group>"; };
 		191E4FB326B1907B00836145 /* CatDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CatDetail.storyboard; sourceTree = "<group>"; };
@@ -82,6 +93,48 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		073E332B26B3CF2F0015C24F /* ReminderHeader */ = {
+			isa = PBXGroup;
+			children = (
+				0747674326B253D20054D268 /* ActivityLogDatePickerHeader.swift */,
+				0747674526B253FB0054D268 /* ActivityLogDatePickerHeader.xib */,
+			);
+			path = ReminderHeader;
+			sourceTree = "<group>";
+		};
+		073E332D26B3CFB20015C24F /* CustomHeader */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CustomHeader;
+			sourceTree = "<group>";
+		};
+		0747674726B257A40054D268 /* XIB */ = {
+			isa = PBXGroup;
+			children = (
+				073E332D26B3CFB20015C24F /* CustomHeader */,
+				073E332B26B3CF2F0015C24F /* ReminderHeader */,
+			);
+			path = XIB;
+			sourceTree = "<group>";
+		};
+		07D0954426B03E3700491BD0 /* ActivityLog */ = {
+			isa = PBXGroup;
+			children = (
+				0747674726B257A40054D268 /* XIB */,
+				07D0954626B03EAE00491BD0 /* ActivityLog.storyboard */,
+			);
+			path = ActivityLog;
+			sourceTree = "<group>";
+		};
+		07D0954526B03E7200491BD0 /* ActivityLog */ = {
+			isa = PBXGroup;
+			children = (
+				073E332926B3AF150015C24F /* ActivityLogViewController.swift */,
+				0779832326B1A06200BFFD57 /* ActivityLogTableViewController.swift */,
+				0779832526B1B36400BFFD57 /* SelectCatViewController.swift */,
+			);
+			path = ActivityLog;
 
 		03274CE926B039A500B78A54 /* AddNewCat */ = {
 			isa = PBXGroup;
@@ -191,6 +244,7 @@
 		F995E50A26A99EBC00DA5C50 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				07D0954426B03E3700491BD0 /* ActivityLog */,
 				03274CE926B039A500B78A54 /* AddNewCat */,
 				191E4FAD26B18EA900836145 /* Cat Detail */,
 				F9A45ACC26AD395700B64134 /* Calendar */,
@@ -216,6 +270,7 @@
 		F995E50C26A99EC700DA5C50 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				07D0954526B03E7200491BD0 /* ActivityLog */,
 				03437BB726B25BD40070BF1E /* AddNewCat */,
 				191E4FAE26B18EB500836145 /* Cat Detail */,
 				1920066F26B043CF00BAD2D0 /* Cats */,
@@ -329,7 +384,9 @@
 			};
 			buildConfigurationList = F995E4EB26A99E9700DA5C50 /* Build configuration list for PBXProject "meng-app" */;
 			compatibilityVersion = "Xcode 9.3";
-			developmentRegion = en;
+			
+      
+      mentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
@@ -354,7 +411,9 @@
 				F995E50326A99E9800DA5C50 /* LaunchScreen.storyboard in Resources */,
 				F9A45AC726AD392E00B64134 /* Dashboard.storyboard in Resources */,
 				F9A45ACA26AD393D00B64134 /* Cats.storyboard in Resources */,
+				0747674626B253FB0054D268 /* ActivityLogDatePickerHeader.xib in Resources */,
 				F995E50026A99E9800DA5C50 /* Assets.xcassets in Resources */,
+				07D0954726B03EAE00491BD0 /* ActivityLog.storyboard in Resources */,
 				F995E4FB26A99E9700DA5C50 /* Main.storyboard in Resources */,
 				F9A45AC526AD390D00B64134 /* Calendar.storyboard in Resources */,
 				03274CEB26B039CE00B78A54 /* AddNewCat.storyboard in Resources */,
@@ -371,6 +430,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				073E332A26B3AF150015C24F /* ActivityLogViewController.swift in Sources */,
 				F94AD29326AEEDCA005686ED /* Cats+CoreDataClass.swift in Sources */,
 				1920067126B0440900BAD2D0 /* CatsViewController.swift in Sources */,
 				191E4FB626B1908A00836145 /* CatDetailViewController.swift in Sources */,
@@ -380,12 +440,15 @@
 				1920066D26B032BF00BAD2D0 /* CatProfileCollectionViewCell.swift in Sources */,
 				F94AD29626AEEDCA005686ED /* Activity+CoreDataProperties.swift in Sources */,
 				F995E4F826A99E9700DA5C50 /* ViewController.swift in Sources */,
+				0779832426B1A06200BFFD57 /* ActivityLogTableViewController.swift in Sources */,
 				03437BBB26B25CB40070BF1E /* AddNewCatTableView.swift in Sources */,
 				F995E51626A9A9D000DA5C50 /* DashboardViewController.swift in Sources */,
 				1932CFD026B2494800E7FE06 /* TagsHelper.swift in Sources */,
 				F94AD29526AEEDCA005686ED /* Activity+CoreDataClass.swift in Sources */,
 				F995E51B26A9AA5200DA5C50 /* DashboardCellViewController.swift in Sources */,
 				F995E4F426A99E9700DA5C50 /* AppDelegate.swift in Sources */,
+				0747674426B253D20054D268 /* ActivityLogDatePickerHeader.swift in Sources */,
+				0779832626B1B36400BFFD57 /* SelectCatViewController.swift in Sources */,
 				F94AD29426AEEDCA005686ED /* Cats+CoreDataProperties.swift in Sources */,
 				F995E4F626A99E9700DA5C50 /* SceneDelegate.swift in Sources */,
 			);
