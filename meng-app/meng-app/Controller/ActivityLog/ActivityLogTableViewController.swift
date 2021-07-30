@@ -20,6 +20,16 @@ class ActivityLogTableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
+    // UITableViewSectionHeader Custom (Using XIB)
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if section == 3 {
+            let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "ActivityLogDatePickerHeader") as! ActivityLogDatePickerHeader
+            
+            return headerView
+        } else {
+            return UIView()
+        }
+    }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
