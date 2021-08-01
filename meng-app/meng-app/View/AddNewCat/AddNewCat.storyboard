@@ -555,9 +555,15 @@
                     <navigationItem key="navigationItem" title="Add New Cat" id="AvQ-PJ-CdS">
                         <barButtonItem key="leftBarButtonItem" style="plain" systemItem="cancel" id="NNu-Df-vTc">
                             <color key="tintColor" name="Melon"/>
+                            <connections>
+                                <action selector="cancelButton:" destination="C9J-F4-dVO" id="CL7-3E-1J8"/>
+                            </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="save" id="ZQV-H4-2XB">
                             <color key="tintColor" name="Melon"/>
+                            <connections>
+                                <action selector="saveButton:" destination="C9J-F4-dVO" id="m81-Zd-Uv2"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
