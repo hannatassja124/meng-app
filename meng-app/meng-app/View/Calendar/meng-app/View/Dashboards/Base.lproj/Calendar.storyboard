@@ -82,6 +82,7 @@
                     <connections>
                         <outlet property="calendarUIView" destination="t6f-0v-UX3" id="nNP-ZU-yh4"/>
                         <outlet property="tableView" destination="Xca-ap-6Lt" id="qgK-Hx-Rh6"/>
+                        <segue destination="4T7-ht-f2g" kind="show" identifier="showActivityDetail" id="Wrx-HP-mkS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -283,6 +284,31 @@
             </objects>
             <point key="canvasLocation" x="2467" y="312"/>
         </scene>
+        <!--Activity Detail View Controller-->
+        <scene sceneID="PLO-4T-fXt">
+            <objects>
+                <viewController id="4T7-ht-f2g" customClass="ActivityDetailViewController" customModule="meng_app" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ejd-5o-fck">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Test" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CFZ-sD-Xwf">
+                                <rect key="frame" x="186" y="278" width="33" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="gGC-5U-X25"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="UfC-hl-FSm"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="S5U-QL-Xf8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2709" y="707"/>
+        </scene>
         <!--Calendar Collection View Controller-->
         <scene sceneID="NAu-ez-TdE">
             <objects>
@@ -426,7 +452,6 @@
                             <constraint firstItem="hOA-fV-pQ0" firstAttribute="leading" secondItem="Q3b-XQ-UL7" secondAttribute="leading" constant="104" id="gVT-xY-5LQ"/>
                             <constraint firstItem="J1Y-yD-t0i" firstAttribute="leading" secondItem="Q3b-XQ-UL7" secondAttribute="leading" constant="40" id="gsi-Js-d14"/>
                             <constraint firstAttribute="trailing" secondItem="hOA-fV-pQ0" secondAttribute="trailing" constant="103" id="l3L-h7-JdM"/>
-                            <constraint firstItem="hOA-fV-pQ0" firstAttribute="width" secondItem="Q3b-XQ-UL7" secondAttribute="width" multiplier="0.405172" id="lGw-ge-yRB"/>
                             <constraint firstAttribute="trailing" secondItem="wq1-vs-2u8" secondAttribute="trailing" constant="3" id="qyF-de-Xh7"/>
                             <constraint firstItem="TUh-hh-tNr" firstAttribute="top" secondItem="wq1-vs-2u8" secondAttribute="bottom" constant="8" symbolic="YES" id="rKO-mF-HfE"/>
                             <constraint firstItem="wq1-vs-2u8" firstAttribute="leading" secondItem="Q3b-XQ-UL7" secondAttribute="leading" constant="3" id="rie-Y8-2GX"/>
