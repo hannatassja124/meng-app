@@ -56,8 +56,8 @@ class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextVie
         ncCatNotesTV.textColor = .lightGray
         ncCatNotesTV.delegate = self
         hiddenPickers(fieldName: "init", indexPath: [-1])
-        let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
-                view.addGestureRecognizer(tap)
+//        let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+//                view.addGestureRecognizer(tap)
     }
     
 // Button NavBar
@@ -185,10 +185,8 @@ class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextVie
 //        else {
 //            placeholderNotes = ncCatNotesTV.text
 //        }
-        if placeholderNotes == "" {
-            ncCatNotesTV.text = "Notes"
-            placeholderNotes = "Notes"
-            ncCatNotesTV.textColor = .lightGray
+        if placeholderNotes != "" {
+            placeholderNotes = ncCatNotesTV.text
         }
     }
     
