@@ -22,7 +22,7 @@ class ActivityLogTableViewController: UITableViewController {
     // MARK: - Table view data source
     // UITableViewSectionHeader Custom (Using XIB)
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if section == 3 {
+        if section == 4 {
             let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "ActivityLogDatePickerHeader") as! ActivityLogDatePickerHeader
             
             return headerView
