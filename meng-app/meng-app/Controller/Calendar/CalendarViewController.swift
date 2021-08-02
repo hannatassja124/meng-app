@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 
 class CalendarViewController: UIViewController {
@@ -16,7 +17,7 @@ class CalendarViewController: UIViewController {
     @IBOutlet weak var calendarUIView: UIView!
 
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    var activities:[Activity] = [Activity()]
+    var activities:[NSManagedObject] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,16 +32,18 @@ class CalendarViewController: UIViewController {
         
         tableView.backgroundColor = .clear
         
-        let activity = Activity(context: context)
-        activity.activityTitle = "Test"
-        activity.activityType = "Meng"
-        activity.activityDetail = "Bah"
+        self.save()
         
-        do {
-            try context.save()
-        } catch {
-            //error
-        }
+//        let activity = Activity(context: context)
+//        activity.activityTitle = "Test"
+//        activity.activityType = "Meng"
+//        activity.activityDetail = "Bah"
+//
+//        do {
+//            try context.save()
+//        } catch {
+//            //error
+//        }
         
 //        for i in 1...3 {
 //            let activity = Activity()
@@ -53,14 +56,65 @@ class CalendarViewController: UIViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+          
+          //1
+          guard let appDelegate =
+            UIApplication.shared.delegate as? AppDelegate else {
+              return
+          }
+          
+          let managedContext =
+            appDelegate.persistentContainer.viewContext
+          
+          //2
+          let fetchRequest =
+            NSFetchRequest<NSManagedObject>(entityName: "Activity")
+          
+          //3
+          do {
+            activities = try managedContext.fetch(fetchRequest)
+            print("test", activities)
+          } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+          }
+    }
+    
+    func save() {
+      
+      guard let appDelegate =
+        UIApplication.shared.delegate as? AppDelegate else {
+        return
+      }
+      
+      // 1
+      let managedContext =
+        appDelegate.persistentContainer.viewContext
+      
+      // 2
+      let entity =
+        NSEntityDescription.entity(forEntityName: "Activity",
+                                   in: managedContext)!
+      
+      let activity = NSManagedObject(entity: entity,
+                                   insertInto: managedContext)
+      
+      // 3
+        activity.setValue("Test", forKeyPath: "activityTitle")
+        
+      // 4
+      do {
+        try managedContext.save()
+        activities.append(activity)
+      } catch let error as NSError {
+        print("Could not save. \(error), \(error.userInfo)")
+      }
+    }
+    
     
     @IBAction func addActivityPage(_ sender: Any) {
-//        let vc = self.storyboard!.instantiateViewController(identifier: "activityLog") as! ActivityLogViewController
-//    
-//        
-//        self.navigationController?.pushViewController(vc, animated: true)
-//        
-//        
+  
         
     }
     
@@ -75,6 +129,15 @@ class CalendarViewController: UIViewController {
         calendarUIView.layer.shadowRadius = 60
         calendarUIView.layer.shadowPath = shadowPath.cgPath
     }
+    
+    func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+    if segue.identifier == "showActivityDetail" {
+        let indexPath:NSIndexPath = self.tableView.indexPathForSelectedRow! as NSIndexPath
+        let detailVC:ActivityDetailViewController = segue.destination as! ActivityDetailViewController
+//        detailVC.item = items[indexPath.row] as Item
+        }
+    }
+    
 
 
 }
@@ -93,14 +156,24 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: activitiesCellId, for: indexPath) as! ActivitiesTableViewCell
         
+        let data = activities[indexPath.row]
+        
+        cell.activityTitleLabel.text = data.value(forKey: "activityTitle") as? String
+        
         cell.selectionStyle = .none
         
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "showActivityDetail", sender: tableView)
+    }
+    
 }
 
 extension UITableView {
+    
+    
     func setEmptyMessage(_ message: String) {
         
         let messageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.bounds.size.width, height: self.bounds.size.height))
@@ -111,8 +184,25 @@ extension UITableView {
         messageLabel.font = UIFont.systemFont(ofSize: 13.0)
         messageLabel.sizeToFit()
 
+        //self.backgroundView?.addSubview(messageLabel)
         self.backgroundView = messageLabel
         self.separatorStyle = .none
+        
+        var bgImage: UIImageView?
+        let image: UIImage = UIImage(named: "Meng-3")!
+        bgImage = UIImageView(image: image)
+        bgImage!.frame = CGRect(x: 95, y: 12, width: 160, height: 100)
+        //bgImage?.center = self.backgroundView!.center
+        
+        
+        self.backgroundView?.addSubview(bgImage!)
+        
+        let constraints = [
+            bgImage!.centerXAnchor.constraint(equalTo: superview!.centerXAnchor),
+            bgImage!.centerYAnchor.constraint(equalTo: superview!.centerYAnchor)
+        ]
+        
+        NSLayoutConstraint.activate(constraints)
     }
 
     func restore() {

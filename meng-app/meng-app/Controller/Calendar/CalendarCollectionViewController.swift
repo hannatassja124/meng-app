@@ -89,7 +89,8 @@ class CalendarCollectionViewController: UIViewController, UICollectionViewDelega
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(indexPath.item)
+        print(selectedDate)
+        print(totalSquares[indexPath.row])
         print("test")
     }
     
