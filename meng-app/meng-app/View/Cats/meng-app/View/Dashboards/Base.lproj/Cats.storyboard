@@ -41,8 +41,6 @@
                     <navigationItem key="navigationItem" title="Cats" id="NJt-iH-WsQ"/>
                     <connections>
                         <outlet property="catsCollectionView" destination="lym-Vq-PLQ" id="w8h-Df-HbW"/>
-                        <segue destination="dS3-03-GQC" kind="showDetail" identifier="CatDetail" id="nO5-zK-AjG"/>
-                        <segue destination="Ikt-rV-hqD" kind="presentation" identifier="addNewCat" id="91J-AI-Apu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g3g-ca-g3u" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -52,18 +50,18 @@
         <!--addNewCat-->
         <scene sceneID="QGp-AL-SQX">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Py9-bn-158" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewControllerPlaceholder storyboardIdentifier="addNewCat" storyboardName="AddNewCat" referencedIdentifier="addNewCat" id="Ikt-rV-hqD" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="hiZ-SO-FwO"/>
                 </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Py9-bn-158" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1580" y="490"/>
         </scene>
         <!--CatDetail-->
         <scene sceneID="gBe-ic-2AR">
             <objects>
-                <viewControllerPlaceholder storyboardIdentifier="CatDetail" storyboardName="CatDetail" id="dS3-03-GQC" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NtN-Sz-kF0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardIdentifier="CatDetail" storyboardName="CatDetail" id="dS3-03-GQC" sceneMemberID="viewController"/>
             </objects>
             <point key="canvasLocation" x="2278" y="689"/>
         </scene>

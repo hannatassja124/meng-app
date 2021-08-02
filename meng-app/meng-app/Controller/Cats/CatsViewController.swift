@@ -117,19 +117,15 @@ extension CatsViewController: UICollectionViewDataSource{
         if indexPath.row == 0{
             //bakal buka Add New Cat Page
             print("add new cat")
-            let vc = self.storyboard!.instantiateViewController(identifier: "addNewCat") as! AddNewCatTableView
-            self.navigationController?.pushViewController(vc, animated: true)
+            let vc = storyboard!.instantiateViewController(identifier: "addNewCat") as! AddNewCatTableView
+            present(vc, animated: true)
         }
         else{
             print("cat detail")
             //bakal buka Cat Profile Detail
-//            let catDetailViewController = CatDetailViewController(nibName: "CatDetail", bundle: nil)
-//            catDetailViewController.currCat = cats[indexPath.row-1]
-//            self.navigationController?.pushViewController(catDetailViewController, animated: true)
-//            
-            let vc = self.storyboard!.instantiateViewController(identifier: "CatDetail") as! CatDetailViewController
+            let vc = storyboard!.instantiateViewController(identifier: "CatDetail") as! CatDetailViewController
             vc.currCat = cats[indexPath.row - 1]
-            self.navigationController?.pushViewController(vc, animated: true)
+            navigationController?.pushViewController(vc, animated: true)
         }
     }
     

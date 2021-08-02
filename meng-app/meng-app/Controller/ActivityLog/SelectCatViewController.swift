@@ -7,10 +7,18 @@
 
 import UIKit
 
-class SelectCatViewController: UIViewController {
+class SelectCatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    @IBOutlet weak var TableView: UITableView!
+    
+    let DummyArray = ["Dummy1", "Dummy2", "Dummy3", "Dummy4", "Dummy5"]
+    //let CatsArray = // This is where the registered Cat Data gets called
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        TableView.delegate = self
+        TableView.dataSource = self
 
         // Do any additional setup after loading the view.
     }
@@ -25,5 +33,21 @@ class SelectCatViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    
+    // MARK: - DataSource & Delegate
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return DummyArray.count // Replace this with ActualDataArray.count
+    }
 
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let Cell = tableView.dequeueReusableCell(withIdentifier: "SelectCatCell", for: indexPath)
+        Cell.textLabel!.text = DummyArray[indexPath.row]
+        return Cell
+    }
+    
 }
