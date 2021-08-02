@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AddNewCatTableView: UITableViewController, UIPickerViewDelegate {
+class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextViewDelegate {
     
 // Image
     @IBOutlet weak var ncCatPhotoImage: UIImageView!
@@ -37,6 +37,8 @@ class AddNewCatTableView: UITableViewController, UIPickerViewDelegate {
     var genderPickerData:[String] = [String]()
     var breedPickerData:[String] = [String]()
     var neuteredPickerData:[String] = [String]()
+    var onViewWillDisappear: (()->())?
+    var placeholderNotes = "Notes"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,7 +52,12 @@ class AddNewCatTableView: UITableViewController, UIPickerViewDelegate {
         ncCatDOBDate()
         pickerCatBreedFill()
         pickerDataNeuteredFill()
+        ncCatNotesTV.text = placeholderNotes
+        ncCatNotesTV.textColor = .lightGray
+        ncCatNotesTV.delegate = self
         hiddenPickers(fieldName: "init", indexPath: [-1])
+        let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+                view.addGestureRecognizer(tap)
     }
     
 // Button NavBar
@@ -154,6 +161,48 @@ class AddNewCatTableView: UITableViewController, UIPickerViewDelegate {
             ncCatNeuteredLabel.text = neuteredPickerData[row]
         }
     }
+    
+// Notes Placeholder
+    func textViewDidBeginEditing(_ textView: UITextView){
+//        if ncCatNotesTV.textColor == .lightGray {
+//            ncCatNotesTV.text = ""
+//            ncCatNotesTV.textColor = .black
+//        }
+        if placeholderNotes == "Notes" {
+            print("Text View Did Begin Editing")
+            ncCatNotesTV.text = ""
+            placeholderNotes = ""
+            ncCatNotesTV.textColor = .black
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+//        if ncCatNotesTV.text.isEmpty {
+//            ncCatNotesTV.text = "Notes"
+//            ncCatNotesTV.textColor = .lightGray
+//            placeholderNotes = ""
+//        }
+//        else {
+//            placeholderNotes = ncCatNotesTV.text
+//        }
+        if placeholderNotes == "" {
+            ncCatNotesTV.text = "Notes"
+            placeholderNotes = "Notes"
+            ncCatNotesTV.textColor = .lightGray
+        }
+    }
+    
+    func textViewDidChange() {
+        placeholderNotes = ncCatNotesTV.text
+        
+    }
+    
+    func textView( _ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+            if text == "\n"{
+                ncCatNotesTV.resignFirstResponder()
+            }
+            return true
+        }
     
 // Format Date to String untuk ditampilkan ke Date Label
     @IBAction func ncCatDOBPickerAction(_ sender: Any) {
