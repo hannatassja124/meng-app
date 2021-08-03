@@ -30,22 +30,21 @@ class CatsViewController: UIViewController, UICollectionViewDelegate {
         initNib()
         initSearchController()
         print(cats.count)
-        genDummyData()
     }
 
-    private func genDummyData(){
-        let cat = Cats(context: context)
-
-        cat.name = "stella"
-        cat.image = UIImage(named: "Meng-2")?.jpegData(compressionQuality: 1.0)
-        cat.colorTags = 10
-        cat.gender = 1
-        do {
-            try context.save()
-        } catch {
-            //error
-        }
-    }
+//    private func genDummyData(){
+//        let cat = Cats(context: context)
+//
+//        cat.name = "stella"
+//        cat.image = UIImage(named: "Meng-2")?.jpegData(compressionQuality: 1.0)
+//        cat.colorTags = 10
+//        cat.gender = 1
+//        do {
+//            try context.save()
+//        } catch {
+//            //error
+//        }
+//    }
 
     private func initNib(){
         
