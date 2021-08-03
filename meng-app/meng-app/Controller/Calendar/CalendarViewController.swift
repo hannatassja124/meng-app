@@ -17,7 +17,8 @@ class CalendarViewController: UIViewController {
     @IBOutlet weak var calendarUIView: UIView!
 
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    var activities = [Activity()]
+    var activities:[Activity] = [Activity()]
+    var cats:[Cats] = [Cats()]
     
     override func viewDidLoad() {
         super.viewDidLoad()
