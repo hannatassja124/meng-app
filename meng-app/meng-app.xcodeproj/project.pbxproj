@@ -510,9 +510,7 @@
 				191E4FB626B1908A00836145 /* CatDetailViewController.swift in Sources */,
 				F94AD29826AEF19D005686ED /* UiCustom.swift in Sources */,
 				19636ECD26AF9E4100EBD377 /* AddNewCatCollectionViewCell.swift in Sources */,
-        
-        
-        
+				F995E4FE26A99E9700DA5C50 /* meng_app.xcdatamodeld in Sources */,
         
         
         

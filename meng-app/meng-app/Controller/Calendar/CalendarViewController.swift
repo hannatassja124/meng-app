@@ -17,11 +17,14 @@ class CalendarViewController: UIViewController {
     @IBOutlet weak var calendarUIView: UIView!
 
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    var activities:[NSManagedObject] = []
+    var activities:[Activity] = [Activity()]
+    var cats:[Cats] = [Cats()]
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
+        print("jumlah", activities.count)
         // Do any additional setup after loading the view.
         
         self.tableView.register(UINib.init(nibName: activitiesCellId, bundle: nil), forCellReuseIdentifier: activitiesCellId)
@@ -32,25 +35,14 @@ class CalendarViewController: UIViewController {
         
         tableView.backgroundColor = .clear
         
-        self.save()
+        //deleteAllData("Activity")
         
-//        let activity = Activity(context: context)
-//        activity.activityTitle = "Test"
-//        activity.activityType = "Meng"
-//        activity.activityDetail = "Bah"
-//
-//        do {
-//            try context.save()
-//        } catch {
-//            //error
-//        }
+        print("jumlah2", activities.count)
         
-//        for i in 1...3 {
-//            let activity = Activity()
-//            activity.activityTitle = "Test"
-//            activities.append(activity)
-//
-//        }
+        
+        retrieveData()
+        
+        print("jumlah3", activities.count)
         
         tableView.reloadData()
         
@@ -58,64 +50,55 @@ class CalendarViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-          
-          //1
-          guard let appDelegate =
-            UIApplication.shared.delegate as? AppDelegate else {
-              return
-          }
-          
-          let managedContext =
-            appDelegate.persistentContainer.viewContext
-          
-          //2
-          let fetchRequest =
-            NSFetchRequest<NSManagedObject>(entityName: "Activity")
-          
-          //3
-          do {
-            activities = try managedContext.fetch(fetchRequest)
-            print("test", activities)
-          } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
-          }
+        
+        print("test", activities)
+        print(activities.isEmpty)
+
+    }
+    
+    func retrieveData() {
+        do {
+            activities = try context.fetch(Activity.fetchRequest())
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        } catch {
+            print("error")
+        }
+        
     }
     
     func save() {
-      
-      guard let appDelegate =
-        UIApplication.shared.delegate as? AppDelegate else {
-        return
-      }
-      
-      // 1
-      let managedContext =
-        appDelegate.persistentContainer.viewContext
-      
-      // 2
-      let entity =
-        NSEntityDescription.entity(forEntityName: "Activity",
-                                   in: managedContext)!
-      
-      let activity = NSManagedObject(entity: entity,
-                                   insertInto: managedContext)
-      
-      // 3
-        activity.setValue("Test", forKeyPath: "activityTitle")
+
+        let activity = Activity(context: context)
+        activity.activityTitle = "Test"
         
-      // 4
-      do {
-        try managedContext.save()
-        activities.append(activity)
-      } catch let error as NSError {
-        print("Could not save. \(error), \(error.userInfo)")
-      }
+        do {
+            try context.save()
+        } catch {
+            print("error")
+        }
+        
     }
     
     
     @IBAction func addActivityPage(_ sender: Any) {
   
         
+    }
+    
+    func deleteAllData(_ entity:String) {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
+        fetchRequest.returnsObjectsAsFaults = false
+        do {
+            let results = try context.fetch(fetchRequest)
+            for object in results {
+                guard let objectData = object as? NSManagedObject else {continue}
+                context.delete(objectData)
+            }
+        } catch let error {
+            print("Detele all data in \(entity) error :", error)
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -156,9 +139,9 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: activitiesCellId, for: indexPath) as! ActivitiesTableViewCell
         
-        let data = activities[indexPath.row]
+        //let data = activities[indexPath.row]
         
-        cell.activityTitleLabel.text = data.value(forKey: "activityTitle") as? String
+//        cell.activityTitleLabel.text = data.value(forKey: "activityTitle") as? String
         
         cell.selectionStyle = .none
         
