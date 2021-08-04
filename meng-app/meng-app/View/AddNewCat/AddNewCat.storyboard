@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="C9J-F4-dVO">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
@@ -53,26 +53,37 @@
                                             <rect key="frame" x="0.0" y="0.0" width="350" height="200"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wuL-sb-ni0">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wuL-sb-ni0">
                                                     <rect key="frame" x="100" y="6" width="150" height="150"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" name="MidnightGreen"/>
                                                     <color key="tintColor" name="NeutralLight"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="150" id="XAm-Kf-iRP"/>
+                                                    </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                                             <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2KT-ab-ZNa">
-                                                    <rect key="frame" x="134.66666666666666" y="170" width="81" height="25"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2KT-ab-ZNa">
+                                                    <rect key="frame" x="134.66666666666666" y="170" width="81" height="32"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                                     <state key="normal" title="Add Photo">
                                                         <color key="titleColor" name="MidnightGreen"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="catPhotoButton:" destination="C9J-F4-dVO" eventType="touchUpInside" id="Fhb-jY-Nmf"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="wuL-sb-ni0" firstAttribute="leading" secondItem="2vU-yO-9wd" secondAttribute="leading" constant="100" id="Fmv-Ng-Shg"/>
+                                                <constraint firstItem="wuL-sb-ni0" firstAttribute="top" secondItem="2vU-yO-9wd" secondAttribute="top" constant="6" id="OIX-PO-tu7"/>
+                                                <constraint firstItem="wuL-sb-ni0" firstAttribute="centerX" secondItem="2KT-ab-ZNa" secondAttribute="centerX" id="OK1-Cz-UnZ"/>
+                                                <constraint firstItem="2KT-ab-ZNa" firstAttribute="top" secondItem="wuL-sb-ni0" secondAttribute="bottom" constant="14" id="gle-6P-wqF"/>
+                                                <constraint firstItem="wuL-sb-ni0" firstAttribute="centerX" secondItem="2vU-yO-9wd" secondAttribute="centerX" id="zMR-2e-GkX"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="54" id="Q29-jQ-n7A">
@@ -578,6 +589,7 @@
                             <outlet property="delegate" destination="C9J-F4-dVO" id="7f1-t1-9hZ"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="9Sy-Dm-IqM"/>
                     <connections>
                         <outlet property="ncCatBreedLabel" destination="1Ob-Ki-HBB" id="utE-7N-5lY"/>
                         <outlet property="ncCatBreedPicker" destination="IUl-Uf-SBW" id="qRp-RT-VvM"/>
@@ -599,7 +611,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kjv-5V-3Bk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="460" y="101.65876777251184"/>
+            <point key="canvasLocation" x="1389.2307692307693" y="101.65876777251184"/>
         </scene>
     </scenes>
     <resources>

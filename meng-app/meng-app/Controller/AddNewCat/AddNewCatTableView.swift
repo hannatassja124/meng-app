@@ -56,11 +56,9 @@ class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextVie
         ncCatNotesTV.textColor = .lightGray
         ncCatNotesTV.delegate = self
         hiddenPickers(fieldName: "init", indexPath: [-1])
-//        let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
-//                view.addGestureRecognizer(tap)
     }
     
-// Button NavBar
+// Buttons
     @IBAction func saveButton(_ sender: Any) {
     saveCatProfileData()
         self.dismiss(animated: true, completion: nil)
@@ -69,6 +67,30 @@ class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextVie
     @IBAction func cancelButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
+    
+    @IBAction func catPhotoButton(_ sender: Any) {
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        
+        let actionsheet = UIAlertController(title: "Browse Attachment", message: "Choose A Source", preferredStyle: .alert)
+        actionsheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (action:UIAlertAction)in
+            if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                imagePicker.sourceType = .camera
+                self.present(imagePicker, animated: true, completion: nil)
+            } else {
+                print("Camera is Not Available")
+            }
+        }))
+        actionsheet.addAction(UIAlertAction(title: "Photo Library", style: .default, handler: { (action:UIAlertAction)in
+            imagePicker.sourceType = .savedPhotosAlbum
+            imagePicker.mediaTypes = ["public.image"]
+            self.present(imagePicker, animated: true, completion: nil)
+        }))
+        actionsheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        self.present(actionsheet, animated: true, completion: nil)
+    }
+    
+    
     
 // Save New Cat Data
     func saveCatProfileData(){
@@ -92,6 +114,9 @@ class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextVie
         newCatProfile.weight = Double("\(ncCatWeightTF.text ?? "")")!
         newCatProfile.feeding = "\(ncCatFeedingTF.text ?? "")"
         newCatProfile.notes = "\(ncCatNotesTV.text ?? "")"
+    }
+    
+    func saveimagetoData(data: Data){
     }
     
 // Untuk Name Text Field
@@ -164,10 +189,6 @@ class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextVie
     
 // Notes Placeholder
     func textViewDidBeginEditing(_ textView: UITextView){
-//        if ncCatNotesTV.textColor == .lightGray {
-//            ncCatNotesTV.text = ""
-//            ncCatNotesTV.textColor = .black
-//        }
         if placeholderNotes == "Notes" {
             print("Text View Did Begin Editing")
             ncCatNotesTV.text = ""
@@ -177,14 +198,6 @@ class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextVie
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
-//        if ncCatNotesTV.text.isEmpty {
-//            ncCatNotesTV.text = "Notes"
-//            ncCatNotesTV.textColor = .lightGray
-//            placeholderNotes = ""
-//        }
-//        else {
-//            placeholderNotes = ncCatNotesTV.text
-//        }
         if placeholderNotes != "" {
             placeholderNotes = ncCatNotesTV.text
         }
@@ -295,6 +308,8 @@ class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextVie
 }
 
 extension AddNewCatTableView: UIPickerViewDataSource {
+    
+    //Pickers
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -328,5 +343,26 @@ extension AddNewCatTableView: UIPickerViewDataSource {
             return "\(neuteredPickerData[row])"
         }
     }
+}
 
+extension AddNewCatTableView: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+
+    //Image
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        picker.dismiss(animated: true, completion: nil)
+        
+        guard let catPhotoImage = info[UIImagePickerController.InfoKey.originalImage] as?UIImage
+        else {
+            return
+        }
+        print("Cek didFinishPickingMediaWithInfo")
+        
+        ncCatPhotoImage.image = catPhotoImage
+        
+        tableView.reloadData()
+    }
 }
