@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MessageUI
 
 class CatDetailViewController: UIViewController {
     //selected cat model
@@ -87,7 +88,24 @@ class CatDetailViewController: UIViewController {
     }
     
     @IBAction func contactVet(_ sender: Any) {
-        
+        if let url = URL(string: "tel://081286119017"),
+        UIApplication.shared.canOpenURL(url) {
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
+    
+}
+}
+
+extension CatDetailViewController: MFMessageComposeViewControllerDelegate{
+    func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func sendMessage(){
+        if MFMessageComposeViewController.canSendText() {
+            <#code#>
+        }
+    }
+    
     
 }
