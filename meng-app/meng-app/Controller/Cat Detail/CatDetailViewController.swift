@@ -25,9 +25,33 @@ class CatDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         assignDatatoPage()
+        
         // Do any additional setup after loading the view.
+    }
+    
+    func setupUI() {
+        //navigationBar
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        
+        //tabBar
+        self.tabBarController?.tabBar.isHidden = true
+        
+        //ImageGradient
+        let gradient: CAGradientLayer = CAGradientLayer()
+        gradient.frame = catImage.frame
+        gradient.colors = [UIColor.white.cgColor, UIColor.clear.cgColor]
+        gradient.locations = [0.01, 0.4]
+        catImage.layer.insertSublayer(gradient, at: 0)
+
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        setupUI()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = false
     }
     
     func assignDatatoPage() {
@@ -49,17 +73,7 @@ class CatDetailViewController: UIViewController {
         catFood.text = "\(currCat?.feeding ?? "No Data")"
         catMedicalNotes.text = "\(currCat?.notes ?? "No Data")"
     }
-    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
     @IBAction func goToLogActivityHistory(_ sender: Any) {
         print("go to log activity history")
     }
