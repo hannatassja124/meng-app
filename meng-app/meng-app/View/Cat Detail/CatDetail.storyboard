@@ -25,8 +25,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xd7-SN-VOz">
                                 <rect key="frame" x="16" y="404" width="358" height="41"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kasparrrr" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yjW-Vm-qcA">
-                                        <rect key="frame" x="8.0000000000000071" y="2" width="122.66666666666669" height="37"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cat Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yjW-Vm-qcA">
+                                        <rect key="frame" x="8" y="2" width="134" height="37"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="37" id="F2T-XU-TIF"/>
                                         </constraints>
@@ -35,7 +35,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Male" translatesAutoresizingMaskIntoConstraints="NO" id="0qy-T1-Qnu">
-                                        <rect key="frame" x="138.66666666666666" y="8.6666666666666856" width="24" height="24"/>
+                                        <rect key="frame" x="150" y="8.6666666666666856" width="24" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="24" id="QMH-QC-QMS"/>
                                             <constraint firstAttribute="height" constant="24" id="Qd9-9K-nMG"/>
@@ -66,8 +66,8 @@
                                         <rect key="frame" x="8" y="4" width="16" height="16"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Maine Coon, Neutered" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xXi-e5-Ixo">
-                                        <rect key="frame" x="32" y="4" width="318" height="16"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="No Data" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xXi-e5-Ixo">
+                                        <rect key="frame" x="32" y="4" width="46" height="15"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                         <color key="textColor" name="MidnightGreen"/>
@@ -85,8 +85,8 @@
                                         <rect key="frame" x="8" y="4" width="16" height="16"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2 Years 3 Months" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8jT-XJ-TD3">
-                                        <rect key="frame" x="32" y="5" width="318" height="15"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="No Data" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8jT-XJ-TD3">
+                                        <rect key="frame" x="32" y="5" width="46" height="15"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                         <color key="textColor" name="MidnightGreen"/>
@@ -104,7 +104,7 @@
                                         <rect key="frame" x="8" y="4" width="16" height="16"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="3 Kg" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8zp-48-Jef">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="No Data" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8zp-48-Jef">
                                         <rect key="frame" x="32" y="5" width="318" height="15"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
@@ -123,7 +123,7 @@
                                         <rect key="frame" x="8" y="4" width="16" height="16"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Dry Food" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iJB-nm-qg0">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="No Data" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iJB-nm-qg0">
                                         <rect key="frame" x="31" y="5" width="319" height="15"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
@@ -142,7 +142,7 @@
                                         <rect key="frame" x="8" y="4" width="16" height="16"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="No medical notes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xor-NY-c80">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="No Data" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xor-NY-c80">
                                         <rect key="frame" x="32" y="5" width="318" height="15"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
@@ -301,7 +301,14 @@
                             <constraint firstAttribute="trailing" secondItem="YXv-cI-rK3" secondAttribute="trailing" constant="-12" id="yIN-Jt-9AG"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="2kr-fP-ehm"/>
+                    <navigationItem key="navigationItem" id="b8r-WN-qm8">
+                        <barButtonItem key="leftBarButtonItem" title="backButton" image="chevron.left" catalog="system" id="DFu-AE-nkx">
+                            <connections>
+                                <action selector="back:" destination="Y6W-OH-hqX" id="it7-gv-O2J"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="coj-NS-JW7"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="catAge" destination="8jT-XJ-TD3" id="nXd-VJ-JVi"/>
                         <outlet property="catBreedAndNeutered" destination="xXi-e5-Ixo" id="fSf-dv-EBQ"/>
@@ -328,6 +335,7 @@
         <image name="MedicalNote" width="512" height="512"/>
         <image name="VetContact" width="455" height="512"/>
         <image name="Weight" width="512" height="512"/>
+        <image name="chevron.left" catalog="system" width="96" height="128"/>
         <image name="chevron.right" catalog="system" width="96" height="128"/>
         <image name="circlebadge.fill" catalog="system" width="128" height="120"/>
         <namedColor name="Melon">
