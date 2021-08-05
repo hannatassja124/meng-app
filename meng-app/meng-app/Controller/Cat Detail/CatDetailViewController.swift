@@ -25,6 +25,7 @@ class CatDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         assignDatatoPage()
         // Do any additional setup after loading the view.
     }
@@ -33,15 +34,20 @@ class CatDetailViewController: UIViewController {
         if let image = currCat?.image {
             catImage.image = UIImage(data: image)
         }
-        catName.text = currCat?.name ?? "Cat"
+        catName.text = currCat?.name ?? "Cat Name"
         catGenderIcon.image = UIImage(named: (currCat!.gender == 0 ? "Male" : "Female"))
         catColorTags.tintColor = TagsHelper.checkColor(tagsNumber: currCat!.colorTags)
         let neuteredString = currCat!.isNeutered ? "neutered" : "not neutered"
-        catBreedAndNeutered.text = "\(currCat!.breed) , \(neuteredString)"
-        catAge.text = "2 years"
+        catBreedAndNeutered.text = "\(currCat!.breed ?? "no data") , \(neuteredString)"
+        if let date = currCat?.dateOfBirth{
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "DD/MM/YYYY"
+            catAge.text = "\(dateFormatter.string(from: date))"
+
+        }
         catWeight.text = "\(currCat!.weight) KG"
-        catFood.text = "\(currCat?.feeding ?? "no data")"
-        catMedicalNotes.text = "\(currCat?.notes ?? "no data")"
+        catFood.text = "\(currCat?.feeding ?? "No Data")"
+        catMedicalNotes.text = "\(currCat?.notes ?? "No Data")"
     }
     
 
@@ -60,6 +66,9 @@ class CatDetailViewController: UIViewController {
     
     @IBAction func goToVetContact(_ sender: Any) {
         print("go to vet contact")
+    }
+    @IBAction func back(_ sender: Any) {
+        self.navigationController?.popToRootViewController(animated: true)
     }
     
 }
