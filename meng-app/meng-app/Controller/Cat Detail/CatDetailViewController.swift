@@ -54,5 +54,12 @@ class CatDetailViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    @IBAction func goToLogActivityHistory(_ sender: Any) {
+        print("go to log activity history")
+    }
+    
+    @IBAction func goToVetContact(_ sender: Any) {
+        print("go to vet contact")
+    }
+    
 }
