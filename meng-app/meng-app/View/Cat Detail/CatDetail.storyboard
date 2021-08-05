@@ -282,6 +282,17 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="2kr-fP-ehm"/>
+                    <connections>
+                        <outlet property="catAge" destination="8jT-XJ-TD3" id="nXd-VJ-JVi"/>
+                        <outlet property="catBreedAndNeutered" destination="xXi-e5-Ixo" id="fSf-dv-EBQ"/>
+                        <outlet property="catColorTags" destination="V5n-8L-Xbd" id="jzv-gJ-gH5"/>
+                        <outlet property="catFood" destination="iJB-nm-qg0" id="Kvc-Nk-4Ez"/>
+                        <outlet property="catGenderIcon" destination="0qy-T1-Qnu" id="hUA-h0-SkJ"/>
+                        <outlet property="catImage" destination="YXv-cI-rK3" id="o0k-2J-IVe"/>
+                        <outlet property="catMedicalNotes" destination="Xor-NY-c80" id="a8n-MU-y2h"/>
+                        <outlet property="catName" destination="yjW-Vm-qcA" id="4bW-tz-grp"/>
+                        <outlet property="catWeight" destination="8zp-48-Jef" id="4uY-5k-1hT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
