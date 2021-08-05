@@ -21,6 +21,8 @@ class CatDetailViewController: UIViewController {
     @IBOutlet weak var catWeight: UILabel!
     @IBOutlet weak var catFood: UILabel!
     @IBOutlet weak var catMedicalNotes: UILabel!
+    @IBOutlet weak var vetName: UILabel!
+    @IBOutlet weak var vetNo: UILabel!
     
     
     override func viewDidLoad() {
@@ -72,17 +74,20 @@ class CatDetailViewController: UIViewController {
         catWeight.text = "\(currCat!.weight) KG"
         catFood.text = "\(currCat?.feeding ?? "No Data")"
         catMedicalNotes.text = "\(currCat?.notes ?? "No Data")"
+        vetName.text = "\(currCat?.vetName ?? "No Data")"
+        vetNo.text = "\(currCat?.vetPhoneNo ?? "No Data")"
     }
 
     @IBAction func goToLogActivityHistory(_ sender: Any) {
         print("go to log activity history")
     }
     
-    @IBAction func goToVetContact(_ sender: Any) {
-        print("go to vet contact")
-    }
     @IBAction func back(_ sender: Any) {
         self.navigationController?.popToRootViewController(animated: true)
+    }
+    
+    @IBAction func contactVet(_ sender: Any) {
+        
     }
     
 }

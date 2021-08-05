@@ -3,6 +3,7 @@
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -256,44 +257,48 @@
                                             <constraint firstAttribute="width" secondItem="iWZ-rm-o9K" secondAttribute="height" multiplier="1:1" id="kQH-UG-Nuc"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vet Contact" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xb8-Ii-2Y9">
-                                        <rect key="frame" x="72" y="31.666666666666629" width="227" height="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vet Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xb8-Ii-2Y9">
+                                        <rect key="frame" x="72" y="26" width="65.333333333333314" height="14"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                         <color key="textColor" name="Melon"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Pyy-RK-oAx">
-                                        <rect key="frame" x="317" y="32" width="17" height="16.333333333333329"/>
-                                        <color key="tintColor" name="NeutralLight"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="vet no" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="arI-Tm-WlJ">
+                                        <rect key="frame" x="72" y="40" width="33" height="14"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                        <color key="textColor" name="Melon"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j9w-qm-nRA">
+                                        <rect key="frame" x="294" y="21" width="40" height="38.666666666666671"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="Pyy-RK-oAx" secondAttribute="height" multiplier="16:19" id="rO9-cG-5QU"/>
+                                            <constraint firstAttribute="width" constant="40" id="4Vz-5K-ZUL"/>
+                                            <constraint firstAttribute="height" constant="40" id="ghV-Re-TXb"/>
                                         </constraints>
-                                    </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KzT-Vy-UGG">
-                                        <rect key="frame" x="0.0" y="0.0" width="358" height="80"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                        <color key="tintColor" red="0.33696336449999997" green="1" blue="0.18656831709999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <state key="normal" backgroundImage="phone.circle.fill" catalog="system"/>
                                         <connections>
-                                            <action selector="goToVetContact:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="tGl-TD-GEd"/>
+                                            <action selector="contactVet:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="F7z-2X-Ms2"/>
                                         </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" name="MidnightGreen"/>
                                 <constraints>
-                                    <constraint firstItem="Pyy-RK-oAx" firstAttribute="centerY" secondItem="iWZ-rm-o9K" secondAttribute="centerY" id="2oK-UI-JqT"/>
-                                    <constraint firstItem="KzT-Vy-UGG" firstAttribute="top" secondItem="7nu-d9-QaX" secondAttribute="top" id="3iP-Xe-N4d"/>
-                                    <constraint firstItem="Pyy-RK-oAx" firstAttribute="top" secondItem="7nu-d9-QaX" secondAttribute="top" constant="30.000000000000114" id="8w1-gh-P3X"/>
                                     <constraint firstItem="iWZ-rm-o9K" firstAttribute="top" secondItem="7nu-d9-QaX" secondAttribute="top" constant="16" id="9gR-Sg-jfr"/>
-                                    <constraint firstItem="KzT-Vy-UGG" firstAttribute="leading" secondItem="7nu-d9-QaX" secondAttribute="leading" id="Iga-Bd-VLo"/>
                                     <constraint firstAttribute="height" constant="80" id="Ih6-Rl-ZNX"/>
-                                    <constraint firstItem="Pyy-RK-oAx" firstAttribute="centerY" secondItem="7nu-d9-QaX" secondAttribute="centerY" id="JTe-d8-a8b"/>
-                                    <constraint firstItem="Xb8-Ii-2Y9" firstAttribute="centerY" secondItem="7nu-d9-QaX" secondAttribute="centerY" id="KCV-d2-YXV"/>
-                                    <constraint firstAttribute="trailing" secondItem="KzT-Vy-UGG" secondAttribute="trailing" id="LFE-wK-tm9"/>
-                                    <constraint firstAttribute="trailing" secondItem="Pyy-RK-oAx" secondAttribute="trailing" constant="24" id="Mz5-Nt-ck8"/>
-                                    <constraint firstItem="Pyy-RK-oAx" firstAttribute="leading" secondItem="Xb8-Ii-2Y9" secondAttribute="trailing" constant="18" id="QSV-vf-zgW"/>
+                                    <constraint firstItem="Xb8-Ii-2Y9" firstAttribute="centerY" secondItem="7nu-d9-QaX" secondAttribute="centerY" constant="-7" id="KCV-d2-YXV"/>
+                                    <constraint firstItem="Xb8-Ii-2Y9" firstAttribute="top" secondItem="7nu-d9-QaX" secondAttribute="top" constant="26" id="KPN-6K-Okt"/>
+                                    <constraint firstItem="j9w-qm-nRA" firstAttribute="top" secondItem="7nu-d9-QaX" secondAttribute="top" constant="20" symbolic="YES" id="Pyd-zc-t6Z"/>
                                     <constraint firstItem="iWZ-rm-o9K" firstAttribute="leading" secondItem="7nu-d9-QaX" secondAttribute="leading" constant="8" id="Rcc-7t-539"/>
-                                    <constraint firstAttribute="bottom" secondItem="KzT-Vy-UGG" secondAttribute="bottom" id="YGs-wd-tGI"/>
                                     <constraint firstItem="Xb8-Ii-2Y9" firstAttribute="leading" secondItem="iWZ-rm-o9K" secondAttribute="trailing" constant="16" id="brg-xu-D4Y"/>
                                     <constraint firstItem="iWZ-rm-o9K" firstAttribute="centerY" secondItem="7nu-d9-QaX" secondAttribute="centerY" id="cG6-pQ-EtY"/>
+                                    <constraint firstAttribute="bottom" secondItem="j9w-qm-nRA" secondAttribute="bottom" constant="20" symbolic="YES" id="i5K-uJ-QCl"/>
+                                    <constraint firstItem="j9w-qm-nRA" firstAttribute="centerY" secondItem="iWZ-rm-o9K" secondAttribute="centerY" id="jbN-YO-Vch"/>
                                     <constraint firstAttribute="bottom" secondItem="iWZ-rm-o9K" secondAttribute="bottom" constant="16" id="t6f-Fi-b31"/>
+                                    <constraint firstItem="arI-Tm-WlJ" firstAttribute="top" secondItem="Xb8-Ii-2Y9" secondAttribute="bottom" id="t8b-WN-rn0"/>
+                                    <constraint firstItem="arI-Tm-WlJ" firstAttribute="leading" secondItem="iWZ-rm-o9K" secondAttribute="trailing" constant="16" id="tza-aw-7LM"/>
+                                    <constraint firstAttribute="trailing" secondItem="j9w-qm-nRA" secondAttribute="trailing" constant="24" id="yhL-aU-JrK"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -342,12 +347,18 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="b8r-WN-qm8">
-                        <barButtonItem key="leftBarButtonItem" title="backButton" image="chevron.left" catalog="system" id="DFu-AE-nkx">
+                        <barButtonItem key="leftBarButtonItem" title="backButton" id="DFu-AE-nkx">
+                            <imageReference key="image" image="chevron.left" catalog="system" symbolScale="large"/>
+                            <color key="tintColor" name="MidnightGreen"/>
                             <connections>
                                 <action selector="back:" destination="Y6W-OH-hqX" id="it7-gv-O2J"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="coj-NS-JW7"/>
+                        <barButtonItem key="rightBarButtonItem" title="Edit" image="catEditBtn" width="100" id="coj-NS-JW7">
+                            <inset key="imageInsets" minX="513" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <inset key="largeContentSizeImageInsets" minX="0.0" minY="5" maxX="0.0" maxY="0.0"/>
+                            <color key="tintColor" name="MidnightGreen"/>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="catAge" destination="8jT-XJ-TD3" id="nXd-VJ-JVi"/>
@@ -359,11 +370,13 @@
                         <outlet property="catMedicalNotes" destination="Xor-NY-c80" id="a8n-MU-y2h"/>
                         <outlet property="catName" destination="yjW-Vm-qcA" id="4bW-tz-grp"/>
                         <outlet property="catWeight" destination="8zp-48-Jef" id="4uY-5k-1hT"/>
+                        <outlet property="vetName" destination="Xb8-Ii-2Y9" id="8ek-ji-QeX"/>
+                        <outlet property="vetNo" destination="arI-Tm-WlJ" id="ZZo-Ze-Dwg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1938.4615384615383" y="90.284360189573462"/>
+            <point key="canvasLocation" x="2867.6923076923076" y="90.284360189573462"/>
         </scene>
     </scenes>
     <resources>
@@ -375,9 +388,11 @@
         <image name="MedicalNote" width="512" height="512"/>
         <image name="VetContact" width="455" height="512"/>
         <image name="Weight" width="512" height="512"/>
+        <image name="catEditBtn" width="939" height="512"/>
         <image name="chevron.left" catalog="system" width="96" height="128"/>
         <image name="chevron.right" catalog="system" width="96" height="128"/>
         <image name="circlebadge.fill" catalog="system" width="128" height="120"/>
+        <image name="phone.circle.fill" catalog="system" width="128" height="121"/>
         <namedColor name="Melon">
             <color red="0.99900001287460327" green="0.75900000333786011" blue="0.70899999141693115" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
