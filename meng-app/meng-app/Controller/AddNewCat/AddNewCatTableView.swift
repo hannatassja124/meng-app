@@ -24,6 +24,8 @@ class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextVie
     @IBOutlet weak var ncCatNameTF: UITextField!
     @IBOutlet weak var ncCatWeightTF: UITextField!
     @IBOutlet weak var ncCatFeedingTF: UITextField!
+    @IBOutlet weak var ncCatVetsName: UITextField!
+    @IBOutlet weak var ncCatVetsPhoneNumber: UITextField!
     @IBOutlet weak var ncCatNotesTV: UITextView!
     
 // Pickers
@@ -38,7 +40,6 @@ class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextVie
     var breedPickerData:[String] = [String]()
     var neuteredPickerData:[String] = [String]()
     var onViewWillDisappear: (()->())?
-    var placeholderNotes = "Medical Notes"
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var editedCat:Cats? = nil
     
@@ -54,7 +55,7 @@ class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextVie
         ncCatDOBDate()
         pickerCatBreedFill()
         pickerDataNeuteredFill()
-        ncCatNotesTV.text = placeholderNotes
+        ncCatNotesTV.text = "Medical Notes"
         ncCatNotesTV.textColor = .lightGray
         ncCatNotesTV.delegate = self
         hiddenPickers(fieldName: "init", indexPath: [-1])
@@ -124,6 +125,8 @@ class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextVie
                 newCatProfile.weight = weight
             }
             newCatProfile.feeding = "\(ncCatFeedingTF.text ?? "")"
+            newCatProfile.vetName = "\(ncCatVetsName.text ?? "")"
+            newCatProfile.vetPhoneNo = "\(ncCatVetsPhoneNumber.text ?? "")"
             newCatProfile.notes = "\(ncCatNotesTV.text ?? "")"
             }
         else if editedCat != nil {
@@ -148,6 +151,8 @@ class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextVie
                 editedCat!.weight = weightEdit
             }
             editedCat!.feeding = "\(ncCatFeedingTF.text ?? "")"
+            editedCat!.vetName = "\(ncCatVetsPhoneNumber.text ?? "")"
+            editedCat!.vetPhoneNo = "\(ncCatVetsPhoneNumber.text ?? "")"
             editedCat!.notes = "\(ncCatNotesTV.text ?? "")"
         }
         do {
@@ -185,6 +190,8 @@ class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextVie
                 }
             ncCatWeightTF.text = "\(editedCat?.weight ?? 0)"
             ncCatFeedingTF.text = editedCat?.feeding
+            ncCatVetsName.text = editedCat?.vetName
+            ncCatVetsPhoneNumber.text = editedCat?.vetPhoneNo
             ncCatNotesTV.text = editedCat?.notes
         }
     }
@@ -259,23 +266,21 @@ class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextVie
     
 // Notes Placeholder
     func textViewDidBeginEditing(_ textView: UITextView){
-        if placeholderNotes == "Medical Notes" {
+        if ncCatNotesTV.text == "Medical Notes" {
             print("Text View Did Begin Editing")
             ncCatNotesTV.text = ""
-            placeholderNotes = ""
             ncCatNotesTV.textColor = .black
         }
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
-        if placeholderNotes != "" {
-            placeholderNotes = ncCatNotesTV.text
+        if ncCatNotesTV.text == "" {
+            ncCatNotesTV.text = "Medical Notes"
+            ncCatNotesTV.textColor = .lightGray
         }
     }
     
     func textViewDidChange() {
-        placeholderNotes = ncCatNotesTV.text
-        
     }
     
     func textView( _ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
@@ -329,7 +334,7 @@ class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextVie
         let cellCatDOBPicker = indexPath.section == 3 && indexPath.row == 1
         let cellCatBreedPicker = indexPath.section == 4 && indexPath.row == 1
         let cellCatNeuteredPicker = indexPath.section == 5 && indexPath.row == 1
-        let cellCatNote =  indexPath.section == 8 && indexPath.row == 0
+        let cellCatNote =  indexPath.section == 9 && indexPath.row == 0
         
         var ncHeight: CGFloat = 54.0
         
