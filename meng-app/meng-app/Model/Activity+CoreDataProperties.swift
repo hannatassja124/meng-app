@@ -2,7 +2,7 @@
 //  Activity+CoreDataProperties.swift
 //  meng-app
 //
-//  Created by Hannatassja Hardjadinata on 26/07/21.
+//  Created by Hannatassja Hardjadinata on 07/08/21.
 //
 //
 
@@ -20,6 +20,8 @@ extension Activity {
     @NSManaged public var activityDetail: String?
     @NSManaged public var activityTitle: String?
     @NSManaged public var activityType: String?
+    @NSManaged public var activityReminder: Int64
+    @NSManaged public var activityNotificationId: UUID?
     @NSManaged public var cats: NSSet?
 
 }

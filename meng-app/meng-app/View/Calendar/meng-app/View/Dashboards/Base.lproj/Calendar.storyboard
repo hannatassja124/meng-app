@@ -91,7 +91,7 @@
         <scene sceneID="xfN-Yx-VIq">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="SHM-4p-lER" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Calendar" id="hye-cg-AdC"/>
+                    <tabBarItem key="tabBarItem" title="Calendar" image="calendar" catalog="system" id="hye-cg-AdC"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="odg-Yg-6oT">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -290,6 +290,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="calendar" catalog="system" width="128" height="106"/>
         <image name="chevron.left" catalog="system" width="96" height="128"/>
         <image name="chevron.right" catalog="system" width="96" height="128"/>
         <image name="plus" catalog="system" width="128" height="113"/>
@@ -300,7 +301,7 @@
             <color red="0.10499999672174454" green="0.2669999897480011" blue="0.31499999761581421" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="NeutralLight">
-            <color red="1" green="0.95300000905990601" blue="0.94099998474121094" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.98999446629999999" green="0.9730597138" blue="0.96905237440000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
