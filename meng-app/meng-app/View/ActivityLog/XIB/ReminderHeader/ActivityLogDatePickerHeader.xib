@@ -35,6 +35,10 @@
                 <constraint firstItem="0vd-ls-ixx" firstAttribute="leading" secondItem="qpS-GE-bVj" secondAttribute="trailing" constant="10" id="t8q-GP-VXc"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="LabelReminder" destination="qpS-GE-bVj" id="KFC-HP-wt0"/>
+                <outlet property="SwitchReminder" destination="0vd-ls-ixx" id="ajX-tK-yd6"/>
+            </connections>
             <point key="canvasLocation" x="14" y="104"/>
         </view>
     </objects>
