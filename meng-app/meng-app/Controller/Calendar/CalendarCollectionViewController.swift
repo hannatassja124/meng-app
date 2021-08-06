@@ -14,6 +14,7 @@ class CalendarCollectionViewController: UIViewController, UICollectionViewDelega
     
     var selectedDate = Date()
     var totalSquares = [String]()
+    let calendar = Calendar.current
     
 
     
@@ -21,8 +22,6 @@ class CalendarCollectionViewController: UIViewController, UICollectionViewDelega
         super.viewDidLoad()
         setCellsView()
         setMonthView()
-        
-        // Do any additional setup after loading the view.
     }
     
     func setCellsView() {
@@ -89,9 +88,20 @@ class CalendarCollectionViewController: UIViewController, UICollectionViewDelega
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(selectedDate)
-        print(totalSquares[indexPath.row])
-        print("test")
+//        print(selectedDate)
+//        print(totalSquares[indexPath.item])
+//        print("test")
+        
+        let componentDate = calendar.component(.day, from: selectedDate)
+        print("test", componentDate)
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+//        let componentDate = calendar.component(.day, from: selectedDate)
+//        let selectedIndexPath = IndexPath(item: componentDate, section: 0)
+//        print("test", componentDate)
+//        print("test")
     }
     
     

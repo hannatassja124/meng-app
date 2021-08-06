@@ -18,13 +18,13 @@ class CalendarViewController: UIViewController {
 
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var activities = [Activity()]
+    var cats = [Cats()]
+    let calendar = Calendar.current
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
-        print("jumlah", activities.count)
-        // Do any additional setup after loading the view.
         
         self.tableView.register(UINib.init(nibName: activitiesCellId, bundle: nil), forCellReuseIdentifier: activitiesCellId)
         tableView.separatorColor =  .clear
@@ -34,14 +34,13 @@ class CalendarViewController: UIViewController {
         
         tableView.backgroundColor = .clear
         
-        //deleteAllData("Activity")
         
-        print("jumlah2", activities.count)
+        //save()
         
+//        activities.removeAll()
+//        cats.removeAll()
         
         retrieveData()
-        
-        print("jumlah3", activities.count)
         
         tableView.reloadData()
         
@@ -50,14 +49,17 @@ class CalendarViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        print("test", activities)
-        print(activities.isEmpty)
+        
 
     }
     
     func retrieveData() {
         do {
             activities = try context.fetch(Activity.fetchRequest())
+            cats = try context.fetch(Cats.fetchRequest())
+            
+            print("acti", activities)
+            print("cat", cats)
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
@@ -71,6 +73,16 @@ class CalendarViewController: UIViewController {
 
         let activity = Activity(context: context)
         activity.activityTitle = "Test"
+        activity.activityDateTime = Date()
+        activity.activityDetail = "Help"
+        activity.activityType = "1"
+        
+        let cats = Cats(context: context)
+        cats.name = "Tulul"
+        cats.notes = "i want to sleep ksfjkldsjflkjsfklsjflkjskldfjlskjdflksjklfjsklfjlksdjfkljsfjklsjlkfjskljflksjlkf"
+        
+        activity.addToCats(cats)
+        
         
         do {
             try context.save()
@@ -86,20 +98,6 @@ class CalendarViewController: UIViewController {
         
     }
     
-    func deleteAllData(_ entity:String) {
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
-        fetchRequest.returnsObjectsAsFaults = false
-        do {
-            let results = try context.fetch(fetchRequest)
-            for object in results {
-                guard let objectData = object as? NSManagedObject else {continue}
-                context.delete(objectData)
-            }
-        } catch let error {
-            print("Detele all data in \(entity) error :", error)
-        }
-    }
-    
     override func viewDidLayoutSubviews() {
         
         let shadowPath = UIBezierPath(roundedRect: calendarUIView.bounds, cornerRadius: 13)
@@ -112,14 +110,18 @@ class CalendarViewController: UIViewController {
         calendarUIView.layer.shadowPath = shadowPath.cgPath
     }
     
-    func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-    if segue.identifier == "showActivityDetail" {
-        let indexPath:NSIndexPath = self.tableView.indexPathForSelectedRow! as NSIndexPath
-        let detailVC:ActivityDetailViewController = segue.destination as! ActivityDetailViewController
-//        detailVC.item = items[indexPath.row] as Item
-        }
-    }
-    
+//    func prepareForSegue(segue: UIStoryboardSegue, sender: UITableView) {
+//        print("")
+//    if segue.identifier == "showActivityDetail" {
+//
+//        let indexPath:NSIndexPath = self.tableView.indexPathForSelectedRow! as NSIndexPath
+//
+//        print("test", activities[0])
+//        let detailVC = segue.destination as! ActivityDetailViewController
+//        detailVC.details = activities[indexPath.row]
+//        }
+//    }
+//
 
 
 }
@@ -138,9 +140,16 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: activitiesCellId, for: indexPath) as! ActivitiesTableViewCell
         
-        //let data = activities[indexPath.row]
+        let data = activities[indexPath.row]
+        let time = calendar.dateComponents([.hour, .minute], from: data.value(forKey: "activityDateTime") as! Date)
         
-//        cell.activityTitleLabel.text = data.value(forKey: "activityTitle") as? String
+        let cats = data.cats!.value(forKey: "name") //NSSet
+        let catname = (cats as AnyObject).allObjects //Swift Array
+        
+        cell.activityTitleLabel.text = data.value(forKey: "activityTitle") as? String
+        cell.activityTimeLabel.text = "10.00 PM"
+        cell.activityCatNameLabel.text = "\(catname![0])"
+        cell.activityTypeImage.image = UIImage(systemName: "stethoscope")
         
         cell.selectionStyle = .none
         
@@ -148,7 +157,20 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "showActivityDetail", sender: tableView)
+        //self.performSegue(withIdentifier: "showActivityDetail", sender: tableView)
+        let storyboard = UIStoryboard(name: "ActivityDetail", bundle: nil)
+       
+        let vc = storyboard.instantiateViewController(withIdentifier: "ActivityDetailStoryboard") as! ActivityDetailViewController
+//        let nc = storyboard.instantiateViewController(withIdentifier: "NavActivityDetail") as! UINavigationController
+        
+        let nc = UINavigationController(rootViewController: vc)
+        nc.navigationBar.isTranslucent = false
+        nc.navigationBar.barTintColor = #colorLiteral(red: 0.1036602035, green: 0.2654651999, blue: 0.3154058456, alpha: 1)
+        //navigationController?.pushViewController(vc, animated: true)
+        //navigationController?.modalPresentationStyle = .currentContext
+        
+        self.present(nc, animated: true, completion: nil)
+        
     }
     
 }
