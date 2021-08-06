@@ -27,6 +27,7 @@
 		F94AD29526AEEDCA005686ED /* Activity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94AD29126AEEDCA005686ED /* Activity+CoreDataClass.swift */; };
 		F94AD29626AEEDCA005686ED /* Activity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94AD29226AEEDCA005686ED /* Activity+CoreDataProperties.swift */; };
 		F94AD29826AEF19D005686ED /* UiCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94AD29726AEF19D005686ED /* UiCustom.swift */; };
+		F96BBDD026BB31DC0065C589 /* ActivityDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F96BBDCE26BB31DC0065C589 /* ActivityDetail.storyboard */; };
 		F97787E226B43CB300F4CD01 /* CalendarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97787E126B43CB300F4CD01 /* CalendarHelper.swift */; };
 		F995E4F426A99E9700DA5C50 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F995E4F326A99E9700DA5C50 /* AppDelegate.swift */; };
 		F995E4F626A99E9700DA5C50 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F995E4F526A99E9700DA5C50 /* SceneDelegate.swift */; };
@@ -70,6 +71,7 @@
 		F94AD29126AEEDCA005686ED /* Activity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Activity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		F94AD29226AEEDCA005686ED /* Activity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Activity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		F94AD29726AEF19D005686ED /* UiCustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UiCustom.swift; sourceTree = "<group>"; };
+		F96BBDCF26BB31DC0065C589 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "meng-app/View/Calendar/meng-app/View/Dashboards/Base.lproj/ActivityDetail.storyboard"; sourceTree = "<group>"; };
 		F97787E126B43CB300F4CD01 /* CalendarHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHelper.swift; sourceTree = "<group>"; };
 		F995E4F026A99E9700DA5C50 /* meng-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "meng-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F995E4F326A99E9700DA5C50 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -226,6 +228,14 @@
 			path = CatProfileCell;
 			sourceTree = "<group>";
 		};
+		F96BBDCD26BB31910065C589 /* ActivityDetail */ = {
+			isa = PBXGroup;
+			children = (
+				F96BBDCE26BB31DC0065C589 /* ActivityDetail.storyboard */,
+			);
+			path = ActivityDetail;
+			sourceTree = "<group>";
+		};
 		F97787DB26B4389700F4CD01 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
@@ -278,6 +288,7 @@
 		F995E50A26A99EBC00DA5C50 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F96BBDCD26BB31910065C589 /* ActivityDetail */,
 				F9B6085D26AFEAA7005EF315 /* ActivitiesCell */,
 				07D0954426B03E3700491BD0 /* ActivityLog */,
 				03274CE926B039A500B78A54 /* AddNewCat */,
@@ -481,6 +492,7 @@
 				F9A45AC726AD392E00B64134 /* Dashboard.storyboard in Resources */,
 				F9A45ACA26AD393D00B64134 /* Cats.storyboard in Resources */,
 				0747674626B253FB0054D268 /* ActivityLogDatePickerHeader.xib in Resources */,
+				F96BBDD026BB31DC0065C589 /* ActivityDetail.storyboard in Resources */,
 				F995E50026A99E9800DA5C50 /* Assets.xcassets in Resources */,
 				F9B6086126AFEAC9005EF315 /* ActivitiesTableViewCell.xib in Resources */,
 				07D0954726B03EAE00491BD0 /* ActivityLog.storyboard in Resources */,
@@ -533,6 +545,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		F96BBDCE26BB31DC0065C589 /* ActivityDetail.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F96BBDCF26BB31DC0065C589 /* Base */,
+			);
+			name = ActivityDetail.storyboard;
+			sourceTree = "<group>";
+		};
 		F995E4F926A99E9700DA5C50 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
