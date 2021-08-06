@@ -26,6 +26,7 @@ class CatDetailViewController: UIViewController {
     @IBOutlet weak var vetNo: UILabel!
     
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         assignDatatoPage()
@@ -36,7 +37,6 @@ class CatDetailViewController: UIViewController {
     func setupUI() {
         //navigationBar
         self.navigationController?.navigationBar.prefersLargeTitles = true
-        
         //tabBar
         self.tabBarController?.tabBar.isHidden = true
         
@@ -103,7 +103,7 @@ extension CatDetailViewController: MFMessageComposeViewControllerDelegate{
     
     func sendMessage(){
         if MFMessageComposeViewController.canSendText() {
-            <#code#>
+            
         }
     }
     
