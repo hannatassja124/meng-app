@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import MessageUI
 
 class CatDetailViewController: UIViewController {
     //selected cat model
@@ -55,6 +54,7 @@ class CatDetailViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = false
+        self.navigationController?.navigationBar.prefersLargeTitles = false
     }
     
     func assignDatatoPage() {
@@ -83,29 +83,45 @@ class CatDetailViewController: UIViewController {
         print("go to log activity history")
     }
     
+    @IBAction func goToEditPage(_ sender: Any) {
+        
+    }
+    
+    
     @IBAction func back(_ sender: Any) {
         self.navigationController?.popToRootViewController(animated: true)
     }
     
     @IBAction func contactVet(_ sender: Any) {
-        if let url = URL(string: "tel://081286119017"),
-        UIApplication.shared.canOpenURL(url) {
-        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        guard ((currCat?.vetPhoneNo) != nil) else {
+            return
+        }
+        
+        let vetNo = currCat?.vetPhoneNo
+        
+        let actionsheet = UIAlertController()
+        
+        actionsheet.addAction(UIAlertAction(title: "Call \(vetNo)", style: .default, handler: {_ in
+            if let url = URL(string: "tel://\(vetNo)"){
+                UIApplication.shared.canOpenURL(url)
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+
+            }
+        }))
+        
+        actionsheet.addAction(UIAlertAction(title: "Message \(vetNo)", style: .default, handler: {_ in
+            if let url = URL(string: "sms://\(vetNo)"){
+                UIApplication.shared.canOpenURL(url)
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+
+            }
+        }))
+        
+        actionsheet.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
+        
+        present(actionsheet, animated: true)
     }
     
-}
 }
 
-extension CatDetailViewController: MFMessageComposeViewControllerDelegate{
-    func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
-    func sendMessage(){
-        if MFMessageComposeViewController.canSendText() {
-            
-        }
-    }
-    
-    
-}
+

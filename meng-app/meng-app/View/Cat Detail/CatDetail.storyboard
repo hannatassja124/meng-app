@@ -364,6 +364,9 @@
                         <barButtonItem key="rightBarButtonItem" title="Edit" image="catEditBtn" width="100" id="coj-NS-JW7">
                             <inset key="imageInsets" minX="513" minY="0.0" maxX="0.0" maxY="0.0"/>
                             <inset key="largeContentSizeImageInsets" minX="0.0" minY="5" maxX="0.0" maxY="0.0"/>
+                            <connections>
+                                <action selector="goToEditPage:" destination="Y6W-OH-hqX" id="e3M-cF-vkl"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
