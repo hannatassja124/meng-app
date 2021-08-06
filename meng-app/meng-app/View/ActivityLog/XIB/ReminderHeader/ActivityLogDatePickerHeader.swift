@@ -9,7 +9,9 @@ import UIKit
 
 class ActivityLogDatePickerHeader: UITableViewHeaderFooterView {
 
-    @IBOutlet weak var Label1: UILabel!
+    @IBOutlet weak var LabelReminder: UILabel!
+    @IBOutlet weak var SwitchReminder: UISwitch!
+    
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.

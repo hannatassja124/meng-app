@@ -9,10 +9,20 @@ import UIKit
 
 class SelectCatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+//MARK: - Outlets
+    @IBOutlet weak var NavBarButtonBack: UIBarButtonItem!
     @IBOutlet weak var TableView: UITableView!
     
+//MARK: - NavBar
+    @IBAction func BackButtonAction(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+//MARK: - CoreData Call
     let DummyArray = ["Dummy1", "Dummy2", "Dummy3", "Dummy4", "Dummy5"]
     //let CatsArray = // This is where the registered Cat Data gets called
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +45,7 @@ class SelectCatViewController: UIViewController, UITableViewDelegate, UITableVie
     */
     
     
-    // MARK: - DataSource & Delegate
+// MARK: - DataSource & Delegate
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
