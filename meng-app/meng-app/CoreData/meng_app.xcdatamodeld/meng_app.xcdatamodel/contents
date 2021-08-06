@@ -3,6 +3,8 @@
     <entity name="Activity" representedClassName="Activity" syncable="YES">
         <attribute name="activityDateTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="activityDetail" optional="YES" attributeType="String"/>
+        <attribute name="activityNotificationId" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="activityReminder" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="activityTitle" optional="YES" attributeType="String"/>
         <attribute name="activityType" optional="YES" attributeType="String"/>
         <relationship name="cats" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Cats" inverseName="activities" inverseEntity="Cats"/>
@@ -23,7 +25,7 @@
         <relationship name="activities" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Activity" inverseName="cats" inverseEntity="Activity"/>
     </entity>
     <elements>
-        <element name="Activity" positionX="3.96063232421875" positionY="59.24842834472656" width="128" height="118"/>
+        <element name="Activity" positionX="3.96063232421875" positionY="59.24842834472656" width="128" height="134"/>
         <element name="Cats" positionX="-283.50927734375" positionY="-2.737442016601562" width="128" height="224"/>
     </elements>
 </model>

@@ -50,18 +50,18 @@
         <!--addNewCat-->
         <scene sceneID="QGp-AL-SQX">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Py9-bn-158" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewControllerPlaceholder storyboardIdentifier="addNewCat" storyboardName="AddNewCat" referencedIdentifier="addNewCat" id="Ikt-rV-hqD" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="hiZ-SO-FwO"/>
                 </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Py9-bn-158" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1580" y="490"/>
         </scene>
         <!--CatDetail-->
         <scene sceneID="gBe-ic-2AR">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="NtN-Sz-kF0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewControllerPlaceholder storyboardIdentifier="CatDetail" storyboardName="CatDetail" id="dS3-03-GQC" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NtN-Sz-kF0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2278" y="689"/>
         </scene>
@@ -91,7 +91,7 @@
     </scenes>
     <resources>
         <namedColor name="NeutralLight">
-            <color red="1" green="0.95300000905990601" blue="0.94099998474121094" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.98999446629999999" green="0.9730597138" blue="0.96905237440000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

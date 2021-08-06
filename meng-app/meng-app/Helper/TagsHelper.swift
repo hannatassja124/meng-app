@@ -42,4 +42,39 @@ class TagsHelper {
         
         return selectedColor!
     }
+    
+    static func convertColorToNumber (color: String) -> Int {
+        var selectedColor: Int?
+        
+        switch color {
+        case "Green":
+            selectedColor = 1
+        case "Yellow":
+            selectedColor = 2
+        case "Orange":
+            selectedColor = 3
+        case "Red":
+            selectedColor = 4
+        case "Blue":
+            selectedColor = 5
+        case "Teal":
+            selectedColor = 6
+        case "Indigo":
+            selectedColor = 7
+        case "Purple":
+            selectedColor = 8
+        case "Pink":
+            selectedColor = 9
+        case "White":
+            selectedColor = 10
+        case "Brown":
+            selectedColor = 11
+        case "Black":
+            selectedColor = 12
+        default:
+            selectedColor = 12
+        }
+        
+        return selectedColor!
+    }
 }

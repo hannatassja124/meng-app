@@ -7,6 +7,12 @@
 
 import UIKit
 
+class selectCatCell: UITableViewCell {
+
+    @IBOutlet weak var labelCatName: UILabel!
+    @IBOutlet weak var imageCatColor: UIImageView!
+}
+
 class SelectCatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var TableView: UITableView!
@@ -45,8 +51,8 @@ class SelectCatViewController: UIViewController, UITableViewDelegate, UITableVie
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let Cell = tableView.dequeueReusableCell(withIdentifier: "SelectCatCell", for: indexPath)
-        Cell.textLabel!.text = DummyArray[indexPath.row]
+        let Cell = tableView.dequeueReusableCell(withIdentifier: "SelectCatCell", for: indexPath) as! selectCatCell
+        Cell.labelCatName.text = DummyArray[indexPath.row]
         return Cell
     }
     

@@ -21,8 +21,7 @@ class CatsViewController: UIViewController, UICollectionViewDelegate {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
-        retrieveData()
+        //retrieveData()
         
         catsCollectionView.delegate = self
         catsCollectionView.dataSource = self
@@ -35,10 +34,18 @@ class CatsViewController: UIViewController, UICollectionViewDelegate {
 //    private func genDummyData(){
 //        let cat = Cats(context: context)
 //
-//        cat.name = "stella"
+//        cat.name = "Jeff"
 //        cat.image = UIImage(named: "Meng-2")?.jpegData(compressionQuality: 1.0)
-//        cat.colorTags = 10
-//        cat.gender = 1
+//        cat.colorTags = 1
+//        cat.gender = 0
+//        cat.vetName = "drh. Rafi Zhafransyah"
+//        cat.vetPhoneNo = "087875087058"
+//        cat.feeding = "Nasi Goreng"
+//        cat.notes = "drank coffee a lot"
+//        cat.breed = "Husky"
+//        cat.isNeutered = true
+//        cat.weight = 3.5
+//        cat.dateOfBirth = Date()
 //        do {
 //            try context.save()
 //        } catch {
@@ -82,6 +89,10 @@ class CatsViewController: UIViewController, UICollectionViewDelegate {
         }
         originalCats = cats
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.retrieveData()
+    }
 }
 
 extension CatsViewController: UICollectionViewDataSource{
@@ -116,16 +127,33 @@ extension CatsViewController: UICollectionViewDataSource{
         print(indexPath.row)
         if indexPath.row == 0{
             //bakal buka Add New Cat Page
-            print("add new cat")
-            let vc = storyboard!.instantiateViewController(identifier: "addNewCat") as! AddNewCatTableView
-            present(vc, animated: true)
+//            print("add new cat")
+//            let vc = storyboard!.instantiateViewController(identifier: "addNewCat") as! AddNewCatTableView
+//            present(vc, animated: true)
+            
+            let storyboard = UIStoryboard(name: "AddNewCat", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "addNewCat") as! AddNewCatTableView
+            
+            vc.onViewWillDisappear = {
+                self.retrieveData()
+            }
+            
+            let nc = UINavigationController(rootViewController: vc)
+            nc.navigationBar.isTranslucent = false
+            nc.navigationBar.barTintColor = #colorLiteral(red: 0.1036602035, green: 0.2654651999, blue: 0.3154058456, alpha: 1)
+            nc.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+            self.present(nc, animated: true, completion: nil)
         }
         else{
             print("cat detail")
             //bakal buka Cat Profile Detail
             let vc = storyboard!.instantiateViewController(identifier: "CatDetail") as! CatDetailViewController
+            
+            
             vc.currCat = cats[indexPath.row - 1]
             navigationController?.pushViewController(vc, animated: true)
+            
+            self.retrieveData()
         }
     }
     
