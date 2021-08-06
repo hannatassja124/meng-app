@@ -99,13 +99,20 @@ class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextVie
     func saveCatProfileData(){
         if editedCat == nil {
             let newCatProfile = Cats(context: context)
+            
             if ncCatPhotoImage.image == nil {
                 
             }
             else {
                 newCatProfile.image = ncCatPhotoImage.image?.jpegData(compressionQuality: 1.0) ?? nil
             }
-            newCatProfile.name =  "\(ncCatNameTF.text ?? "")"
+            if ncCatNameTF.text == nil {
+                
+            }
+            else {
+                newCatProfile.name =  "\(ncCatNameTF.text ?? "")"
+            }
+            
             newCatProfile.colorTags = Int16(TagsHelper.convertColorToNumber(color: ncCatColorTagsLabel.text!))
                 if ncCatGenderLabel.text == "Male" {
                     newCatProfile.gender = 0
@@ -129,6 +136,8 @@ class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextVie
             newCatProfile.vetPhoneNo = "\(ncCatVetsPhoneNumber.text ?? "")"
             newCatProfile.notes = "\(ncCatNotesTV.text ?? "")"
             }
+        
+        // edited data
         else if editedCat != nil {
             editedCat!.image = ncCatPhotoImage.image?.jpegData(compressionQuality: 1.0) ?? nil
             editedCat!.name = "\(ncCatNameTF.text ?? "")"
@@ -295,7 +304,7 @@ class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextVie
         ncCatDOBLabel.text = dateFormat(date: ncCatDOBPicker.date, formatDate: dateFormatTemp)
     }
     
-    func ncCatDOBDate () {
+    func ncCatDOBDate() {
         ncCatDOBLabel.text = dateFormat(date: ncCatDOBPicker.date, formatDate: dateFormatTemp)
     }
     
