@@ -38,7 +38,9 @@ class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextVie
     var breedPickerData:[String] = [String]()
     var neuteredPickerData:[String] = [String]()
     var onViewWillDisappear: (()->())?
-    var placeholderNotes = "Notes"
+    var placeholderNotes = "Medical Notes"
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var editedCat:Cats? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -94,29 +96,97 @@ class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextVie
     
 // Save New Cat Data
     func saveCatProfileData(){
-        let newCatProfile = Cats()
-        
-        newCatProfile.name =  "\(ncCatNameTF.text ?? "")"
-        if ncCatGenderLabel.text == "Male" {
-            newCatProfile.gender = 0
+        if editedCat == nil {
+            let newCatProfile = Cats(context: context)
+            if ncCatPhotoImage.image == nil {
+                
+            }
+            else {
+                newCatProfile.image = ncCatPhotoImage.image?.jpegData(compressionQuality: 1.0) ?? nil
+            }
+            newCatProfile.name =  "\(ncCatNameTF.text ?? "")"
+            newCatProfile.colorTags = Int16(TagsHelper.convertColorToNumber(color: ncCatColorTagsLabel.text!))
+                if ncCatGenderLabel.text == "Male" {
+                    newCatProfile.gender = 0
+                }
+                else if ncCatGenderLabel.text == "Female" {
+                    newCatProfile.gender = 1
+                }
+            newCatProfile.dateOfBirth = ncCatDOBPicker.date
+            newCatProfile.breed = "\(ncCatBreedLabel.text ?? "")"
+                if ncCatNeuteredLabel.text == "Yes" {
+                    newCatProfile.isNeutered = true
+                }
+                else if ncCatNeuteredLabel.text == "No"{
+                    newCatProfile.isNeutered = false
+                }
+            if let weight = Double(ncCatWeightTF.text!){
+                newCatProfile.weight = weight
+            }
+            newCatProfile.feeding = "\(ncCatFeedingTF.text ?? "")"
+            newCatProfile.notes = "\(ncCatNotesTV.text ?? "")"
+            }
+        else if editedCat != nil {
+            editedCat!.image = ncCatPhotoImage.image?.jpegData(compressionQuality: 1.0) ?? nil
+            editedCat!.name = "\(ncCatNameTF.text ?? "")"
+            editedCat!.colorTags = Int16(TagsHelper.convertColorToNumber(color: ncCatColorTagsLabel.text!))
+                if ncCatGenderLabel.text == "Male" {
+                    editedCat!.gender = 0
+                }
+                else if ncCatGenderLabel.text == "Female"  {
+                    editedCat!.gender = 1
+                }
+            editedCat!.dateOfBirth = ncCatDOBPicker.date
+            editedCat!.breed = "\(ncCatBreedLabel.text ?? "")"
+                if ncCatNeuteredLabel.text == "Yes" {
+                    editedCat!.isNeutered = true
+                }
+                else if ncCatNeuteredLabel.text == "No" {
+                    editedCat!.isNeutered = false
+                }
+            if let weightEdit = Double(ncCatWeightTF.text!){
+                editedCat!.weight = weightEdit
+            }
+            editedCat!.feeding = "\(ncCatFeedingTF.text ?? "")"
+            editedCat!.notes = "\(ncCatNotesTV.text ?? "")"
         }
-        else if ncCatGenderLabel.text == "Female" {
-            newCatProfile.gender = 1
+        do {
+            try context.save()
+        } catch {
+            print("Ga kesave")
         }
-        newCatProfile.dateOfBirth = ncCatDOBPicker.date
-        newCatProfile.breed = "\(ncCatBreedLabel.text ?? "")"
-        if ncCatNeuteredLabel.text == "Yes" {
-            newCatProfile.isNeutered = true
-        }
-        else if ncCatNeuteredLabel.text == "No"{
-            newCatProfile.isNeutered = false
-        }
-        newCatProfile.weight = Double("\(ncCatWeightTF.text ?? "")")!
-        newCatProfile.feeding = "\(ncCatFeedingTF.text ?? "")"
-        newCatProfile.notes = "\(ncCatNotesTV.text ?? "")"
     }
     
-    func saveimagetoData(data: Data){
+// Set data pas mau edit
+    func checkIfEditOrNot() {
+        if editedCat != nil {
+            let colorEdit = ["Green", "Yellow", "Orange", "Red", "Blue", "Teal", "Indigo","Purple", "Pink", "White", "Brown", "Black"]
+            
+            if let image = editedCat?.image{
+                ncCatPhotoImage?.image = UIImage(data: image)
+            }
+            ncCatNameTF.text = editedCat?.name
+            ncCatColorTagsLabel.text = colorEdit[Int(editedCat!.colorTags)-1]
+            ncCatColorTagsIcon.tintColor = TagsHelper.checkColor(tagsNumber: editedCat!.colorTags)
+                if editedCat?.gender == 0 {
+                    ncCatGenderLabel.text = "Male"
+                }
+                else if editedCat?.gender == 1  {
+                    ncCatGenderLabel.text = "Female"
+                }
+            ncCatDOBPicker.date = (editedCat?.dateOfBirth)!
+            ncCatDOBLabel.text = dateFormat(date: ncCatDOBPicker.date, formatDate: dateFormatTemp)
+            ncCatBreedLabel.text = editedCat?.breed
+                if editedCat!.isNeutered == true {
+                    ncCatNeuteredLabel.text = "Yes"
+                }
+                else if editedCat!.isNeutered == false {
+                    ncCatNeuteredLabel.text = "No"
+                }
+            ncCatWeightTF.text = "\(editedCat?.weight ?? 0)"
+            ncCatFeedingTF.text = editedCat?.feeding
+            ncCatNotesTV.text = editedCat?.notes
+        }
     }
     
 // Untuk Name Text Field
@@ -189,7 +259,7 @@ class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextVie
     
 // Notes Placeholder
     func textViewDidBeginEditing(_ textView: UITextView){
-        if placeholderNotes == "Notes" {
+        if placeholderNotes == "Medical Notes" {
             print("Text View Did Begin Editing")
             ncCatNotesTV.text = ""
             placeholderNotes = ""
@@ -261,13 +331,13 @@ class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextVie
         let cellCatNeuteredPicker = indexPath.section == 5 && indexPath.row == 1
         let cellCatNote =  indexPath.section == 8 && indexPath.row == 0
         
-        var ncHeight: CGFloat = 43.5
+        var ncHeight: CGFloat = 54.0
         
         if (cellCatPhoto) {
-            ncHeight = 200.0
+            ncHeight = 250.0
         }
         if (cellCatNote) {
-            ncHeight = 200.0
+            ncHeight = 150.0
         }
         if (cellCatColorTagsPicker && ncCatColorTagsPicker.isHidden) || (cellCatGenderPicker && ncCatGenderPicker.isHidden) || (cellCatDOBPicker && ncCatDOBPicker.isHidden) || (cellCatBreedPicker && ncCatBreedPicker.isHidden) || (cellCatNeuteredPicker && ncCatNeuteredPicker.isHidden) {
             ncHeight = 0.0
@@ -304,7 +374,6 @@ class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextVie
             hiddenPickers(fieldName: "catNeutered", indexPath: indexPath)
         }
     }
-    
 }
 
 extension AddNewCatTableView: UIPickerViewDataSource {
@@ -364,5 +433,5 @@ extension AddNewCatTableView: UIImagePickerControllerDelegate, UINavigationContr
         ncCatPhotoImage.image = catPhotoImage
         
         tableView.reloadData()
+        }
     }
-}
