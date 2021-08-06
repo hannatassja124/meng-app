@@ -157,17 +157,12 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //self.performSegue(withIdentifier: "showActivityDetail", sender: tableView)
         let storyboard = UIStoryboard(name: "ActivityDetail", bundle: nil)
        
         let vc = storyboard.instantiateViewController(withIdentifier: "ActivityDetailStoryboard") as! ActivityDetailViewController
-//        let nc = storyboard.instantiateViewController(withIdentifier: "NavActivityDetail") as! UINavigationController
-        
         let nc = UINavigationController(rootViewController: vc)
         nc.navigationBar.isTranslucent = false
         nc.navigationBar.barTintColor = #colorLiteral(red: 0.1036602035, green: 0.2654651999, blue: 0.3154058456, alpha: 1)
-        //navigationController?.pushViewController(vc, animated: true)
-        //navigationController?.modalPresentationStyle = .currentContext
         
         self.present(nc, animated: true, completion: nil)
         

@@ -133,6 +133,9 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Edit" id="piQ-pl-WBm">
                             <color key="tintColor" name="Melon"/>
+                            <connections>
+                                <action selector="goToEditActivityPage:" destination="4T7-ht-f2g" id="zWQ-jM-2DX"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>

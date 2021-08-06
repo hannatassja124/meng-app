@@ -28,7 +28,18 @@ class ActivityDetailViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-
+    @IBAction func goToEditActivityPage(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "ActivityLog", bundle: nil)
+       
+        let vc = storyboard.instantiateViewController(withIdentifier: "ActivityLogStoryboard") as! ActivityLogTableViewController
+        let nc = UINavigationController(rootViewController: vc)
+        nc.navigationBar.isTranslucent = false
+        nc.navigationBar.barTintColor = #colorLiteral(red: 0.1036602035, green: 0.2654651999, blue: 0.3154058456, alpha: 1)
+        nc.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
+        
+        self.present(nc, animated: true, completion: nil)
+    }
+    
 }
 
 class detailTableViewCell: UITableViewCell {

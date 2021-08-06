@@ -84,7 +84,20 @@ class CatDetailViewController: UIViewController {
     }
     
     @IBAction func goToEditPage(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "AddNewCat", bundle: nil)
+       
+        let vc = storyboard.instantiateViewController(withIdentifier: "addNewCat") as! AddNewCatTableView
+        vc.editedCat = currCat
         
+        vc.onViewWillDisappear = {
+            self.assignDatatoPage()
+        }
+        
+        let nc = UINavigationController(rootViewController: vc)
+        nc.navigationBar.isTranslucent = false
+        nc.navigationBar.barTintColor = #colorLiteral(red: 0.1036602035, green: 0.2654651999, blue: 0.3154058456, alpha: 1)
+        nc.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        self.present(nc, animated: true, completion: nil)
     }
     
     
@@ -97,20 +110,20 @@ class CatDetailViewController: UIViewController {
             return
         }
         
-        let vetNo = currCat?.vetPhoneNo
+        let vetNo = currCat?.vetPhoneNo!
         
         let actionsheet = UIAlertController()
         
-        actionsheet.addAction(UIAlertAction(title: "Call \(vetNo)", style: .default, handler: {_ in
-            if let url = URL(string: "tel://\(vetNo)"){
+        actionsheet.addAction(UIAlertAction(title: "Call \(vetNo!)", style: .default, handler: {_ in
+            if let url = URL(string: "tel://\(vetNo!)"){
                 UIApplication.shared.canOpenURL(url)
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
 
             }
         }))
         
-        actionsheet.addAction(UIAlertAction(title: "Message \(vetNo)", style: .default, handler: {_ in
-            if let url = URL(string: "sms://\(vetNo)"){
+        actionsheet.addAction(UIAlertAction(title: "Message \(vetNo!)", style: .default, handler: {_ in
+            if let url = URL(string: "sms://\(vetNo!)"){
                 UIApplication.shared.canOpenURL(url)
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
 

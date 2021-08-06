@@ -45,6 +45,9 @@ class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        checkIfEditOrNot()
+        
         nameField()
         ncCatColorTagsPicker.tag = 1
         ncCatGenderPicker.tag = 2
@@ -59,6 +62,8 @@ class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextVie
         ncCatNotesTV.textColor = .lightGray
         ncCatNotesTV.delegate = self
         hiddenPickers(fieldName: "init", indexPath: [-1])
+        
+        
     }
     
 // Buttons
@@ -160,7 +165,7 @@ class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextVie
                 editedCat!.weight = weightEdit
             }
             editedCat!.feeding = "\(ncCatFeedingTF.text ?? "")"
-            editedCat!.vetName = "\(ncCatVetsPhoneNumber.text ?? "")"
+            editedCat!.vetName = "\(ncCatVetsName.text ?? "")"
             editedCat!.vetPhoneNo = "\(ncCatVetsPhoneNumber.text ?? "")"
             editedCat!.notes = "\(ncCatNotesTV.text ?? "")"
         }
@@ -169,10 +174,13 @@ class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextVie
         } catch {
             print("Ga kesave")
         }
+        
+        onViewWillDisappear!()
     }
     
 // Set data pas mau edit
     func checkIfEditOrNot() {
+        
         if editedCat != nil {
             let colorEdit = ["Green", "Yellow", "Orange", "Red", "Blue", "Teal", "Indigo","Purple", "Pink", "White", "Brown", "Black"]
             

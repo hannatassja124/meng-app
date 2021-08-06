@@ -187,18 +187,9 @@
 		1920066F26B043CF00BAD2D0 /* Cats */ = {
 			isa = PBXGroup;
 			children = (
-				1932CFCE26B2493300E7FE06 /* Helper */,
 				1920067026B0440900BAD2D0 /* CatsViewController.swift */,
 			);
 			path = Cats;
-			sourceTree = "<group>";
-		};
-		1932CFCE26B2493300E7FE06 /* Helper */ = {
-			isa = PBXGroup;
-			children = (
-				1932CFCF26B2494800E7FE06 /* TagsHelper.swift */,
-			);
-			path = Helper;
 			sourceTree = "<group>";
 		};
 		19636EC726AF9E1000EBD377 /* Cell */ = {
@@ -247,6 +238,7 @@
 		F97787E026B43C9E00F4CD01 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				1932CFCF26B2494800E7FE06 /* TagsHelper.swift */,
 				F97787E126B43CB300F4CD01 /* CalendarHelper.swift */,
 			);
 			path = Helper;
