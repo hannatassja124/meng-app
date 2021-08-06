@@ -21,7 +21,6 @@ class CatsViewController: UIViewController, UICollectionViewDelegate {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
         retrieveData()
         
         catsCollectionView.delegate = self
@@ -35,10 +34,18 @@ class CatsViewController: UIViewController, UICollectionViewDelegate {
 //    private func genDummyData(){
 //        let cat = Cats(context: context)
 //
-//        cat.name = "stella"
+//        cat.name = "Jeff"
 //        cat.image = UIImage(named: "Meng-2")?.jpegData(compressionQuality: 1.0)
-//        cat.colorTags = 10
-//        cat.gender = 1
+//        cat.colorTags = 1
+//        cat.gender = 0
+//        cat.vetName = "drh. Rafi Zhafransyah"
+//        cat.vetPhoneNo = "087875087058"
+//        cat.feeding = "Nasi Goreng"
+//        cat.notes = "drank coffee a lot"
+//        cat.breed = "Husky"
+//        cat.isNeutered = true
+//        cat.weight = 3.5
+//        cat.dateOfBirth = Date()
 //        do {
 //            try context.save()
 //        } catch {
