@@ -82,7 +82,7 @@ class CatDetailViewController: UIViewController {
         catBreedAndNeutered.text = "\(currCat!.breed ?? "no data"), \(neuteredString)"
         if let date = currCat?.dateOfBirth{
             let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "dd/MM/YYYY"
+            dateFormatter.dateFormat = "MMMM dd, YYYY"
             catAge.text = "\(dateFormatter.string(from: date))"
 
         }
