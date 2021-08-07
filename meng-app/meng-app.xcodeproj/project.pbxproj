@@ -19,6 +19,8 @@
 		1920066D26B032BF00BAD2D0 /* CatProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1920066B26B032BF00BAD2D0 /* CatProfileCollectionViewCell.swift */; };
 		1920066E26B032BF00BAD2D0 /* CatProfileCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1920066C26B032BF00BAD2D0 /* CatProfileCollectionViewCell.xib */; };
 		1920067126B0440900BAD2D0 /* CatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1920067026B0440900BAD2D0 /* CatsViewController.swift */; };
+		192E971326BE54DD00BBDF9E /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192E971126BE54DD00BBDF9E /* HistoryViewController.swift */; };
+		192E971726BE550800BBDF9E /* History.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 192E971626BE550800BBDF9E /* History.storyboard */; };
 		1932CFD026B2494800E7FE06 /* TagsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1932CFCF26B2494800E7FE06 /* TagsHelper.swift */; };
 		19636ECD26AF9E4100EBD377 /* AddNewCatCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19636ECB26AF9E4100EBD377 /* AddNewCatCollectionViewCell.swift */; };
 		19636ECE26AF9E4100EBD377 /* AddNewCatCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19636ECC26AF9E4100EBD377 /* AddNewCatCollectionViewCell.xib */; };
@@ -63,6 +65,8 @@
 		1920066B26B032BF00BAD2D0 /* CatProfileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatProfileCollectionViewCell.swift; sourceTree = "<group>"; };
 		1920066C26B032BF00BAD2D0 /* CatProfileCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CatProfileCollectionViewCell.xib; sourceTree = "<group>"; };
 		1920067026B0440900BAD2D0 /* CatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatsViewController.swift; sourceTree = "<group>"; };
+		192E971126BE54DD00BBDF9E /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
+		192E971626BE550800BBDF9E /* History.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = History.storyboard; sourceTree = "<group>"; };
 		1932CFCF26B2494800E7FE06 /* TagsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsHelper.swift; sourceTree = "<group>"; };
 		19636ECB26AF9E4100EBD377 /* AddNewCatCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewCatCollectionViewCell.swift; sourceTree = "<group>"; };
 		19636ECC26AF9E4100EBD377 /* AddNewCatCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddNewCatCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -191,6 +195,22 @@
 			path = Cats;
 			sourceTree = "<group>";
 		};
+		192E971026BE53FD00BBDF9E /* History */ = {
+			isa = PBXGroup;
+			children = (
+				192E971626BE550800BBDF9E /* History.storyboard */,
+			);
+			path = History;
+			sourceTree = "<group>";
+		};
+		192E971526BE54F700BBDF9E /* History */ = {
+			isa = PBXGroup;
+			children = (
+				192E971126BE54DD00BBDF9E /* HistoryViewController.swift */,
+			);
+			path = History;
+			sourceTree = "<group>";
+		};
 		19636EC726AF9E1000EBD377 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -279,6 +299,7 @@
 		F995E50A26A99EBC00DA5C50 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				192E971026BE53FD00BBDF9E /* History */,
 				F995E51326A9A9AC00DA5C50 /* Dashboards */,
 				F96BBDCD26BB31910065C589 /* ActivityDetail */,
 				F9B6085D26AFEAA7005EF315 /* ActivitiesCell */,
@@ -307,6 +328,7 @@
 		F995E50C26A99EC700DA5C50 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				192E971526BE54F700BBDF9E /* History */,
 				F9DF6C6A26B7487800DCF044 /* ActivityDetail */,
 				F9B6085A26AFE987005EF315 /* Calendar */,
 				07D0954526B03E7200491BD0 /* ActivityLog */,
@@ -490,6 +512,7 @@
 				07D0954726B03EAE00491BD0 /* ActivityLog.storyboard in Resources */,
 				F995E4FB26A99E9700DA5C50 /* Main.storyboard in Resources */,
 				F9A45AC526AD390D00B64134 /* Calendar.storyboard in Resources */,
+				192E971726BE550800BBDF9E /* History.storyboard in Resources */,
 				03274CEB26B039CE00B78A54 /* AddNewCat.storyboard in Resources */,
 				1920066E26B032BF00BAD2D0 /* CatProfileCollectionViewCell.xib in Resources */,
 				19636ECE26AF9E4100EBD377 /* AddNewCatCollectionViewCell.xib in Resources */,
@@ -510,6 +533,7 @@
 				F9B6086026AFEAC9005EF315 /* ActivitiesTableViewCell.swift in Sources */,
 				073E332A26B3AF150015C24F /* ActivityLogTableViewController.swift in Sources */,
 				1920067126B0440900BAD2D0 /* CatsViewController.swift in Sources */,
+				192E971326BE54DD00BBDF9E /* HistoryViewController.swift in Sources */,
 				191E4FB626B1908A00836145 /* CatDetailViewController.swift in Sources */,
 				F94AD29826AEF19D005686ED /* UiCustom.swift in Sources */,
 				19636ECD26AF9E4100EBD377 /* AddNewCatCollectionViewCell.swift in Sources */,
