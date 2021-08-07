@@ -68,7 +68,7 @@ class SelectCatViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
 //MARK: - Pass Data DOES NOT WORK
-    /*
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if let presenter = presentingViewController as? ActivityLogTableViewController {
@@ -76,5 +76,5 @@ class SelectCatViewController: UIViewController, UITableViewDelegate, UITableVie
             }
         
         self.dismiss(animated: true, completion: nil) //Dismiss Modal on Cell Click
-    }*/
+    }
 }

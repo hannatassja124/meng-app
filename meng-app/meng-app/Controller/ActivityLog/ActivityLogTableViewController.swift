@@ -10,6 +10,9 @@ import UIKit
 class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegate, UITextViewDelegate {
 
 //MARK: - Outlets
+    
+    //@IBOutlet var TableViewMain: UITableView!
+    
     //NavBar
     @IBOutlet weak var NavBarButtonBack: UIBarButtonItem!
     @IBOutlet weak var NavBarButtonSave: UIBarButtonItem!
@@ -20,6 +23,7 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
     @IBOutlet weak var ImageCatColour: UIImageView!
     
     //Section 2 - Activities
+    @IBOutlet weak var CollectionViewActivities: UICollectionView!
     
     //Section 3 - Form
     @IBOutlet weak var TextFieldTitle: UITextField!
@@ -34,8 +38,8 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
     //Section 5 - Reminder
     @IBOutlet weak var LabelReminderBefore: UILabel!
     @IBOutlet weak var PickerViewReminder: UIPickerView!
-    
 
+    
 //MARK: - Variables
     var RemindBeforeData:[String] = [String]()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -44,6 +48,8 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
     var SelectedCatName = ""
     var SelectedCatColour = UIImage()
     var ReminderChosen: Int = 0
+    var SelectedActivitiesIndex: Int = 0
+    var ActivityList = [ActivitiesTypeStruct(name: "Vaccine", iconName: "Vaccine"), ActivitiesTypeStruct(name: "Appointment", iconName: "Appointment"), ActivitiesTypeStruct(name: "Treatment", iconName: "Treatment"), ActivitiesTypeStruct(name: "Symptoms", iconName: "Symptoms"), ActivitiesTypeStruct(name: "Others", iconName: "Others")]
 
 //MARK: - ViewDidLoad
     override func viewDidLoad() {
@@ -51,6 +57,12 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
         
         PickerReminderFill()
         DatePickerDateDisplay()
+        
+        //RegisterTableCell()
+        //ReloadFunction()
+        CollectionViewActivities.register(UINib(nibName: "ActivitiesCVC", bundle: nil), forCellWithReuseIdentifier: "ActivitiesCVCID")
+        CollectionViewActivities.delegate = self
+        CollectionViewActivities.dataSource = self
         
         hiddenPickers(fieldName: "init", indexPath: [-1])
         self.tableView.register(UINib(nibName: "ActivityLogDatePickerHeader", bundle: nil), forHeaderFooterViewReuseIdentifier: "ActivityLogDatePickerHeader")
@@ -63,14 +75,14 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
     }
     
 //Selected Cat Refresh after Data Pass from Modal
-    /*
+    
     func SelectedCatRefresh() {
         LabelCat.text = SelectedCatName
         //ImageCatColour.image = SelectedCatColour
     }
     @IBAction func RefreshButtonTest(_ sender: Any) {
         SelectedCatRefresh()
-    }*/
+    }
     
     
 
@@ -123,7 +135,7 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
         }
         
         if (cellActivities) {
-            ncHeight = 96.0
+            ncHeight = 100.0
         }
         
         if (cellFormTitle) {
@@ -168,17 +180,34 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
         func SaveActivityLog(){
             if EditedActivity == nil {
                 let NewActivityLog = Activity(context: context)
+                let cats = Cats(context: context)
                 
-                //Section 1 STUCK
+                //Section 1 STUCK REEEEEE
                 if LabelCat.text == "" {
                     //Display Alert to Select a Cat
                 }
                 else{
-                    //NewActivityLog.cats = LabelCat.text
                     //How to associate this Activity with 1 cats model entry??
+                    cats.name = LabelCat.text
+                    NewActivityLog.addToCats(cats)
                 }
                 
-                //Section 2 NOTDONE
+                //Section 2 DONE
+                if SelectedActivitiesIndex == 0 {
+                    NewActivityLog.activityType = "Vaccine"
+                }
+                else if SelectedActivitiesIndex == 1 {
+                    NewActivityLog.activityType = "Appointment"
+                }
+                else if SelectedActivitiesIndex == 2 {
+                    NewActivityLog.activityType = "Treatment"
+                }
+                else if SelectedActivitiesIndex == 3 {
+                    NewActivityLog.activityType = "Symptoms"
+                }
+                else if SelectedActivitiesIndex == 4 {
+                    NewActivityLog.activityType = "Others"
+                }
                 
                 //Section 3 DONE
                 if TextFieldTitle.text == nil{
@@ -336,16 +365,7 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return 0
-    }
-
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
+    }*/
 
     /*
     // Override to support conditional editing of the table view.
@@ -408,5 +428,40 @@ extension ActivityLogTableViewController: UIPickerViewDataSource {
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return "\(RemindBeforeData[row])"
+    }
+}
+
+//MARK: - CollectionView Delegate/DataSource
+extension ActivityLogTableViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 5
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = (CollectionViewActivities.dequeueReusableCell(withReuseIdentifier: "ActivitiesCVCID", for: indexPath) as? ActivitiesCVC)!
+        cell.LabelActivity.text = ActivityList[indexPath.row].name
+        cell.ImageBackground.image = UIImage(named: ActivityList[indexPath.row].iconName)
+        if ActivityList[indexPath.row].isSelected {
+            cell.ViewBackground.backgroundColor = #colorLiteral(red: 1, green: 0.7445316911, blue: 0.7005677223, alpha: 1)
+            cell.ImageBackground.tintColor = #colorLiteral(red: 0.4296851158, green: 0.1989070773, blue: 0.1972613335, alpha: 1)
+            cell.LabelActivity.textColor = #colorLiteral(red: 0.4296851158, green: 0.1989070773, blue: 0.1972613335, alpha: 1)
+        }
+        else {
+            cell.ViewBackground.backgroundColor = #colorLiteral(red: 0.8373829722, green: 0.9012431502, blue: 0.8903146386, alpha: 1)
+            cell.ImageBackground.tintColor = #colorLiteral(red: 0.6278990507, green: 0.7064616084, blue: 0.7296723127, alpha: 1)
+            cell.LabelActivity.textColor = #colorLiteral(red: 0.6278990507, green: 0.7064616084, blue: 0.7296723127, alpha: 1)
+        }
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        SelectedActivitiesIndex = indexPath.row
+        
+        for i in 0...4 {
+            ActivityList[i].isSelected = false
+        }
+        ActivityList[indexPath.row].isSelected = true
+        CollectionViewActivities.reloadData()
     }
 }
