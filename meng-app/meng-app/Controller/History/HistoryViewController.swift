@@ -13,7 +13,7 @@ class HistoryViewController: UIViewController {
 
     
     var selectedCat = Cats()
-    var sortedCatActivites = [Activity()]
+    var sortedCatActivites:[Activity] = []
     @IBOutlet weak var activitiesTableView: UITableView!
     
     override func viewDidLoad() {
