@@ -53,11 +53,6 @@ class CatDetailViewController: UIViewController {
         setupUI()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        self.tabBarController?.tabBar.isHidden = false
-        self.tabBarController?.tabBar.isTranslucent = false
-        self.navigationController?.navigationBar.prefersLargeTitles = false
-    }
     
     func assignDatatoPage() {
         if let image = currCat?.image {
@@ -67,7 +62,7 @@ class CatDetailViewController: UIViewController {
         catGenderIcon.image = UIImage(named: (currCat!.gender == 0 ? "Male" : "Female"))
         catColorTags.tintColor = TagsHelper.checkColor(tagsNumber: currCat!.colorTags)
         let neuteredString = currCat!.isNeutered ? "Neutered" : "Not neutered"
-        catBreedAndNeutered.text = "\(currCat!.breed ?? "no data"), \(neuteredString)"
+        catBreedAndNeutered.text = "\s(currCat!.breed ?? "no data"), \(neuteredString)"
         if let date = currCat?.dateOfBirth{
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "dd/MM/YYYY"
@@ -83,11 +78,11 @@ class CatDetailViewController: UIViewController {
 
     @IBAction func goToLogActivityHistory(_ sender: Any) {
         let storyboard = UIStoryboard(name: "History", bundle: nil)
-       
-        let vc = storyboard.instantiateViewController(withIdentifier: "History") as! HistoryViewController
-        vc.selectedCat = currCat!
         
-        navigationController?.pushViewController(vc, animated: true)
+        let MainVC = storyboard.instantiateViewController(identifier: "HistoryNC") as! UINavigationController
+        let target = MainVC.topViewController as! HistoryViewController
+        target.selectedCat = currCat!
+        navigationController?.pushViewController(target, animated: true)
     }
     
     @IBAction func goToEditPage(_ sender: Any) {
@@ -109,6 +104,9 @@ class CatDetailViewController: UIViewController {
     
     
     @IBAction func back(_ sender: Any) {
+        self.tabBarController?.tabBar.isHidden = false
+        self.tabBarController?.tabBar.isTranslucent = false
+        self.navigationController?.navigationBar.prefersLargeTitles = false
         self.navigationController?.popToRootViewController(animated: true)
     }
     
