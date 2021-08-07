@@ -38,6 +38,7 @@ class CatDetailViewController: UIViewController {
         self.navigationController?.navigationBar.prefersLargeTitles = true
         //tabBar
         self.tabBarController?.tabBar.isHidden = true
+        self.tabBarController?.tabBar.isTranslucent = true
         
         //ImageGradient
         let gradient: CAGradientLayer = CAGradientLayer()
@@ -54,6 +55,7 @@ class CatDetailViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = false
+        self.tabBarController?.tabBar.isTranslucent = false
         self.navigationController?.navigationBar.prefersLargeTitles = false
     }
     
@@ -85,8 +87,7 @@ class CatDetailViewController: UIViewController {
         let vc = storyboard.instantiateViewController(withIdentifier: "History") as! HistoryViewController
         vc.selectedCat = currCat!
         
-        let nc = UINavigationController(rootViewController: vc)
-        self.present(nc, animated: true, completion: nil)
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func goToEditPage(_ sender: Any) {

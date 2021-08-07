@@ -139,6 +139,7 @@ extension CatsViewController: UICollectionViewDataSource{
             }
             
             let nc = UINavigationController(rootViewController: vc)
+            
             nc.navigationBar.isTranslucent = false
             nc.navigationBar.barTintColor = #colorLiteral(red: 0.1036602035, green: 0.2654651999, blue: 0.3154058456, alpha: 1)
             nc.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
@@ -153,10 +154,8 @@ extension CatsViewController: UICollectionViewDataSource{
             vc.currCat = cats[indexPath.row - 1]
             navigationController?.pushViewController(vc, animated: true)
             
-            self.retrieveData()
         }
     }
-    
     
 }
 

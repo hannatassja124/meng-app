@@ -11,7 +11,7 @@
         <!--Cats-->
         <scene sceneID="Scn-Cj-mJd">
             <objects>
-                <viewController extendedLayoutIncludesOpaqueBars="YES" modalPresentationStyle="fullScreen" id="JwW-aE-maw" customClass="CatsViewController" customModule="meng_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="JwW-aE-maw" customClass="CatsViewController" customModule="meng_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rhH-Xf-eWS">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
