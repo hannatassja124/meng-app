@@ -11,7 +11,7 @@
         <!--History Overview-->
         <scene sceneID="joE-Fb-Td7">
             <objects>
-                <viewController id="ceM-V5-pLz" customClass="HistoryViewController" customModule="meng_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="History" modalPresentationStyle="fullScreen" hidesBottomBarWhenPushed="YES" id="ceM-V5-pLz" customClass="HistoryViewController" customModule="meng_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MK2-LC-zUL">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -42,17 +42,38 @@
                                     <constraint firstItem="0NB-Fk-BEg" firstAttribute="top" secondItem="zFC-tO-Xeq" secondAttribute="top" id="q9w-4i-rUL"/>
                                 </constraints>
                             </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ppa-YA-AEu">
+                                <rect key="frame" x="22" y="140" width="346" height="670"/>
+                                <color key="backgroundColor" name="NeutralLight"/>
+                                <color key="tintColor" name="NeutralLight"/>
+                                <inset key="scrollIndicatorInsets" minX="24" minY="0.0" maxX="24" maxY="0.0"/>
+                                <color key="sectionIndexBackgroundColor" name="NeutralLight"/>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="cPf-cw-IsO"/>
                         <color key="backgroundColor" name="NeutralLight"/>
                         <constraints>
                             <constraint firstItem="zFC-tO-Xeq" firstAttribute="top" secondItem="cPf-cw-IsO" secondAttribute="top" constant="165" id="3YM-l9-0d0"/>
+                            <constraint firstItem="cPf-cw-IsO" firstAttribute="trailing" secondItem="ppa-YA-AEu" secondAttribute="trailing" constant="22" id="A0B-e9-agv"/>
                             <constraint firstItem="zFC-tO-Xeq" firstAttribute="centerY" secondItem="MK2-LC-zUL" secondAttribute="centerY" id="Rw4-WD-PVE"/>
+                            <constraint firstItem="ppa-YA-AEu" firstAttribute="top" secondItem="cPf-cw-IsO" secondAttribute="top" id="h2v-j9-oAo"/>
                             <constraint firstItem="zFC-tO-Xeq" firstAttribute="centerX" secondItem="MK2-LC-zUL" secondAttribute="centerX" id="pQF-jM-HNE"/>
+                            <constraint firstItem="ppa-YA-AEu" firstAttribute="bottom" secondItem="cPf-cw-IsO" secondAttribute="bottom" id="ucn-EE-Nnc"/>
                             <constraint firstItem="zFC-tO-Xeq" firstAttribute="leading" secondItem="cPf-cw-IsO" secondAttribute="leading" constant="68" id="vo3-Og-5H9"/>
+                            <constraint firstItem="ppa-YA-AEu" firstAttribute="leading" secondItem="cPf-cw-IsO" secondAttribute="leading" constant="22" id="wP0-hC-yVR"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="History Overview" id="4t6-F0-F2p"/>
+                    <navigationItem key="navigationItem" title="History Overview" id="4t6-F0-F2p">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="chevron.left" catalog="system" id="0hM-4c-CEM">
+                            <color key="tintColor" name="MidnightGreen"/>
+                            <connections>
+                                <action selector="back:" destination="ceM-V5-pLz" id="xOC-HS-6pU"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="activitiesTableView" destination="ppa-YA-AEu" id="k1t-MP-5jb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XeV-Y8-yJR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -61,7 +82,7 @@
         <!--Navigation Controller-->
         <scene sceneID="HKv-T3-mZw">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3Kb-Ia-py4" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="HistoryNC" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" hidesBottomBarWhenPushed="YES" id="3Kb-Ia-py4" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="2Iv-je-6YZ">
                         <rect key="frame" x="0.0" y="44" width="390" height="96"/>
@@ -85,6 +106,7 @@
     </scenes>
     <resources>
         <image name="Meng-sleep" width="1182" height="709"/>
+        <image name="chevron.left" catalog="system" width="96" height="128"/>
         <namedColor name="MidnightGreen">
             <color red="0.10499999672174454" green="0.2669999897480011" blue="0.31499999761581421" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
