@@ -29,7 +29,6 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
     @IBOutlet weak var LabelDate: UILabel!
     @IBOutlet weak var DatePickerDate: UIDatePicker!
     
-    @IBOutlet weak var LabelTime: UILabel!
     @IBOutlet weak var DatePickerTime: UIDatePicker!
     
     //Section 5 - Reminder
@@ -42,6 +41,9 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var EditedActivity:Activity? = nil
     let dateFormatTemp =  "MMMM dd, yyyy"
+    var SelectedCatName = ""
+    var SelectedCatColour = UIImage()
+    var ReminderChosen: Int = 0
 
 //MARK: - ViewDidLoad
     override func viewDidLoad() {
@@ -49,7 +51,6 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
         
         PickerReminderFill()
         DatePickerDateDisplay()
-        DatePickerTimeDisplay()
         
         hiddenPickers(fieldName: "init", indexPath: [-1])
         self.tableView.register(UINib(nibName: "ActivityLogDatePickerHeader", bundle: nil), forHeaderFooterViewReuseIdentifier: "ActivityLogDatePickerHeader")
@@ -60,6 +61,18 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+    
+//Selected Cat Refresh after Data Pass from Modal
+    /*
+    func SelectedCatRefresh() {
+        LabelCat.text = SelectedCatName
+        //ImageCatColour.image = SelectedCatColour
+    }
+    @IBAction func RefreshButtonTest(_ sender: Any) {
+        SelectedCatRefresh()
+    }*/
+    
+    
 
 //MARK: - NavBar
     @IBAction func SaveButtonAction(_ sender: Any) {
@@ -75,7 +88,6 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
 //MARK: - Expandable/Collapsable Cells
     func hiddenPickers(fieldName: String, indexPath: IndexPath) {
         DatePickerDate.isHidden = fieldName == "ActivityDate" ? !DatePickerDate.isHidden : true
-        DatePickerTime.isHidden = fieldName == "ActivityTime" ? !DatePickerTime.isHidden : true
         PickerViewReminder.isHidden = fieldName == "ActivityReminder" ? !PickerViewReminder.isHidden : true
         
         animation(oniP: indexPath)
@@ -91,7 +103,6 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let cellDatePickerDate = indexPath.section == 3 && indexPath.row == 1
-        let cellDatePickerTime = indexPath.section == 3 && indexPath.row == 3
         let cellActivities = indexPath.section == 1 && indexPath.row == 0
         let cellFormTitle = indexPath.section == 2 && indexPath.row == 0
         let cellFormDetails = indexPath.section == 2 && indexPath.row == 1
@@ -100,18 +111,14 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
         var ncHeight: CGFloat = 43.5
         
         if (cellDatePickerDate) {
-            ncHeight = 360.0
-        }
-        
-        if (cellDatePickerTime) {
-            ncHeight = 64.0
+            ncHeight = 340.0
         }
         
         if (cellPickerReminder) {
             ncHeight = 160.0
         }
         
-        if (cellDatePickerDate && DatePickerDate.isHidden) || (cellDatePickerTime && DatePickerTime.isHidden) || (cellPickerReminder && PickerViewReminder.isHidden) {
+        if (cellDatePickerDate && DatePickerDate.isHidden) || (cellPickerReminder && PickerViewReminder.isHidden) {
             ncHeight = 0.0
         }
         
@@ -132,14 +139,10 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let DatePickerDateIP = NSIndexPath (row: 0, section: 3)
-        let DatePickerTimeIP = NSIndexPath (row: 2, section: 3)
         let PickerViewReminderIP = NSIndexPath (row: 0, section: 4)
         
         if DatePickerDateIP as IndexPath == indexPath {
             hiddenPickers(fieldName: "ActivityDate", indexPath: indexPath)
-        }
-        else if DatePickerTimeIP as IndexPath == indexPath {
-            hiddenPickers(fieldName: "ActivityTime", indexPath: indexPath)
         }
         else if PickerViewReminderIP as IndexPath == indexPath {
             hiddenPickers(fieldName: "ActivityReminder", indexPath: indexPath)
@@ -158,36 +161,125 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
             return UIView()
         }
     }
-    
+     
+     
 //MARK: - NOTDONE Save Activity Log
+    // Save New Data
         func SaveActivityLog(){
-            let NewActivityLog = Activity(context: context)
+            if EditedActivity == nil {
+                let NewActivityLog = Activity(context: context)
+                
+                //Section 1 STUCK
+                if LabelCat.text == "" {
+                    //Display Alert to Select a Cat
+                }
+                else{
+                    //NewActivityLog.cats = LabelCat.text
+                    //How to associate this Activity with 1 cats model entry??
+                }
+                
+                //Section 2 NOTDONE
+                
+                //Section 3 DONE
+                if TextFieldTitle.text == nil{
+                    //display Alert
+                }
+                else{
+                    NewActivityLog.activityTitle = "\(TextFieldTitle.text ?? "")"
+                }
+                
+                if TextFieldDetails.text == nil{
+                    //display Alert
+                }
+                else{
+                    NewActivityLog.activityDetail = "\(TextFieldDetails.text ?? "")"
+                }
+                
+                //Section 4
+                NewActivityLog.activityDateTime = DatePickerDate.date //COMBINE DATE PICKER AND TIME PICKER; USE FUNCTION TO COMBINE Date Picker and Time Picker Strings and send it here.
+                
+                //Section 5
+                /*if SwitchOff {
+                    
+                }
+                else{
+                    NewActivityLog.activityReminder = self.ReminderToMinutes()
+                }*/
+               
             
-            if TextFieldTitle.text == nil{
-                //display Alert
-            }
-            else{
-                NewActivityLog.activityTitle = "\(TextFieldTitle.text ?? "")"
-            }
-            
-            if TextFieldDetails.text == nil{
-                //display Alert
-            }
-            else{
-                NewActivityLog.activityDetail = "\(TextFieldDetails.text ?? "")"
-            }
-            
-            NewActivityLog.activityDateTime = DatePickerDate.date //COMBINE DATE PICKER AND TIME PICKER; USE FUNCTION TO COMBINE Date Picker and Time Picker Strings and send it here.
-            
-            
+    // Edit Existing Data
             /*
-            NewActivityLog.cats = //Selected Cat
-            NewActivityLog.activityType = //Activity Type as String
-            NewActivityLog.activityTitle = "\(TextFieldTitle.text)" //Activity Title as String
-            NewActivityLog.activityDetail = //Activity Detail as String
-            NewActivityLog.activityDateTime = //Activity Date & Time as Date
- */
+            else if EditedActivity != nil {
+                editedCat!.image = ncCatPhotoImage.image?.jpegData(compressionQuality: 1.0) ?? nil
+                editedCat!.name = "\(ncCatNameTF.text ?? "")"
+                editedCat!.colorTags = Int16(TagsHelper.convertColorToNumber(color: ncCatColorTagsLabel.text!))
+                    if ncCatGenderLabel.text == "Male" {
+                        editedCat!.gender = 0
+                    }
+                    else if ncCatGenderLabel.text == "Female"  {
+                        editedCat!.gender = 1
+                    }
+                editedCat!.dateOfBirth = ncCatDOBPicker.date
+                editedCat!.breed = "\(ncCatBreedLabel.text ?? "")"
+                    if ncCatNeuteredLabel.text == "Yes" {
+                        editedCat!.isNeutered = true
+                    }
+                    else if ncCatNeuteredLabel.text == "No" {
+                        editedCat!.isNeutered = false
+                    }
+                if let weightEdit = Double(ncCatWeightTF.text!){
+                    editedCat!.weight = weightEdit
+                }
+                editedCat!.feeding = "\(ncCatFeedingTF.text ?? "")"
+                editedCat!.vetName = "\(ncCatVetsName.text ?? "")"
+                editedCat!.vetPhoneNo = "\(ncCatVetsPhoneNumber.text ?? "")"
+                editedCat!.notes = "\(ncCatNotesTV.text ?? "")"
+            }
+            do {
+                try context.save()
+            } catch {
+                print("Ga kesave")
+            }
+            */
+            //onViewWillDisappear!() dunno what this is used for
         }
+        
+    // Set data pas mau edit
+            /*
+        func checkIfEditOrNot() {
+            
+            if editedCat != nil {
+                let colorEdit = ["Green", "Yellow", "Orange", "Red", "Blue", "Teal", "Indigo","Purple", "Pink", "White", "Brown", "Black"]
+                
+                if let image = editedCat?.image{
+                    ncCatPhotoImage?.image = UIImage(data: image)
+                }
+                ncCatNameTF.text = editedCat?.name
+                ncCatColorTagsLabel.text = colorEdit[Int(editedCat!.colorTags)-1]
+                ncCatColorTagsIcon.tintColor = TagsHelper.checkColor(tagsNumber: editedCat!.colorTags)
+                    if editedCat?.gender == 0 {
+                        ncCatGenderLabel.text = "Male"
+                    }
+                    else if editedCat?.gender == 1  {
+                        ncCatGenderLabel.text = "Female"
+                    }
+                ncCatDOBPicker.date = (editedCat?.dateOfBirth)!
+                ncCatDOBLabel.text = dateFormat(date: ncCatDOBPicker.date, formatDate: dateFormatTemp)
+                ncCatBreedLabel.text = editedCat?.breed
+                    if editedCat!.isNeutered == true {
+                        ncCatNeuteredLabel.text = "Yes"
+                    }
+                    else if editedCat!.isNeutered == false {
+                        ncCatNeuteredLabel.text = "No"
+                    }
+                ncCatWeightTF.text = "\(editedCat?.weight ?? 0)"
+                ncCatFeedingTF.text = editedCat?.feeding
+                ncCatVetsName.text = editedCat?.vetName
+                ncCatVetsPhoneNumber.text = editedCat?.vetPhoneNo
+                ncCatNotesTV.text = editedCat?.notes
+            }*/
+        }
+    
     
 //MARK: - Picker Reminder Choices
         func PickerReminderFill(){
@@ -201,16 +293,10 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
     @IBAction func DatePickerDateAction(_ sender: Any) {
         LabelDate.text = dateFormat(date: DatePickerDate.date, formatDate: dateFormatTemp)
     }
-    @IBAction func DatePickerTimeAction(_ sender: Any) {
-        LabelTime.text = dateFormat(date: DatePickerTime.date, formatDate: dateFormatTemp)
-    }
     
     // 2 functions, one for ViewDidLoad (user did not change default date (today)) and one for PickerAction (User Chose Date)
     func DatePickerDateDisplay() {
         LabelDate.text = dateFormat(date: DatePickerDate.date, formatDate: dateFormatTemp)
-    }
-    func DatePickerTimeDisplay() {
-        LabelTime.text = dateFormat(date: DatePickerTime.date, formatDate: dateFormatTemp)
     }
         
     func dateFormat(date: Date, formatDate: String) -> String {
@@ -219,10 +305,25 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
         return dateFormatter.string(from: date)
     }
     
-//MARK: - PickerView Settings [DISPLAY PICKER CHOICES ARRAY INTO PICKER]
+//MARK: - Format Reminder to Minutes
+    func ReminderToMinutes() -> Int64 {
+        if ReminderChosen == 0 {return 5} //5m
+        else if ReminderChosen == 1 {return 10} //10m
+        else if ReminderChosen == 2 {return 15} //15m
+        else if ReminderChosen == 3 {return 30} //30m
+        else if ReminderChosen == 4 {return 60} //1 hour
+        else if ReminderChosen == 5 {return 120} //2 hours
+        else if ReminderChosen == 6 {return 1440} //1 day
+        else if ReminderChosen == 7 {return 2880} //2 days
+        else if ReminderChosen == 8 {return 10080} //1 week
+        else {return 0} //No reminder Set
+    }
+    
+//MARK: - PickerView Settings
         func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
             print(RemindBeforeData[row])
             LabelReminderBefore.text = RemindBeforeData[row]
+            ReminderChosen = row
         }
     
     

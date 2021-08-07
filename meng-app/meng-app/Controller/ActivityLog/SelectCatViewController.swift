@@ -63,7 +63,18 @@ class SelectCatViewController: UIViewController, UITableViewDelegate, UITableVie
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let Cell = tableView.dequeueReusableCell(withIdentifier: "SelectCatCell", for: indexPath) as! selectCatCell
         Cell.labelCatName.text = DummyArray[indexPath.row]
+        // Cell.imageCatColor.image = UIImage(named: nameOfTheImage)
         return Cell
     }
     
+//MARK: - Pass Data DOES NOT WORK
+    /*
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if let presenter = presentingViewController as? ActivityLogTableViewController {
+            presenter.SelectedCatName = "Data Passed"//DummyArray[indexPath.row]
+            }
+        
+        self.dismiss(animated: true, completion: nil) //Dismiss Modal on Cell Click
+    }*/
 }
