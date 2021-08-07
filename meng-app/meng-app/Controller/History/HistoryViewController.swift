@@ -8,10 +8,13 @@
 import UIKit
 
 class HistoryViewController: UIViewController {
+    
+    var selectedCat = Cats()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        print(selectedCat.name)
         // Do any additional setup after loading the view.
     }
 

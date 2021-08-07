@@ -29,7 +29,7 @@ class CatDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         assignDatatoPage()
-        
+
         // Do any additional setup after loading the view.
     }
     
@@ -80,7 +80,13 @@ class CatDetailViewController: UIViewController {
     }
 
     @IBAction func goToLogActivityHistory(_ sender: Any) {
-        print("go to log activity history")
+        let storyboard = UIStoryboard(name: "History", bundle: nil)
+       
+        let vc = storyboard.instantiateViewController(withIdentifier: "History") as! HistoryViewController
+        vc.selectedCat = currCat!
+        
+        let nc = UINavigationController(rootViewController: vc)
+        self.present(nc, animated: true, completion: nil)
     }
     
     @IBAction func goToEditPage(_ sender: Any) {
