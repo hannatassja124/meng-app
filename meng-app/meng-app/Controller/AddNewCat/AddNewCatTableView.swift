@@ -34,7 +34,11 @@ class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextVie
     @IBOutlet weak var ncCatDOBPicker: UIDatePicker!
     @IBOutlet weak var ncCatBreedPicker: UIPickerView!
     @IBOutlet weak var ncCatNeuteredPicker: UIPickerView!
-
+    
+// TableView
+    @IBOutlet var catProfileDataTableView: UITableView!
+    @IBOutlet weak var catProfileDataDeleteTableView: UITableViewCell!
+    
     var colorTagsPickerData:[String] = [String]()
     var genderPickerData:[String] = [String]()
     var breedPickerData:[String] = [String]()
@@ -42,6 +46,8 @@ class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextVie
     var onViewWillDisappear: (()->())?
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var editedCat:Cats? = nil
+//    var catsDB: [Cats] = []
+//    var receivePlanIndex: Int = -1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,8 +68,12 @@ class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextVie
         ncCatNotesTV.textColor = .lightGray
         ncCatNotesTV.delegate = self
         hiddenPickers(fieldName: "init", indexPath: [-1])
-        
-        
+        if editedCat == nil {
+            catProfileDataDeleteTableView.isHidden = true
+        }
+        else {
+            catProfileDataDeleteTableView.isHidden = false
+        }
     }
     
 // Buttons
@@ -98,26 +108,52 @@ class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextVie
         self.present(actionsheet, animated: true, completion: nil)
     }
     
+    @IBAction func deleteProfileButton(_ sender: Any) {
+        let alert = UIAlertController(title: "Delete Cat Profile", message: "Are you sure you want to permanently delete this profile?", preferredStyle: .actionSheet)
+                 
+        let DeleteAction = UIAlertAction(title: "Delete", style: .destructive, handler: deleteConfirm)
+        let CancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler:deleteCancel)
+
+        alert.addAction(DeleteAction)
+        alert.addAction(CancelAction)
+
+        self.present(alert, animated: true, completion: nil)
+        
+    }
     
+// Delete Cat Data
+    func deleteConfirm(alertAction: UIAlertAction!) {
+        context.delete(editedCat!)
+        do {
+            try context.save()
+            DispatchQueue.main.async {
+            self.catProfileDataTableView.reloadData()
+            }
+        }
+        catch{
+            print("Ga kedelete")
+        }
+//        if let navController = self.navigationController {
+//            for controller in navController.viewControllers {
+//                if controller is CatsViewController {
+//                    navController.popToViewController(controller, animated:true)
+//                    break
+//                }
+//            }
+//        }
+    }
+    
+    func deleteCancel(alertAction: UIAlertAction!){
+        editedCat = nil
+    }
     
 // Save New Cat Data
     func saveCatProfileData(){
         if editedCat == nil {
             let newCatProfile = Cats(context: context)
             
-            if ncCatPhotoImage.image == nil {
-                
-            }
-            else {
-                newCatProfile.image = ncCatPhotoImage.image?.jpegData(compressionQuality: 1.0) ?? nil
-            }
-            if ncCatNameTF.text == nil {
-                
-            }
-            else {
-                newCatProfile.name =  "\(ncCatNameTF.text ?? "")"
-            }
-            
+            newCatProfile.image = ncCatPhotoImage.image?.jpegData(compressionQuality: 1.0) ?? nil
+            newCatProfile.name =  "\(ncCatNameTF.text ?? "")"
             newCatProfile.colorTags = Int16(TagsHelper.convertColorToNumber(color: ncCatColorTagsLabel.text!))
                 if ncCatGenderLabel.text == "Male" {
                     newCatProfile.gender = 0

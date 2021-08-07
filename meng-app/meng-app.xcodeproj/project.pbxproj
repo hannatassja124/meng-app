@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		03274CEB26B039CE00B78A54 /* AddNewCat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03274CEA26B039CE00B78A54 /* AddNewCat.storyboard */; };
 		03437BBB26B25CB40070BF1E /* AddNewCatTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03437BBA26B25CB40070BF1E /* AddNewCatTableView.swift */; };
+		0378E3A426BDC128005DA330 /* History Details.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0378E3A326BDC128005DA330 /* History Details.storyboard */; };
 		073E332A26B3AF150015C24F /* ActivityLogTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073E332926B3AF150015C24F /* ActivityLogTableViewController.swift */; };
 		0747674426B253D20054D268 /* ActivityLogDatePickerHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0747674326B253D20054D268 /* ActivityLogDatePickerHeader.swift */; };
 		0747674626B253FB0054D268 /* ActivityLogDatePickerHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0747674526B253FB0054D268 /* ActivityLogDatePickerHeader.xib */; };
@@ -53,6 +54,7 @@
 /* Begin PBXFileReference section */
 		03274CEA26B039CE00B78A54 /* AddNewCat.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddNewCat.storyboard; sourceTree = "<group>"; };
 		03437BBA26B25CB40070BF1E /* AddNewCatTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewCatTableView.swift; sourceTree = "<group>"; };
+		0378E3A326BDC128005DA330 /* History Details.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "History Details.storyboard"; sourceTree = "<group>"; };
 		073E332926B3AF150015C24F /* ActivityLogTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityLogTableViewController.swift; sourceTree = "<group>"; };
 		0747674326B253D20054D268 /* ActivityLogDatePickerHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityLogDatePickerHeader.swift; sourceTree = "<group>"; };
 		0747674526B253FB0054D268 /* ActivityLogDatePickerHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityLogDatePickerHeader.xib; sourceTree = "<group>"; };
@@ -122,6 +124,14 @@
 				03437BBA26B25CB40070BF1E /* AddNewCatTableView.swift */,
 			);
 			path = AddNewCat;
+			sourceTree = "<group>";
+		};
+		0378E3A226BDC0E8005DA330 /* History Details */ = {
+			isa = PBXGroup;
+			children = (
+				0378E3A326BDC128005DA330 /* History Details.storyboard */,
+			);
+			path = "History Details";
 			sourceTree = "<group>";
 		};
 		073E332B26B3CF2F0015C24F /* ReminderHeader */ = {
@@ -279,6 +289,7 @@
 		F995E50A26A99EBC00DA5C50 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0378E3A226BDC0E8005DA330 /* History Details */,
 				F995E51326A9A9AC00DA5C50 /* Dashboards */,
 				F96BBDCD26BB31910065C589 /* ActivityDetail */,
 				F9B6085D26AFEAA7005EF315 /* ActivitiesCell */,
@@ -488,6 +499,7 @@
 				F995E50026A99E9800DA5C50 /* Assets.xcassets in Resources */,
 				F9B6086126AFEAC9005EF315 /* ActivitiesTableViewCell.xib in Resources */,
 				07D0954726B03EAE00491BD0 /* ActivityLog.storyboard in Resources */,
+				0378E3A426BDC128005DA330 /* History Details.storyboard in Resources */,
 				F995E4FB26A99E9700DA5C50 /* Main.storyboard in Resources */,
 				F9A45AC526AD390D00B64134 /* Calendar.storyboard in Resources */,
 				03274CEB26B039CE00B78A54 /* AddNewCat.storyboard in Resources */,
