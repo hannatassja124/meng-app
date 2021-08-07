@@ -29,8 +29,25 @@ class CatDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         assignDatatoPage()
+//        addActivityDummy()
 
         // Do any additional setup after loading the view.
+    }
+    
+    func addActivityDummy(){
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+
+        let activity = Activity(context: context)
+        activity.activityTitle = "Test"
+        activity.activityDateTime = Date()
+        activity.activityDetail = "Help"
+        activity.activityType = "1"
+        currCat?.addToActivities(activity)
+        do {
+            try context.save()
+        } catch  {
+            
+        }
     }
     
     func setupUI() {
