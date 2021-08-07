@@ -62,7 +62,7 @@ class CatDetailViewController: UIViewController {
         catGenderIcon.image = UIImage(named: (currCat!.gender == 0 ? "Male" : "Female"))
         catColorTags.tintColor = TagsHelper.checkColor(tagsNumber: currCat!.colorTags)
         let neuteredString = currCat!.isNeutered ? "Neutered" : "Not neutered"
-        catBreedAndNeutered.text = "\s(currCat!.breed ?? "no data"), \(neuteredString)"
+        catBreedAndNeutered.text = "\(currCat!.breed ?? "no data"), \(neuteredString)"
         if let date = currCat?.dateOfBirth{
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "dd/MM/YYYY"
