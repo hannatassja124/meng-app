@@ -9,7 +9,7 @@ import UIKit
 
 struct GroupedActivities {
     var sectionTitle:String
-    var activities:[Activity] = []
+    var activities = [Activity]()
     
     init(sectionTitle:String) {
         self.sectionTitle = sectionTitle
@@ -22,15 +22,20 @@ class HistoryViewController: UIViewController {
 
     
     var selectedCat = Cats()
-    var sortedCatActivites:[Activity] = []
     var groupedActivties:[GroupedActivities] = []
     @IBOutlet weak var activitiesTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupUI()
         checkIfActivitiesEmptyOrNot()
-        
         initiateTableView()
+
+    }
+    
+    func setupUI() {
+        UINavigationBar.appearance().largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(named: "MidnightGreen")!]
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(named: "MidnightGreen")!]
 
     }
     
@@ -49,6 +54,9 @@ class HistoryViewController: UIViewController {
         }
         else{
             sortActivitiesByDate()
+            if groupedActivties.count == 0 {
+                activitiesTableView.isHidden = true
+            }
         }
     }
     
@@ -62,14 +70,15 @@ class HistoryViewController: UIViewController {
         dateformatter.dateFormat = "MMMM dd, YYYY"
         
         for data in catActivites {
-            let date = dateformatter.date(from: "\(data.activityDateTime ?? Date())")
-//            if date! < Date() {
+            if data.activityDateTime! < Date() && data.activityDateTime! >= Calendar.current.date(byAdding: .day, value: -30, to: Date())! {
                 convertedCatActivities.append(data)
-//            }
+            }
         }
         
-        sortedCatActivites = convertedCatActivities.sorted(by: {$0.activityDateTime?.compare($1.activityDateTime!) == .orderedDescending})
-        
+        var sortedCatActivites = convertedCatActivities.sorted(by: {$0.activityDateTime?.compare($1.activityDateTime!) == .orderedDescending})
+        if sortedCatActivites.count == 0 {
+            return
+        }
         //count sections by date
         var sectionIndex = 0;
         var lastDate = sortedCatActivites[sectionIndex].activityDateTime!
@@ -122,12 +131,11 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource{
         cell.activityTitleLabel.text = "\(groupedActivties[indexPath.section].activities[indexPath.row].activityTitle!)"
         
         let dateformatter = DateFormatter()
-        dateformatter.dateFormat = "MMMM dd, YYYY"
+        dateformatter.dateFormat = "HH:MM"
         cell.activityTimeLabel.text = "\(dateformatter.string(from: groupedActivties[indexPath.section].activities[indexPath.row].activityDateTime!))"
         
         cell.activityCatNameLabel.text = "\(selectedCat.name!)"
-        cell.activityTypeImage.image = UIImage(systemName: "stethoscope")
-
+        cell.activityTypeImage.image = UIImage(named: "\(groupedActivties[indexPath.section].activities[indexPath.row].activityType!)")
         cell.selectionStyle = .none
         
         return cell
@@ -145,6 +153,21 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource{
         self.present(nc, animated: true, completion: nil)
 
     }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 24))
+        view.backgroundColor = UIColor(named: "NeutralLight")
 
-
+        let sectionLabel = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 24))
+        sectionLabel.text = groupedActivties[section].sectionTitle
+        sectionLabel.font = UIFont.preferredFont(forTextStyle: UIFont.TextStyle.caption2)
+        sectionLabel.textColor = UIColor(named: "MidnightGreen")
+        view.addSubview(sectionLabel)
+        
+        return view
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 24
+    }
 }

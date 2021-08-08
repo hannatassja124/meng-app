@@ -29,8 +29,6 @@ class CatDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         assignDatatoPage()
-//        addActivityDummy()
-
         // Do any additional setup after loading the view.
     }
     
@@ -38,16 +36,16 @@ class CatDetailViewController: UIViewController {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
         let activity = Activity(context: context)
-        activity.activityTitle = "Test"
+        activity.activityTitle = "cukur rambut"
         
         var dayComponent    = DateComponents()
-        dayComponent.day    = -2 // For removing one day (yesterday): -1
+        dayComponent.day    = -45 // For removing one day (yesterday): -1
         let theCalendar     = Calendar.current
         let prevDate        = theCalendar.date(byAdding: dayComponent, to: Date())
         activity.activityDateTime = prevDate
         
-        activity.activityDetail = "Help"
-        activity.activityType = "1"
+        activity.activityDetail = "pake salep"
+        activity.activityType = "Treatment"
         currCat?.addToActivities(activity)
         do {
             try context.save()
