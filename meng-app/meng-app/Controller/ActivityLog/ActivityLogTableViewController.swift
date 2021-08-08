@@ -4,14 +4,17 @@
 //
 //  Created by William Giovanni Kambuno on 28/07/21.
 //
+//MARK: - !!To-Do!!
+//HELPER CODE TO CLEAN THE FOLLOWING: Reminder to Minutes & Activities Type to Integer
+//Edit
+//Delete
+//Reminder Switch to hide Reminder Cell & NOT save data
 
 import UIKit
 
 class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegate, UITextViewDelegate {
 
 //MARK: - Outlets
-    
-    //@IBOutlet var TableViewMain: UITableView!
     
     //NavBar
     @IBOutlet weak var NavBarButtonBack: UIBarButtonItem!
@@ -45,28 +48,34 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var EditedActivity:Activity? = nil
     let dateFormatTemp =  "MMMM dd, yyyy"
-    var SelectedCatName = ""
-    var SelectedCatColour = UIImage()
     var ReminderChosen: Int = 0
     var SelectedActivitiesIndex: Int = 0
     var ActivityList = [ActivitiesTypeStruct(name: "Vaccine", iconName: "Vaccine"), ActivitiesTypeStruct(name: "Appointment", iconName: "Appointment"), ActivitiesTypeStruct(name: "Treatment", iconName: "Treatment"), ActivitiesTypeStruct(name: "Symptoms", iconName: "Symptoms"), ActivitiesTypeStruct(name: "Others", iconName: "Others")]
+    var selectedCat = [CatData]() //unused?
+    var cats = [Cats]()
+    var selectedCatIndex: Int = -1
+    var dateFormatter = DateFormatter()
+    let calendar = Calendar.current
+    
 
 //MARK: - ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        retrieveData()
+        
         PickerReminderFill()
         DatePickerDateDisplay()
         
-        //RegisterTableCell()
-        //ReloadFunction()
+        
         CollectionViewActivities.register(UINib(nibName: "ActivitiesCVC", bundle: nil), forCellWithReuseIdentifier: "ActivitiesCVCID")
         CollectionViewActivities.delegate = self
         CollectionViewActivities.dataSource = self
         
         hiddenPickers(fieldName: "init", indexPath: [-1])
         self.tableView.register(UINib(nibName: "ActivityLogDatePickerHeader", bundle: nil), forHeaderFooterViewReuseIdentifier: "ActivityLogDatePickerHeader")
-
+        self.tableView.register(UINib(nibName: "ActivityLogActivitiesHeader", bundle: nil), forHeaderFooterViewReuseIdentifier: "ActivityLogActivitiesHeader")
+        self.tableView.register(UINib(nibName: "ActivityLogDateTimeHeader", bundle: nil), forHeaderFooterViewReuseIdentifier: "ActivityLogDateTimeHeader")
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -74,16 +83,39 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
+//MARK: - Select Cat Data Pass
 //Selected Cat Refresh after Data Pass from Modal
     
     func SelectedCatRefresh() {
-        LabelCat.text = SelectedCatName
-        //ImageCatColour.image = SelectedCatColour
-    }
-    @IBAction func RefreshButtonTest(_ sender: Any) {
-        SelectedCatRefresh()
+        LabelCat.text = selectedCat[selectedCatIndex].cat.name!
+        ImageCatColour.tintColor = TagsHelper.checkColor(tagsNumber: selectedCat[selectedCatIndex].cat.colorTags)
     }
     
+    private func retrieveData(){
+        do {
+            cats = try context.fetch(Cats.fetchRequest())
+        } catch {
+            //error
+            print("Error when retrieving data from CoreData")
+        }
+        for cat in cats {
+            selectedCat.append(CatData(cat: cat))
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let SelectCatModal = segue.destination as! SelectCatViewController
+        SelectCatModal.selectedCat = selectedCat
+        SelectCatModal.onCatSelectedModal = {(index:Int) -> Void in
+            self.selectedCat[index].isSelected = !self.selectedCat[index].isSelected
+            if self.selectedCatIndex != index && self.selectedCatIndex != -1 {
+                self.selectedCat[self.selectedCatIndex].isSelected = false
+            }
+            self.selectedCatIndex = index
+            self.SelectedCatRefresh()
+            print(self.selectedCatIndex)
+        }
+    }
     
 
 //MARK: - NavBar
@@ -165,7 +197,18 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
 // MARK: - TableView SectionHeader
 // UITableViewSectionHeader Custom (Using XIB)
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if section == 4 {
+        
+        if section == 1 {
+            let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "ActivityLogActivitiesHeader") as? ActivityLogActivitiesHeader
+            
+            return headerView!
+        }
+        else if section == 3 {
+            let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "ActivityLogDateTimeHeader") as? ActivityLogDateTimeHeader
+            
+            return headerView!
+        }
+        else if section == 4 {
             let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "ActivityLogDatePickerHeader") as? ActivityLogDatePickerHeader
             
             return headerView!
@@ -175,21 +218,18 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
     }
      
      
-//MARK: - NOTDONE Save Activity Log
+//MARK: - Save Activity Log
     // Save New Data
         func SaveActivityLog(){
             if EditedActivity == nil {
                 let NewActivityLog = Activity(context: context)
-                let cats = Cats(context: context)
                 
-                //Section 1 STUCK REEEEEE
+                //Section 1 DONE
                 if LabelCat.text == "" {
                     //Display Alert to Select a Cat
                 }
                 else{
-                    //How to associate this Activity with 1 cats model entry??
-                    cats.name = LabelCat.text
-                    NewActivityLog.addToCats(cats)
+                    NewActivityLog.addToCats(cats[selectedCatIndex])
                 }
                 
                 //Section 2 DONE
@@ -224,10 +264,25 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
                     NewActivityLog.activityDetail = "\(TextFieldDetails.text ?? "")"
                 }
                 
-                //Section 4
-                NewActivityLog.activityDateTime = DatePickerDate.date //COMBINE DATE PICKER AND TIME PICKER; USE FUNCTION TO COMBINE Date Picker and Time Picker Strings and send it here.
+                //Section 4 DONE
                 
-                //Section 5
+                dateFormatter.dateFormat = "yyyy-MM-dd"
+                let DateDay = dateFormatter.string(from: DatePickerDate.date)
+                dateFormatter.dateFormat = "hh:mm:ss Z"
+                let TimeDay = dateFormatter.string(from: DatePickerTime.date)
+                let ActualDateTime = DateDay + " " + TimeDay
+                
+                
+                dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss Z"
+
+                let ActualActualActualDate = dateFormatter.date(from: ActualDateTime)!
+                
+                NewActivityLog.activityDateTime = ActualActualActualDate
+                
+                
+                
+                //Section 5 DONE
+                NewActivityLog.activityReminder = self.ReminderToMinutes()
                 /*if SwitchOff {
                     
                 }
@@ -235,7 +290,7 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
                     NewActivityLog.activityReminder = self.ReminderToMinutes()
                 }*/
                
-            
+//MARK: - Edit
     // Edit Existing Data
             /*
             else if EditedActivity != nil {
@@ -329,7 +384,6 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
     }
         
     func dateFormat(date: Date, formatDate: String) -> String {
-        let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = formatDate
         return dateFormatter.string(from: date)
     }

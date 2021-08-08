@@ -13,6 +13,11 @@
 		0747674426B253D20054D268 /* ActivityLogDatePickerHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0747674326B253D20054D268 /* ActivityLogDatePickerHeader.swift */; };
 		0747674626B253FB0054D268 /* ActivityLogDatePickerHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0747674526B253FB0054D268 /* ActivityLogDatePickerHeader.xib */; };
 		0779832626B1B36400BFFD57 /* SelectCatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0779832526B1B36400BFFD57 /* SelectCatViewController.swift */; };
+		077B96EC26C012A000117F67 /* ActivitiesCatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077B96EB26C012A000117F67 /* ActivitiesCatModel.swift */; };
+		077B96F226C03CA800117F67 /* ActivityLogDateTimeHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077B96F126C03CA800117F67 /* ActivityLogDateTimeHeader.swift */; };
+		077B96F426C03CC900117F67 /* ActivityLogDateTimeHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 077B96F326C03CC900117F67 /* ActivityLogDateTimeHeader.xib */; };
+		077B96F626C03E6C00117F67 /* ActivityLogActivitiesHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 077B96F526C03E6C00117F67 /* ActivityLogActivitiesHeader.xib */; };
+		077B96F826C03E7A00117F67 /* ActivityLogActivitiesHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077B96F726C03E7A00117F67 /* ActivityLogActivitiesHeader.swift */; };
 		0799D24126BED46A00511015 /* ActivitiesTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0799D23F26BED46A00511015 /* ActivitiesTVC.swift */; };
 		0799D24226BED46A00511015 /* ActivitiesTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0799D24026BED46A00511015 /* ActivitiesTVC.xib */; };
 		0799D24526BED4E500511015 /* ActivitiesCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0799D24326BED4E500511015 /* ActivitiesCVC.swift */; };
@@ -62,6 +67,11 @@
 		0747674326B253D20054D268 /* ActivityLogDatePickerHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityLogDatePickerHeader.swift; sourceTree = "<group>"; };
 		0747674526B253FB0054D268 /* ActivityLogDatePickerHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityLogDatePickerHeader.xib; sourceTree = "<group>"; };
 		0779832526B1B36400BFFD57 /* SelectCatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCatViewController.swift; sourceTree = "<group>"; };
+		077B96EB26C012A000117F67 /* ActivitiesCatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesCatModel.swift; sourceTree = "<group>"; };
+		077B96F126C03CA800117F67 /* ActivityLogDateTimeHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityLogDateTimeHeader.swift; sourceTree = "<group>"; };
+		077B96F326C03CC900117F67 /* ActivityLogDateTimeHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityLogDateTimeHeader.xib; sourceTree = "<group>"; };
+		077B96F526C03E6C00117F67 /* ActivityLogActivitiesHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityLogActivitiesHeader.xib; sourceTree = "<group>"; };
+		077B96F726C03E7A00117F67 /* ActivityLogActivitiesHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityLogActivitiesHeader.swift; sourceTree = "<group>"; };
 		0799D23F26BED46A00511015 /* ActivitiesTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesTVC.swift; sourceTree = "<group>"; };
 		0799D24026BED46A00511015 /* ActivitiesTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivitiesTVC.xib; sourceTree = "<group>"; };
 		0799D24326BED4E500511015 /* ActivitiesCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesCVC.swift; sourceTree = "<group>"; };
@@ -139,6 +149,10 @@
 			children = (
 				0747674326B253D20054D268 /* ActivityLogDatePickerHeader.swift */,
 				0747674526B253FB0054D268 /* ActivityLogDatePickerHeader.xib */,
+				077B96F326C03CC900117F67 /* ActivityLogDateTimeHeader.xib */,
+				077B96F126C03CA800117F67 /* ActivityLogDateTimeHeader.swift */,
+				077B96F526C03E6C00117F67 /* ActivityLogActivitiesHeader.xib */,
+				077B96F726C03E7A00117F67 /* ActivityLogActivitiesHeader.swift */,
 			);
 			path = ReminderHeader;
 			sourceTree = "<group>";
@@ -323,6 +337,7 @@
 				F92EDAE826BDA2A30051B9DF /* Cats+CoreDataClass.swift */,
 				F92EDAE926BDA2A30051B9DF /* Cats+CoreDataProperties.swift */,
 				0799D24726BEF43100511015 /* ActivitiesTypeStruct.swift */,
+				077B96EB26C012A000117F67 /* ActivitiesCatModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -503,6 +518,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				191E4FB426B1907B00836145 /* CatDetail.storyboard in Resources */,
+				077B96F626C03E6C00117F67 /* ActivityLogActivitiesHeader.xib in Resources */,
 				F995E50326A99E9800DA5C50 /* LaunchScreen.storyboard in Resources */,
 				F9A45AC726AD392E00B64134 /* Dashboard.storyboard in Resources */,
 				F9A45ACA26AD393D00B64134 /* Cats.storyboard in Resources */,
@@ -513,6 +529,7 @@
 				F9B6086126AFEAC9005EF315 /* ActivitiesTableViewCell.xib in Resources */,
 				07D0954726B03EAE00491BD0 /* ActivityLog.storyboard in Resources */,
 				F995E4FB26A99E9700DA5C50 /* Main.storyboard in Resources */,
+				077B96F426C03CC900117F67 /* ActivityLogDateTimeHeader.xib in Resources */,
 				F9A45AC526AD390D00B64134 /* Calendar.storyboard in Resources */,
 				0799D24626BED4E500511015 /* ActivitiesCVC.xib in Resources */,
 				03274CEB26B039CE00B78A54 /* AddNewCat.storyboard in Resources */,
@@ -532,6 +549,7 @@
 				F9B6085C26AFEA2F005EF315 /* CalendarViewController.swift in Sources */,
 				F92EDAEA26BDA2A30051B9DF /* Activity+CoreDataClass.swift in Sources */,
 				F9CAC8A426B2A4E200D46ED8 /* CalendarCell.swift in Sources */,
+				077B96F226C03CA800117F67 /* ActivityLogDateTimeHeader.swift in Sources */,
 				F9B6086026AFEAC9005EF315 /* ActivitiesTableViewCell.swift in Sources */,
 				073E332A26B3AF150015C24F /* ActivityLogTableViewController.swift in Sources */,
 				1920067126B0440900BAD2D0 /* CatsViewController.swift in Sources */,
@@ -542,6 +560,7 @@
 				1920066D26B032BF00BAD2D0 /* CatProfileCollectionViewCell.swift in Sources */,
 				0799D24526BED4E500511015 /* ActivitiesCVC.swift in Sources */,
 				0799D24826BEF43100511015 /* ActivitiesTypeStruct.swift in Sources */,
+				077B96EC26C012A000117F67 /* ActivitiesCatModel.swift in Sources */,
 				F97787E226B43CB300F4CD01 /* CalendarHelper.swift in Sources */,
 				F9CAC8A626B2DF1800D46ED8 /* CalendarCollectionViewController.swift in Sources */,
 				0799D24126BED46A00511015 /* ActivitiesTVC.swift in Sources */,
@@ -554,6 +573,7 @@
 				F995E51B26A9AA5200DA5C50 /* DashboardCellViewController.swift in Sources */,
 				F92EDAEC26BDA2A30051B9DF /* Cats+CoreDataClass.swift in Sources */,
 				F995E4F426A99E9700DA5C50 /* AppDelegate.swift in Sources */,
+				077B96F826C03E7A00117F67 /* ActivityLogActivitiesHeader.swift in Sources */,
 				F92EDAEB26BDA2A30051B9DF /* Activity+CoreDataProperties.swift in Sources */,
 				0747674426B253D20054D268 /* ActivityLogDatePickerHeader.swift in Sources */,
 				0779832626B1B36400BFFD57 /* SelectCatViewController.swift in Sources */,
@@ -729,7 +749,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = KBSYTU5GMJ;
+				DEVELOPMENT_TEAM = R8CWTPS5QZ;
 				INFOPLIST_FILE = "meng-app/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -748,7 +768,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = KBSYTU5GMJ;
+				DEVELOPMENT_TEAM = R8CWTPS5QZ;
 				INFOPLIST_FILE = "meng-app/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
