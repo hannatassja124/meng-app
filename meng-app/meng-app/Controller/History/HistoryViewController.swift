@@ -7,6 +7,15 @@
 
 import UIKit
 
+struct GroupedActivities {
+    var sectionTitle:String
+    var activities:[Activity] = []
+    
+    init(sectionTitle:String) {
+        self.sectionTitle = sectionTitle
+    }
+}
+
 class HistoryViewController: UIViewController {
     
     let activitiesCellId = "ActivitiesTableViewCell"
@@ -14,6 +23,7 @@ class HistoryViewController: UIViewController {
     
     var selectedCat = Cats()
     var sortedCatActivites:[Activity] = []
+    var groupedActivties:[GroupedActivities] = []
     @IBOutlet weak var activitiesTableView: UITableView!
     
     override func viewDidLoad() {
@@ -43,9 +53,41 @@ class HistoryViewController: UIViewController {
     }
     
     func sortActivitiesByDate(){
+        //sort and filter data descending by date
         let catActivites = selectedCat.activities?.allObjects as! [Activity]
-        print(catActivites)
-        sortedCatActivites = catActivites
+        
+        var convertedCatActivities:[Activity] = []
+        
+        let dateformatter = DateFormatter()
+        dateformatter.dateFormat = "MMMM dd, YYYY"
+        
+        for data in catActivites {
+            let date = dateformatter.date(from: "\(data.activityDateTime ?? Date())")
+//            if date! < Date() {
+                convertedCatActivities.append(data)
+//            }
+        }
+        
+        sortedCatActivites = convertedCatActivities.sorted(by: {$0.activityDateTime?.compare($1.activityDateTime!) == .orderedDescending})
+        
+        //count sections by date
+        var sectionIndex = 0;
+        var lastDate = sortedCatActivites[sectionIndex].activityDateTime!
+        groupedActivties.append(GroupedActivities(sectionTitle: dateformatter.string(from: lastDate)))
+        for act in sortedCatActivites {
+            print(dateformatter.string(from: act.activityDateTime!) == dateformatter.string(from: lastDate))
+            if dateformatter.string(from: act.activityDateTime!) == dateformatter.string(from: lastDate) {
+                groupedActivties[sectionIndex].activities.append(act)
+                print("tanggal sama")
+            }
+            else{
+                groupedActivties.append(GroupedActivities(sectionTitle: dateformatter.string(from: act.activityDateTime!)))
+                sectionIndex += 1
+                groupedActivties[sectionIndex].activities.append(act)
+                lastDate = act.activityDateTime!
+                print("tanggal beda")
+            }
+        }
     }
     
     
@@ -63,19 +105,25 @@ class HistoryViewController: UIViewController {
 }
 
 extension HistoryViewController: UITableViewDelegate, UITableViewDataSource{
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return groupedActivties.count    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sortedCatActivites.count
+        return groupedActivties[section].activities.count
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return groupedActivties[section].sectionTitle
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: activitiesCellId, for: indexPath) as! ActivitiesTableViewCell
         
-        let act = sortedCatActivites[indexPath.row]
-        cell.activityTitleLabel.text = "\(act.activityTitle!)"
+        cell.activityTitleLabel.text = "\(groupedActivties[indexPath.section].activities[indexPath.row].activityTitle!)"
         
         let dateformatter = DateFormatter()
         dateformatter.dateFormat = "MMMM dd, YYYY"
-        cell.activityTimeLabel.text = "\(dateformatter.string(from: act.activityDateTime!))"
+        cell.activityTimeLabel.text = "\(dateformatter.string(from: groupedActivties[indexPath.section].activities[indexPath.row].activityDateTime!))"
         
         cell.activityCatNameLabel.text = "\(selectedCat.name!)"
         cell.activityTypeImage.image = UIImage(systemName: "stethoscope")

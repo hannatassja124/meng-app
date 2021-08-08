@@ -39,7 +39,13 @@ class CatDetailViewController: UIViewController {
 
         let activity = Activity(context: context)
         activity.activityTitle = "Test"
-        activity.activityDateTime = Date()
+        
+        var dayComponent    = DateComponents()
+        dayComponent.day    = -2 // For removing one day (yesterday): -1
+        let theCalendar     = Calendar.current
+        let prevDate        = theCalendar.date(byAdding: dayComponent, to: Date())
+        activity.activityDateTime = prevDate
+        
         activity.activityDetail = "Help"
         activity.activityType = "1"
         currCat?.addToActivities(activity)
