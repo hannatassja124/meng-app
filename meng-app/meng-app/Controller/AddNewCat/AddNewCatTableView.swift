@@ -52,6 +52,8 @@ class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        ncCatNotesTV.text = "Medical Notes"
+        ncCatNotesTV.textColor = .lightGray
         checkIfEditOrNot()
         
         nameField()
@@ -64,8 +66,6 @@ class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextVie
         ncCatDOBDate()
         pickerCatBreedFill()
         pickerDataNeuteredFill()
-        ncCatNotesTV.text = "Medical Notes"
-        ncCatNotesTV.textColor = .lightGray
         ncCatNotesTV.delegate = self
         hiddenPickers(fieldName: "init", indexPath: [-1])
         if editedCat == nil {
@@ -133,14 +133,33 @@ class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextVie
         catch{
             print("Ga kedelete")
         }
+//        self.navigationController?.popToRootViewController(animated: true)
+        
+//        self.dismiss(animated: true, completion: {
+//            if let navController = self.navigationController {
+//                for controller in navController.viewControllers {
+//                    if controller is CatsViewController {
+//                        navController.popToViewController(controller, animated:true)
+//                    }
+//                }
+//            }
+//        })
+        
+//        let catsProfileList = UIStoryboard(name: "Cats", bundle: nil).instantiateViewController(withIdentifier: "catsStoryboard") as! CatsViewController
+//        self.navigationController?.pushViewController(catsProfileList, animated: true)
+        
 //        if let navController = self.navigationController {
 //            for controller in navController.viewControllers {
 //                if controller is CatsViewController {
 //                    navController.popToViewController(controller, animated:true)
-//                    break
 //                }
 //            }
 //        }
+        
+//        let storyBoard : UIStoryboard = UIStoryboard(name: "Cats", bundle:nil)
+//        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "catsStoryboard") as! CatsViewController
+//        self.present(nextViewController, animated:true, completion:nil)
+
     }
     
     func deleteCancel(alertAction: UIAlertAction!){
@@ -176,6 +195,7 @@ class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextVie
             newCatProfile.vetName = "\(ncCatVetsName.text ?? "")"
             newCatProfile.vetPhoneNo = "\(ncCatVetsPhoneNumber.text ?? "")"
             newCatProfile.notes = "\(ncCatNotesTV.text ?? "")"
+            print(ncCatNotesTV.text!)
             }
         
         // edited data
@@ -204,6 +224,7 @@ class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextVie
             editedCat!.vetName = "\(ncCatVetsName.text ?? "")"
             editedCat!.vetPhoneNo = "\(ncCatVetsPhoneNumber.text ?? "")"
             editedCat!.notes = "\(ncCatNotesTV.text ?? "")"
+            print(ncCatNotesTV.text!)
         }
         do {
             try context.save()
@@ -246,6 +267,13 @@ class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextVie
             ncCatVetsName.text = editedCat?.vetName
             ncCatVetsPhoneNumber.text = editedCat?.vetPhoneNo
             ncCatNotesTV.text = editedCat?.notes
+            if ncCatNotesTV.text == "Medical Notes" {
+                ncCatNotesTV.textColor = .lightGray
+            }
+            else {
+                ncCatNotesTV.textColor = .black
+            }
+            print(ncCatNotesTV.text!)
         }
     }
     
@@ -325,17 +353,17 @@ class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextVie
             ncCatNotesTV.textColor = .black
         }
     }
-    
+
     func textViewDidEndEditing(_ textView: UITextView) {
         if ncCatNotesTV.text == "" {
             ncCatNotesTV.text = "Medical Notes"
             ncCatNotesTV.textColor = .lightGray
         }
     }
-    
+
     func textViewDidChange() {
     }
-    
+
     func textView( _ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
             if text == "\n"{
                 ncCatNotesTV.resignFirstResponder()
