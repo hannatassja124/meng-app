@@ -44,7 +44,7 @@ class ActivityDetailViewController: UIViewController {
         colorTagImage.tintColor = TagsHelper.checkColor(tagsNumber: colorTag![0] as! Int16)
         activityTitleLabel.text = details.activityTitle
         activityDetailLabel.text = details.activityDetail
-        activityTypeImage.image = UIImage(named: TypeHelper.checkType(typeNumber: details.activityType!))
+        activityTypeImage.image = UIImage(named: details.activityType!)
         
     }
     

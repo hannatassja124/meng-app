@@ -145,11 +145,13 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource{
         cell.activityTitleLabel.text = "\(groupedActivties[indexPath.section].activities[indexPath.row].activityTitle!)"
         
         let dateformatter = DateFormatter()
-        dateformatter.dateFormat = "HH:MM"
+        dateformatter.dateFormat = "hh:mm a"
         cell.activityTimeLabel.text = "\(dateformatter.string(from: groupedActivties[indexPath.section].activities[indexPath.row].activityDateTime!))"
         
         cell.activityCatNameLabel.text = "\(selectedCat.name!)"
         cell.activityTypeImage.image = UIImage(named: "\(groupedActivties[indexPath.section].activities[indexPath.row].activityType!)")
+        
+        cell.activitiesColorTagImage.tintColor = TagsHelper.checkColor(tagsNumber: selectedCat.colorTags)
         cell.selectionStyle = .none
         
         return cell
@@ -160,9 +162,13 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource{
         let storyboard = UIStoryboard(name: "ActivityDetail", bundle: nil)
        
         let vc = storyboard.instantiateViewController(withIdentifier: "ActivityDetailStoryboard") as! ActivityDetailViewController
+        vc.details = groupedActivties[indexPath.section].activities[indexPath.row]
+        
+        
         let nc = UINavigationController(rootViewController: vc)
         nc.navigationBar.isTranslucent = false
         nc.navigationBar.barTintColor = #colorLiteral(red: 0.1036602035, green: 0.2654651999, blue: 0.3154058456, alpha: 1)
+        nc.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.init(cgColor: #colorLiteral(red: 0.9984837174, green: 0.9839375615, blue: 0.9796521068, alpha: 1))]
         
         self.present(nc, animated: true, completion: nil)
 

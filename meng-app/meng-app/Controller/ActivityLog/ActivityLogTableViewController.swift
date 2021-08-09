@@ -57,6 +57,8 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
     var dateFormatter = DateFormatter()
     let calendar = Calendar.current
     
+    var onViewWillDisappear: (()->())?
+    
 
 //MARK: - ViewDidLoad
     override func viewDidLoad() {
@@ -121,6 +123,7 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
 //MARK: - NavBar
     @IBAction func SaveButtonAction(_ sender: Any) {
         SaveActivityLog()
+        onViewWillDisappear!()
         self.dismiss(animated: true, completion: nil)
     }
 
@@ -268,12 +271,11 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
                 
                 dateFormatter.dateFormat = "yyyy-MM-dd"
                 let DateDay = dateFormatter.string(from: DatePickerDate.date)
-                dateFormatter.dateFormat = "hh:mm:ss Z"
+                dateFormatter.dateFormat = "hh:mm:ss a Z"
                 let TimeDay = dateFormatter.string(from: DatePickerTime.date)
                 let ActualDateTime = DateDay + " " + TimeDay
                 
-                
-                dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss Z"
+                dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss a Z"
 
                 let ActualActualActualDate = dateFormatter.date(from: ActualDateTime)!
                 

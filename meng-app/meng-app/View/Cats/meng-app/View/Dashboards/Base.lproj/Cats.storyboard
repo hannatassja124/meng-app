@@ -69,7 +69,7 @@
         <scene sceneID="oiJ-ga-LuL">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Xtg-IF-2qc" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Cats" id="nwG-bq-j8s"/>
+                    <tabBarItem key="tabBarItem" title="Cats" image="Cats" id="nwG-bq-j8s"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Acv-eV-akr">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -90,8 +90,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Cats" width="32" height="32"/>
         <namedColor name="NeutralLight">
-            <color red="0.99000000953674316" green="0.97299998998641968" blue="0.96899998188018799" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.98431372549019602" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

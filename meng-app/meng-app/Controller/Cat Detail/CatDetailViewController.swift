@@ -112,6 +112,8 @@ class CatDetailViewController: UIViewController {
        
         let vc = storyboard.instantiateViewController(withIdentifier: "addNewCat") as! AddNewCatTableView
         vc.editedCat = currCat
+        vc.delegate = self
+        
         
         vc.onViewWillDisappear = {
             self.assignDatatoPage()
@@ -165,3 +167,8 @@ class CatDetailViewController: UIViewController {
 }
 
 
+extension CatDetailViewController: AddNewCatTableViewProtocol {
+    func backToRoot() {
+        self.navigationController?.popViewController(animated: true)
+    }
+}

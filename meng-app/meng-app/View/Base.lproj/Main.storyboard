@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" name="MidnightGreen"/>
-                        <color key="selectedImageTintColor" name="Melon"/>
+                        <color key="selectedImageTintColor" name="Cong"/>
                     </tabBar>
                     <connections>
                         <segue destination="XGI-4t-YBX" kind="relationship" relationship="viewControllers" id="Bd5-Hm-Wdn"/>
@@ -61,8 +61,8 @@
         </scene>
     </scenes>
     <resources>
-        <namedColor name="Melon">
-            <color red="0.99900001287460327" green="0.75900000333786011" blue="0.70899999141693115" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="Cong">
+            <color red="0.93528264760000002" green="0.55764985079999996" blue="0.52547639609999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="MidnightGreen">
             <color red="0.10499999672174454" green="0.2669999897480011" blue="0.31499999761581421" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -52,7 +52,17 @@ class CalendarViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+//        let year = calendar.component(.year, from: Date())
+//        let month = calendar.component(.month, from: Date())
+//        let day = calendar.component(.day, from: Date())
+//
+//        let combinedDate = "\(year)-\(month)-\(day) 00:00:00 +0700"
+//
+//        dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss Z"
+//
+//        retrieveData(activityDate: dateFormatter.date(from: combinedDate)!)
         
+        self.tableView.reloadData()
 
     }
     
@@ -62,15 +72,10 @@ class CalendarViewController: UIViewController {
             
             let fr: NSFetchRequest<Activity>
             fr = Activity.fetchRequest()
-            
+            print()
             fr.predicate = NSPredicate(format: "activityDateTime >= %@ && activityDateTime <= %@", activityDate as CVarArg, activityDate+86400 as CVarArg)
             
-            
-            print("fromDate", activityDate-86400)
             activities = try context.fetch(fr)
-            if !activities.isEmpty {
-                print("test", activities[0].activityDateTime)
-            }
             print("jumlah", activities.count)
             
             DispatchQueue.main.async {
@@ -109,8 +114,6 @@ class CalendarViewController: UIViewController {
     
     
     @IBAction func addActivityPage(_ sender: Any) {
-  
-        
     }
     
     override func viewDidLayoutSubviews() {
@@ -126,7 +129,22 @@ class CalendarViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+//        let storyboard = UIStoryboard(name: "ActivityLog", bundle: nil)
+//        let vc = storyboard.instantiateViewController(withIdentifier: "ActivityLogStoryboard") as! ActivityLogTableViewController
+        if segue.identifier == "activityLogSegue" {
+            let vc = segue.destination as! UINavigationController
+            let target = vc.topViewController as! ActivityLogTableViewController
+            
+            let year = calendar.component(.year, from: Date())
+            let month = calendar.component(.month, from: Date())
+            let day = calendar.component(.day, from: Date())
+            let combinedDate = "\(year)-\(month)-\(day) 00:00:00 +0700"
+            dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss Z"
+            
+            target.onViewWillDisappear = {
+                self.retrieveData(activityDate: self.dateFormatter.date(from: combinedDate)!)
+            }
+        }
     }
     
 
@@ -161,7 +179,7 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
         cell.activityTitleLabel.text = data.activityTitle
         cell.activityTimeLabel.text = dateFormatter.string(from: data.activityDateTime!)
         cell.activityCatNameLabel.text = "\(catName![0])"
-        cell.activityTypeImage.image = UIImage(named: TypeHelper.checkType(typeNumber: data.activityType!))
+        cell.activityTypeImage.image = UIImage(named: data.activityType!)
         cell.activitiesColorTagImage.tintColor = TagsHelper.checkColor(tagsNumber: colorTag![0] as! Int16)
         
         cell.selectionStyle = .none
