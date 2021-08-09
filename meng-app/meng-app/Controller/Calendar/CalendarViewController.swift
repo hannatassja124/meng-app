@@ -20,6 +20,7 @@ class CalendarViewController: UIViewController {
     var activities = [Activity()]
     var cats = [Cats()]
     let calendar = Calendar.current
+    let dateFormatter = DateFormatter()
     
     
     override func viewDidLoad() {
@@ -34,15 +35,17 @@ class CalendarViewController: UIViewController {
         
         tableView.backgroundColor = .clear
         
-        
         //save()
         
-//        activities.removeAll()
-//        cats.removeAll()
+        let year = calendar.component(.year, from: Date())
+        let month = calendar.component(.month, from: Date())
+        let day = calendar.component(.day, from: Date())
         
-        retrieveData()
+        let combinedDate = "\(year)-\(month)-\(day) 00:00:00 +0700"
         
-        tableView.reloadData()
+        dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss Z"
+        
+        retrieveData(activityDate: dateFormatter.date(from: combinedDate)!)
         
     }
     
@@ -53,13 +56,23 @@ class CalendarViewController: UIViewController {
 
     }
     
-    func retrieveData() {
+    func retrieveData(activityDate : Date) {
         do {
-            activities = try context.fetch(Activity.fetchRequest())
-            cats = try context.fetch(Cats.fetchRequest())
+            print("retrieve data")
             
-            print("acti", activities)
-            print("cat", cats)
+            let fr: NSFetchRequest<Activity>
+            fr = Activity.fetchRequest()
+            
+            fr.predicate = NSPredicate(format: "activityDateTime >= %@ && activityDateTime <= %@", activityDate as CVarArg, activityDate+86400 as CVarArg)
+            
+            
+            print("fromDate", activityDate-86400)
+            activities = try context.fetch(fr)
+            if !activities.isEmpty {
+                print("test", activities[0].activityDateTime)
+            }
+            print("jumlah", activities.count)
+            
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
@@ -76,10 +89,12 @@ class CalendarViewController: UIViewController {
         activity.activityDateTime = Date()
         activity.activityDetail = "Help"
         activity.activityType = "1"
+        activity.activityReminder = 60
+        
         
         let cats = Cats(context: context)
         cats.name = "Tulul"
-        cats.notes = "i want to sleep ksfjkldsjflkjsfklsjflkjskldfjlskjdflksjklfjsklfjlksdjfkljsfjklsjlkfjskljflksjlkf"
+        cats.colorTags = 1
         
         activity.addToCats(cats)
         
@@ -110,19 +125,10 @@ class CalendarViewController: UIViewController {
         calendarUIView.layer.shadowPath = shadowPath.cgPath
     }
     
-//    func prepareForSegue(segue: UIStoryboardSegue, sender: UITableView) {
-//        print("")
-//    if segue.identifier == "showActivityDetail" {
-//
-//        let indexPath:NSIndexPath = self.tableView.indexPathForSelectedRow! as NSIndexPath
-//
-//        print("test", activities[0])
-//        let detailVC = segue.destination as! ActivityDetailViewController
-//        detailVC.details = activities[indexPath.row]
-//        }
-//    }
-//
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+    }
+    
 
 }
 
@@ -141,15 +147,22 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: activitiesCellId, for: indexPath) as! ActivitiesTableViewCell
         
         let data = activities[indexPath.row]
-        let time = calendar.dateComponents([.hour, .minute], from: data.value(forKey: "activityDateTime") as! Date)
         
-        let cats = data.cats!.value(forKey: "name") //NSSet
-        let catname = (cats as AnyObject).allObjects //Swift Array
+        dateFormatter.dateFormat = "hh:mm a"
         
-        cell.activityTitleLabel.text = data.value(forKey: "activityTitle") as? String
-        cell.activityTimeLabel.text = "10.00 PM"
-        cell.activityCatNameLabel.text = "\(catname![0])"
-        cell.activityTypeImage.image = UIImage(systemName: "stethoscope")
+        //catname
+        let name = data.cats!.value(forKey: "name") //NSSet
+        let catName = (name as AnyObject).allObjects //Swift Array
+        
+        //color tag
+        let color = data.cats!.value(forKey: "colorTags") //NSSet
+        let colorTag = (color as AnyObject).allObjects //Swift Array
+        
+        cell.activityTitleLabel.text = data.activityTitle
+        cell.activityTimeLabel.text = dateFormatter.string(from: data.activityDateTime!)
+        cell.activityCatNameLabel.text = "\(catName![0])"
+        cell.activityTypeImage.image = UIImage(named: TypeHelper.checkType(typeNumber: data.activityType!))
+        cell.activitiesColorTagImage.tintColor = TagsHelper.checkColor(tagsNumber: colorTag![0] as! Int16)
         
         cell.selectionStyle = .none
         
@@ -160,9 +173,14 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
         let storyboard = UIStoryboard(name: "ActivityDetail", bundle: nil)
        
         let vc = storyboard.instantiateViewController(withIdentifier: "ActivityDetailStoryboard") as! ActivityDetailViewController
+        
+        vc.details =  activities[indexPath.row]
+        
         let nc = UINavigationController(rootViewController: vc)
         nc.navigationBar.isTranslucent = false
         nc.navigationBar.barTintColor = #colorLiteral(red: 0.1036602035, green: 0.2654651999, blue: 0.3154058456, alpha: 1)
+        nc.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.init(cgColor: #colorLiteral(red: 0.9914727807, green: 0.9720076919, blue: 0.9678100944, alpha: 1))]
+        
         
         self.present(nc, animated: true, completion: nil)
         

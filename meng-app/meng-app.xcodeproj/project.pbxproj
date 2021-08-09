@@ -38,7 +38,10 @@
 		F92EDAEB26BDA2A30051B9DF /* Activity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92EDAE726BDA2A30051B9DF /* Activity+CoreDataProperties.swift */; };
 		F92EDAEC26BDA2A30051B9DF /* Cats+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92EDAE826BDA2A30051B9DF /* Cats+CoreDataClass.swift */; };
 		F92EDAED26BDA2A30051B9DF /* Cats+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92EDAE926BDA2A30051B9DF /* Cats+CoreDataProperties.swift */; };
+		F92EDAF026BDD9770051B9DF /* TypeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92EDAEF26BDD9770051B9DF /* TypeHelper.swift */; };
+		F92EDAF226BDDAF10051B9DF /* ReminderHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92EDAF126BDDAF10051B9DF /* ReminderHelper.swift */; };
 		F94AD29826AEF19D005686ED /* UiCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94AD29726AEF19D005686ED /* UiCustom.swift */; };
+		F950008D26C0CF08003F1B6C /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F950008C26C0CF08003F1B6C /* EventModel.swift */; };
 		F96BBDD026BB31DC0065C589 /* ActivityDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F96BBDCE26BB31DC0065C589 /* ActivityDetail.storyboard */; };
 		F97787E226B43CB300F4CD01 /* CalendarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97787E126B43CB300F4CD01 /* CalendarHelper.swift */; };
 		F995E4F426A99E9700DA5C50 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F995E4F326A99E9700DA5C50 /* AppDelegate.swift */; };
@@ -94,7 +97,10 @@
 		F92EDAE726BDA2A30051B9DF /* Activity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Activity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		F92EDAE826BDA2A30051B9DF /* Cats+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cats+CoreDataClass.swift"; sourceTree = "<group>"; };
 		F92EDAE926BDA2A30051B9DF /* Cats+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cats+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		F92EDAEF26BDD9770051B9DF /* TypeHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeHelper.swift; sourceTree = "<group>"; };
+		F92EDAF126BDDAF10051B9DF /* ReminderHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderHelper.swift; sourceTree = "<group>"; };
 		F94AD29726AEF19D005686ED /* UiCustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UiCustom.swift; sourceTree = "<group>"; };
+		F950008C26C0CF08003F1B6C /* EventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
 		F96BBDCF26BB31DC0065C589 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "meng-app/View/Calendar/meng-app/View/Dashboards/Base.lproj/ActivityDetail.storyboard"; sourceTree = "<group>"; };
 		F97787E126B43CB300F4CD01 /* CalendarHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHelper.swift; sourceTree = "<group>"; };
 		F995E4F026A99E9700DA5C50 /* meng-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "meng-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -295,6 +301,8 @@
 			children = (
 				1932CFCF26B2494800E7FE06 /* TagsHelper.swift */,
 				F97787E126B43CB300F4CD01 /* CalendarHelper.swift */,
+				F92EDAEF26BDD9770051B9DF /* TypeHelper.swift */,
+				F92EDAF126BDDAF10051B9DF /* ReminderHelper.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -357,6 +365,7 @@
 				F92EDAE726BDA2A30051B9DF /* Activity+CoreDataProperties.swift */,
 				F92EDAE826BDA2A30051B9DF /* Cats+CoreDataClass.swift */,
 				F92EDAE926BDA2A30051B9DF /* Cats+CoreDataProperties.swift */,
+				F950008C26C0CF08003F1B6C /* EventModel.swift */,
 				0799D24726BEF43100511015 /* ActivitiesTypeStruct.swift */,
 				077B96EB26C012A000117F67 /* ActivitiesCatModel.swift */,
 			);
@@ -582,6 +591,7 @@
 				19636ECD26AF9E4100EBD377 /* AddNewCatCollectionViewCell.swift in Sources */,
 				F995E4FE26A99E9700DA5C50 /* meng_app.xcdatamodeld in Sources */,
 				1920066D26B032BF00BAD2D0 /* CatProfileCollectionViewCell.swift in Sources */,
+				F92EDAF026BDD9770051B9DF /* TypeHelper.swift in Sources */,
 				0799D24526BED4E500511015 /* ActivitiesCVC.swift in Sources */,
 				0799D24826BEF43100511015 /* ActivitiesTypeStruct.swift in Sources */,
 				077B96EC26C012A000117F67 /* ActivitiesCatModel.swift in Sources */,
@@ -597,9 +607,11 @@
 				F995E51B26A9AA5200DA5C50 /* DashboardCellViewController.swift in Sources */,
 				F92EDAEC26BDA2A30051B9DF /* Cats+CoreDataClass.swift in Sources */,
 				F995E4F426A99E9700DA5C50 /* AppDelegate.swift in Sources */,
+				F950008D26C0CF08003F1B6C /* EventModel.swift in Sources */,
 				077B96F826C03E7A00117F67 /* ActivityLogActivitiesHeader.swift in Sources */,
 				F92EDAEB26BDA2A30051B9DF /* Activity+CoreDataProperties.swift in Sources */,
 				0747674426B253D20054D268 /* ActivityLogDatePickerHeader.swift in Sources */,
+				F92EDAF226BDDAF10051B9DF /* ReminderHelper.swift in Sources */,
 				0779832626B1B36400BFFD57 /* SelectCatViewController.swift in Sources */,
 				F995E4F626A99E9700DA5C50 /* SceneDelegate.swift in Sources */,
 			);

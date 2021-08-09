@@ -21,7 +21,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HhG-29-Uxo">
                         <rect key="frame" x="0.0" y="0.0" width="364" height="78"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stet" translatesAutoresizingMaskIntoConstraints="NO" id="TCn-8B-8IL">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TCn-8B-8IL">
                                 <rect key="frame" x="15" y="17" width="48" height="48"/>
                                 <color key="backgroundColor" name="Melon"/>
                                 <color key="tintColor" name="MidnightGreen"/>
@@ -29,6 +29,7 @@
                                     <constraint firstAttribute="height" constant="48" id="NIi-bY-aDm"/>
                                     <constraint firstAttribute="width" constant="48" id="QRB-ho-ZUw"/>
                                 </constraints>
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="small"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <real key="value" value="23"/>
@@ -107,6 +108,7 @@
                 </userDefinedRuntimeAttribute>
             </userDefinedRuntimeAttributes>
             <connections>
+                <outlet property="activitiesColorTagImage" destination="fjd-d5-NGW" id="zDG-Ny-KKp"/>
                 <outlet property="activityCatNameLabel" destination="fSO-2g-F83" id="6B6-n3-qEk"/>
                 <outlet property="activityTimeLabel" destination="qs1-kc-mM6" id="SVN-6W-WNr"/>
                 <outlet property="activityTitleLabel" destination="DdT-iV-9Ok" id="V34-ly-yxl"/>
@@ -118,7 +120,6 @@
     <resources>
         <image name="chevron.forward" catalog="system" width="96" height="128"/>
         <image name="circlebadge.fill" catalog="system" width="128" height="120"/>
-        <image name="stet" width="128" height="128"/>
         <namedColor name="Melon">
             <color red="0.99900001287460327" green="0.75900000333786011" blue="0.70899999141693115" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
