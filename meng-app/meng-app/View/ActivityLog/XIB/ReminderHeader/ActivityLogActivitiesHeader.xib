@@ -11,28 +11,28 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="HqC-Mh-qEK" customClass="ActivityLogDatePickerHeader" customModule="meng_app" customModuleProvider="target">
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ActivityLogActivitiesHeader" customModule="meng_app" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="414" height="48"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reminder" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qpS-GE-bVj">
-                    <rect key="frame" x="24" y="15.5" width="64.5" height="17"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Activities" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vzF-ez-EJt">
+                    <rect key="frame" x="24" y="15.5" width="63" height="17"/>
                     <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                     <color key="textColor" name="MidnightGreen"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
-            <viewLayoutGuide key="safeArea" id="hTt-6X-zdA"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="qpS-GE-bVj" firstAttribute="centerY" secondItem="HqC-Mh-qEK" secondAttribute="centerY" id="69k-8S-I0T"/>
-                <constraint firstItem="qpS-GE-bVj" firstAttribute="leading" secondItem="HqC-Mh-qEK" secondAttribute="leading" constant="24" id="m5h-te-ceK"/>
+                <constraint firstItem="vzF-ez-EJt" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="24" id="3wd-Rj-phz"/>
+                <constraint firstItem="vzF-ez-EJt" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="fPB-ov-Pmj"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="LabelReminder" destination="qpS-GE-bVj" id="KFC-HP-wt0"/>
+                <outlet property="LabelHeader" destination="vzF-ez-EJt" id="omo-EU-kEm"/>
             </connections>
-            <point key="canvasLocation" x="14" y="104"/>
+            <point key="canvasLocation" x="132" y="80"/>
         </view>
     </objects>
     <resources>

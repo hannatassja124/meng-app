@@ -5,8 +5,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
-        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -20,7 +18,7 @@
                         <color key="backgroundColor" name="NeutralLight"/>
                         <color key="separatorColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <sections>
-                            <tableViewSection id="aMg-Mn-o1b">
+                            <tableViewSection id="aMg-Mn-o1b" userLabel="Select Cat">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="3XP-ll-ZeA">
                                         <rect key="frame" x="20" y="18" width="350" height="43.666667938232422"/>
@@ -32,13 +30,13 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Cat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PvH-a7-5dM">
                                                     <rect key="frame" x="24" y="11.666666666666664" width="79" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" name="MidnightGreen"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LHi-Rp-qyK">
                                                     <rect key="frame" x="278.33333333333331" y="11.666666666666664" width="27" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" name="MidnightGreen"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="38b-5W-PLB">
@@ -68,7 +66,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Activities" id="ETx-Gf-tDc">
+                            <tableViewSection headerTitle=" " id="ETx-Gf-tDc" userLabel="Activities">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="96" id="4xn-9p-Yd0">
                                         <rect key="frame" x="20" y="111.33333396911621" width="350" height="96"/>
@@ -77,75 +75,31 @@
                                             <rect key="frame" x="0.0" y="0.0" width="350" height="96"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="cMd-y7-Drp">
-                                                    <rect key="frame" x="0.0" y="0.0" width="350" height="96"/>
+                                                <collectionView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="JNi-4h-tj0">
+                                                    <rect key="frame" x="0.0" y="0.0" width="350" height="100"/>
                                                     <color key="backgroundColor" name="NeutralLight"/>
-                                                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="lX7-Ik-oey">
-                                                        <size key="itemSize" width="80" height="128"/>
-                                                        <size key="estimatedItemSize" width="56" height="80"/>
+                                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="CL3-Ge-jeE">
+                                                        <size key="itemSize" width="56" height="100"/>
+                                                        <size key="estimatedItemSize" width="80" height="100"/>
                                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                                        <inset key="sectionInset" minX="24" minY="8" maxX="24" maxY="8"/>
+                                                        <inset key="sectionInset" minX="0.0" minY="2" maxX="0.0" maxY="2"/>
                                                     </collectionViewFlowLayout>
-                                                    <cells>
-                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="eUw-4E-ZFE">
-                                                            <rect key="frame" x="24" y="8" width="56" height="80"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="0Iq-jv-EhR">
-                                                                <rect key="frame" x="0.0" y="0.0" width="56" height="80"/>
-                                                                <autoresizingMask key="autoresizingMask"/>
-                                                                <subviews>
-                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PDV-af-HKo">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="56" height="56"/>
-                                                                        <constraints>
-                                                                            <constraint firstAttribute="height" constant="56" id="6DJ-aw-Haz"/>
-                                                                            <constraint firstAttribute="width" constant="56" id="jbd-2X-4xt"/>
-                                                                        </constraints>
-                                                                    </imageView>
-                                                                    <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lyI-Q6-y0T">
-                                                                        <rect key="frame" x="0.0" y="1" width="56" height="54.666666666666671"/>
-                                                                        <constraints>
-                                                                            <constraint firstAttribute="width" constant="56" id="7mI-6Q-RnI"/>
-                                                                            <constraint firstAttribute="height" constant="56" id="oX3-cR-UUy"/>
-                                                                        </constraints>
-                                                                        <color key="tintColor" name="Opal"/>
-                                                                        <state key="normal" title="Button" backgroundImage="circle.fill" catalog="system"/>
-                                                                    </button>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Activity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s0J-x7-8h1">
-                                                                        <rect key="frame" x="8" y="64" width="40" height="13.333333333333329"/>
-                                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
-                                                                        <color key="textColor" name="Opal"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
-                                                                </subviews>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="trailing" secondItem="PDV-af-HKo" secondAttribute="trailing" id="2Cg-P9-qfS"/>
-                                                                    <constraint firstItem="lyI-Q6-y0T" firstAttribute="top" secondItem="0Iq-jv-EhR" secondAttribute="top" id="Cij-ZH-JI7"/>
-                                                                    <constraint firstItem="s0J-x7-8h1" firstAttribute="centerX" secondItem="0Iq-jv-EhR" secondAttribute="centerX" id="Dn2-IG-tdE"/>
-                                                                    <constraint firstItem="s0J-x7-8h1" firstAttribute="top" secondItem="PDV-af-HKo" secondAttribute="bottom" constant="8" id="HdZ-Qd-zde"/>
-                                                                    <constraint firstItem="lyI-Q6-y0T" firstAttribute="leading" secondItem="0Iq-jv-EhR" secondAttribute="leading" id="fuo-4j-gfU"/>
-                                                                    <constraint firstItem="PDV-af-HKo" firstAttribute="leading" secondItem="0Iq-jv-EhR" secondAttribute="leading" id="qoX-xQ-1uQ"/>
-                                                                    <constraint firstAttribute="trailing" secondItem="lyI-Q6-y0T" secondAttribute="trailing" id="wTg-Rf-NAx"/>
-                                                                    <constraint firstItem="PDV-af-HKo" firstAttribute="top" secondItem="0Iq-jv-EhR" secondAttribute="top" id="zVA-cq-ZNR"/>
-                                                                </constraints>
-                                                            </collectionViewCellContentView>
-                                                            <size key="customSize" width="56" height="80"/>
-                                                        </collectionViewCell>
-                                                    </cells>
+                                                    <cells/>
                                                 </collectionView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="cMd-y7-Drp" firstAttribute="top" secondItem="Ooa-bm-4HZ" secondAttribute="top" id="4pW-ZE-niz"/>
-                                                <constraint firstAttribute="trailing" secondItem="cMd-y7-Drp" secondAttribute="trailing" id="5ai-ny-sqk"/>
-                                                <constraint firstItem="cMd-y7-Drp" firstAttribute="leading" secondItem="Ooa-bm-4HZ" secondAttribute="leading" id="AHX-j6-cwF"/>
-                                                <constraint firstAttribute="bottom" secondItem="cMd-y7-Drp" secondAttribute="bottom" id="bLM-OG-Rfn"/>
+                                                <constraint firstItem="JNi-4h-tj0" firstAttribute="top" secondItem="Ooa-bm-4HZ" secondAttribute="top" id="HqW-rS-9XB"/>
+                                                <constraint firstAttribute="trailing" secondItem="JNi-4h-tj0" secondAttribute="trailing" id="aQ2-V9-D92"/>
+                                                <constraint firstItem="JNi-4h-tj0" firstAttribute="leading" secondItem="Ooa-bm-4HZ" secondAttribute="leading" id="g4Y-1j-LJO"/>
+                                                <constraint firstAttribute="bottom" secondItem="JNi-4h-tj0" secondAttribute="bottom" id="nDr-zd-915"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" name="NeutralLight"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection id="tkF-1l-K31">
+                            <tableViewSection id="tkF-1l-K31" userLabel="Activity Form">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="48" id="7wk-x4-hsZ">
                                         <rect key="frame" x="20" y="243.33333396911621" width="350" height="48"/>
@@ -157,6 +111,7 @@
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7Uy-sH-xBh">
                                                     <rect key="frame" x="16" y="8" width="318" height="32"/>
                                                     <color key="backgroundColor" name="NeutralLight"/>
+                                                    <color key="tintColor" name="MidnightGreen"/>
                                                     <color key="textColor" name="Opal"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -181,6 +136,7 @@
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" placeholder="Details" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="C3x-pz-cmP">
                                                     <rect key="frame" x="16" y="8" width="318" height="96"/>
                                                     <color key="backgroundColor" name="NeutralLight"/>
+                                                    <color key="tintColor" name="MidnightGreen"/>
                                                     <color key="textColor" name="Opal"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -197,7 +153,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Date and Time" id="Quy-Pc-yTD">
+                            <tableViewSection headerTitle=" " id="Quy-Pc-yTD" userLabel="Date and Time">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Sn1-aY-xWK">
                                         <rect key="frame" x="20" y="453" width="350" height="43.666667938232422"/>
@@ -209,7 +165,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ks-RX-N9A">
                                                     <rect key="frame" x="24" y="11.666666666666664" width="36" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" name="NeutralLight"/>
+                                                    <color key="textColor" name="Melon"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dec 12, 2112" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hab-xP-b0n">
@@ -228,86 +184,65 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" name="MidnightGreen"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="360" id="4WA-De-u3L">
-                                        <rect key="frame" x="20" y="496.66666793823242" width="350" height="360"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="340" id="4WA-De-u3L">
+                                        <rect key="frame" x="20" y="496.66666793823242" width="350" height="340"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4WA-De-u3L" id="0Wh-Zr-ntg">
-                                            <rect key="frame" x="0.0" y="0.0" width="350" height="360"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="350" height="340"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="inline" translatesAutoresizingMaskIntoConstraints="NO" id="K7U-Bg-nDF">
-                                                    <rect key="frame" x="16" y="8" width="318" height="344"/>
+                                                    <rect key="frame" x="15" y="10" width="320" height="320"/>
                                                     <color key="tintColor" name="MidnightGreen"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="320" id="jCh-rF-B7C"/>
+                                                        <constraint firstAttribute="height" constant="320" id="jaA-CE-1vS"/>
+                                                    </constraints>
                                                     <connections>
                                                         <action selector="DatePickerDateAction:" destination="m2d-qg-IsU" eventType="valueChanged" id="96R-Vt-IW2"/>
                                                     </connections>
                                                 </datePicker>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="K7U-Bg-nDF" secondAttribute="bottom" constant="8" id="0Wx-tw-5Ob"/>
-                                                <constraint firstItem="K7U-Bg-nDF" firstAttribute="top" secondItem="0Wh-Zr-ntg" secondAttribute="top" constant="8" id="67r-oq-15K"/>
-                                                <constraint firstItem="K7U-Bg-nDF" firstAttribute="leading" secondItem="0Wh-Zr-ntg" secondAttribute="leading" constant="16" id="S0T-Ab-pAP"/>
-                                                <constraint firstAttribute="trailing" secondItem="K7U-Bg-nDF" secondAttribute="trailing" constant="16" id="szD-bF-Xst"/>
+                                                <constraint firstItem="K7U-Bg-nDF" firstAttribute="centerX" secondItem="0Wh-Zr-ntg" secondAttribute="centerX" id="WVM-GD-4Xa"/>
+                                                <constraint firstItem="K7U-Bg-nDF" firstAttribute="centerY" secondItem="0Wh-Zr-ntg" secondAttribute="centerY" id="Wzq-wn-G7r"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="RhP-8s-IXD">
-                                        <rect key="frame" x="20" y="856.66666793823242" width="350" height="43.666667938232422"/>
+                                        <rect key="frame" x="20" y="836.66666793823242" width="350" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="RhP-8s-IXD" id="HX9-mj-Qnm">
                                             <rect key="frame" x="0.0" y="0.0" width="350" height="43.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BOC-NH-yDV">
-                                                    <rect key="frame" x="24" y="11.666666666666664" width="38" height="21"/>
+                                                    <rect key="frame" x="24" y="11.333333333333336" width="38" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" name="NeutralLight"/>
+                                                    <color key="textColor" name="Melon"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:34" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AgS-Yt-mYq">
-                                                    <rect key="frame" x="283" y="11.666666666666664" width="43" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" name="NeutralLight"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" style="inline" translatesAutoresizingMaskIntoConstraints="NO" id="cKK-hn-qvP">
+                                                    <rect key="frame" x="147" y="-3.3333333333333321" width="189" height="50.333333333333329"/>
+                                                    <color key="backgroundColor" red="0.087260700760000004" green="0.1563187838" blue="0.1843182743" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <color key="tintColor" name="NeutralLight"/>
+                                                </datePicker>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="cKK-hn-qvP" firstAttribute="centerY" secondItem="HX9-mj-Qnm" secondAttribute="centerY" id="0AC-f3-HnN"/>
                                                 <constraint firstItem="BOC-NH-yDV" firstAttribute="leading" secondItem="HX9-mj-Qnm" secondAttribute="leading" constant="24" id="CFS-r0-xSG"/>
                                                 <constraint firstItem="BOC-NH-yDV" firstAttribute="centerY" secondItem="HX9-mj-Qnm" secondAttribute="centerY" id="WeT-Yb-iSD"/>
-                                                <constraint firstAttribute="trailing" secondItem="AgS-Yt-mYq" secondAttribute="trailing" constant="24" id="hfO-fh-h5h"/>
-                                                <constraint firstItem="AgS-Yt-mYq" firstAttribute="centerY" secondItem="HX9-mj-Qnm" secondAttribute="centerY" id="uts-BV-f23"/>
+                                                <constraint firstAttribute="trailing" secondItem="cKK-hn-qvP" secondAttribute="trailing" constant="14" id="xoQ-V6-FNz"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" name="MidnightGreen"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="64" id="XIT-2B-qGJ">
-                                        <rect key="frame" x="20" y="900.33333587646484" width="350" height="64"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="XIT-2B-qGJ" id="iUM-en-V8e">
-                                            <rect key="frame" x="0.0" y="0.0" width="350" height="64"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" style="inline" translatesAutoresizingMaskIntoConstraints="NO" id="w4D-jh-gHn">
-                                                    <rect key="frame" x="133.66666666666666" y="7" width="83" height="50"/>
-                                                    <color key="tintColor" name="MidnightGreen"/>
-                                                    <locale key="locale" localeIdentifier="id_ID"/>
-                                                    <connections>
-                                                        <action selector="DatePickerTimeAction:" destination="m2d-qg-IsU" eventType="valueChanged" id="Yd4-oD-qnW"/>
-                                                    </connections>
-                                                </datePicker>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="w4D-jh-gHn" firstAttribute="centerX" secondItem="iUM-en-V8e" secondAttribute="centerX" id="Dnh-mY-nc3"/>
-                                                <constraint firstItem="w4D-jh-gHn" firstAttribute="centerY" secondItem="iUM-en-V8e" secondAttribute="centerY" id="mK2-DB-1y6"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle=" " id="Kgy-Mi-lCT">
+                            <tableViewSection headerTitle=" " id="Kgy-Mi-lCT" userLabel="Reminder">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Sse-fy-1zt">
-                                        <rect key="frame" x="20" y="1014.0000019073486" width="350" height="43.666667938232422"/>
+                                        <rect key="frame" x="20" y="930.00000190734863" width="350" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Sse-fy-1zt" id="Kqg-vx-AVm">
                                             <rect key="frame" x="0.0" y="0.0" width="350" height="43.666667938232422"/>
@@ -316,7 +251,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remind Me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NOF-4U-Rl5">
                                                     <rect key="frame" x="24" y="11.666666666666664" width="86" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" name="NeutralLight"/>
+                                                    <color key="textColor" name="Melon"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15 minutes before" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G4b-JE-khd">
@@ -327,7 +262,7 @@
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="CAH-r3-dA0">
                                                     <rect key="frame" x="313.33333333333331" y="13.999999999999998" width="12.666666666666686" height="16.666666666666664"/>
-                                                    <color key="tintColor" name="NeutralLight"/>
+                                                    <color key="tintColor" name="Melon"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -342,7 +277,7 @@
                                         <color key="backgroundColor" name="MidnightGreen"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="160" id="Ykn-kN-BM6">
-                                        <rect key="frame" x="20" y="1057.6666698455811" width="350" height="160"/>
+                                        <rect key="frame" x="20" y="973.66666984558105" width="350" height="160"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ykn-kN-BM6" id="RkH-B9-wdU">
                                             <rect key="frame" x="0.0" y="0.0" width="350" height="160"/>
@@ -381,13 +316,13 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="CollectionViewActivities" destination="JNi-4h-tj0" id="CrF-dI-A4k"/>
                         <outlet property="DatePickerDate" destination="K7U-Bg-nDF" id="387-fl-bRz"/>
-                        <outlet property="DatePickerTime" destination="w4D-jh-gHn" id="eQk-Hd-Eov"/>
+                        <outlet property="DatePickerTime" destination="cKK-hn-qvP" id="l1y-8A-oRh"/>
                         <outlet property="ImageCatColour" destination="38b-5W-PLB" id="JO9-YK-fVP"/>
                         <outlet property="LabelCat" destination="LHi-Rp-qyK" id="ldb-6B-ZAV"/>
                         <outlet property="LabelDate" destination="hab-xP-b0n" id="quz-nC-nyP"/>
                         <outlet property="LabelReminderBefore" destination="G4b-JE-khd" id="Bx7-qH-5b7"/>
-                        <outlet property="LabelTime" destination="AgS-Yt-mYq" id="r7P-k5-aSj"/>
                         <outlet property="NavBarButtonBack" destination="nf5-Zl-wbQ" id="ILJ-l2-cRg"/>
                         <outlet property="NavBarButtonSave" destination="RZh-Qy-EHU" id="xHM-Hg-phk"/>
                         <outlet property="PickerViewReminder" destination="1Jv-Ji-Lad" id="Nkk-a5-emG"/>
@@ -409,7 +344,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="jVE-74-RYV">
                                 <rect key="frame" x="0.0" y="56" width="390" height="734"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" name="NeutralLight"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SelectCatCell" id="upi-i5-Pez" customClass="selectCatCell" customModule="meng_app" customModuleProvider="target">
                                         <rect key="frame" x="20" y="49" width="350" height="43.666667938232422"/>
@@ -516,17 +451,17 @@
     <resources>
         <image name="chevron.right" catalog="system" width="96" height="128"/>
         <image name="circle.fill" catalog="system" width="128" height="121"/>
+        <namedColor name="Melon">
+            <color red="0.99900001287460327" green="0.75900000333786011" blue="0.70899999141693115" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="MidnightGreen">
             <color red="0.10499999672174454" green="0.2669999897480011" blue="0.31499999761581421" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="NeutralLight">
-            <color red="0.98999446629999999" green="0.9730597138" blue="0.96905237440000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.99000000953674316" green="0.97299998998641968" blue="0.96899998188018799" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Opal">
             <color red="0.61500000953674316" green="0.75" blue="0.72399997711181641" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>
