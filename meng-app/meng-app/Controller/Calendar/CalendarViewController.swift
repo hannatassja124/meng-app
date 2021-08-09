@@ -35,11 +35,17 @@ class CalendarViewController: UIViewController {
         
         tableView.backgroundColor = .clear
         
+        //save()
         
+        let year = calendar.component(.year, from: Date())
+        let month = calendar.component(.month, from: Date())
+        let day = calendar.component(.day, from: Date())
         
-        retrieveData(activityDate: Date())
+        let combinedDate = "\(year)-\(month)-\(day) 00:00:00 +0700"
         
-        tableView.reloadData()
+        dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss Z"
+        
+        retrieveData(activityDate: dateFormatter.date(from: combinedDate)!)
         
     }
     
@@ -51,10 +57,22 @@ class CalendarViewController: UIViewController {
     }
     
     func retrieveData(activityDate : Date) {
-        print("test11")
         do {
-            activities = try context.fetch(Activity.fetchRequest())
-
+            print("retrieve data")
+            
+            let fr: NSFetchRequest<Activity>
+            fr = Activity.fetchRequest()
+            
+            fr.predicate = NSPredicate(format: "activityDateTime >= %@ && activityDateTime <= %@", activityDate as CVarArg, activityDate+86400 as CVarArg)
+            
+            
+            print("fromDate", activityDate-86400)
+            activities = try context.fetch(fr)
+            if !activities.isEmpty {
+                print("test", activities[0].activityDateTime)
+            }
+            print("jumlah", activities.count)
+            
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
