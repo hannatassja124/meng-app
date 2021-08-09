@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol AddNewCatTableViewProtocol: AnyObject {
+    func backToRoot()
+}
+
 class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextViewDelegate {
     
 // Image
@@ -34,7 +38,11 @@ class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextVie
     @IBOutlet weak var ncCatDOBPicker: UIDatePicker!
     @IBOutlet weak var ncCatBreedPicker: UIPickerView!
     @IBOutlet weak var ncCatNeuteredPicker: UIPickerView!
-
+    
+// TableView
+    @IBOutlet var catProfileDataTableView: UITableView!
+    @IBOutlet weak var catProfileDataDeleteTableView: UITableViewCell!
+    
     var colorTagsPickerData:[String] = [String]()
     var genderPickerData:[String] = [String]()
     var breedPickerData:[String] = [String]()
@@ -42,10 +50,16 @@ class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextVie
     var onViewWillDisappear: (()->())?
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var editedCat:Cats? = nil
+//    var catsDB: [Cats] = []
+//    var receivePlanIndex: Int = -1
+    
+    weak var delegate: AddNewCatTableViewProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        ncCatNotesTV.text = "Medical Notes"
+        ncCatNotesTV.textColor = .lightGray
         checkIfEditOrNot()
         
         nameField()
@@ -58,12 +72,14 @@ class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextVie
         ncCatDOBDate()
         pickerCatBreedFill()
         pickerDataNeuteredFill()
-        ncCatNotesTV.text = "Medical Notes"
-        ncCatNotesTV.textColor = .lightGray
         ncCatNotesTV.delegate = self
         hiddenPickers(fieldName: "init", indexPath: [-1])
-        
-        
+        if editedCat == nil {
+            catProfileDataDeleteTableView.isHidden = true
+        }
+        else {
+            catProfileDataDeleteTableView.isHidden = false
+        }
     }
     
 // Buttons
@@ -98,26 +114,46 @@ class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextVie
         self.present(actionsheet, animated: true, completion: nil)
     }
     
+    @IBAction func deleteProfileButton(_ sender: Any) {
+        let alert = UIAlertController(title: "Delete Cat Profile", message: "Are you sure you want to permanently delete this profile?", preferredStyle: .actionSheet)
+                 
+        let DeleteAction = UIAlertAction(title: "Delete", style: .destructive, handler: deleteConfirm)
+        let CancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler:deleteCancel)
+
+        alert.addAction(DeleteAction)
+        alert.addAction(CancelAction)
+
+        self.present(alert, animated: true, completion: nil)
+        
+    }
     
+// Delete Cat Data
+    func deleteConfirm(alertAction: UIAlertAction!) {
+        context.delete(editedCat!)
+        do {
+            try context.save()
+            DispatchQueue.main.async {
+//                self.catProfileDataTableView.reloadData()
+                self.delegate?.backToRoot()
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
+        catch{
+            print("Ga kedelete")
+        }
+    }
+    
+    func deleteCancel(alertAction: UIAlertAction!){
+        editedCat = nil
+    }
     
 // Save New Cat Data
     func saveCatProfileData(){
         if editedCat == nil {
             let newCatProfile = Cats(context: context)
             
-            if ncCatPhotoImage.image == nil {
-                
-            }
-            else {
-                newCatProfile.image = ncCatPhotoImage.image?.jpegData(compressionQuality: 1.0) ?? nil
-            }
-            if ncCatNameTF.text == nil {
-                
-            }
-            else {
-                newCatProfile.name =  "\(ncCatNameTF.text ?? "")"
-            }
-            
+            newCatProfile.image = ncCatPhotoImage.image?.jpegData(compressionQuality: 1.0) ?? nil
+            newCatProfile.name =  "\(ncCatNameTF.text ?? "")"
             newCatProfile.colorTags = Int16(TagsHelper.convertColorToNumber(color: ncCatColorTagsLabel.text!))
                 if ncCatGenderLabel.text == "Male" {
                     newCatProfile.gender = 0
@@ -140,6 +176,7 @@ class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextVie
             newCatProfile.vetName = "\(ncCatVetsName.text ?? "")"
             newCatProfile.vetPhoneNo = "\(ncCatVetsPhoneNumber.text ?? "")"
             newCatProfile.notes = "\(ncCatNotesTV.text ?? "")"
+            print(ncCatNotesTV.text!)
             }
         
         // edited data
@@ -168,6 +205,7 @@ class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextVie
             editedCat!.vetName = "\(ncCatVetsName.text ?? "")"
             editedCat!.vetPhoneNo = "\(ncCatVetsPhoneNumber.text ?? "")"
             editedCat!.notes = "\(ncCatNotesTV.text ?? "")"
+            print(ncCatNotesTV.text!)
         }
         do {
             try context.save()
@@ -210,6 +248,13 @@ class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextVie
             ncCatVetsName.text = editedCat?.vetName
             ncCatVetsPhoneNumber.text = editedCat?.vetPhoneNo
             ncCatNotesTV.text = editedCat?.notes
+            if ncCatNotesTV.text == "Medical Notes" {
+                ncCatNotesTV.textColor = .lightGray
+            }
+            else {
+                ncCatNotesTV.textColor = .black
+            }
+            print(ncCatNotesTV.text!)
         }
     }
     
@@ -289,17 +334,17 @@ class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextVie
             ncCatNotesTV.textColor = .black
         }
     }
-    
+
     func textViewDidEndEditing(_ textView: UITextView) {
         if ncCatNotesTV.text == "" {
             ncCatNotesTV.text = "Medical Notes"
             ncCatNotesTV.textColor = .lightGray
         }
     }
-    
+
     func textViewDidChange() {
     }
-    
+
     func textView( _ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
             if text == "\n"{
                 ncCatNotesTV.resignFirstResponder()
