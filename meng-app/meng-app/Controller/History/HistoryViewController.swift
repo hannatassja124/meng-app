@@ -25,18 +25,32 @@ class HistoryViewController: UIViewController {
     var groupedActivties:[GroupedActivities] = []
     @IBOutlet weak var activitiesTableView: UITableView!
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setupUI()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        for view in self.navigationController?.navigationBar.subviews ?? [] {
+            let subview = view.subviews
+            if subview.count > 0, let label = subview[0] as? UILabel {
+                label.textColor = UIColor(named: "MidnightGreen")!
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI()
         checkIfActivitiesEmptyOrNot()
         initiateTableView()
 
     }
     
     func setupUI() {
-        UINavigationBar.appearance().largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(named: "MidnightGreen")!]
-        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(named: "MidnightGreen")!]
-
+//        UINavigationBar.appearance().largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(named: "MidnightGreen")!]
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        self.navigationController?.navigationBar.barTintColor = .white
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(named: "MidnightGreen")!]
     }
     
     func initiateTableView(){

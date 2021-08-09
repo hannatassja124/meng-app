@@ -100,10 +100,11 @@ class CatDetailViewController: UIViewController {
     @IBAction func goToLogActivityHistory(_ sender: Any) {
         let storyboard = UIStoryboard(name: "History", bundle: nil)
         
-        let MainVC = storyboard.instantiateViewController(identifier: "HistoryNC") as! UINavigationController
-        let target = MainVC.topViewController as! HistoryViewController
-        target.selectedCat = currCat!
-        navigationController?.pushViewController(target, animated: true)
+        if let MainVC = storyboard.instantiateViewController(identifier: "HistoryNC") as? HistoryViewController {
+//            let nav = UINavigationController(rootViewController: MainVC)
+            MainVC.selectedCat = currCat!
+            navigationController?.pushViewController(MainVC, animated: true)
+        }
     }
     
     @IBAction func goToEditPage(_ sender: Any) {

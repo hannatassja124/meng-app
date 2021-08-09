@@ -16,6 +16,7 @@ class CatsViewController: UIViewController, UICollectionViewDelegate {
     var cats:[Cats] = [Cats()]
     var originalCats:[Cats] = []
     let searchController = UISearchController()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,6 +92,10 @@ class CatsViewController: UIViewController, UICollectionViewDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+//        UINavigationBar.appearance().largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(named: "MidnightGreen")!]
+        self.navigationController?.navigationBar.barTintColor = UIColor(named: "MidnightGreen")!
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(named: "NeutralLight")!]
+
         self.retrieveData()
     }
 }
