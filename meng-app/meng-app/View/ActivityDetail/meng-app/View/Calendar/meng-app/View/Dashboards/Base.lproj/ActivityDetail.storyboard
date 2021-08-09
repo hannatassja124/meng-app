@@ -139,6 +139,11 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityDetailLabel" destination="7bM-Sx-C9A" id="sy5-Y8-FEy"/>
+                        <outlet property="activityTitleLabel" destination="CDR-4B-vjc" id="ypo-L0-vMO"/>
+                        <outlet property="activityTypeImage" destination="1UH-av-E9e" id="YOt-R2-Kk6"/>
+                        <outlet property="catNameLabel" destination="ug6-Oe-aWP" id="WxA-0t-v2m"/>
+                        <outlet property="colorTagImage" destination="Re6-dT-wkK" id="MEF-LY-8a1"/>
                         <outlet property="detailTableView" destination="Izf-hA-ov2" id="0F2-cb-V8c"/>
                     </connections>
                 </viewController>
@@ -179,7 +184,7 @@
             <color red="0.10499999672174454" green="0.2669999897480011" blue="0.31499999761581421" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="NeutralLight">
-            <color red="1" green="0.95300000905990601" blue="0.94099998474121094" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.99000000953674316" green="0.97299998998641968" blue="0.96899998188018799" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

@@ -29,8 +29,29 @@ class CatDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         assignDatatoPage()
-        
         // Do any additional setup after loading the view.
+    }
+    
+    func addActivityDummy(){
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+
+        let activity = Activity(context: context)
+        activity.activityTitle = "cukur rambut"
+        
+        var dayComponent    = DateComponents()
+        dayComponent.day    = -45 // For removing one day (yesterday): -1
+        let theCalendar     = Calendar.current
+        let prevDate        = theCalendar.date(byAdding: dayComponent, to: Date())
+        activity.activityDateTime = prevDate
+        
+        activity.activityDetail = "pake salep"
+        activity.activityType = "Treatment"
+        currCat?.addToActivities(activity)
+        do {
+            try context.save()
+        } catch  {
+            
+        }
     }
     
     func setupUI() {
@@ -38,6 +59,7 @@ class CatDetailViewController: UIViewController {
         self.navigationController?.navigationBar.prefersLargeTitles = true
         //tabBar
         self.tabBarController?.tabBar.isHidden = true
+        self.tabBarController?.tabBar.isTranslucent = true
         
         //ImageGradient
         let gradient: CAGradientLayer = CAGradientLayer()
@@ -52,10 +74,6 @@ class CatDetailViewController: UIViewController {
         setupUI()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        self.tabBarController?.tabBar.isHidden = false
-        self.navigationController?.navigationBar.prefersLargeTitles = false
-    }
     
     func assignDatatoPage() {
         if let image = currCat?.image {
@@ -68,7 +86,7 @@ class CatDetailViewController: UIViewController {
         catBreedAndNeutered.text = "\(currCat!.breed ?? "no data"), \(neuteredString)"
         if let date = currCat?.dateOfBirth{
             let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "dd/MM/YYYY"
+            dateFormatter.dateFormat = "MMMM dd, YYYY"
             catAge.text = "\(dateFormatter.string(from: date))"
 
         }
@@ -80,7 +98,13 @@ class CatDetailViewController: UIViewController {
     }
 
     @IBAction func goToLogActivityHistory(_ sender: Any) {
-        print("go to log activity history")
+        let storyboard = UIStoryboard(name: "History", bundle: nil)
+        
+        if let MainVC = storyboard.instantiateViewController(identifier: "HistoryNC") as? HistoryViewController {
+//            let nav = UINavigationController(rootViewController: MainVC)
+            MainVC.selectedCat = currCat!
+            navigationController?.pushViewController(MainVC, animated: true)
+        }
     }
     
     @IBAction func goToEditPage(_ sender: Any) {
@@ -102,6 +126,9 @@ class CatDetailViewController: UIViewController {
     
     
     @IBAction func back(_ sender: Any) {
+        self.tabBarController?.tabBar.isHidden = false
+        self.tabBarController?.tabBar.isTranslucent = false
+        self.navigationController?.navigationBar.prefersLargeTitles = false
         self.navigationController?.popToRootViewController(animated: true)
     }
     

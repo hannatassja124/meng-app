@@ -19,15 +19,14 @@ class SelectCatViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var NavBarButtonBack: UIBarButtonItem!
     @IBOutlet weak var TableView: UITableView!
     
+    var selectedCat = [CatData]()
+    var onCatSelectedModal: ((_ index:Int)-> Void)?
+
+    
 //MARK: - NavBar
     @IBAction func BackButtonAction(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
-    
-//MARK: - CoreData Call
-    let DummyArray = ["Dummy1", "Dummy2", "Dummy3", "Dummy4", "Dummy5"]
-    //let CatsArray = // This is where the registered Cat Data gets called
-    
     
     
     override func viewDidLoad() {
@@ -57,13 +56,23 @@ class SelectCatViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return DummyArray.count // Replace this with ActualDataArray.count
+        return selectedCat.count // Replace this with ActualDataArray.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let Cell = tableView.dequeueReusableCell(withIdentifier: "SelectCatCell", for: indexPath) as! selectCatCell
-        Cell.labelCatName.text = DummyArray[indexPath.row]
+        
+        Cell.labelCatName.text = selectedCat[indexPath.row].cat.name
+        Cell.imageCatColor.tintColor = TagsHelper.checkColor(tagsNumber: selectedCat[indexPath.row].cat.colorTags)
         return Cell
     }
+
     
+//MARK: - Pass Data
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        self.onCatSelectedModal!(indexPath.row)
+        self.dismiss(animated: true, completion: nil) //Dismiss Modal on Cell Click
+    }
 }
