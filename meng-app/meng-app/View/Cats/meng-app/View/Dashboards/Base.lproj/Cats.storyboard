@@ -91,7 +91,7 @@
     </scenes>
     <resources>
         <namedColor name="NeutralLight">
-            <color red="0.98999446629999999" green="0.9730597138" blue="0.96905237440000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.99000000953674316" green="0.97299998998641968" blue="0.96899998188018799" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
