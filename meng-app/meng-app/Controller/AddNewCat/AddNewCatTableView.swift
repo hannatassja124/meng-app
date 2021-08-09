@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol AddNewCatTableViewProtocol: AnyObject {
+    func backToRoot()
+}
+
 class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextViewDelegate {
     
 // Image
@@ -48,6 +52,8 @@ class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextVie
     var editedCat:Cats? = nil
 //    var catsDB: [Cats] = []
 //    var receivePlanIndex: Int = -1
+    
+    weak var delegate: AddNewCatTableViewProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -127,39 +133,14 @@ class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextVie
         do {
             try context.save()
             DispatchQueue.main.async {
-            self.catProfileDataTableView.reloadData()
+//                self.catProfileDataTableView.reloadData()
+                self.delegate?.backToRoot()
+                self.dismiss(animated: true, completion: nil)
             }
         }
         catch{
             print("Ga kedelete")
         }
-//        self.navigationController?.popToRootViewController(animated: true)
-        
-//        self.dismiss(animated: true, completion: {
-//            if let navController = self.navigationController {
-//                for controller in navController.viewControllers {
-//                    if controller is CatsViewController {
-//                        navController.popToViewController(controller, animated:true)
-//                    }
-//                }
-//            }
-//        })
-        
-//        let catsProfileList = UIStoryboard(name: "Cats", bundle: nil).instantiateViewController(withIdentifier: "catsStoryboard") as! CatsViewController
-//        self.navigationController?.pushViewController(catsProfileList, animated: true)
-        
-//        if let navController = self.navigationController {
-//            for controller in navController.viewControllers {
-//                if controller is CatsViewController {
-//                    navController.popToViewController(controller, animated:true)
-//                }
-//            }
-//        }
-        
-//        let storyBoard : UIStoryboard = UIStoryboard(name: "Cats", bundle:nil)
-//        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "catsStoryboard") as! CatsViewController
-//        self.present(nextViewController, animated:true, completion:nil)
-
     }
     
     func deleteCancel(alertAction: UIAlertAction!){
