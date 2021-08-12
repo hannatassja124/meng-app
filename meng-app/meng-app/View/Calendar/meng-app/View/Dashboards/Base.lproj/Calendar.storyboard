@@ -184,20 +184,21 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="pGL-WC-eTd">
                                     <size key="itemSize" width="50" height="50"/>
+                                    <size key="estimatedItemSize" width="40" height="40"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="calCell" id="87j-XC-SWO" customClass="CalendarCell" customModule="meng_app" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="49" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Ipl-gg-1yM">
-                                            <rect key="frame" x="0.0" y="0.0" width="49" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="web-SZ-NhA">
-                                                    <rect key="frame" x="21" y="16" width="7" height="18"/>
+                                                    <rect key="frame" x="21.666666666666668" y="16" width="7" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" name="MidnightGreen"/>
                                                     <nil key="highlightedColor"/>
@@ -208,7 +209,6 @@
                                                 <constraint firstItem="web-SZ-NhA" firstAttribute="centerX" secondItem="Ipl-gg-1yM" secondAttribute="centerX" id="bJ7-D1-aDA"/>
                                             </constraints>
                                         </collectionViewCellContentView>
-                                        <size key="customSize" width="49" height="50"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                 <real key="value" value="21"/>
@@ -224,12 +224,6 @@
                                     <outlet property="delegate" destination="OrA-tw-tYo" id="83h-bg-lfy"/>
                                 </connections>
                             </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="June 2020" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hOA-fV-pQ0">
-                                <rect key="frame" x="104" y="16" width="117" height="31"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <color key="textColor" name="MidnightGreen"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J1Y-yD-t0i">
                                 <rect key="frame" x="40" y="20" width="15" height="23"/>
                                 <color key="tintColor" name="MidnightGreen"/>
@@ -250,6 +244,12 @@
                                     <action selector="nextMonth:" destination="OrA-tw-tYo" eventType="touchUpInside" id="XI4-fq-QCF"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="June 2020" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hOA-fV-pQ0">
+                                <rect key="frame" x="82" y="16" width="160" height="31"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" name="MidnightGreen"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="brJ-Ey-yr1"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -264,9 +264,9 @@
                             <constraint firstAttribute="bottom" secondItem="TUh-hh-tNr" secondAttribute="bottom" constant="20" symbolic="YES" id="azo-0J-UL9"/>
                             <constraint firstItem="wq1-vs-2u8" firstAttribute="top" secondItem="hOA-fV-pQ0" secondAttribute="bottom" constant="16" id="cWx-YT-Na2"/>
                             <constraint firstAttribute="trailing" secondItem="fps-MX-lOi" secondAttribute="trailing" constant="40" id="fzm-TN-K96"/>
-                            <constraint firstItem="hOA-fV-pQ0" firstAttribute="leading" secondItem="Q3b-XQ-UL7" secondAttribute="leading" constant="104" id="gVT-xY-5LQ"/>
+                            <constraint firstItem="hOA-fV-pQ0" firstAttribute="leading" secondItem="Q3b-XQ-UL7" secondAttribute="leading" constant="82" id="gVT-xY-5LQ"/>
                             <constraint firstItem="J1Y-yD-t0i" firstAttribute="leading" secondItem="Q3b-XQ-UL7" secondAttribute="leading" constant="40" id="gsi-Js-d14"/>
-                            <constraint firstAttribute="trailing" secondItem="hOA-fV-pQ0" secondAttribute="trailing" constant="103" id="l3L-h7-JdM"/>
+                            <constraint firstAttribute="trailing" secondItem="hOA-fV-pQ0" secondAttribute="trailing" constant="82" id="l3L-h7-JdM"/>
                             <constraint firstAttribute="trailing" secondItem="wq1-vs-2u8" secondAttribute="trailing" constant="3" id="qyF-de-Xh7"/>
                             <constraint firstItem="TUh-hh-tNr" firstAttribute="top" secondItem="wq1-vs-2u8" secondAttribute="bottom" constant="8" symbolic="YES" id="rKO-mF-HfE"/>
                             <constraint firstItem="wq1-vs-2u8" firstAttribute="leading" secondItem="Q3b-XQ-UL7" secondAttribute="leading" constant="3" id="rie-Y8-2GX"/>
