@@ -22,16 +22,13 @@ class CalendarViewController: UIViewController {
     let calendar = Calendar.current
     let dateFormatter = DateFormatter()
     
-    
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
         
         self.tableView.register(UINib.init(nibName: activitiesCellId, bundle: nil), forCellReuseIdentifier: activitiesCellId)
         tableView.separatorColor =  .clear
-        
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
         
         tableView.backgroundColor = .clear
         
@@ -65,6 +62,39 @@ class CalendarViewController: UIViewController {
         self.tableView.reloadData()
 
     }
+    
+    override func viewDidLayoutSubviews() {
+        
+        let shadowPath = UIBezierPath(roundedRect: calendarUIView.bounds, cornerRadius: 13)
+        
+        calendarUIView.layer.masksToBounds = false
+        calendarUIView.layer.shadowColor = UIColor.black.cgColor
+        calendarUIView.layer.shadowOffset = .zero
+        calendarUIView.layer.shadowOpacity = 0.15
+        calendarUIView.layer.shadowRadius = 60
+        calendarUIView.layer.shadowPath = shadowPath.cgPath
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        let storyboard = UIStoryboard(name: "ActivityLog", bundle: nil)
+//        let vc = storyboard.instantiateViewController(withIdentifier: "ActivityLogStoryboard") as! ActivityLogTableViewController
+        if segue.identifier == "activityLogSegue" {
+            let vc = segue.destination as! UINavigationController
+            let target = vc.topViewController as! ActivityLogTableViewController
+            
+            let year = calendar.component(.year, from: Date())
+            let month = calendar.component(.month, from: Date())
+            let day = calendar.component(.day, from: Date())
+            let combinedDate = "\(year)-\(month)-\(day) 00:00:00 +0700"
+            dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss Z"
+            
+            target.onViewWillDisappear = {
+                self.retrieveData(activityDate: self.dateFormatter.date(from: combinedDate)!)
+            }
+        }
+    }
+    
+    // MARK: - Function
     
     func retrieveData(activityDate : Date) {
         do {
@@ -112,49 +142,21 @@ class CalendarViewController: UIViewController {
         
     }
     
+    // MARK: calendar - ACTION
     
     @IBAction func addActivityPage(_ sender: Any) {
-    }
-    
-    override func viewDidLayoutSubviews() {
         
-        let shadowPath = UIBezierPath(roundedRect: calendarUIView.bounds, cornerRadius: 13)
-        
-        calendarUIView.layer.masksToBounds = false
-        calendarUIView.layer.shadowColor = UIColor.black.cgColor
-        calendarUIView.layer.shadowOffset = .zero
-        calendarUIView.layer.shadowOpacity = 0.15
-        calendarUIView.layer.shadowRadius = 60
-        calendarUIView.layer.shadowPath = shadowPath.cgPath
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        let storyboard = UIStoryboard(name: "ActivityLog", bundle: nil)
-//        let vc = storyboard.instantiateViewController(withIdentifier: "ActivityLogStoryboard") as! ActivityLogTableViewController
-        if segue.identifier == "activityLogSegue" {
-            let vc = segue.destination as! UINavigationController
-            let target = vc.topViewController as! ActivityLogTableViewController
-            
-            let year = calendar.component(.year, from: Date())
-            let month = calendar.component(.month, from: Date())
-            let day = calendar.component(.day, from: Date())
-            let combinedDate = "\(year)-\(month)-\(day) 00:00:00 +0700"
-            dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss Z"
-            
-            target.onViewWillDisappear = {
-                self.retrieveData(activityDate: self.dateFormatter.date(from: combinedDate)!)
-            }
-        }
-    }
-    
 
 }
+
+// MARK: - Data Source & Delegate
 
 extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if self.activities.count == 0 {
             self.tableView.setEmptyMessage("Tap the + button to add activity log!")
-        } else  {
+        } else {
             self.tableView.restore()
         }
         
