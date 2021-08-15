@@ -30,6 +30,11 @@ class CalendarCollectionViewController: UIViewController, UICollectionViewDelega
         retrieveData()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        retrieveData()
+        print("view will appear")
+    }
+    
     func retrieveData() {
         do {
             activities = try context.fetch(Activity.fetchRequest())
@@ -101,6 +106,11 @@ class CalendarCollectionViewController: UIViewController, UICollectionViewDelega
         if totalSquares[indexPath.item] ==  defaultDate {
             collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .left)
             cell.isSelected = true
+        }
+        
+        if activityModel.contains("\(indexPath.row+1)") {
+            print("tanggal")
+            cell.markImage.isHidden = false
         }
 
 //        if activityModel.contains("\(indexPath.row+1)") {

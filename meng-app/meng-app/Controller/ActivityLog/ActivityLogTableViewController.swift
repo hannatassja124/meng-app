@@ -285,7 +285,14 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
                 
                 //Section 5 DONE
                 NewActivityLog.activityReminder = self.ReminderToMinutes()
+                
+                do {
+                    try context.save()
+                } catch {
+                    print("Ga kesave")
+                }
                 /*if SwitchOff {
+                 
                     
                 }
                 else{

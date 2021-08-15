@@ -11,6 +11,7 @@ import UIKit
 class CalendarCell: UICollectionViewCell {
     
     
+    @IBOutlet weak var markImage: UIImageView!
     @IBOutlet weak var dayOfMonth: UILabel!
     
     var dateIsHaveEvent: Bool? {

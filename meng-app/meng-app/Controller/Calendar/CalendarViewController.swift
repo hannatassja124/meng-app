@@ -90,6 +90,7 @@ class CalendarViewController: UIViewController {
             
             target.onViewWillDisappear = {
                 self.retrieveData(activityDate: self.dateFormatter.date(from: combinedDate)!)
+                
             }
         }
     }
