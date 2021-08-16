@@ -321,13 +321,15 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
                 editedCat!.vetPhoneNo = "\(ncCatVetsPhoneNumber.text ?? "")"
                 editedCat!.notes = "\(ncCatNotesTV.text ?? "")"
             }
-            do {
-                try context.save()
-            } catch {
-                print("Ga kesave")
-            }
+           
             */
             //onViewWillDisappear!() dunno what this is used for
+                
+                do {
+                    try context.save()
+                } catch {
+                    print("Ga kesave")
+                }
         }
         
     // Set data pas mau edit
