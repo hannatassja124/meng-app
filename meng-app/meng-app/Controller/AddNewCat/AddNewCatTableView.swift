@@ -13,6 +13,7 @@ protocol AddNewCatTableViewProtocol: AnyObject {
 
 class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextViewDelegate {
     
+    // MARK: - IBOutlets
 // Image
     @IBOutlet weak var ncCatPhotoImage: UIImageView!
     @IBOutlet weak var ncCatColorTagsIcon: UIImageView!
@@ -55,6 +56,7 @@ class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextVie
     
     weak var delegate: AddNewCatTableViewProtocol?
     
+    //MARK: - ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -80,12 +82,31 @@ class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextVie
         else {
             catProfileDataDeleteTableView.isHidden = false
         }
+        
+        saveDummy()
     }
     
+    //MARK: - IBActions
 // Buttons
     @IBAction func saveButton(_ sender: Any) {
-    saveCatProfileData()
-        self.dismiss(animated: true, completion: nil)
+        if ncCatPhotoImage.image == nil {
+            let alertNCImage = UIAlertController(title: "You have not insert your cat's image", message: "You must insert your cat's image before saving", preferredStyle: .alert)
+
+            alertNCImage.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+
+            self.present(alertNCImage, animated: true)
+        }
+        else if ncCatNameTF.text == "" {
+            let alertNCName = UIAlertController(title: "You have not insert your cat's name", message: "You must insert your cat's name before saving", preferredStyle: .alert)
+
+            alertNCName.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+
+            self.present(alertNCName, animated: true)
+        }
+        else if ncCatPhotoImage.image != nil && ncCatNameTF.text != nil {
+            saveCatProfileData()
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
     @IBAction func cancelButton(_ sender: Any) {
@@ -126,9 +147,13 @@ class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextVie
         self.present(alert, animated: true, completion: nil)
         
     }
-    
+    //MARK: - Functions
 // Delete Cat Data
     func deleteConfirm(alertAction: UIAlertAction!) {
+//        let catActivities = editedCat?.activities?.allObjects as! [Activity]
+//            for data in catActivities {
+//                context.delete(data as Activity)
+//            }
         context.delete(editedCat!)
         do {
             try context.save()
@@ -152,8 +177,8 @@ class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextVie
         if editedCat == nil {
             let newCatProfile = Cats(context: context)
             
-            newCatProfile.image = ncCatPhotoImage.image?.jpegData(compressionQuality: 1.0) ?? nil
-            newCatProfile.name =  "\(ncCatNameTF.text ?? "")"
+                newCatProfile.image = ncCatPhotoImage.image?.jpegData(compressionQuality: 1.0) ?? nil
+                newCatProfile.name =  "\(ncCatNameTF.text ?? "")"
             newCatProfile.colorTags = Int16(TagsHelper.convertColorToNumber(color: ncCatColorTagsLabel.text!))
                 if ncCatGenderLabel.text == "Male" {
                     newCatProfile.gender = 0
@@ -258,6 +283,42 @@ class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextVie
         }
     }
     
+// Data Dummy
+    func saveDummy() {
+        let dummyCatProfile = Cats(context: context)
+        
+        dummyCatProfile.image = UIImage(named: "Meng-2")?.jpegData(compressionQuality: 1.0) ?? nil
+        dummyCatProfile.name =  "Kucing Oren"
+        dummyCatProfile.colorTags = 0
+        dummyCatProfile.gender = 0
+        dummyCatProfile.dateOfBirth = Date()
+        dummyCatProfile.breed = "Abyssinian"
+        dummyCatProfile.isNeutered = true
+        dummyCatProfile.weight = 2.5
+        dummyCatProfile.feeding = "Dry Food Royal Canin"
+        dummyCatProfile.vetName = "Juminten"
+        dummyCatProfile.vetPhoneNo = "0812893752930"
+        dummyCatProfile.notes = "Alergi Kucing Putih"
+        
+        let dummyActivities = Activity(context: context)
+        
+        dummyActivities.activityDateTime = Date()
+        dummyActivities.activityDetail = "Medicate Cat to Vet"
+        dummyActivities.activityNotificationId = UUID()
+        dummyActivities.activityReminder = 2
+        dummyActivities.activityTitle = "Meds"
+        dummyActivities.activityType = "Treatment"
+        
+        dummyCatProfile.addToActivities(dummyActivities)
+        do {
+            try context.save()
+        } catch {
+            
+        }
+        onViewWillDisappear!()
+        }
+    
+    
 // Untuk Name Text Field
     func nameField() {
         
@@ -351,7 +412,8 @@ class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextVie
             }
             return true
         }
-    
+   
+    //MARK: Data in Pickers
 // Format Date to String untuk ditampilkan ke Date Label
     @IBAction func ncCatDOBPickerAction(_ sender: Any) {
         ncCatDOBLabel.text = dateFormat(date: ncCatDOBPicker.date, formatDate: dateFormatTemp)
@@ -369,7 +431,7 @@ class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextVie
         return dateFormatter.string(from: date)
     }
     
-    
+    //MARK: Table View Display and Functions
 // Table View Display
     func hiddenPickers(fieldName: String, indexPath: IndexPath) {
         ncCatColorTagsPicker.isHidden = fieldName == "catColorTags" ? !ncCatColorTagsPicker.isHidden : true
@@ -443,6 +505,7 @@ class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextVie
     }
 }
 
+//MARK: - Extensions
 extension AddNewCatTableView: UIPickerViewDataSource {
     
     //Pickers
