@@ -6,7 +6,6 @@
 //
 //MARK: - !!To-Do!!
 //HELPER CODE TO CLEAN THE FOLLOWING: Reminder to Minutes & Activities Type to Integer
-//Edit
 //Delete
 //Reminder Switch to hide Reminder Cell & NOT save data
 
@@ -48,7 +47,7 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var EditedActivity:Activity? = nil
     let dateFormatTemp =  "MMMM dd, yyyy"
-    var ReminderChosen: Int = 0
+    var ReminderChosen: Int64 = 0
     var SelectedActivitiesIndex: Int = 0
     var ActivityList = [ActivitiesTypeStruct(name: "Vaccine", iconName: "Vaccine"), ActivitiesTypeStruct(name: "Appointment", iconName: "Appointment"), ActivitiesTypeStruct(name: "Treatment", iconName: "Treatment"), ActivitiesTypeStruct(name: "Symptoms", iconName: "Symptoms"), ActivitiesTypeStruct(name: "Others", iconName: "Others")]
     var selectedCat = [CatData]() //unused?
@@ -377,12 +376,12 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
                 else{
                     NewActivityLog.activityReminder = self.ReminderToMinutes()
                 }*/
+            }
             do {
                 try context.save()
             } catch {
                 print("Ga kesave")
             }
-        }
         }
         
     // Load Saved data during Edit
@@ -418,8 +417,8 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
                     }
                     
                     //Section 3
-                    TextFieldTitle.text = EditedActivity?.activityTitle
-                    TextFieldDetails.text = EditedActivity?.activityDetail
+                    TextFieldTitle.text = EditedActivity!.activityTitle
+                    TextFieldDetails.text = EditedActivity!.activityDetail
 
                     //Section 4
                     DatePickerDate.date = (EditedActivity?.activityDateTime)!
@@ -428,7 +427,12 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
                     LabelDate.text = dateFormat(date: DatePickerDate.date, formatDate: dateFormatTemp)
                     
                     //Section 5
-                    EditedActivity?.activityReminder = self.MinutesToReminder()
+                    //PICKER DOESNT WORK
+                    ReminderChosen = EditedActivity!.activityReminder
+                    
+                    PickerViewReminder.selectRow(Int(self.MinutesToReminder()), inComponent: 0, animated: true)
+                    LabelReminderBefore.text = RemindBeforeData[Int(self.MinutesToReminder())]
+                    //PickerViewReminder. = self.MinutesToReminder()
                 }
             }
     
@@ -489,7 +493,7 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
         func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
             print(RemindBeforeData[row])
             LabelReminderBefore.text = RemindBeforeData[row]
-            ReminderChosen = row
+            ReminderChosen = Int64(row)
         }
     
     /*
