@@ -24,6 +24,7 @@ class CalendarCollectionViewController: UIViewController, UICollectionViewDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("viewDidLoad CalendarCollectionViewController")
         setCellsView()
         setMonthView()
         
@@ -33,18 +34,20 @@ class CalendarCollectionViewController: UIViewController, UICollectionViewDelega
    
     
     func retrieveData() {
+        print("asdasd")
         do {
             activities = try context.fetch(Activity.fetchRequest())
 //            print("test", activities[0].activityDateTime)
             if activities.count != 0 {
                 let dateFormater = DateFormatter()
                 dateFormater.dateFormat = "dd"
+                activityModel.removeAll()
                 for (index, item) in activities.enumerated() {
                     let numberInInt = Int(dateFormater.string(from: activities[index].activityDateTime ?? Date()))
                     activityModel.append("\(numberInInt ?? 0)")
                 }
                 arrayActivityHasEvent = activityModel.count
-//                collectionView.reloadData()
+                collectionView.reloadData()
             }
         } catch {
             print("error")
@@ -105,6 +108,8 @@ class CalendarCollectionViewController: UIViewController, UICollectionViewDelega
             cell.isSelected = true
         }
         
+        
+        //logic perlu diganti
         if activityModel.contains("\(indexPath.row+1)") {
             print("tanggal")
             cell.markImage.isHidden = false

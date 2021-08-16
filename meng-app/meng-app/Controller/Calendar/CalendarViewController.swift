@@ -19,7 +19,8 @@ class CalendarViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var calendarUIView: UIView!
-
+    @IBOutlet weak var containerCalendarView: UIView!
+    
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var activities = [Activity()]
     var cats = [Cats()]
@@ -82,24 +83,37 @@ class CalendarViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "activityLogSegue" {
-            let vc = segue.destination as! UINavigationController
-            let target = vc.topViewController as! ActivityLogTableViewController
-            target.delegate = self
-   
-            
-            let year = calendar.component(.year, from: Date())
-            let month = calendar.component(.month, from: Date())
-            let day = calendar.component(.day, from: Date())
-            let combinedDate = "\(year)-\(month)-\(day) 00:00:00 +0700"
-            dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss Z"
-            
-            
-            target.onViewWillDisappear = {
-                self.retrieveData(activityDate: self.dateFormatter.date(from: combinedDate)!)
-                self.viewDidLoad()
-            }
+//        if segue.identifier == "activityLogSegue" {
+//            let vc = segue.destination as! UINavigationController
+//            let target = vc.topViewController as! ActivityLogTableViewController
+//            target.delegate = self
+//
+//
+//            let year = calendar.component(.year, from: Date())
+//            let month = calendar.component(.month, from: Date())
+//            let day = calendar.component(.day, from: Date())
+//            let combinedDate = "\(year)-\(month)-\(day) 00:00:00 +0700"
+//            dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss Z"
+//
+//
+//            target.onViewWillDisappear = {
+//                self.retrieveData(activityDate: self.dateFormatter.date(from: combinedDate)!)
+//                self.viewDidLoad()
+//            }
+//        }
+        
+        let storyboard = UIStoryboard(name: "ActivityLog", bundle: nil)
+       
+        if let vc = storyboard.instantiateViewController(withIdentifier: "ActivityLogStoryboard") as? ActivityLogTableViewController {
+            let nc = UINavigationController(rootViewController: vc)
+//            nc.navigationBar.isTranslucent = false
+//            nc.navigationBar.barTintColor = #colorLiteral(red: 0.1036602035, green: 0.2654651999, blue: 0.3154058456, alpha: 1)
+//            nc.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.init(cgColor: #colorLiteral(red: 0.9984837174, green: 0.9839375615, blue: 0.9796521068, alpha: 1))]
+
+            vc.delegate = self
+            self.present(nc, animated: true, completion: nil)
         }
+
     }
     
     // MARK: - Function
@@ -153,7 +167,18 @@ class CalendarViewController: UIViewController {
     // MARK: calendar - ACTION
     
     @IBAction func addActivityPage(_ sender: Any) {
-        
+//        self.performSegue(withIdentifier: "ActivityLogStoryboard", sender: self)
+        let storyboard = UIStoryboard(name: "ActivityLog", bundle: nil)
+       
+        if let vc = storyboard.instantiateViewController(withIdentifier: "ActivityLogStoryboard") as? ActivityLogTableViewController {
+            let nc = UINavigationController(rootViewController: vc)
+//            nc.navigationBar.isTranslucent = false
+//            nc.navigationBar.barTintColor = #colorLiteral(red: 0.1036602035, green: 0.2654651999, blue: 0.3154058456, alpha: 1)
+//            nc.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.init(cgColor: #colorLiteral(red: 0.9984837174, green: 0.9839375615, blue: 0.9796521068, alpha: 1))]
+
+            vc.delegate = self
+            self.present(nc, animated: true, completion: nil)
+        }
     }
 
 }
@@ -217,6 +242,10 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension CalendarViewController: ActivityLogTableViewControllerProtocol {
     func updateReloadData() {
+        if let vc = self.children.filter({$0 is CalendarCollectionViewController}).first as? CalendarCollectionViewController {
+            vc.retrieveData()
+        }
+
         let year = calendar.component(.year, from: Date())
         let month = calendar.component(.month, from: Date())
         let day = calendar.component(.day, from: Date())

@@ -78,12 +78,12 @@
                             <color key="tintColor" name="NeutralLight"/>
                             <connections>
                                 <action selector="addActivityPage:" destination="BYZ-38-t0r" id="kRY-9w-d3i"/>
-                                <segue destination="XNa-4A-7Fe" kind="presentation" identifier="activityLogSegue" id="FlN-Fb-QD9"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="calendarUIView" destination="t6f-0v-UX3" id="nNP-ZU-yh4"/>
+                        <outlet property="containerCalendarView" destination="We8-tv-hDF" id="4NH-CN-qBH"/>
                         <outlet property="tableView" destination="Xca-ap-6Lt" id="qgK-Hx-Rh6"/>
                     </connections>
                 </viewController>

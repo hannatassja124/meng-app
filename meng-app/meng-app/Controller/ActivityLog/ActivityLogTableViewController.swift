@@ -67,9 +67,13 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
     
 
 //MARK: - ViewDidLoad
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.delegate?.updateReloadData()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print("viewDidLoad kepanggil")
         retrieveData()
         
         PickerReminderFill()
@@ -129,7 +133,7 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
 //MARK: - NavBar
     @IBAction func SaveButtonAction(_ sender: Any) {
         SaveActivityLog()
-        onViewWillDisappear!()
+        //onViewWillDisappear!()
         self.dismiss(animated: true) {
             self.delegate?.updateReloadData()
         }
