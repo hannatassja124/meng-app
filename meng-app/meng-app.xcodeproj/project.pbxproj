@@ -39,6 +39,16 @@
 		1932CFD026B2494800E7FE06 /* TagsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1932CFCF26B2494800E7FE06 /* TagsHelper.swift */; };
 		19636ECD26AF9E4100EBD377 /* AddNewCatCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19636ECB26AF9E4100EBD377 /* AddNewCatCollectionViewCell.swift */; };
 		19636ECE26AF9E4100EBD377 /* AddNewCatCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19636ECC26AF9E4100EBD377 /* AddNewCatCollectionViewCell.xib */; };
+		F91BC74526C9AF0200DF1600 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F91BC74426C9AF0200DF1600 /* Onboarding.storyboard */; };
+		F91BC74826C9AF2600DF1600 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91BC74726C9AF2600DF1600 /* OnboardingViewController.swift */; };
+		F91BC74A26C9B6A300DF1600 /* OnboardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91BC74926C9B6A300DF1600 /* OnboardingModel.swift */; };
+		F91BC74D26C9B9C100DF1600 /* OnboardingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91BC74C26C9B9C100DF1600 /* OnboardingCollectionViewCell.swift */; };
+		F91BC74F26C9CB5C00DF1600 /* GetStartedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91BC74E26C9CB5C00DF1600 /* GetStartedViewController.swift */; };
+		F91BC75126C9CB7F00DF1600 /* Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91BC75026C9CB7F00DF1600 /* Core.swift */; };
+		F92EDAEA26BDA2A30051B9DF /* Activity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92EDAE626BDA2A30051B9DF /* Activity+CoreDataClass.swift */; };
+		F92EDAEB26BDA2A30051B9DF /* Activity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92EDAE726BDA2A30051B9DF /* Activity+CoreDataProperties.swift */; };
+		F92EDAEC26BDA2A30051B9DF /* Cats+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92EDAE826BDA2A30051B9DF /* Cats+CoreDataClass.swift */; };
+		F92EDAED26BDA2A30051B9DF /* Cats+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92EDAE926BDA2A30051B9DF /* Cats+CoreDataProperties.swift */; };
 		F92EDAF026BDD9770051B9DF /* TypeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92EDAEF26BDD9770051B9DF /* TypeHelper.swift */; };
 		F92EDAF226BDDAF10051B9DF /* ReminderHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92EDAF126BDDAF10051B9DF /* ReminderHelper.swift */; };
 		F94AD29826AEF19D005686ED /* UiCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94AD29726AEF19D005686ED /* UiCustom.swift */; };
@@ -99,6 +109,16 @@
 		1932CFCF26B2494800E7FE06 /* TagsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsHelper.swift; sourceTree = "<group>"; };
 		19636ECB26AF9E4100EBD377 /* AddNewCatCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewCatCollectionViewCell.swift; sourceTree = "<group>"; };
 		19636ECC26AF9E4100EBD377 /* AddNewCatCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddNewCatCollectionViewCell.xib; sourceTree = "<group>"; };
+		F91BC74426C9AF0200DF1600 /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
+		F91BC74726C9AF2600DF1600 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		F91BC74926C9B6A300DF1600 /* OnboardingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingModel.swift; sourceTree = "<group>"; };
+		F91BC74C26C9B9C100DF1600 /* OnboardingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCollectionViewCell.swift; sourceTree = "<group>"; };
+		F91BC74E26C9CB5C00DF1600 /* GetStartedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedViewController.swift; sourceTree = "<group>"; };
+		F91BC75026C9CB7F00DF1600 /* Core.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Core.swift; sourceTree = "<group>"; };
+		F92EDAE626BDA2A30051B9DF /* Activity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Activity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		F92EDAE726BDA2A30051B9DF /* Activity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Activity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		F92EDAE826BDA2A30051B9DF /* Cats+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cats+CoreDataClass.swift"; sourceTree = "<group>"; };
+		F92EDAE926BDA2A30051B9DF /* Cats+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cats+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		F92EDAEF26BDD9770051B9DF /* TypeHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeHelper.swift; sourceTree = "<group>"; };
 		F92EDAF126BDDAF10051B9DF /* ReminderHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderHelper.swift; sourceTree = "<group>"; };
 		F94AD29726AEF19D005686ED /* UiCustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UiCustom.swift; sourceTree = "<group>"; };
@@ -290,6 +310,32 @@
 			path = CatProfileCell;
 			sourceTree = "<group>";
 		};
+		F91BC74326C9AEE600DF1600 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				F91BC74B26C9B87000DF1600 /* OnboardingCell */,
+				F91BC74426C9AF0200DF1600 /* Onboarding.storyboard */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		F91BC74626C9AF1600DF1600 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				F91BC74726C9AF2600DF1600 /* OnboardingViewController.swift */,
+				F91BC74E26C9CB5C00DF1600 /* GetStartedViewController.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		F91BC74B26C9B87000DF1600 /* OnboardingCell */ = {
+			isa = PBXGroup;
+			children = (
+				F91BC74C26C9B9C100DF1600 /* OnboardingCollectionViewCell.swift */,
+			);
+			path = OnboardingCell;
+			sourceTree = "<group>";
+		};
 		F96BBDCD26BB31910065C589 /* ActivityDetail */ = {
 			isa = PBXGroup;
 			children = (
@@ -353,6 +399,7 @@
 		F995E50A26A99EBC00DA5C50 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F91BC74326C9AEE600DF1600 /* Onboarding */,
 				0378E3A226BDC0E8005DA330 /* History Details */,
 				192E971026BE53FD00BBDF9E /* History */,
 				F995E51326A9A9AC00DA5C50 /* Dashboards */,
@@ -379,6 +426,8 @@
 				F950008C26C0CF08003F1B6C /* EventModel.swift */,
 				0799D24726BEF43100511015 /* ActivitiesTypeStruct.swift */,
 				077B96EB26C012A000117F67 /* ActivitiesCatModel.swift */,
+				F91BC74926C9B6A300DF1600 /* OnboardingModel.swift */,
+				F91BC75026C9CB7F00DF1600 /* Core.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -386,6 +435,7 @@
 		F995E50C26A99EC700DA5C50 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				F91BC74626C9AF1600DF1600 /* Onboarding */,
 				192E971526BE54F700BBDF9E /* History */,
 				F9DF6C6A26B7487800DCF044 /* ActivityDetail */,
 				F9B6085A26AFE987005EF315 /* Calendar */,
@@ -570,6 +620,7 @@
 				F995E50026A99E9800DA5C50 /* Assets.xcassets in Resources */,
 				F9B6086126AFEAC9005EF315 /* ActivitiesTableViewCell.xib in Resources */,
 				07D0954726B03EAE00491BD0 /* ActivityLog.storyboard in Resources */,
+				F91BC74526C9AF0200DF1600 /* Onboarding.storyboard in Resources */,
 				0378E3A426BDC128005DA330 /* History Details.storyboard in Resources */,
 				F995E4FB26A99E9700DA5C50 /* Main.storyboard in Resources */,
 				077B96F426C03CC900117F67 /* ActivityLogDateTimeHeader.xib in Resources */,
@@ -605,6 +656,7 @@
 				0372C64326CA0BE1006F2C1C /* Activity+CoreDataClass.swift in Sources */,
 				F995E4FE26A99E9700DA5C50 /* meng_app.xcdatamodeld in Sources */,
 				1920066D26B032BF00BAD2D0 /* CatProfileCollectionViewCell.swift in Sources */,
+				F91BC75126C9CB7F00DF1600 /* Core.swift in Sources */,
 				F92EDAF026BDD9770051B9DF /* TypeHelper.swift in Sources */,
 				0799D24526BED4E500511015 /* ActivitiesCVC.swift in Sources */,
 				0799D24826BEF43100511015 /* ActivitiesTypeStruct.swift in Sources */,
@@ -618,14 +670,20 @@
 				F995E51626A9A9D000DA5C50 /* DashboardViewController.swift in Sources */,
 				0372C64226CA0BE1006F2C1C /* Cats+CoreDataProperties.swift in Sources */,
 				1932CFD026B2494800E7FE06 /* TagsHelper.swift in Sources */,
+				F92EDAED26BDA2A30051B9DF /* Cats+CoreDataProperties.swift in Sources */,
+				F91BC74D26C9B9C100DF1600 /* OnboardingCollectionViewCell.swift in Sources */,
+				F91BC74A26C9B6A300DF1600 /* OnboardingModel.swift in Sources */,
 				F995E51B26A9AA5200DA5C50 /* DashboardCellViewController.swift in Sources */,
 				F995E4F426A99E9700DA5C50 /* AppDelegate.swift in Sources */,
 				F950008D26C0CF08003F1B6C /* EventModel.swift in Sources */,
 				077B96F826C03E7A00117F67 /* ActivityLogActivitiesHeader.swift in Sources */,
+				F91BC74826C9AF2600DF1600 /* OnboardingViewController.swift in Sources */,
+				F92EDAEB26BDA2A30051B9DF /* Activity+CoreDataProperties.swift in Sources */,
 				0747674426B253D20054D268 /* ActivityLogDatePickerHeader.swift in Sources */,
 				F92EDAF226BDDAF10051B9DF /* ReminderHelper.swift in Sources */,
 				0779832626B1B36400BFFD57 /* SelectCatViewController.swift in Sources */,
 				F995E4F626A99E9700DA5C50 /* SceneDelegate.swift in Sources */,
+				F91BC74F26C9CB5C00DF1600 /* GetStartedViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -797,7 +855,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = KBSYTU5GMJ;
 				INFOPLIST_FILE = "meng-app/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -817,7 +875,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = KBSYTU5GMJ;
 				INFOPLIST_FILE = "meng-app/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
