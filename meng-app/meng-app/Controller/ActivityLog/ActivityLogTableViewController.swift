@@ -57,7 +57,6 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
     var dateFormatter = DateFormatter()
     let calendar = Calendar.current
     var SaveSuccess = false
-    
     var onViewWillDisappear: (()->())?
     
 
@@ -70,6 +69,7 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
         PickerReminderFill()
         DatePickerDateDisplay()
         
+        checkIfEditOrNot()
         
         CollectionViewActivities.register(UINib(nibName: "ActivitiesCVC", bundle: nil), forCellWithReuseIdentifier: "ActivitiesCVCID")
         CollectionViewActivities.delegate = self
@@ -127,11 +127,7 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
 //MARK: - NavBar
     @IBAction func SaveButtonAction(_ sender: Any) {
         SaveActivityLog()
-        onViewWillDisappear!()
-        if(SaveSuccess)
-        {
-            self.dismiss(animated: true, completion: nil)
-        }
+        self.dismiss(animated: true, completion: nil)
     }
 
     @IBAction func BackButtonAction(_ sender: Any) {
@@ -231,24 +227,36 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
 //MARK: - Save Activity Log
     // Save New Data
         func SaveActivityLog(){
-            if EditedActivity == nil {
+            if LabelCat.text == "" {// ini salah
+                print("if conditional works in Section 1 save")
+                
+                let Alert = UIAlertController(title: "Error", message: "Please select a Cat.", preferredStyle: .alert)
+                Alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in NSLog("The \"OK\" alert occured.")}))
+                self.present(Alert, animated: true, completion: nil)
+            }
+            else if SelectedActivitiesIndex > 4 || SelectedActivitiesIndex < 0 {// this doesn't work
+                let Alert = UIAlertController(title: "Error", message: "Please select an Activity Type.", preferredStyle: .alert)
+                Alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in NSLog("The \"OK\" alert occured.")}))
+                self.present(Alert, animated: true, completion: nil)
+            }
+            else if TextFieldTitle.text == ""{
+                let Alert = UIAlertController(title: "Error", message: "Please enter a Title.", preferredStyle: .alert)
+                Alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in NSLog("The \"OK\" alert occured.")}))
+                self.present(Alert, animated: true, completion: nil)
+            }
+            else if TextFieldDetails.text == ""{
+                let Alert = UIAlertController(title: "Error", message: "Please enter a Description.", preferredStyle: .alert)
+                Alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in NSLog("The \"OK\" alert occured.")}))
+                self.present(Alert, animated: true, completion: nil)
+            }
+            
+            else if EditedActivity == nil {//Actually starts saving
                 let NewActivityLog = Activity(context: context)
                 
-                //Section 1; Needs break?
-                if LabelCat.text == "" {//Doesn't work??
-                    print("if conditional works in Section 1 save")
-                    let Alert = UIAlertController(title: "Error", message: "Please select a Cat.", preferredStyle: .alert)
-                    Alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in NSLog("The \"OK\" alert occured.")}))
-                    self.present(Alert, animated: true, completion: nil)
-                    SaveSuccess = false
-                    //insert break; how?
-                    return
-                }
-                else{
-                    NewActivityLog.addToCats(cats[selectedCatIndex])
-                }
+                //Section 1
+                NewActivityLog.addToCats(cats[selectedCatIndex])
                 
-                //Section 2; Needs break?
+                //Section 2
                 if SelectedActivitiesIndex == 0 {
                     NewActivityLog.activityType = "Vaccine"
                 }
@@ -264,39 +272,11 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
                 else if SelectedActivitiesIndex == 4 {
                     NewActivityLog.activityType = "Others"
                 }
-                else{
-                    let Alert = UIAlertController(title: "Error", message: "Please select an Activity Type.", preferredStyle: .alert)
-                    Alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in NSLog("The \"OK\" alert occured.")}))
-                    self.present(Alert, animated: true, completion: nil)
-                    SaveSuccess = false
-                    //insert break
-                    return
-                }
                 
-                //Section 3; Needs break?
-                if TextFieldTitle.text == ""{
-                    let Alert = UIAlertController(title: "Error", message: "Please enter a Title.", preferredStyle: .alert)
-                    Alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in NSLog("The \"OK\" alert occured.")}))
-                    self.present(Alert, animated: true, completion: nil)
-                    SaveSuccess = false
-                    //insert break
-                    return
-                }
-                else{
-                    NewActivityLog.activityTitle = "\(TextFieldTitle.text ?? "")"
-                }
+                //Section 3
                 
-                if TextFieldDetails.text == ""{
-                    let Alert = UIAlertController(title: "Error", message: "Please enter a Description.", preferredStyle: .alert)
-                    Alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in NSLog("The \"OK\" alert occured.")}))
-                    self.present(Alert, animated: true, completion: nil)
-                    SaveSuccess = false
-                    //insert break
-                    return
-                }
-                else{
-                    NewActivityLog.activityDetail = "\(TextFieldDetails.text ?? "")"
-                }
+                NewActivityLog.activityTitle = "\(TextFieldTitle.text ?? "")"
+                NewActivityLog.activityDetail = "\(TextFieldDetails.text ?? "")"
                 
                 //Section 4
                 
@@ -312,8 +292,6 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
                 
                 NewActivityLog.activityDateTime = ActualActualActualDate
                 
-                
-                
                 //Section 5
                 NewActivityLog.activityReminder = self.ReminderToMinutes()
                 /*if SwitchOff {
@@ -326,7 +304,7 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
             
             
 //MARK: - Edit BLOCKED HELP ME PLEASE AAAAAAAAAA
-    // Edit Existing Data
+    // Edit (Save into) Existing Data
             else if EditedActivity != nil {
                 
                 //Section 1
@@ -403,55 +381,55 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
                 print("Ga kesave")
             }
         }
+        }
         
     // Load Saved data during Edit
             
-        func checkIfEditOrNot() {
-            
-            if EditedActivity != nil {
+            func checkIfEditOrNot() {
                 
-                //Section 1 NOT DONE IDK HOW TO GET THIS VALUE
-                
-                //EditedActivity.addToCats(cats[selectedCatIndex])
-                //selectedCatIndex = EditedActivity.
-                
-                //Section 2
-                if EditedActivity!.activityType == "Vaccine"
-                {
-                    selectedCatIndex = 0
-                }
-                else if EditedActivity!.activityType == "Appointment"
-                {
-                    selectedCatIndex = 1
-                }
-                else if EditedActivity!.activityType == "Treatment"
-                {
-                    selectedCatIndex = 2
-                }
-                else if EditedActivity!.activityType == "Symptoms"
-                {
-                    selectedCatIndex = 3
-                }
-                else if EditedActivity!.activityType == "Others"
-                {
-                    selectedCatIndex = 4
-                }
-                
-                //Section 3
-                TextFieldTitle.text = EditedActivity?.activityTitle
-                TextFieldDetails.text = EditedActivity?.activityDetail
+                if EditedActivity != nil {
+                    
+                    //Section 1 NOT DONE IDK HOW TO GET THIS VALUE
+                    
+                    //selectedCatIndex = EditedActivity.
+                    
+                    
+                    //Section 2
+                    if EditedActivity!.activityType == "Vaccine"
+                    {
+                        selectedCatIndex = 0
+                    }
+                    else if EditedActivity!.activityType == "Appointment"
+                    {
+                        selectedCatIndex = 1
+                    }
+                    else if EditedActivity!.activityType == "Treatment"
+                    {
+                        selectedCatIndex = 2
+                    }
+                    else if EditedActivity!.activityType == "Symptoms"
+                    {
+                        selectedCatIndex = 3
+                    }
+                    else if EditedActivity!.activityType == "Others"
+                    {
+                        selectedCatIndex = 4
+                    }
+                    
+                    //Section 3
+                    TextFieldTitle.text = EditedActivity?.activityTitle
+                    TextFieldDetails.text = EditedActivity?.activityDetail
 
-                //Section 4
-                DatePickerDate.date = (EditedActivity?.activityDateTime)!
-                DatePickerTime.date = (EditedActivity?.activityDateTime)!
-                
-                LabelDate.text = dateFormat(date: DatePickerDate.date, formatDate: dateFormatTemp)
-                
-                //Section 5
-                EditedActivity?.activityReminder = self.MinutesToReminder()
+                    //Section 4
+                    DatePickerDate.date = (EditedActivity?.activityDateTime)!
+                    DatePickerTime.date = (EditedActivity?.activityDateTime)!
+                    
+                    LabelDate.text = dateFormat(date: DatePickerDate.date, formatDate: dateFormatTemp)
+                    
+                    //Section 5
+                    EditedActivity?.activityReminder = self.MinutesToReminder()
+                }
             }
-        }
-    }
     
     
 //MARK: - Picker Reminder Choices
