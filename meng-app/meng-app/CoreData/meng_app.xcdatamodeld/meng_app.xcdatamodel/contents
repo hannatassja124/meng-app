@@ -22,10 +22,10 @@
         <attribute name="vetName" optional="YES" attributeType="String"/>
         <attribute name="vetPhoneNo" optional="YES" attributeType="String"/>
         <attribute name="weight" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <relationship name="activities" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Activity" inverseName="cats" inverseEntity="Activity"/>
+        <relationship name="activities" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Activity" inverseName="cats" inverseEntity="Activity"/>
     </entity>
     <elements>
-        <element name="Activity" positionX="3.96063232421875" positionY="59.24842834472656" width="128" height="134"/>
+        <element name="Activity" positionX="3.96063232421875" positionY="59.24842834472656" width="128" height="148"/>
         <element name="Cats" positionX="-283.50927734375" positionY="-2.737442016601562" width="128" height="224"/>
     </elements>
 </model>

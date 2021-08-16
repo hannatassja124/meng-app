@@ -29,7 +29,6 @@ class CalendarViewController: UIViewController {
         
         self.tableView.register(UINib.init(nibName: activitiesCellId, bundle: nil), forCellReuseIdentifier: activitiesCellId)
         tableView.separatorColor =  .clear
-        
         tableView.backgroundColor = .clear
         
         //save()
@@ -59,11 +58,18 @@ class CalendarViewController: UIViewController {
 //
 //        retrieveData(activityDate: dateFormatter.date(from: combinedDate)!)
         
-        self.tableView.reloadData()
+       //self.tableView.reloadData()
 
     }
     
     override func viewDidLayoutSubviews() {
+        
+        if Core.shared.isNewUser(){
+            let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
+            let vc = storyboard.instantiateViewController(identifier: "getStartedStoryboard") as! GetStartedViewController
+            vc.modalPresentationStyle =  .fullScreen
+            present(vc, animated: true)
+        }
         
         let shadowPath = UIBezierPath(roundedRect: calendarUIView.bounds, cornerRadius: 13)
         

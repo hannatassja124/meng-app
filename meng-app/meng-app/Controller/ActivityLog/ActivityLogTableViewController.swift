@@ -377,11 +377,13 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
                     NewActivityLog.activityReminder = self.ReminderToMinutes()
                 }*/
             }
+
             do {
                 try context.save()
             } catch {
                 print("Ga kesave")
             }
+
         }
         
     // Load Saved data during Edit
