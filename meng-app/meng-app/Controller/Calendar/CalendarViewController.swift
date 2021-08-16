@@ -65,6 +65,13 @@ class CalendarViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         
+        if Core.shared.isNewUser(){
+            let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
+            let vc = storyboard.instantiateViewController(identifier: "getStartedStoryboard") as! GetStartedViewController
+            vc.modalPresentationStyle =  .fullScreen
+            present(vc, animated: true)
+        }
+        
         let shadowPath = UIBezierPath(roundedRect: calendarUIView.bounds, cornerRadius: 13)
         
         calendarUIView.layer.masksToBounds = false
