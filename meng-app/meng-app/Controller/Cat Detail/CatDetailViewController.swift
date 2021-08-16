@@ -8,10 +8,10 @@
 import UIKit
 
 class CatDetailViewController: UIViewController {
-    //selected cat model
+    //MARK: - Variables
     var currCat: Cats?
     
-    //IBOutlet
+    //MARK: - Outlets
     @IBOutlet weak var catImage: UIImageView!
     @IBOutlet weak var catName: UILabel!
     @IBOutlet weak var catGenderIcon: UIImageView!
@@ -24,15 +24,19 @@ class CatDetailViewController: UIViewController {
     @IBOutlet weak var vetName: UILabel!
     @IBOutlet weak var vetNo: UILabel!
     
-    
-    
+    //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         assignDatatoPage()
         // Do any additional setup after loading the view.
     }
     
-    func addActivityDummy(){
+    override func viewWillAppear(_ animated: Bool) {
+        setupUI()
+    }
+    
+    //MARK: - Function
+    private func addActivityDummy(){
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
         let activity = Activity(context: context)
@@ -54,7 +58,7 @@ class CatDetailViewController: UIViewController {
         }
     }
     
-    func setupUI() {
+    private func setupUI() {
         //navigationBar
         self.navigationController?.navigationBar.prefersLargeTitles = true
         //tabBar
@@ -69,13 +73,8 @@ class CatDetailViewController: UIViewController {
         catImage.layer.insertSublayer(gradient, at: 0)
 
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        setupUI()
-    }
-    
-    
-    func assignDatatoPage() {
+
+    private func assignDatatoPage() {
         if let image = currCat?.image {
             catImage.image = UIImage(data: image)
         }
@@ -97,6 +96,7 @@ class CatDetailViewController: UIViewController {
         vetNo.text = "\(currCat?.vetPhoneNo ?? "No Data")"
     }
 
+    //MARK: - Action function
     @IBAction func goToLogActivityHistory(_ sender: Any) {
         let storyboard = UIStoryboard(name: "History", bundle: nil)
         

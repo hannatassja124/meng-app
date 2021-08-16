@@ -8,22 +8,20 @@
 import UIKit
 
 class CatsViewController: UIViewController, UICollectionViewDelegate {
-    //outlets
+    //MARK: - Outlets
     @IBOutlet weak var catsCollectionView: UICollectionView!
     
-    //variables
+    //MARK: - Variables
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var cats:[Cats] = [Cats()]
     var originalCats:[Cats] = []
     let searchController = UISearchController()
 
-    
+    //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-        //retrieveData()
-        
+        // Do any additional setup after loading the view.        
         catsCollectionView.delegate = self
         catsCollectionView.dataSource = self
         
@@ -31,31 +29,16 @@ class CatsViewController: UIViewController, UICollectionViewDelegate {
         initSearchController()
         print(cats.count)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.barTintColor = UIColor(named: "MidnightGreen")!
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(named: "NeutralLight")!]
 
-//    private func genDummyData(){
-//        let cat = Cats(context: context)
-//
-//        cat.name = "Jeff"
-//        cat.image = UIImage(named: "Meng-2")?.jpegData(compressionQuality: 1.0)
-//        cat.colorTags = 1
-//        cat.gender = 0
-//        cat.vetName = "drh. Rafi Zhafransyah"
-//        cat.vetPhoneNo = "087875087058"
-//        cat.feeding = "Nasi Goreng"
-//        cat.notes = "drank coffee a lot"
-//        cat.breed = "Husky"
-//        cat.isNeutered = true
-//        cat.weight = 3.5
-//        cat.dateOfBirth = Date()
-//        do {
-//            try context.save()
-//        } catch {
-//            //error
-//        }
-//    }
-
+        self.retrieveData()
+    }
+    
+    //MARK: - Function
     private func initNib(){
-        
         let addCatNib = UINib(nibName: "\(AddNewCatCollectionViewCell.self)", bundle: nil)
         catsCollectionView.register(addCatNib, forCellWithReuseIdentifier: "AddNewCatCell")
         
@@ -64,7 +47,7 @@ class CatsViewController: UIViewController, UICollectionViewDelegate {
 
     }
     
-    func initSearchController(){
+    private func initSearchController(){
         searchController.loadViewIfNeeded()
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
@@ -91,15 +74,10 @@ class CatsViewController: UIViewController, UICollectionViewDelegate {
         originalCats = cats
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-//        UINavigationBar.appearance().largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(named: "MidnightGreen")!]
-        self.navigationController?.navigationBar.barTintColor = UIColor(named: "MidnightGreen")!
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(named: "NeutralLight")!]
-
-        self.retrieveData()
-    }
+    
 }
 
+//MARK: - CollectionView
 extension CatsViewController: UICollectionViewDataSource{
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -131,11 +109,6 @@ extension CatsViewController: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print(indexPath.row)
         if indexPath.row == 0{
-            //bakal buka Add New Cat Page
-//            print("add new cat")
-//            let vc = storyboard!.instantiateViewController(identifier: "addNewCat") as! AddNewCatTableView
-//            present(vc, animated: true)
-            
             let storyboard = UIStoryboard(name: "AddNewCat", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "addNewCat") as! AddNewCatTableView
             
@@ -151,11 +124,8 @@ extension CatsViewController: UICollectionViewDataSource{
             self.present(nc, animated: true, completion: nil)
         }
         else{
-            print("cat detail")
             //bakal buka Cat Profile Detail
             let vc = storyboard!.instantiateViewController(identifier: "CatDetail") as! CatDetailViewController
-            
-            
             vc.currCat = cats[indexPath.row - 1]
             navigationController?.pushViewController(vc, animated: true)
             
@@ -164,6 +134,7 @@ extension CatsViewController: UICollectionViewDataSource{
     
 }
 
+//MARK: - SearchBar
 extension CatsViewController: UISearchResultsUpdating, UISearchBarDelegate{
     func updateSearchResults(for searchController: UISearchController) {
         guard let text = searchController.searchBar.text else {
