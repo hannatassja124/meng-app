@@ -56,6 +56,7 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
     var selectedCatIndex: Int = -1
     var dateFormatter = DateFormatter()
     let calendar = Calendar.current
+    var SaveSuccess = false
     
     var onViewWillDisappear: (()->())?
     
@@ -74,10 +75,14 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
         CollectionViewActivities.delegate = self
         CollectionViewActivities.dataSource = self
         
-        hiddenPickers(fieldName: "init", indexPath: [-1])
+        DispatchQueue.main.async {
+            self.hiddenPickers(fieldName: "init", indexPath: [-1])
+        }
+        
         self.tableView.register(UINib(nibName: "ActivityLogDatePickerHeader", bundle: nil), forHeaderFooterViewReuseIdentifier: "ActivityLogDatePickerHeader")
         self.tableView.register(UINib(nibName: "ActivityLogActivitiesHeader", bundle: nil), forHeaderFooterViewReuseIdentifier: "ActivityLogActivitiesHeader")
         self.tableView.register(UINib(nibName: "ActivityLogDateTimeHeader", bundle: nil), forHeaderFooterViewReuseIdentifier: "ActivityLogDateTimeHeader")
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -115,7 +120,6 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
             }
             self.selectedCatIndex = index
             self.SelectedCatRefresh()
-            print(self.selectedCatIndex)
         }
     }
     
@@ -124,7 +128,10 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
     @IBAction func SaveButtonAction(_ sender: Any) {
         SaveActivityLog()
         onViewWillDisappear!()
-        self.dismiss(animated: true, completion: nil)
+        if(SaveSuccess)
+        {
+            self.dismiss(animated: true, completion: nil)
+        }
     }
 
     @IBAction func BackButtonAction(_ sender: Any) {
@@ -227,15 +234,21 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
             if EditedActivity == nil {
                 let NewActivityLog = Activity(context: context)
                 
-                //Section 1 DONE
-                if LabelCat.text == "" {
-                    //Display Alert to Select a Cat
+                //Section 1; Needs break?
+                if LabelCat.text == "" {//Doesn't work??
+                    print("if conditional works in Section 1 save")
+                    let Alert = UIAlertController(title: "Error", message: "Please select a Cat.", preferredStyle: .alert)
+                    Alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in NSLog("The \"OK\" alert occured.")}))
+                    self.present(Alert, animated: true, completion: nil)
+                    SaveSuccess = false
+                    //insert break; how?
+                    return
                 }
                 else{
                     NewActivityLog.addToCats(cats[selectedCatIndex])
                 }
                 
-                //Section 2 DONE
+                //Section 2; Needs break?
                 if SelectedActivitiesIndex == 0 {
                     NewActivityLog.activityType = "Vaccine"
                 }
@@ -251,23 +264,41 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
                 else if SelectedActivitiesIndex == 4 {
                     NewActivityLog.activityType = "Others"
                 }
+                else{
+                    let Alert = UIAlertController(title: "Error", message: "Please select an Activity Type.", preferredStyle: .alert)
+                    Alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in NSLog("The \"OK\" alert occured.")}))
+                    self.present(Alert, animated: true, completion: nil)
+                    SaveSuccess = false
+                    //insert break
+                    return
+                }
                 
-                //Section 3 DONE
-                if TextFieldTitle.text == nil{
-                    //display Alert
+                //Section 3; Needs break?
+                if TextFieldTitle.text == ""{
+                    let Alert = UIAlertController(title: "Error", message: "Please enter a Title.", preferredStyle: .alert)
+                    Alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in NSLog("The \"OK\" alert occured.")}))
+                    self.present(Alert, animated: true, completion: nil)
+                    SaveSuccess = false
+                    //insert break
+                    return
                 }
                 else{
                     NewActivityLog.activityTitle = "\(TextFieldTitle.text ?? "")"
                 }
                 
-                if TextFieldDetails.text == nil{
-                    //display Alert
+                if TextFieldDetails.text == ""{
+                    let Alert = UIAlertController(title: "Error", message: "Please enter a Description.", preferredStyle: .alert)
+                    Alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in NSLog("The \"OK\" alert occured.")}))
+                    self.present(Alert, animated: true, completion: nil)
+                    SaveSuccess = false
+                    //insert break
+                    return
                 }
                 else{
                     NewActivityLog.activityDetail = "\(TextFieldDetails.text ?? "")"
                 }
                 
-                //Section 4 DONE
+                //Section 4
                 
                 dateFormatter.dateFormat = "yyyy-MM-dd"
                 let DateDay = dateFormatter.string(from: DatePickerDate.date)
@@ -283,7 +314,7 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
                 
                 
                 
-                //Section 5 DONE
+                //Section 5
                 NewActivityLog.activityReminder = self.ReminderToMinutes()
                 /*if SwitchOff {
                     
@@ -291,80 +322,136 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
                 else{
                     NewActivityLog.activityReminder = self.ReminderToMinutes()
                 }*/
-               
-//MARK: - Edit
-    // Edit Existing Data
-            /*
-            else if EditedActivity != nil {
-                editedCat!.image = ncCatPhotoImage.image?.jpegData(compressionQuality: 1.0) ?? nil
-                editedCat!.name = "\(ncCatNameTF.text ?? "")"
-                editedCat!.colorTags = Int16(TagsHelper.convertColorToNumber(color: ncCatColorTagsLabel.text!))
-                    if ncCatGenderLabel.text == "Male" {
-                        editedCat!.gender = 0
-                    }
-                    else if ncCatGenderLabel.text == "Female"  {
-                        editedCat!.gender = 1
-                    }
-                editedCat!.dateOfBirth = ncCatDOBPicker.date
-                editedCat!.breed = "\(ncCatBreedLabel.text ?? "")"
-                    if ncCatNeuteredLabel.text == "Yes" {
-                        editedCat!.isNeutered = true
-                    }
-                    else if ncCatNeuteredLabel.text == "No" {
-                        editedCat!.isNeutered = false
-                    }
-                if let weightEdit = Double(ncCatWeightTF.text!){
-                    editedCat!.weight = weightEdit
-                }
-                editedCat!.feeding = "\(ncCatFeedingTF.text ?? "")"
-                editedCat!.vetName = "\(ncCatVetsName.text ?? "")"
-                editedCat!.vetPhoneNo = "\(ncCatVetsPhoneNumber.text ?? "")"
-                editedCat!.notes = "\(ncCatNotesTV.text ?? "")"
             }
+            
+            
+//MARK: - Edit BLOCKED HELP ME PLEASE AAAAAAAAAA
+    // Edit Existing Data
+            else if EditedActivity != nil {
+                
+                //Section 1
+                //Should be skipped?
+                //NewActivityLog.addToCats(cats[selectedCatIndex])
+                
+                //Section 2
+                if SelectedActivitiesIndex == 0 {
+                    EditedActivity!.activityType = "Vaccine"
+                }
+                else if SelectedActivitiesIndex == 1 {
+                    EditedActivity!.activityType = "Appointment"
+                }
+                else if SelectedActivitiesIndex == 2 {
+                    EditedActivity!.activityType = "Treatment"
+                }
+                else if SelectedActivitiesIndex == 3 {
+                    EditedActivity!.activityType = "Symptoms"
+                }
+                else if SelectedActivitiesIndex == 4 {
+                    EditedActivity!.activityType = "Others"
+                }
+                
+                //Section 3
+                if TextFieldTitle.text == nil{// Alert doesn't show up??
+                    let Alert = UIAlertController(title: "Error", message: "Please enter a Title.", preferredStyle: .alert)
+                    Alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in NSLog("The \"OK\" alert occured.")}))
+                    self.present(Alert, animated: true, completion: nil)
+                    SaveSuccess = false
+                    //insert break
+                }
+                else{
+                    EditedActivity!.activityTitle = "\(TextFieldTitle.text ?? "")"
+                }
+                
+                if TextFieldDetails.text == nil{
+                    let Alert = UIAlertController(title: "Error", message: "Please enter a Description.", preferredStyle: .alert)
+                    Alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in NSLog("The \"OK\" alert occured.")}))
+                    self.present(Alert, animated: true, completion: nil)
+                    SaveSuccess = false
+                    //insert break
+                }
+                else{
+                    EditedActivity!.activityDetail = "\(TextFieldDetails.text ?? "")"
+                }
+                
+                //Section 4
+                
+                dateFormatter.dateFormat = "yyyy-MM-dd"
+                let DateDay = dateFormatter.string(from: DatePickerDate.date)
+                dateFormatter.dateFormat = "hh:mm:ss a Z"
+                let TimeDay = dateFormatter.string(from: DatePickerTime.date)
+                let ActualDateTime = DateDay + " " + TimeDay
+                
+                dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss a Z"
+
+                let ActualActualActualDate = dateFormatter.date(from: ActualDateTime)!
+                
+                EditedActivity!.activityDateTime = ActualActualActualDate
+                
+                
+                
+                //Section 5
+                EditedActivity!.activityReminder = self.ReminderToMinutes()
+                /*if SwitchOff {
+                    
+                }
+                else{
+                    NewActivityLog.activityReminder = self.ReminderToMinutes()
+                }*/
             do {
                 try context.save()
             } catch {
                 print("Ga kesave")
             }
-            */
-            //onViewWillDisappear!() dunno what this is used for
         }
         
-    // Set data pas mau edit
-            /*
+    // Load Saved data during Edit
+            
         func checkIfEditOrNot() {
             
-            if editedCat != nil {
-                let colorEdit = ["Green", "Yellow", "Orange", "Red", "Blue", "Teal", "Indigo","Purple", "Pink", "White", "Brown", "Black"]
+            if EditedActivity != nil {
                 
-                if let image = editedCat?.image{
-                    ncCatPhotoImage?.image = UIImage(data: image)
+                //Section 1 NOT DONE IDK HOW TO GET THIS VALUE
+                
+                //EditedActivity.addToCats(cats[selectedCatIndex])
+                //selectedCatIndex = EditedActivity.
+                
+                //Section 2
+                if EditedActivity!.activityType == "Vaccine"
+                {
+                    selectedCatIndex = 0
                 }
-                ncCatNameTF.text = editedCat?.name
-                ncCatColorTagsLabel.text = colorEdit[Int(editedCat!.colorTags)-1]
-                ncCatColorTagsIcon.tintColor = TagsHelper.checkColor(tagsNumber: editedCat!.colorTags)
-                    if editedCat?.gender == 0 {
-                        ncCatGenderLabel.text = "Male"
-                    }
-                    else if editedCat?.gender == 1  {
-                        ncCatGenderLabel.text = "Female"
-                    }
-                ncCatDOBPicker.date = (editedCat?.dateOfBirth)!
-                ncCatDOBLabel.text = dateFormat(date: ncCatDOBPicker.date, formatDate: dateFormatTemp)
-                ncCatBreedLabel.text = editedCat?.breed
-                    if editedCat!.isNeutered == true {
-                        ncCatNeuteredLabel.text = "Yes"
-                    }
-                    else if editedCat!.isNeutered == false {
-                        ncCatNeuteredLabel.text = "No"
-                    }
-                ncCatWeightTF.text = "\(editedCat?.weight ?? 0)"
-                ncCatFeedingTF.text = editedCat?.feeding
-                ncCatVetsName.text = editedCat?.vetName
-                ncCatVetsPhoneNumber.text = editedCat?.vetPhoneNo
-                ncCatNotesTV.text = editedCat?.notes
-            }*/
+                else if EditedActivity!.activityType == "Appointment"
+                {
+                    selectedCatIndex = 1
+                }
+                else if EditedActivity!.activityType == "Treatment"
+                {
+                    selectedCatIndex = 2
+                }
+                else if EditedActivity!.activityType == "Symptoms"
+                {
+                    selectedCatIndex = 3
+                }
+                else if EditedActivity!.activityType == "Others"
+                {
+                    selectedCatIndex = 4
+                }
+                
+                //Section 3
+                TextFieldTitle.text = EditedActivity?.activityTitle
+                TextFieldDetails.text = EditedActivity?.activityDetail
+
+                //Section 4
+                DatePickerDate.date = (EditedActivity?.activityDateTime)!
+                DatePickerTime.date = (EditedActivity?.activityDateTime)!
+                
+                LabelDate.text = dateFormat(date: DatePickerDate.date, formatDate: dateFormatTemp)
+                
+                //Section 5
+                EditedActivity?.activityReminder = self.MinutesToReminder()
+            }
         }
+    }
     
     
 //MARK: - Picker Reminder Choices
@@ -390,7 +477,8 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
         return dateFormatter.string(from: date)
     }
     
-//MARK: - Format Reminder to Minutes
+    
+//MARK: - Reminder Formatting
     func ReminderToMinutes() -> Int64 {
         if ReminderChosen == 0 {return 5} //5m
         else if ReminderChosen == 1 {return 10} //10m
@@ -404,13 +492,26 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
         else {return 0} //No reminder Set
     }
     
+    func MinutesToReminder() -> Int64 {
+        if ReminderChosen == 5 {return 0} //5m
+        else if ReminderChosen == 10 {return 1} //10m
+        else if ReminderChosen == 15 {return 2} //15m
+        else if ReminderChosen == 30 {return 3} //30m
+        else if ReminderChosen == 60 {return 4} //1 hour
+        else if ReminderChosen == 120 {return 5} //2 hours
+        else if ReminderChosen == 1440 {return 6} //1 day
+        else if ReminderChosen == 2880 {return 7} //2 days
+        else if ReminderChosen == 10080 {return 8} //1 week
+        else {return 0} //No reminder Set
+    }
+    
+    
 //MARK: - PickerView Settings
         func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
             print(RemindBeforeData[row])
             LabelReminderBefore.text = RemindBeforeData[row]
             ReminderChosen = row
         }
-    
     
     /*
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -467,8 +568,6 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
         // Pass the selected object to the new view controller.
     }
     */
-    
-
 }
 
 
@@ -486,6 +585,7 @@ extension ActivityLogTableViewController: UIPickerViewDataSource {
         return "\(RemindBeforeData[row])"
     }
 }
+
 
 //MARK: - CollectionView Delegate/DataSource
 extension ActivityLogTableViewController: UICollectionViewDelegate, UICollectionViewDataSource {
