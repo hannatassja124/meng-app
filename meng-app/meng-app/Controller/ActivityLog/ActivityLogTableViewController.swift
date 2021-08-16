@@ -12,6 +12,10 @@
 
 import UIKit
 
+protocol ActivityLogTableViewControllerProtocol: AnyObject {
+    func updateReloadData()
+}
+
 class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegate, UITextViewDelegate {
 
 //MARK: - Outlets
@@ -58,6 +62,8 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
     let calendar = Calendar.current
     
     var onViewWillDisappear: (()->())?
+    
+    weak var delegate: ActivityLogTableViewControllerProtocol?
     
 
 //MARK: - ViewDidLoad
@@ -124,7 +130,10 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
     @IBAction func SaveButtonAction(_ sender: Any) {
         SaveActivityLog()
         onViewWillDisappear!()
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true) {
+            self.delegate?.updateReloadData()
+        }
+
     }
 
     @IBAction func BackButtonAction(_ sender: Any) {

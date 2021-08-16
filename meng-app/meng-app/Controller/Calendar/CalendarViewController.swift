@@ -8,6 +8,10 @@
 import UIKit
 import CoreData
 
+protocol refreshData {
+    func retrieveData()
+}
+
 
 class CalendarViewController: UIViewController {
 
@@ -21,6 +25,8 @@ class CalendarViewController: UIViewController {
     var cats = [Cats()]
     let calendar = Calendar.current
     let dateFormatter = DateFormatter()
+    
+    
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -76,11 +82,11 @@ class CalendarViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        let storyboard = UIStoryboard(name: "ActivityLog", bundle: nil)
-//        let vc = storyboard.instantiateViewController(withIdentifier: "ActivityLogStoryboard") as! ActivityLogTableViewController
         if segue.identifier == "activityLogSegue" {
             let vc = segue.destination as! UINavigationController
             let target = vc.topViewController as! ActivityLogTableViewController
+            target.delegate = self
+   
             
             let year = calendar.component(.year, from: Date())
             let month = calendar.component(.month, from: Date())
@@ -88,9 +94,10 @@ class CalendarViewController: UIViewController {
             let combinedDate = "\(year)-\(month)-\(day) 00:00:00 +0700"
             dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss Z"
             
+            
             target.onViewWillDisappear = {
                 self.retrieveData(activityDate: self.dateFormatter.date(from: combinedDate)!)
-                
+                self.viewDidLoad()
             }
         }
     }
@@ -206,7 +213,20 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
         self.present(nc, animated: true, completion: nil)
         
     }
-    
+}
+
+extension CalendarViewController: ActivityLogTableViewControllerProtocol {
+    func updateReloadData() {
+        let year = calendar.component(.year, from: Date())
+        let month = calendar.component(.month, from: Date())
+        let day = calendar.component(.day, from: Date())
+        
+        let combinedDate = "\(year)-\(month)-\(day) 00:00:00 +0700"
+        
+        dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss Z"
+        
+        retrieveData(activityDate: dateFormatter.date(from: combinedDate)!)
+    }
 }
 
 extension UITableView {

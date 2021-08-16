@@ -30,10 +30,7 @@ class CalendarCollectionViewController: UIViewController, UICollectionViewDelega
         retrieveData()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        retrieveData()
-        print("view will appear")
-    }
+   
     
     func retrieveData() {
         do {

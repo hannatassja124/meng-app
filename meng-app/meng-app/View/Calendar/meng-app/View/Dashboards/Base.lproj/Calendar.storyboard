@@ -296,16 +296,6 @@
             </objects>
             <point key="canvasLocation" x="2708.6956521739135" y="87.723214285714278"/>
         </scene>
-        <!--ActivityDetail-->
-        <scene sceneID="y4G-tz-QFa">
-            <objects>
-                <viewControllerPlaceholder storyboardName="ActivityDetail" id="8w8-Gb-8o6" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="QSe-lu-f30"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4sS-Xb-CQn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2577" y="491"/>
-        </scene>
     </scenes>
     <resources>
         <image name="calendar" catalog="system" width="128" height="106"/>

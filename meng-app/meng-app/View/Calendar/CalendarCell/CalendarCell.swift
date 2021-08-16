@@ -23,7 +23,7 @@ class CalendarCell: UICollectionViewCell {
     override var isSelected: Bool {
         didSet {
             self.contentView.backgroundColor = isSelected ? #colorLiteral(red: 0.9960932136, green: 0.5338024497, blue: 0.51013726, alpha: 1) : UIColor.clear
-            dayOfMonth.textColor = isSelected ? UIColor.white : UIColor.black
+            dayOfMonth.textColor = isSelected ? #colorLiteral(red: 0.9662219882, green: 0.9491949677, blue: 0.9451712966, alpha: 1) : #colorLiteral(red: 0.09965468198, green: 0.2582603097, blue: 0.306050241, alpha: 1)
         }
     }
     
