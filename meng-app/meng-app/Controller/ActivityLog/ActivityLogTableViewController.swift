@@ -54,6 +54,7 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
     var selectedCat = [CatData]() //unused?
     var cats = [Cats]()
     var selectedCatIndex: Int = -1
+    var previouslySelectedCatIndex: Int = -1
     var dateFormatter = DateFormatter()
     let calendar = Calendar.current
     var SaveSuccess = false
@@ -251,6 +252,7 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
             }
             
             else if EditedActivity == nil {//Actually starts saving
+                print("SAVING")
                 let NewActivityLog = Activity(context: context)
                 
                 //Section 1
@@ -306,10 +308,10 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
 //MARK: - Edit BLOCKED HELP ME PLEASE AAAAAAAAAA
     // Edit (Save into) Existing Data
             else if EditedActivity != nil {
-                
+                print("EDITING")
                 //Section 1
-                //Should be skipped?
-                //NewActivityLog.addToCats(cats[selectedCatIndex])
+                //EditedActivity?.removeFromCats(cats[])
+                //EditedActivity.addToCats(cats[selectedCatIndex])
                 
                 //Section 2
                 if SelectedActivitiesIndex == 0 {
@@ -389,9 +391,8 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
                 
                 if EditedActivity != nil {
                     
-                    //Section 1 NOT DONE IDK HOW TO GET THIS VALUE
-                    
-                    //selectedCatIndex = EditedActivity.
+                    //Section 1 NOT DONE IDK HOW TO GET THIS VALUE; Pending resolution, either add index to CoreData and call it here or ????
+                    //selectedCatIndex = EditedActivity.cats.index
                     
                     
                     //Section 2

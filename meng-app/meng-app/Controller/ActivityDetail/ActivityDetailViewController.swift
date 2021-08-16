@@ -57,7 +57,7 @@ class ActivityDetailViewController: UIViewController {
        
         let vc = storyboard.instantiateViewController(withIdentifier: "ActivityLogStoryboard") as! ActivityLogTableViewController
         
-        //kirim data ke edit
+        vc.EditedActivity = details
         
         
         let nc = UINavigationController(rootViewController: vc)
