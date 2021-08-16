@@ -7,6 +7,7 @@
 
 import UIKit
 
+//MARK: - Struct data model
 struct GroupedActivities {
     var sectionTitle:String
     var activities = [Activity]()
@@ -17,14 +18,17 @@ struct GroupedActivities {
 }
 
 class HistoryViewController: UIViewController {
-    
+    //MARK: - Constant id
     let activitiesCellId = "ActivitiesTableViewCell"
 
-    
+    //MARK: - Variables
     var selectedCat = Cats()
     var groupedActivties:[GroupedActivities] = []
+    
+    //MARK: - Outlets
     @IBOutlet weak var activitiesTableView: UITableView!
     
+    //MARK: - Lifecycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupUI()
@@ -46,14 +50,14 @@ class HistoryViewController: UIViewController {
 
     }
     
-    func setupUI() {
-//        UINavigationBar.appearance().largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(named: "MidnightGreen")!]
+    //MARK: - Function
+    private func setupUI() {
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationController?.navigationBar.barTintColor = .white
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(named: "MidnightGreen")!]
     }
     
-    func initiateTableView(){
+    private func initiateTableView(){
         activitiesTableView.delegate = self
         activitiesTableView.dataSource = self
         
@@ -62,7 +66,7 @@ class HistoryViewController: UIViewController {
         
     }
     
-    func checkIfActivitiesEmptyOrNot(){
+    private func checkIfActivitiesEmptyOrNot(){
         if(selectedCat.activities?.count == 0){
             activitiesTableView.isHidden = true
         }
@@ -74,7 +78,7 @@ class HistoryViewController: UIViewController {
         }
     }
     
-    func sortActivitiesByDate(){
+    private func sortActivitiesByDate(){
         //sort and filter data descending by date
         let catActivites = selectedCat.activities?.allObjects as! [Activity]
         
@@ -113,7 +117,7 @@ class HistoryViewController: UIViewController {
         }
     }
     
-    
+    //MARK: - Action Function
     @IBAction func back(_ sender: Any) {
         if let navController = self.navigationController {
             for controller in navController.viewControllers {
@@ -127,6 +131,7 @@ class HistoryViewController: UIViewController {
     
 }
 
+//MARK: - TableView
 extension HistoryViewController: UITableViewDelegate, UITableViewDataSource{
     func numberOfSections(in tableView: UITableView) -> Int {
         return groupedActivties.count    }
