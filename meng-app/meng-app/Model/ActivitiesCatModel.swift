@@ -11,7 +11,8 @@ struct CatData {
     var cat = Cats()
     var isSelected = false
     
+    /* Removed as per advised in Code Review on 13/08/2021
     init(cat: Cats) {
         self.cat = cat
-    }
+    }*/
 }
