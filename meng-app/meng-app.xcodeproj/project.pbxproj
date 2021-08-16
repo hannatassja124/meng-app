@@ -9,10 +9,6 @@
 /* Begin PBXBuildFile section */
 		03274CEB26B039CE00B78A54 /* AddNewCat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03274CEA26B039CE00B78A54 /* AddNewCat.storyboard */; };
 		03437BBB26B25CB40070BF1E /* AddNewCatTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03437BBA26B25CB40070BF1E /* AddNewCatTableView.swift */; };
-		0372C64126CA0BE1006F2C1C /* Cats+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0372C63D26CA0BE1006F2C1C /* Cats+CoreDataClass.swift */; };
-		0372C64226CA0BE1006F2C1C /* Cats+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0372C63E26CA0BE1006F2C1C /* Cats+CoreDataProperties.swift */; };
-		0372C64326CA0BE1006F2C1C /* Activity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0372C63F26CA0BE1006F2C1C /* Activity+CoreDataClass.swift */; };
-		0372C64426CA0BE1006F2C1C /* Activity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0372C64026CA0BE1006F2C1C /* Activity+CoreDataProperties.swift */; };
 		0378E3A426BDC128005DA330 /* History Details.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0378E3A326BDC128005DA330 /* History Details.storyboard */; };
 		073E332A26B3AF150015C24F /* ActivityLogTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073E332926B3AF150015C24F /* ActivityLogTableViewController.swift */; };
 		0747674426B253D20054D268 /* ActivityLogDatePickerHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0747674326B253D20054D268 /* ActivityLogDatePickerHeader.swift */; };
@@ -45,10 +41,6 @@
 		F91BC74D26C9B9C100DF1600 /* OnboardingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91BC74C26C9B9C100DF1600 /* OnboardingCollectionViewCell.swift */; };
 		F91BC74F26C9CB5C00DF1600 /* GetStartedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91BC74E26C9CB5C00DF1600 /* GetStartedViewController.swift */; };
 		F91BC75126C9CB7F00DF1600 /* Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91BC75026C9CB7F00DF1600 /* Core.swift */; };
-		F92EDAEA26BDA2A30051B9DF /* Activity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92EDAE626BDA2A30051B9DF /* Activity+CoreDataClass.swift */; };
-		F92EDAEB26BDA2A30051B9DF /* Activity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92EDAE726BDA2A30051B9DF /* Activity+CoreDataProperties.swift */; };
-		F92EDAEC26BDA2A30051B9DF /* Cats+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92EDAE826BDA2A30051B9DF /* Cats+CoreDataClass.swift */; };
-		F92EDAED26BDA2A30051B9DF /* Cats+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92EDAE926BDA2A30051B9DF /* Cats+CoreDataProperties.swift */; };
 		F92EDAF026BDD9770051B9DF /* TypeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92EDAEF26BDD9770051B9DF /* TypeHelper.swift */; };
 		F92EDAF226BDDAF10051B9DF /* ReminderHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92EDAF126BDDAF10051B9DF /* ReminderHelper.swift */; };
 		F94AD29826AEF19D005686ED /* UiCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94AD29726AEF19D005686ED /* UiCustom.swift */; };
@@ -73,16 +65,16 @@
 		F9B6086126AFEAC9005EF315 /* ActivitiesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9B6085F26AFEAC9005EF315 /* ActivitiesTableViewCell.xib */; };
 		F9CAC8A426B2A4E200D46ED8 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CAC8A326B2A4E200D46ED8 /* CalendarCell.swift */; };
 		F9CAC8A626B2DF1800D46ED8 /* CalendarCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CAC8A526B2DF1800D46ED8 /* CalendarCollectionViewController.swift */; };
+		F9D8588526CA818E000E85BD /* Cats+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D8588126CA818E000E85BD /* Cats+CoreDataClass.swift */; };
+		F9D8588626CA818E000E85BD /* Cats+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D8588226CA818E000E85BD /* Cats+CoreDataProperties.swift */; };
+		F9D8588726CA818E000E85BD /* Activity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D8588326CA818E000E85BD /* Activity+CoreDataClass.swift */; };
+		F9D8588826CA818E000E85BD /* Activity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D8588426CA818E000E85BD /* Activity+CoreDataProperties.swift */; };
 		F9DF6C6C26B7488900DCF044 /* ActivityDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9DF6C6B26B7488900DCF044 /* ActivityDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		03274CEA26B039CE00B78A54 /* AddNewCat.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddNewCat.storyboard; sourceTree = "<group>"; };
 		03437BBA26B25CB40070BF1E /* AddNewCatTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewCatTableView.swift; sourceTree = "<group>"; };
-		0372C63D26CA0BE1006F2C1C /* Cats+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cats+CoreDataClass.swift"; sourceTree = "<group>"; };
-		0372C63E26CA0BE1006F2C1C /* Cats+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cats+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		0372C63F26CA0BE1006F2C1C /* Activity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Activity+CoreDataClass.swift"; sourceTree = "<group>"; };
-		0372C64026CA0BE1006F2C1C /* Activity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Activity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		0378E3A326BDC128005DA330 /* History Details.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "History Details.storyboard"; sourceTree = "<group>"; };
 		073E332926B3AF150015C24F /* ActivityLogTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityLogTableViewController.swift; sourceTree = "<group>"; };
 		0747674326B253D20054D268 /* ActivityLogDatePickerHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityLogDatePickerHeader.swift; sourceTree = "<group>"; };
@@ -115,10 +107,6 @@
 		F91BC74C26C9B9C100DF1600 /* OnboardingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCollectionViewCell.swift; sourceTree = "<group>"; };
 		F91BC74E26C9CB5C00DF1600 /* GetStartedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedViewController.swift; sourceTree = "<group>"; };
 		F91BC75026C9CB7F00DF1600 /* Core.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Core.swift; sourceTree = "<group>"; };
-		F92EDAE626BDA2A30051B9DF /* Activity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Activity+CoreDataClass.swift"; sourceTree = "<group>"; };
-		F92EDAE726BDA2A30051B9DF /* Activity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Activity+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		F92EDAE826BDA2A30051B9DF /* Cats+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cats+CoreDataClass.swift"; sourceTree = "<group>"; };
-		F92EDAE926BDA2A30051B9DF /* Cats+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cats+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		F92EDAEF26BDD9770051B9DF /* TypeHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeHelper.swift; sourceTree = "<group>"; };
 		F92EDAF126BDDAF10051B9DF /* ReminderHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderHelper.swift; sourceTree = "<group>"; };
 		F94AD29726AEF19D005686ED /* UiCustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UiCustom.swift; sourceTree = "<group>"; };
@@ -145,7 +133,10 @@
 		F9B6085F26AFEAC9005EF315 /* ActivitiesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivitiesTableViewCell.xib; sourceTree = "<group>"; };
 		F9CAC8A326B2A4E200D46ED8 /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 		F9CAC8A526B2DF1800D46ED8 /* CalendarCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCollectionViewController.swift; sourceTree = "<group>"; };
-		F9D98ECD26B391B200707871 /* CalendarHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHelper.swift; sourceTree = "<group>"; };
+		F9D8588126CA818E000E85BD /* Cats+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cats+CoreDataClass.swift"; sourceTree = "<group>"; };
+		F9D8588226CA818E000E85BD /* Cats+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cats+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		F9D8588326CA818E000E85BD /* Activity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Activity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		F9D8588426CA818E000E85BD /* Activity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Activity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		F9DF6C6B26B7488900DCF044 /* ActivityDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -347,7 +338,6 @@
 		F97787DB26B4389700F4CD01 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
-				F9D98ECD26B391B200707871 /* CalendarHelper.swift */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -419,10 +409,10 @@
 		F995E50B26A99EC100DA5C50 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				0372C63D26CA0BE1006F2C1C /* Cats+CoreDataClass.swift */,
-				0372C63E26CA0BE1006F2C1C /* Cats+CoreDataProperties.swift */,
-				0372C63F26CA0BE1006F2C1C /* Activity+CoreDataClass.swift */,
-				0372C64026CA0BE1006F2C1C /* Activity+CoreDataProperties.swift */,
+				F9D8588126CA818E000E85BD /* Cats+CoreDataClass.swift */,
+				F9D8588226CA818E000E85BD /* Cats+CoreDataProperties.swift */,
+				F9D8588326CA818E000E85BD /* Activity+CoreDataClass.swift */,
+				F9D8588426CA818E000E85BD /* Activity+CoreDataProperties.swift */,
 				F950008C26C0CF08003F1B6C /* EventModel.swift */,
 				0799D24726BEF43100511015 /* ActivitiesTypeStruct.swift */,
 				077B96EB26C012A000117F67 /* ActivitiesCatModel.swift */,
@@ -642,25 +632,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				F9B6085C26AFEA2F005EF315 /* CalendarViewController.swift in Sources */,
-				0372C64126CA0BE1006F2C1C /* Cats+CoreDataClass.swift in Sources */,
 				F9CAC8A426B2A4E200D46ED8 /* CalendarCell.swift in Sources */,
 				077B96F226C03CA800117F67 /* ActivityLogDateTimeHeader.swift in Sources */,
 				F9B6086026AFEAC9005EF315 /* ActivitiesTableViewCell.swift in Sources */,
 				073E332A26B3AF150015C24F /* ActivityLogTableViewController.swift in Sources */,
+				F9D8588626CA818E000E85BD /* Cats+CoreDataProperties.swift in Sources */,
 				1920067126B0440900BAD2D0 /* CatsViewController.swift in Sources */,
+				F9D8588526CA818E000E85BD /* Cats+CoreDataClass.swift in Sources */,
 				192E971326BE54DD00BBDF9E /* HistoryViewController.swift in Sources */,
-				0372C64426CA0BE1006F2C1C /* Activity+CoreDataProperties.swift in Sources */,
 				191E4FB626B1908A00836145 /* CatDetailViewController.swift in Sources */,
 				F94AD29826AEF19D005686ED /* UiCustom.swift in Sources */,
 				19636ECD26AF9E4100EBD377 /* AddNewCatCollectionViewCell.swift in Sources */,
-				0372C64326CA0BE1006F2C1C /* Activity+CoreDataClass.swift in Sources */,
 				F995E4FE26A99E9700DA5C50 /* meng_app.xcdatamodeld in Sources */,
 				1920066D26B032BF00BAD2D0 /* CatProfileCollectionViewCell.swift in Sources */,
 				F91BC75126C9CB7F00DF1600 /* Core.swift in Sources */,
 				F92EDAF026BDD9770051B9DF /* TypeHelper.swift in Sources */,
+				F9D8588726CA818E000E85BD /* Activity+CoreDataClass.swift in Sources */,
 				0799D24526BED4E500511015 /* ActivitiesCVC.swift in Sources */,
 				0799D24826BEF43100511015 /* ActivitiesTypeStruct.swift in Sources */,
 				077B96EC26C012A000117F67 /* ActivitiesCatModel.swift in Sources */,
+				F9D8588826CA818E000E85BD /* Activity+CoreDataProperties.swift in Sources */,
 				F97787E226B43CB300F4CD01 /* CalendarHelper.swift in Sources */,
 				F9CAC8A626B2DF1800D46ED8 /* CalendarCollectionViewController.swift in Sources */,
 				0799D24126BED46A00511015 /* ActivitiesTVC.swift in Sources */,
@@ -668,9 +659,7 @@
 				F9DF6C6C26B7488900DCF044 /* ActivityDetailViewController.swift in Sources */,
 				03437BBB26B25CB40070BF1E /* AddNewCatTableView.swift in Sources */,
 				F995E51626A9A9D000DA5C50 /* DashboardViewController.swift in Sources */,
-				0372C64226CA0BE1006F2C1C /* Cats+CoreDataProperties.swift in Sources */,
 				1932CFD026B2494800E7FE06 /* TagsHelper.swift in Sources */,
-				F92EDAED26BDA2A30051B9DF /* Cats+CoreDataProperties.swift in Sources */,
 				F91BC74D26C9B9C100DF1600 /* OnboardingCollectionViewCell.swift in Sources */,
 				F91BC74A26C9B6A300DF1600 /* OnboardingModel.swift in Sources */,
 				F995E51B26A9AA5200DA5C50 /* DashboardCellViewController.swift in Sources */,
@@ -678,7 +667,6 @@
 				F950008D26C0CF08003F1B6C /* EventModel.swift in Sources */,
 				077B96F826C03E7A00117F67 /* ActivityLogActivitiesHeader.swift in Sources */,
 				F91BC74826C9AF2600DF1600 /* OnboardingViewController.swift in Sources */,
-				F92EDAEB26BDA2A30051B9DF /* Activity+CoreDataProperties.swift in Sources */,
 				0747674426B253D20054D268 /* ActivityLogDatePickerHeader.swift in Sources */,
 				F92EDAF226BDDAF10051B9DF /* ReminderHelper.swift in Sources */,
 				0779832626B1B36400BFFD57 /* SelectCatViewController.swift in Sources */,
