@@ -64,12 +64,16 @@ class DashboardViewController: UIViewController {
             
             upcoming = try context.fetch(fr_upcoming)
             
+            upcoming = upcoming.sorted(by: {$0.activityDateTime?.compare($1.activityDateTime!) == .orderedAscending})
+            
             
             let fr_recent: NSFetchRequest<Activity>
             fr_recent = Activity.fetchRequest()
             fr_recent.predicate = NSPredicate(format: "activityDateTime <= %@ && activityDateTime >= %@", activityDate as CVarArg, activityDate-604800 as CVarArg)
             
             recent = try context.fetch(fr_recent)
+            
+            recent = recent.sorted(by: {$0.activityDateTime?.compare($1.activityDateTime!) == .orderedDescending})
             
             print("upcoming", upcoming.count)
             print("recent", recent.count)
