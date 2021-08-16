@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="AgL-KO-Cl6">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Hul-R1-qVj">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
@@ -12,35 +12,81 @@
         <!--Dashboard-->
         <scene sceneID="2uo-Hj-bbT">
             <objects>
-                <viewController id="AgL-KO-Cl6" sceneMemberID="viewController">
+                <viewController id="AgL-KO-Cl6" customClass="DashboardViewController" customModule="meng_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5JB-uH-xpr">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Dashboard" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fXm-uM-vHz">
-                                <rect key="frame" x="159" y="449" width="99" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="b7V-4A-bod">
+                                <rect key="frame" x="25" y="10" width="364" height="798"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="sectionIndexColor" name="MidnightGreen"/>
+                                <color key="sectionIndexBackgroundColor" name="NeutralLight"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="AgL-KO-Cl6" id="ap6-oZ-tgE"/>
+                                    <outlet property="delegate" destination="AgL-KO-Cl6" id="c0m-hS-jTT"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="wru-ss-6iE"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="NeutralLight"/>
+                        <constraints>
+                            <constraint firstItem="b7V-4A-bod" firstAttribute="top" secondItem="wru-ss-6iE" secondAttribute="top" constant="10" id="26M-lw-z83"/>
+                            <constraint firstItem="wru-ss-6iE" firstAttribute="trailing" secondItem="b7V-4A-bod" secondAttribute="trailing" constant="25" id="Zz5-66-mYD"/>
+                            <constraint firstItem="b7V-4A-bod" firstAttribute="leading" secondItem="wru-ss-6iE" secondAttribute="leading" constant="25" id="m2k-CU-0fX"/>
+                            <constraint firstAttribute="bottom" secondItem="b7V-4A-bod" secondAttribute="bottom" id="oCH-Hc-c84"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Dashboard" image="house.fill" catalog="system" id="w0D-QB-2EE">
-                        <color key="badgeColor" name="Melon"/>
-                    </tabBarItem>
-                    <navigationItem key="navigationItem" id="3gv-er-avu"/>
+                    <navigationItem key="navigationItem" title="Dashboard" id="3gv-er-avu">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="clock.arrow.circlepath" catalog="system" id="MWw-sw-Dnf">
+                            <color key="tintColor" name="NeutralLight"/>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="b7V-4A-bod" id="Kyn-Ed-nOq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pZO-Zm-tr7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="939" y="884"/>
+            <point key="canvasLocation" x="1678" y="884"/>
+        </scene>
+        <!--Dashboard-->
+        <scene sceneID="K8o-fl-N8k">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Hul-R1-qVj" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Dashboard" image="house.fill" catalog="system" id="w0D-QB-2EE">
+                        <color key="badgeColor" name="Melon"/>
+                    </tabBarItem>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" autoresizesSubviews="NO" contentMode="scaleToFill" translucent="NO" id="SGK-ld-V4A">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" name="MidnightGreen"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" name="NeutralLight"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="AgL-KO-Cl6" kind="relationship" relationship="rootViewController" id="oZ1-Fe-ssZ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bsG-Nc-cB0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="937.68115942028987" y="883.92857142857144"/>
         </scene>
     </scenes>
     <resources>
+        <image name="clock.arrow.circlepath" catalog="system" width="128" height="110"/>
         <image name="house.fill" catalog="system" width="128" height="106"/>
         <namedColor name="Melon">
             <color red="0.99900001287460327" green="0.75900000333786011" blue="0.70899999141693115" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="MidnightGreen">
+            <color red="0.10499999672174454" green="0.2669999897480011" blue="0.31499999761581421" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="NeutralLight">
+            <color red="1" green="0.98400002717971802" blue="0.98000001907348633" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
