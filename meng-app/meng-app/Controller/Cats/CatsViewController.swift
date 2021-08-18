@@ -31,8 +31,8 @@ class CatsViewController: UIViewController, UICollectionViewDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.navigationBar.barTintColor = UIColor(named: "MidnightGreen")!
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(named: "NeutralLight")!]
+        self.navigationController?.navigationBar.barTintColor = UIColor(named: "MidnightGreen")
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(named: "NeutralLight") ?? UIColor.black]
 
         self.retrieveData()
     }
@@ -89,17 +89,29 @@ extension CatsViewController: UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.row == 0 {
-            return collectionView.dequeueReusableCell(withReuseIdentifier: "AddNewCatCell", for: indexPath) as! AddNewCatCollectionViewCell
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AddNewCatCell", for: indexPath) as? AddNewCatCollectionViewCell else {
+                fatalError("add new cat cell not found")
+            }
+            
+            return cell
         }
         else{
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CatProfileCell", for: indexPath) as! CatProfileCollectionViewCell
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CatProfileCell", for: indexPath) as? CatProfileCollectionViewCell else {
+                fatalError("cat profile cell not found")
+            }
             
 //          assign data ke CollectionView cell
+            //image
             if let image = cats[indexPath.row - 1].image {
                 cell.petImage.image = UIImage(data: image)
             }
-            cell.petNameLabel.text = "\(cats[indexPath.row - 1].name!)"
+            //name
+            if let name = cats[indexPath.row - 1].name {
+                cell.petNameLabel.text = "\(name)"
+            }
+            //gender icon
             cell.petGenderIcon.image = UIImage(named: (cats[indexPath.row - 1].gender == 0 ? "Male" : "Female"))
+            //tint color
             cell.petTagsColor.tintColor = TagsHelper.checkColor(tagsNumber: cats[indexPath.row-1].colorTags)
                         
             return cell
@@ -110,7 +122,9 @@ extension CatsViewController: UICollectionViewDataSource{
         print(indexPath.row)
         if indexPath.row == 0{
             let storyboard = UIStoryboard(name: "AddNewCat", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "addNewCat") as! AddNewCatTableView
+            guard let vc  = storyboard.instantiateViewController(withIdentifier: "addNewCat") as? AddNewCatTableView else {
+                fatalError("vc not found")
+            }
             
             vc.onViewWillDisappear = {
                 self.retrieveData()
@@ -125,7 +139,9 @@ extension CatsViewController: UICollectionViewDataSource{
         }
         else{
             //bakal buka Cat Profile Detail
-            let vc = storyboard!.instantiateViewController(identifier: "CatDetail") as! CatDetailViewController
+            guard let vc = storyboard?.instantiateViewController(identifier: "CatDetail") as? CatDetailViewController else {
+                fatalError("vc not found")
+            }
             vc.currCat = cats[indexPath.row - 1]
             navigationController?.pushViewController(vc, animated: true)
             
@@ -144,7 +160,10 @@ extension CatsViewController: UISearchResultsUpdating, UISearchBarDelegate{
        
         if text != ""{
             cats = originalCats.filter{ (cats: Cats) -> Bool in
-                return (cats.name?.lowercased().contains(text.lowercased()))!
+                if let filtered = cats.name?.lowercased().contains(text.lowercased()) {
+                    return filtered
+                }
+                return false
             }
         }
         else{
