@@ -103,6 +103,9 @@ class CalendarCollectionViewController: UIViewController, UICollectionViewDelega
             cell.isSelected = true
         }
 
+        if totalSquares[indexPath.item].isEmpty {
+            cell.isUserInteractionEnabled = false
+        }
 //        if activityModel.contains("\(indexPath.row+1)") {
 //            cell.dayOfMonth.textColor = #colorLiteral(red: 0.9946215749, green: 0.5330578685, blue: 0.5085751414, alpha: 1)
 //            if activityModel.count > arrayActivityHasEvent {
