@@ -154,10 +154,9 @@ class CatDetailViewController: UIViewController {
     }
     
     @IBAction func contactVet(_ sender: Any) {
-        guard let cat = currCat, let vetNo = cat.vetPhoneNo , cat.vetPhoneNo != nil else {
+        guard let cat = currCat, let vetNo = cat.vetPhoneNo, vetNo != "" else {
             return
         }
-        
         let actionsheet = UIAlertController()
         
         actionsheet.addAction(UIAlertAction(title: "Call \(vetNo)", style: .default, handler: {_ in
