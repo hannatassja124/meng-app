@@ -53,10 +53,10 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
     var selectedCat = [CatData]() //unused?
     var cats = [Cats]()
     var selectedCatIndex: Int = -1
-    var previouslySelectedCatIndex: Int = -1
+    //var previouslySelectedCatIndex: Int = -1
     var dateFormatter = DateFormatter()
     let calendar = Calendar.current
-    var SaveSuccess = false
+    //var SaveSuccess = false
     var onViewWillDisappear: (()->())?
     var EmptyState = false
     
@@ -319,7 +319,6 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
 //MARK: - Edit
     // Edit (Save into) Existing Data
             else if EditedActivity != nil {
-                print("EDITING")
                 //Section 1
                 guard let cat = EditedActivity?.cats?.allObjects as? [Cats] else {
                     return
@@ -361,8 +360,6 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
                 
                 EditedActivity!.activityDateTime = ActualActualActualDate
                 
-                
-                
                 //Section 5
                 EditedActivity!.activityReminder = self.ReminderToMinutes()
                 /*if SwitchOff {
@@ -384,9 +381,7 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
     // Load Saved data during Edit
             
             func LoadExistingData() {
-                
                 if EditedActivity != nil {
-                    
                     //Section 1
                     guard let cat = EditedActivity?.cats?.allObjects as? [Cats] else {
                         return
@@ -398,30 +393,25 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
                     //Section 2
                     if EditedActivity!.activityType == "Vaccine"
                     {
-                        selectedCatIndex = 0
                         SelectedActivitiesIndex = 0
                     }
                     else if EditedActivity!.activityType == "Appointment"
                     {
-                        selectedCatIndex = 1
                         SelectedActivitiesIndex = 1
                     }
                     else if EditedActivity!.activityType == "Treatment"
                     {
-                        selectedCatIndex = 2
                         SelectedActivitiesIndex = 2
                     }
                     else if EditedActivity!.activityType == "Symptoms"
                     {
-                        selectedCatIndex = 3
                         SelectedActivitiesIndex = 3
                     }
                     else if EditedActivity!.activityType == "Others"
                     {
-                        selectedCatIndex = 4
                         SelectedActivitiesIndex = 4
                     }
-                    ActivityList[selectedCatIndex].isSelected = true
+                    ActivityList[SelectedActivitiesIndex].isSelected = true
                     CollectionViewActivities.reloadData()
                     
                     //Section 3
