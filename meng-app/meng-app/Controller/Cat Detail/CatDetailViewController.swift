@@ -75,25 +75,40 @@ class CatDetailViewController: UIViewController {
     }
 
     private func assignDatatoPage() {
-        if let image = currCat?.image {
+        //unwrap currCat
+        guard let cat = currCat else {
+            return
+        }
+        //cat image
+        if let image = cat.image {
             catImage.image = UIImage(data: image)
         }
-        catName.text = currCat?.name ?? "Cat Name"
-        catGenderIcon.image = UIImage(named: (currCat!.gender == 0 ? "Male" : "Female"))
-        catColorTags.tintColor = TagsHelper.checkColor(tagsNumber: currCat!.colorTags)
-        let neuteredString = currCat!.isNeutered ? "Neutered" : "Not neutered"
-        catBreedAndNeutered.text = "\(currCat!.breed ?? "no data"), \(neuteredString)"
-        if let date = currCat?.dateOfBirth{
+        //cat name
+        catName.text = cat.name ?? "Cat Name"
+        //cat gender icon
+        catGenderIcon.image = UIImage(named: (cat.gender == 0 ? "Male" : "Female"))
+        //cat tint color
+        catColorTags.tintColor = TagsHelper.checkColor(tagsNumber: cat.colorTags)
+        //cat neutered
+        let neuteredString = cat.isNeutered ? "Neutered" : "Not neutered"
+        catBreedAndNeutered.text = "\(cat.breed ?? "no data"), \(neuteredString)"
+        //cat DOB
+        if let date = cat.dateOfBirth{
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "MMMM dd, YYYY"
             catAge.text = "\(dateFormatter.string(from: date))"
 
         }
-        catWeight.text = "\(currCat!.weight) KG"
-        catFood.text = "\(currCat?.feeding ?? "No Data")"
+        //cat weight
+        catWeight.text = "\(cat.weight) KG"
+        //cat food
+        catFood.text = "\(cat.feeding ?? "No Data")"
+        //cat medical notes
         catMedicalNotes.text = "\(currCat?.notes ?? "No Data")"
-        vetName.text = "\(currCat?.vetName ?? "No Data")"
-        vetNo.text = "\(currCat?.vetPhoneNo ?? "No Data")"
+        //cat vet name
+        vetName.text = "\(cat.vetName ?? "No Data")"
+        //cat vet phoneNo
+        vetNo.text = "\(cat.vetPhoneNo ?? "No Data")"
     }
 
     //MARK: - Action function
@@ -101,16 +116,20 @@ class CatDetailViewController: UIViewController {
         let storyboard = UIStoryboard(name: "History", bundle: nil)
         
         if let MainVC = storyboard.instantiateViewController(identifier: "HistoryNC") as? HistoryViewController {
-//            let nav = UINavigationController(rootViewController: MainVC)
-            MainVC.selectedCat = currCat!
-            navigationController?.pushViewController(MainVC, animated: true)
+            if let selectedCat = currCat {
+                MainVC.selectedCat = selectedCat
+                navigationController?.pushViewController(MainVC, animated: true)
+            }
         }
     }
     
     @IBAction func goToEditPage(_ sender: Any) {
         let storyboard = UIStoryboard(name: "AddNewCat", bundle: nil)
        
-        let vc = storyboard.instantiateViewController(withIdentifier: "addNewCat") as! AddNewCatTableView
+        
+        guard let vc = storyboard.instantiateViewController(withIdentifier: "addNewCat") as? AddNewCatTableView else {
+            fatalError("no vc found")
+        }
         vc.editedCat = currCat
         vc.delegate = self
         
@@ -135,24 +154,22 @@ class CatDetailViewController: UIViewController {
     }
     
     @IBAction func contactVet(_ sender: Any) {
-        guard ((currCat?.vetPhoneNo) != nil) else {
+        guard let cat = currCat, let vetNo = cat.vetPhoneNo , cat.vetPhoneNo != nil else {
             return
         }
         
-        let vetNo = currCat?.vetPhoneNo!
-        
         let actionsheet = UIAlertController()
         
-        actionsheet.addAction(UIAlertAction(title: "Call \(vetNo!)", style: .default, handler: {_ in
-            if let url = URL(string: "tel://\(vetNo!)"){
+        actionsheet.addAction(UIAlertAction(title: "Call \(vetNo)", style: .default, handler: {_ in
+            if let url = URL(string: "tel://\(vetNo)"){
                 UIApplication.shared.canOpenURL(url)
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
 
             }
         }))
         
-        actionsheet.addAction(UIAlertAction(title: "Message \(vetNo!)", style: .default, handler: {_ in
-            if let url = URL(string: "sms://\(vetNo!)"){
+        actionsheet.addAction(UIAlertAction(title: "Message \(vetNo)", style: .default, handler: {_ in
+            if let url = URL(string: "sms://\(vetNo)"){
                 UIApplication.shared.canOpenURL(url)
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
 
