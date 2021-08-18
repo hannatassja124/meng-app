@@ -9,6 +9,11 @@
 //Delete
 //Reminder Switch to hide Reminder Cell & NOT save data
 
+//Lines to Repair / Do:
+// 233 & 240 [Conditional check if Selected Cat is empty & No activity type was chosen on Save]
+// 395 [EDIT Section 1]
+// 436 [Picker Reminder doesn't ]
+
 import UIKit
 
 class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegate, UITextViewDelegate {
