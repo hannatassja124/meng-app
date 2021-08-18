@@ -20,12 +20,13 @@ class DashboardViewController: UIViewController {
     var recent = [Activity()]
     let calendar = Calendar.current
     let dateFormatter = DateFormatter()
+    var data = Activity()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         initView()
-        retrieveDate(activityDate: dateFormat())
+//        retrieveDate(activityDate: dateFormat())
         // Do any additional setup after loading the view.
     }
     
@@ -79,6 +80,12 @@ class DashboardViewController: UIViewController {
             print("recent", recent.count)
             
             
+//            if indexPath.section == 0 {
+//                data = upcoming[indexPath.row]
+//            } else {
+//                data = recent[indexPath.row]
+//            }
+            
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
@@ -102,34 +109,17 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ActivitiesTableViewCell", for: indexPath) as! ActivitiesTableViewCell
-        
-        let data:Activity
-        
         if indexPath.section == 0 {
-            data = upcoming[indexPath.row]
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ActivitiesTableViewCell", for: indexPath) as! ActivitiesTableViewCell
+            cell.object = upcoming[indexPath.row]
+
+            return cell
         } else {
-            data = recent[indexPath.row]
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ActivitiesTableViewCell", for: indexPath) as! ActivitiesTableViewCell
+            cell.object = recent[indexPath.row]
+            
+            return cell
         }
-
-        dateFormatter.dateFormat = "hh:mm a"
-
-        //catname
-        let name = data.cats!.value(forKey: "name") //NSSet
-        let catName = (name as AnyObject).allObjects //Swift Array
-
-        //color tag
-        let color = data.cats!.value(forKey: "colorTags") //NSSet
-        let colorTag = (color as AnyObject).allObjects //Swift Array
-
-        cell.activityTitleLabel.text = data.activityTitle
-        cell.activityTimeLabel.text = dateFormatter.string(from: data.activityDateTime!)
-        cell.activityCatNameLabel.text = "\(catName![0])"
-        cell.activityTypeImage.image = UIImage(named: data.activityType!)
-        cell.activitiesColorTagImage.tintColor = TagsHelper.checkColor(tagsNumber: colorTag![0] as! Int16)
-        cell.selectionStyle = .none
-        
-        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

@@ -33,6 +33,10 @@ class CalendarViewController: UIViewController {
         
         //save()
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         let year = calendar.component(.year, from: Date())
         let month = calendar.component(.month, from: Date())
         let day = calendar.component(.day, from: Date())
@@ -42,11 +46,6 @@ class CalendarViewController: UIViewController {
         dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss Z"
         
         retrieveData(activityDate: dateFormatter.date(from: combinedDate)!)
-        
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         
 //        let year = calendar.component(.year, from: Date())
 //        let month = calendar.component(.month, from: Date())
@@ -186,9 +185,9 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.activityTitleLabel.text = data.activityTitle
         cell.activityTimeLabel.text = dateFormatter.string(from: data.activityDateTime!)
-        cell.activityCatNameLabel.text = "\(catName![0])"
+//        cell.activityCatNameLabel.text = "\(catName![0])"
         cell.activityTypeImage.image = UIImage(named: data.activityType!)
-        cell.activitiesColorTagImage.tintColor = TagsHelper.checkColor(tagsNumber: colorTag![0] as! Int16)
+//        cell.activitiesColorTagImage.tintColor = TagsHelper.checkColor(tagsNumber: colorTag![0] as! Int16)
         
         cell.selectionStyle = .none
         

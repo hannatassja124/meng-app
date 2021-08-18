@@ -15,6 +15,12 @@ class ActivitiesTableViewCell: UITableViewCell {
     @IBOutlet weak var activityTimeLabel: UILabel!
     @IBOutlet weak var activitiesColorTagImage: UIImageView!
     
+    var object: Activity? {
+        didSet {
+            cellConfig()
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -27,4 +33,25 @@ class ActivitiesTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func cellConfig() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "hh:mm a"
+
+        guard let obj = object else { return }
+        let name = obj.cats?.value(forKey: "name")
+//        let name = object.cats.value(forKey: "name") //NSSet
+        let catName = (name as AnyObject).allObjects //Swift Array
+
+        //color tag
+        let color = obj.cats?.value(forKey: "colorTags") //NSSet
+        let colorTag = (color as AnyObject).allObjects //Swift Array
+
+        activityTitleLabel.text = obj.activityTitle
+        activityTimeLabel.text = dateFormatter.string(from: obj.activityDateTime ?? Date())
+        
+//        activityCatNameLabel.text = "\(catName?[0] ?? "")"
+        activityTypeImage.image = UIImage(named: obj.activityType!)
+//        activitiesColorTagImage.tintColor = TagsHelper.checkColor(tagsNumber: colorTag![0] as! Int16)
+        selectionStyle = .none
+    }
 }

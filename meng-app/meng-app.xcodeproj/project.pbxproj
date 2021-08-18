@@ -45,10 +45,6 @@
 		F91BC74D26C9B9C100DF1600 /* OnboardingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91BC74C26C9B9C100DF1600 /* OnboardingCollectionViewCell.swift */; };
 		F91BC74F26C9CB5C00DF1600 /* GetStartedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91BC74E26C9CB5C00DF1600 /* GetStartedViewController.swift */; };
 		F91BC75126C9CB7F00DF1600 /* Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91BC75026C9CB7F00DF1600 /* Core.swift */; };
-		F92EDAEA26BDA2A30051B9DF /* Activity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92EDAE626BDA2A30051B9DF /* Activity+CoreDataClass.swift */; };
-		F92EDAEB26BDA2A30051B9DF /* Activity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92EDAE726BDA2A30051B9DF /* Activity+CoreDataProperties.swift */; };
-		F92EDAEC26BDA2A30051B9DF /* Cats+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92EDAE826BDA2A30051B9DF /* Cats+CoreDataClass.swift */; };
-		F92EDAED26BDA2A30051B9DF /* Cats+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92EDAE926BDA2A30051B9DF /* Cats+CoreDataProperties.swift */; };
 		F92EDAF026BDD9770051B9DF /* TypeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92EDAEF26BDD9770051B9DF /* TypeHelper.swift */; };
 		F92EDAF226BDDAF10051B9DF /* ReminderHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92EDAF126BDDAF10051B9DF /* ReminderHelper.swift */; };
 		F94AD29826AEF19D005686ED /* UiCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94AD29726AEF19D005686ED /* UiCustom.swift */; };
@@ -115,10 +111,6 @@
 		F91BC74C26C9B9C100DF1600 /* OnboardingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCollectionViewCell.swift; sourceTree = "<group>"; };
 		F91BC74E26C9CB5C00DF1600 /* GetStartedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedViewController.swift; sourceTree = "<group>"; };
 		F91BC75026C9CB7F00DF1600 /* Core.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Core.swift; sourceTree = "<group>"; };
-		F92EDAE626BDA2A30051B9DF /* Activity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Activity+CoreDataClass.swift"; sourceTree = "<group>"; };
-		F92EDAE726BDA2A30051B9DF /* Activity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Activity+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		F92EDAE826BDA2A30051B9DF /* Cats+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cats+CoreDataClass.swift"; sourceTree = "<group>"; };
-		F92EDAE926BDA2A30051B9DF /* Cats+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cats+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		F92EDAEF26BDD9770051B9DF /* TypeHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeHelper.swift; sourceTree = "<group>"; };
 		F92EDAF126BDDAF10051B9DF /* ReminderHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderHelper.swift; sourceTree = "<group>"; };
 		F94AD29726AEF19D005686ED /* UiCustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UiCustom.swift; sourceTree = "<group>"; };
@@ -670,7 +662,6 @@
 				F995E51626A9A9D000DA5C50 /* DashboardViewController.swift in Sources */,
 				0372C64226CA0BE1006F2C1C /* Cats+CoreDataProperties.swift in Sources */,
 				1932CFD026B2494800E7FE06 /* TagsHelper.swift in Sources */,
-				F92EDAED26BDA2A30051B9DF /* Cats+CoreDataProperties.swift in Sources */,
 				F91BC74D26C9B9C100DF1600 /* OnboardingCollectionViewCell.swift in Sources */,
 				F91BC74A26C9B6A300DF1600 /* OnboardingModel.swift in Sources */,
 				F995E51B26A9AA5200DA5C50 /* DashboardCellViewController.swift in Sources */,
@@ -678,7 +669,6 @@
 				F950008D26C0CF08003F1B6C /* EventModel.swift in Sources */,
 				077B96F826C03E7A00117F67 /* ActivityLogActivitiesHeader.swift in Sources */,
 				F91BC74826C9AF2600DF1600 /* OnboardingViewController.swift in Sources */,
-				F92EDAEB26BDA2A30051B9DF /* Activity+CoreDataProperties.swift in Sources */,
 				0747674426B253D20054D268 /* ActivityLogDatePickerHeader.swift in Sources */,
 				F92EDAF226BDDAF10051B9DF /* ReminderHelper.swift in Sources */,
 				0779832626B1B36400BFFD57 /* SelectCatViewController.swift in Sources */,
