@@ -398,30 +398,30 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
                     //Section 2
                     if EditedActivity!.activityType == "Vaccine"
                     {
-                        selectedCatIndex = 0
+                      
                         SelectedActivitiesIndex = 0
                     }
                     else if EditedActivity!.activityType == "Appointment"
                     {
-                        selectedCatIndex = 1
+                       
                         SelectedActivitiesIndex = 1
                     }
                     else if EditedActivity!.activityType == "Treatment"
                     {
-                        selectedCatIndex = 2
+                        
                         SelectedActivitiesIndex = 2
                     }
                     else if EditedActivity!.activityType == "Symptoms"
                     {
-                        selectedCatIndex = 3
+                        
                         SelectedActivitiesIndex = 3
                     }
                     else if EditedActivity!.activityType == "Others"
                     {
-                        selectedCatIndex = 4
+                      
                         SelectedActivitiesIndex = 4
                     }
-                    ActivityList[selectedCatIndex].isSelected = true
+                    ActivityList[SelectedActivitiesIndex].isSelected = true
                     CollectionViewActivities.reloadData()
                     
                     //Section 3
