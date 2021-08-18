@@ -102,13 +102,19 @@ class CatDetailViewController: UIViewController {
         //cat weight
         catWeight.text = "\(cat.weight) KG"
         //cat food
-        catFood.text = "\(cat.feeding ?? "No Data")"
+        if let catFoodData = cat.feeding {
+            catFood.text = "\(catFoodData != "" ? catFoodData : "No Data")"
+        }
         //cat medical notes
         catMedicalNotes.text = "\(currCat?.notes ?? "No Data")"
         //cat vet name
-        vetName.text = "\(cat.vetName ?? "No Data")"
+        if let vetNameData = cat.vetName {
+            vetName.text = "\(vetNameData != "" ? vetNameData : "No Data")"
+        }
         //cat vet phoneNo
-        vetNo.text = "\(cat.vetPhoneNo ?? "No Data")"
+        if let vetPhoneNoData = cat.vetPhoneNo {
+            vetNo.text = "\(vetPhoneNoData != "" ? vetPhoneNoData : "No Data")"
+        }
     }
 
     //MARK: - Action function
