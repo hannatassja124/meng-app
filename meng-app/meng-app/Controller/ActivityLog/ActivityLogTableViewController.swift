@@ -9,11 +9,6 @@
 //Delete
 //Reminder Switch to hide Reminder Cell & NOT save data
 
-//Lines to Repair / Do:
-// 233 & 240 [Conditional check if Selected Cat is empty & No activity type was chosen on Save]
-// 395 [EDIT Section 1]
-// 436 [Picker Reminder doesn't ]
-
 import UIKit
 
 class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegate, UITextViewDelegate {
@@ -53,7 +48,7 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
     var EditedActivity:Activity? = nil
     let dateFormatTemp =  "MMMM dd, yyyy"
     var ReminderChosen: Int64 = 0
-    var SelectedActivitiesIndex: Int = 0
+    var SelectedActivitiesIndex: Int = -1
     var ActivityList = [ActivitiesTypeStruct(name: "Vaccine", iconName: "Vaccine"), ActivitiesTypeStruct(name: "Appointment", iconName: "Appointment"), ActivitiesTypeStruct(name: "Treatment", iconName: "Treatment"), ActivitiesTypeStruct(name: "Symptoms", iconName: "Symptoms"), ActivitiesTypeStruct(name: "Others", iconName: "Others")]
     var selectedCat = [CatData]() //unused?
     var cats = [Cats]()
@@ -63,6 +58,7 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
     let calendar = Calendar.current
     var SaveSuccess = false
     var onViewWillDisappear: (()->())?
+    var EmptyState = false
     
 
 //MARK: - ViewDidLoad
@@ -74,7 +70,7 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
         PickerReminderFill()
         DatePickerDateDisplay()
         
-        checkIfEditOrNot()
+        LoadExistingData()
         
         CollectionViewActivities.register(UINib(nibName: "ActivitiesCVC", bundle: nil), forCellWithReuseIdentifier: "ActivitiesCVCID")
         CollectionViewActivities.delegate = self
@@ -131,8 +127,12 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
 
 //MARK: - NavBar
     @IBAction func SaveButtonAction(_ sender: Any) {
-        SaveActivityLog()
-        self.dismiss(animated: true, completion: nil)
+        EmptyCheck()
+        if (EmptyState == false) {
+            SaveActivityLog()
+            self.dismiss(animated: true, completion: nil)
+        }
+        EmptyState = false
     }
 
     @IBAction func BackButtonAction(_ sender: Any) {
@@ -230,32 +230,39 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
      
      
 //MARK: - Save Activity Log
+    //Check if Empty
+    func EmptyCheck() {
+        if selectedCatIndex == -1 {
+            let Alert = UIAlertController(title: "Error", message: "Please select a Cat.", preferredStyle: .alert)
+            Alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in NSLog("The \"OK\" alert occured.")}))
+            self.present(Alert, animated: true, completion: nil)
+            EmptyState = true
+        }
+        else if (SelectedActivitiesIndex > 4 || SelectedActivitiesIndex < 0) {
+            let Alert = UIAlertController(title: "Error", message: "Please select an Activity Type.", preferredStyle: .alert)
+            Alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in NSLog("The \"OK\" alert occured.")}))
+            self.present(Alert, animated: true, completion: nil)
+            EmptyState = true
+        }
+        else if TextFieldTitle.text == ""{
+            let Alert = UIAlertController(title: "Error", message: "Please enter a Title.", preferredStyle: .alert)
+            Alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in NSLog("The \"OK\" alert occured.")}))
+            self.present(Alert, animated: true, completion: nil)
+            EmptyState = true
+        }
+        else if TextFieldDetails.text == ""{
+            let Alert = UIAlertController(title: "Error", message: "Please enter a Description.", preferredStyle: .alert)
+            Alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in NSLog("The \"OK\" alert occured.")}))
+            self.present(Alert, animated: true, completion: nil)
+            EmptyState = true
+        }
+    }
+    
     // Save New Data
         func SaveActivityLog(){
-            if LabelCat.text == "" {// ini salah
-                print("if conditional works in Section 1 save")
-                
-                let Alert = UIAlertController(title: "Error", message: "Please select a Cat.", preferredStyle: .alert)
-                Alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in NSLog("The \"OK\" alert occured.")}))
-                self.present(Alert, animated: true, completion: nil)
-            }
-            else if SelectedActivitiesIndex > 4 || SelectedActivitiesIndex < 0 {// this doesn't work
-                let Alert = UIAlertController(title: "Error", message: "Please select an Activity Type.", preferredStyle: .alert)
-                Alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in NSLog("The \"OK\" alert occured.")}))
-                self.present(Alert, animated: true, completion: nil)
-            }
-            else if TextFieldTitle.text == ""{
-                let Alert = UIAlertController(title: "Error", message: "Please enter a Title.", preferredStyle: .alert)
-                Alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in NSLog("The \"OK\" alert occured.")}))
-                self.present(Alert, animated: true, completion: nil)
-            }
-            else if TextFieldDetails.text == ""{
-                let Alert = UIAlertController(title: "Error", message: "Please enter a Description.", preferredStyle: .alert)
-                Alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in NSLog("The \"OK\" alert occured.")}))
-                self.present(Alert, animated: true, completion: nil)
-            }
             
-            else if EditedActivity == nil {//Actually starts saving
+            
+            if EditedActivity == nil {//Actually starts saving
                 print("SAVING")
                 let NewActivityLog = Activity(context: context)
                 
@@ -309,13 +316,16 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
             }
             
             
-//MARK: - Edit BLOCKED HELP ME PLEASE AAAAAAAAAA
+//MARK: - Edit
     // Edit (Save into) Existing Data
             else if EditedActivity != nil {
                 print("EDITING")
                 //Section 1
-                //EditedActivity?.removeFromCats(cats[])
-                //EditedActivity.addToCats(cats[selectedCatIndex])
+                guard let cat = EditedActivity?.cats?.allObjects as? [Cats] else {
+                    return
+                }
+                EditedActivity?.removeFromCats(cat[cat.count - 1])
+                EditedActivity?.addToCats(cats[selectedCatIndex])
                 
                 //Section 2
                 if SelectedActivitiesIndex == 0 {
@@ -335,30 +345,10 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
                 }
                 
                 //Section 3
-                if TextFieldTitle.text == nil{// Alert doesn't show up??
-                    let Alert = UIAlertController(title: "Error", message: "Please enter a Title.", preferredStyle: .alert)
-                    Alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in NSLog("The \"OK\" alert occured.")}))
-                    self.present(Alert, animated: true, completion: nil)
-                    SaveSuccess = false
-                    //insert break
-                }
-                else{
-                    EditedActivity!.activityTitle = "\(TextFieldTitle.text ?? "")"
-                }
-                
-                if TextFieldDetails.text == nil{
-                    let Alert = UIAlertController(title: "Error", message: "Please enter a Description.", preferredStyle: .alert)
-                    Alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in NSLog("The \"OK\" alert occured.")}))
-                    self.present(Alert, animated: true, completion: nil)
-                    SaveSuccess = false
-                    //insert break
-                }
-                else{
-                    EditedActivity!.activityDetail = "\(TextFieldDetails.text ?? "")"
-                }
+                EditedActivity!.activityTitle = "\(TextFieldTitle.text ?? "")"
+                EditedActivity!.activityDetail = "\(TextFieldDetails.text ?? "")"
                 
                 //Section 4
-                
                 dateFormatter.dateFormat = "yyyy-MM-dd"
                 let DateDay = dateFormatter.string(from: DatePickerDate.date)
                 dateFormatter.dateFormat = "hh:mm:ss a Z"
@@ -383,45 +373,56 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
                 }*/
             }
 
-            do {
-                try context.save()
-            } catch {
-                print("Ga kesave")
-            }
-
+        do {
+            try context.save()
+        } catch {
+            print("Ga kesave")
         }
+
+    }
         
     // Load Saved data during Edit
             
-            func checkIfEditOrNot() {
+            func LoadExistingData() {
                 
                 if EditedActivity != nil {
                     
-                    //Section 1 NOT DONE IDK HOW TO GET THIS VALUE; Pending resolution, either add index to CoreData and call it here or ????
-                    //selectedCatIndex = EditedActivity.cats.index
+                    //Section 1
+                    guard let cat = EditedActivity?.cats?.allObjects as? [Cats] else {
+                        return
+                    }
                     
+                    LabelCat.text = cat[cat.count - 1].name
+                    ImageCatColour.tintColor = TagsHelper.checkColor(tagsNumber: cat[cat.count - 1].colorTags)
                     
                     //Section 2
                     if EditedActivity!.activityType == "Vaccine"
                     {
                         selectedCatIndex = 0
+                        SelectedActivitiesIndex = 0
                     }
                     else if EditedActivity!.activityType == "Appointment"
                     {
                         selectedCatIndex = 1
+                        SelectedActivitiesIndex = 1
                     }
                     else if EditedActivity!.activityType == "Treatment"
                     {
                         selectedCatIndex = 2
+                        SelectedActivitiesIndex = 2
                     }
                     else if EditedActivity!.activityType == "Symptoms"
                     {
                         selectedCatIndex = 3
+                        SelectedActivitiesIndex = 3
                     }
                     else if EditedActivity!.activityType == "Others"
                     {
                         selectedCatIndex = 4
+                        SelectedActivitiesIndex = 4
                     }
+                    ActivityList[selectedCatIndex].isSelected = true
+                    CollectionViewActivities.reloadData()
                     
                     //Section 3
                     TextFieldTitle.text = EditedActivity!.activityTitle
@@ -434,12 +435,10 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
                     LabelDate.text = dateFormat(date: DatePickerDate.date, formatDate: dateFormatTemp)
                     
                     //Section 5
-                    //PICKER DOESNT WORK
                     ReminderChosen = EditedActivity!.activityReminder
                     
                     PickerViewReminder.selectRow(Int(self.MinutesToReminder()), inComponent: 0, animated: true)
                     LabelReminderBefore.text = RemindBeforeData[Int(self.MinutesToReminder())]
-                    //PickerViewReminder. = self.MinutesToReminder()
                 }
             }
     
@@ -498,7 +497,6 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
     
 //MARK: - PickerView Settings
         func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-            print(RemindBeforeData[row])
             LabelReminderBefore.text = RemindBeforeData[row]
             ReminderChosen = Int64(row)
         }
