@@ -83,7 +83,7 @@ class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextVie
             catProfileDataDeleteTableView.isHidden = false
         }
         
-        saveDummy()
+//        saveDummy()
     }
     
     //MARK: - IBActions
@@ -284,39 +284,39 @@ class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextVie
     }
     
 // Data Dummy
-    func saveDummy() {
-        let dummyCatProfile = Cats(context: context)
-        
-        dummyCatProfile.image = UIImage(named: "Meng-2")?.jpegData(compressionQuality: 1.0) ?? nil
-        dummyCatProfile.name =  "Kucing Oren"
-        dummyCatProfile.colorTags = 0
-        dummyCatProfile.gender = 0
-        dummyCatProfile.dateOfBirth = Date()
-        dummyCatProfile.breed = "Abyssinian"
-        dummyCatProfile.isNeutered = true
-        dummyCatProfile.weight = 2.5
-        dummyCatProfile.feeding = "Dry Food Royal Canin"
-        dummyCatProfile.vetName = "Juminten"
-        dummyCatProfile.vetPhoneNo = "0812893752930"
-        dummyCatProfile.notes = "Alergi Kucing Putih"
-        
-        let dummyActivities = Activity(context: context)
-        
-        dummyActivities.activityDateTime = Date()
-        dummyActivities.activityDetail = "Medicate Cat to Vet"
-        dummyActivities.activityNotificationId = UUID()
-        dummyActivities.activityReminder = 2
-        dummyActivities.activityTitle = "Meds"
-        dummyActivities.activityType = "Treatment"
-        
-        dummyCatProfile.addToActivities(dummyActivities)
-        do {
-            try context.save()
-        } catch {
-            
-        }
-        onViewWillDisappear!()
-        }
+//    func saveDummy() {
+//        let dummyCatProfile = Cats(context: context)
+//
+//        dummyCatProfile.image = UIImage(named: "Meng-2")?.jpegData(compressionQuality: 1.0) ?? nil
+//        dummyCatProfile.name =  "Kucing Oren"
+//        dummyCatProfile.colorTags = 0
+//        dummyCatProfile.gender = 0
+//        dummyCatProfile.dateOfBirth = Date()
+//        dummyCatProfile.breed = "Abyssinian"
+//        dummyCatProfile.isNeutered = true
+//        dummyCatProfile.weight = 2.5
+//        dummyCatProfile.feeding = "Dry Food Royal Canin"
+//        dummyCatProfile.vetName = "Juminten"
+//        dummyCatProfile.vetPhoneNo = "0812893752930"
+//        dummyCatProfile.notes = "Alergi Kucing Putih"
+//
+//        let dummyActivities = Activity(context: context)
+//
+//        dummyActivities.activityDateTime = Date()
+//        dummyActivities.activityDetail = "Medicate Cat to Vet"
+//        dummyActivities.activityNotificationId = UUID()
+//        dummyActivities.activityReminder = 2
+//        dummyActivities.activityTitle = "Meds"
+//        dummyActivities.activityType = "Treatment"
+//
+//        dummyCatProfile.addToActivities(dummyActivities)
+//        do {
+//            try context.save()
+//        } catch {
+//
+//        }
+//        onViewWillDisappear!()
+//        }
     
     
 // Untuk Name Text Field
