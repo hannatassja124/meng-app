@@ -9,7 +9,14 @@
 //Delete
 //Reminder Switch to hide Reminder Cell & NOT save data
 
+//NEW STUFF
+//Lines: 17 71 78 151 458
+
 import UIKit
+
+protocol ActivityLogTableViewProtocol: AnyObject {
+    func backToRoot()
+}
 
 class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegate, UITextViewDelegate {
 
@@ -18,7 +25,6 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
     //NavBar
     @IBOutlet weak var NavBarButtonBack: UIBarButtonItem!
     @IBOutlet weak var NavBarButtonSave: UIBarButtonItem!
-    
     
     //Section 1 - Select Cat
     @IBOutlet weak var LabelCat: UILabel!
@@ -40,6 +46,9 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
     //Section 5 - Reminder
     @IBOutlet weak var LabelReminderBefore: UILabel!
     @IBOutlet weak var PickerViewReminder: UIPickerView!
+    
+    //Section 6 - Delete
+    @IBOutlet weak var TableViewCellDelete: UITableViewCell!
 
     
 //MARK: - Variables
@@ -50,15 +59,16 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
     var ReminderChosen: Int64 = 0
     var SelectedActivitiesIndex: Int = -1
     var ActivityList = [ActivitiesTypeStruct(name: "Vaccine", iconName: "Vaccine"), ActivitiesTypeStruct(name: "Appointment", iconName: "Appointment"), ActivitiesTypeStruct(name: "Treatment", iconName: "Treatment"), ActivitiesTypeStruct(name: "Symptoms", iconName: "Symptoms"), ActivitiesTypeStruct(name: "Others", iconName: "Others")]
-    var selectedCat = [CatData]() //unused?
+    var selectedCat = [CatData]()
     var cats = [Cats]()
     var selectedCatIndex: Int = -1
-    //var previouslySelectedCatIndex: Int = -1
+    //var previouslySelectedCatIndex: Int = -1  //unused?
     var dateFormatter = DateFormatter()
     let calendar = Calendar.current
-    //var SaveSuccess = false
+    //var SaveSuccess = false   //unused?
     var onViewWillDisappear: (()->())?
     var EmptyState = false
+    weak var Delegate: ActivityLogTableViewProtocol?
     
 
 //MARK: - ViewDidLoad
@@ -71,6 +81,13 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
         DatePickerDateDisplay()
         
         LoadExistingData()
+        
+        if EditedActivity == nil {
+            TableViewCellDelete.isHidden = true
+        }
+        else {
+            TableViewCellDelete.isHidden = false
+        }
         
         CollectionViewActivities.register(UINib(nibName: "ActivitiesCVC", bundle: nil), forCellWithReuseIdentifier: "ActivitiesCVCID")
         CollectionViewActivities.delegate = self
@@ -125,7 +142,7 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
     }
     
 
-//MARK: - NavBar
+//MARK: - Button Functions
     @IBAction func SaveButtonAction(_ sender: Any) {
         EmptyCheck()
         if (EmptyState == false) {
@@ -137,6 +154,15 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
 
     @IBAction func BackButtonAction(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func ButtonDeleteActivity(_ sender: Any) {
+        let alert = UIAlertController(title: "Delete Activity Log", message: "Are you sure you want to permanently delete this Log?", preferredStyle: .actionSheet)
+        let DeleteAction = UIAlertAction(title: "Delete", style: .destructive, handler: deleteConfirm)
+        let CancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler:deleteCancel)
+        alert.addAction(DeleteAction)
+        alert.addAction(CancelAction)
+        self.present(alert, animated: true, completion: nil)
     }
     
 
@@ -229,7 +255,7 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
     }
      
      
-//MARK: - Save Activity Log
+//MARK: - Save
     //Check if Empty
     func EmptyCheck() {
         if selectedCatIndex == -1 {
@@ -259,178 +285,189 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
     }
     
     // Save New Data
-        func SaveActivityLog(){
+    func SaveActivityLog(){
+        if EditedActivity == nil {//Actually starts saving
+            let NewActivityLog = Activity(context: context)
             
+            //Section 1
+            NewActivityLog.addToCats(cats[selectedCatIndex])
             
-            if EditedActivity == nil {//Actually starts saving
-                print("SAVING")
-                let NewActivityLog = Activity(context: context)
-                
-                //Section 1
-                NewActivityLog.addToCats(cats[selectedCatIndex])
-                
-                //Section 2
-                if SelectedActivitiesIndex == 0 {
-                    NewActivityLog.activityType = "Vaccine"
-                }
-                else if SelectedActivitiesIndex == 1 {
-                    NewActivityLog.activityType = "Appointment"
-                }
-                else if SelectedActivitiesIndex == 2 {
-                    NewActivityLog.activityType = "Treatment"
-                }
-                else if SelectedActivitiesIndex == 3 {
-                    NewActivityLog.activityType = "Symptoms"
-                }
-                else if SelectedActivitiesIndex == 4 {
-                    NewActivityLog.activityType = "Others"
-                }
-                
-                //Section 3
-                
-                NewActivityLog.activityTitle = "\(TextFieldTitle.text ?? "")"
-                NewActivityLog.activityDetail = "\(TextFieldDetails.text ?? "")"
-                
-                //Section 4
-                
-                dateFormatter.dateFormat = "yyyy-MM-dd"
-                let DateDay = dateFormatter.string(from: DatePickerDate.date)
-                dateFormatter.dateFormat = "hh:mm:ss a Z"
-                let TimeDay = dateFormatter.string(from: DatePickerTime.date)
-                let ActualDateTime = DateDay + " " + TimeDay
-                
-                dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss a Z"
-
-                let ActualActualActualDate = dateFormatter.date(from: ActualDateTime)!
-                
-                NewActivityLog.activityDateTime = ActualActualActualDate
-                
-                //Section 5
-                NewActivityLog.activityReminder = self.ReminderToMinutes()
-                /*if SwitchOff {
-                    
-                }
-                else{
-                    NewActivityLog.activityReminder = self.ReminderToMinutes()
-                }*/
+            //Section 2
+            if SelectedActivitiesIndex == 0 {
+                NewActivityLog.activityType = "Vaccine"
+            }
+            else if SelectedActivitiesIndex == 1 {
+                NewActivityLog.activityType = "Appointment"
+            }
+            else if SelectedActivitiesIndex == 2 {
+                NewActivityLog.activityType = "Treatment"
+            }
+            else if SelectedActivitiesIndex == 3 {
+                NewActivityLog.activityType = "Symptoms"
+            }
+            else if SelectedActivitiesIndex == 4 {
+                NewActivityLog.activityType = "Others"
             }
             
+            //Section 3
+            NewActivityLog.activityTitle = "\(TextFieldTitle.text ?? "")"
+            NewActivityLog.activityDetail = "\(TextFieldDetails.text ?? "")"
             
-//MARK: - Edit
-    // Edit (Save into) Existing Data
-            else if EditedActivity != nil {
-                //Section 1
-                guard let cat = EditedActivity?.cats?.allObjects as? [Cats] else {
-                    return
-                }
-                EditedActivity?.removeFromCats(cat[cat.count - 1])
-                EditedActivity?.addToCats(cats[selectedCatIndex])
-                
-                //Section 2
-                if SelectedActivitiesIndex == 0 {
-                    EditedActivity!.activityType = "Vaccine"
-                }
-                else if SelectedActivitiesIndex == 1 {
-                    EditedActivity!.activityType = "Appointment"
-                }
-                else if SelectedActivitiesIndex == 2 {
-                    EditedActivity!.activityType = "Treatment"
-                }
-                else if SelectedActivitiesIndex == 3 {
-                    EditedActivity!.activityType = "Symptoms"
-                }
-                else if SelectedActivitiesIndex == 4 {
-                    EditedActivity!.activityType = "Others"
-                }
-                
-                //Section 3
-                EditedActivity!.activityTitle = "\(TextFieldTitle.text ?? "")"
-                EditedActivity!.activityDetail = "\(TextFieldDetails.text ?? "")"
-                
-                //Section 4
-                dateFormatter.dateFormat = "yyyy-MM-dd"
-                let DateDay = dateFormatter.string(from: DatePickerDate.date)
-                dateFormatter.dateFormat = "hh:mm:ss a Z"
-                let TimeDay = dateFormatter.string(from: DatePickerTime.date)
-                let ActualDateTime = DateDay + " " + TimeDay
-                
-                dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss a Z"
-
-                let ActualActualActualDate = dateFormatter.date(from: ActualDateTime)!
-                
-                EditedActivity!.activityDateTime = ActualActualActualDate
-                
-                //Section 5
-                EditedActivity!.activityReminder = self.ReminderToMinutes()
-                /*if SwitchOff {
-                    
-                }
-                else{
-                    NewActivityLog.activityReminder = self.ReminderToMinutes()
-                }*/
+            //Section 4
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            let DateDay = dateFormatter.string(from: DatePickerDate.date)
+            dateFormatter.dateFormat = "hh:mm:ss a Z"
+            let TimeDay = dateFormatter.string(from: DatePickerTime.date)
+            let ActualDateTime = DateDay + " " + TimeDay
+            dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss a Z"
+            let ActualActualActualDate = dateFormatter.date(from: ActualDateTime)!
+            
+            NewActivityLog.activityDateTime = ActualActualActualDate
+            
+            //Section 5
+            NewActivityLog.activityReminder = self.ReminderToMinutes()
+            /*if SwitchOff {
+             
+             }
+             else{
+             NewActivityLog.activityReminder = self.ReminderToMinutes()
+             }*/
+        }
+        
+        
+        //MARK: - Edit
+        // Edit (Save into) Existing Data
+        else if EditedActivity != nil {
+            //Section 1
+            guard let cat = EditedActivity?.cats?.allObjects as? [Cats] else {
+                return
             }
-
+            EditedActivity?.removeFromCats(cat[cat.count - 1])
+            EditedActivity?.addToCats(cats[selectedCatIndex])
+            
+            //Section 2
+            if SelectedActivitiesIndex == 0 {
+                EditedActivity!.activityType = "Vaccine"
+            }
+            else if SelectedActivitiesIndex == 1 {
+                EditedActivity!.activityType = "Appointment"
+            }
+            else if SelectedActivitiesIndex == 2 {
+                EditedActivity!.activityType = "Treatment"
+            }
+            else if SelectedActivitiesIndex == 3 {
+                EditedActivity!.activityType = "Symptoms"
+            }
+            else if SelectedActivitiesIndex == 4 {
+                EditedActivity!.activityType = "Others"
+            }
+            
+            //Section 3
+            EditedActivity!.activityTitle = "\(TextFieldTitle.text ?? "")"
+            EditedActivity!.activityDetail = "\(TextFieldDetails.text ?? "")"
+            
+            //Section 4
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            let DateDay = dateFormatter.string(from: DatePickerDate.date)
+            dateFormatter.dateFormat = "hh:mm:ss a Z"
+            let TimeDay = dateFormatter.string(from: DatePickerTime.date)
+            let ActualDateTime = DateDay + " " + TimeDay
+            
+            dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss a Z"
+            
+            let ActualActualActualDate = dateFormatter.date(from: ActualDateTime)!
+            
+            EditedActivity!.activityDateTime = ActualActualActualDate
+            
+            //Section 5
+            EditedActivity!.activityReminder = self.ReminderToMinutes()
+            /*if SwitchOff {
+             
+             }
+             else{
+             NewActivityLog.activityReminder = self.ReminderToMinutes()
+             }*/
+        }
         do {
             try context.save()
         } catch {
             print("Ga kesave")
         }
-
     }
-        
+    
+    
     // Load Saved data during Edit
-            
-            func LoadExistingData() {
-                if EditedActivity != nil {
-                    //Section 1
-                    guard let cat = EditedActivity?.cats?.allObjects as? [Cats] else {
-                        return
-                    }
-                    
-                    LabelCat.text = cat[cat.count - 1].name
-                    ImageCatColour.tintColor = TagsHelper.checkColor(tagsNumber: cat[cat.count - 1].colorTags)
-                    
-                    //Section 2
-                    if EditedActivity!.activityType == "Vaccine"
-                    {
-                        SelectedActivitiesIndex = 0
-                    }
-                    else if EditedActivity!.activityType == "Appointment"
-                    {
-                        SelectedActivitiesIndex = 1
-                    }
-                    else if EditedActivity!.activityType == "Treatment"
-                    {
-                        SelectedActivitiesIndex = 2
-                    }
-                    else if EditedActivity!.activityType == "Symptoms"
-                    {
-                        SelectedActivitiesIndex = 3
-                    }
-                    else if EditedActivity!.activityType == "Others"
-                    {
-                        SelectedActivitiesIndex = 4
-                    }
-                    ActivityList[SelectedActivitiesIndex].isSelected = true
-                    CollectionViewActivities.reloadData()
-                    
-                    //Section 3
-                    TextFieldTitle.text = EditedActivity!.activityTitle
-                    TextFieldDetails.text = EditedActivity!.activityDetail
-
-                    //Section 4
-                    DatePickerDate.date = (EditedActivity?.activityDateTime)!
-                    DatePickerTime.date = (EditedActivity?.activityDateTime)!
-                    
-                    LabelDate.text = dateFormat(date: DatePickerDate.date, formatDate: dateFormatTemp)
-                    
-                    //Section 5
-                    ReminderChosen = EditedActivity!.activityReminder
-                    
-                    PickerViewReminder.selectRow(Int(self.MinutesToReminder()), inComponent: 0, animated: true)
-                    LabelReminderBefore.text = RemindBeforeData[Int(self.MinutesToReminder())]
-                }
+    
+    func LoadExistingData() {
+        if EditedActivity != nil {
+            //Section 1
+            guard let cat = EditedActivity?.cats?.allObjects as? [Cats] else {
+                return
             }
+            
+            LabelCat.text = cat[cat.count - 1].name
+            ImageCatColour.tintColor = TagsHelper.checkColor(tagsNumber: cat[cat.count - 1].colorTags)
+            
+            //Section 2
+            if EditedActivity!.activityType == "Vaccine"
+            {
+                SelectedActivitiesIndex = 0
+            }
+            else if EditedActivity!.activityType == "Appointment"
+            {
+                SelectedActivitiesIndex = 1
+            }
+            else if EditedActivity!.activityType == "Treatment"
+            {
+                SelectedActivitiesIndex = 2
+            }
+            else if EditedActivity!.activityType == "Symptoms"
+            {
+                SelectedActivitiesIndex = 3
+            }
+            else if EditedActivity!.activityType == "Others"
+            {
+                SelectedActivitiesIndex = 4
+            }
+            ActivityList[SelectedActivitiesIndex].isSelected = true
+            CollectionViewActivities.reloadData()
+            
+            //Section 3
+            TextFieldTitle.text = EditedActivity!.activityTitle
+            TextFieldDetails.text = EditedActivity!.activityDetail
+            
+            //Section 4
+            DatePickerDate.date = (EditedActivity?.activityDateTime)!
+            DatePickerTime.date = (EditedActivity?.activityDateTime)!
+            
+            LabelDate.text = dateFormat(date: DatePickerDate.date, formatDate: dateFormatTemp)
+            
+            //Section 5
+            ReminderChosen = EditedActivity!.activityReminder
+            
+            PickerViewReminder.selectRow(Int(self.MinutesToReminder()), inComponent: 0, animated: true)
+            LabelReminderBefore.text = RemindBeforeData[Int(self.MinutesToReminder())]
+        }
+    }
+    
+//MARK: Delete
+    func deleteConfirm(alertAction: UIAlertAction!) {
+        context.delete(EditedActivity!) // Force Unwrapping causes crash. Happens when User DeleteButton -> Cancel -> DeleteButton -> Confirm; Thread 1: Fatal error: Unexpectedly found nil while unwrapping an Optional value.
+        do {
+            try context.save()
+            DispatchQueue.main.async {
+                self.Delegate?.backToRoot()
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
+        catch{
+            print("Ga kedelete")
+        }
+    }
+
+    func deleteCancel(alertAction: UIAlertAction!){
+        EditedActivity = nil
+    }
     
     
 //MARK: - Picker Reminder Choices

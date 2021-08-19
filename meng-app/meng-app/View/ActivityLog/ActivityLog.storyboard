@@ -75,12 +75,12 @@
                                             <rect key="frame" x="0.0" y="0.0" width="350" height="96"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <collectionView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="JNi-4h-tj0">
-                                                    <rect key="frame" x="0.0" y="0.0" width="350" height="100"/>
+                                                <collectionView clipsSubviews="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="JNi-4h-tj0">
+                                                    <rect key="frame" x="0.0" y="0.0" width="350" height="96"/>
                                                     <color key="backgroundColor" name="NeutralLight"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="CL3-Ge-jeE">
-                                                        <size key="itemSize" width="56" height="100"/>
-                                                        <size key="estimatedItemSize" width="80" height="100"/>
+                                                        <size key="itemSize" width="56" height="96"/>
+                                                        <size key="estimatedItemSize" width="80" height="96"/>
                                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                         <inset key="sectionInset" minX="0.0" minY="2" maxX="0.0" maxY="2"/>
@@ -239,10 +239,10 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle=" " id="Kgy-Mi-lCT" userLabel="Reminder">
+                            <tableViewSection headerTitle=" " footerTitle="" id="Kgy-Mi-lCT" userLabel="Reminder">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Sse-fy-1zt">
-                                        <rect key="frame" x="20" y="930.00000190734863" width="350" height="43.666667938232422"/>
+                                        <rect key="frame" x="20" y="937.33333587646484" width="350" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Sse-fy-1zt" id="Kqg-vx-AVm">
                                             <rect key="frame" x="0.0" y="0.0" width="350" height="43.666667938232422"/>
@@ -277,7 +277,7 @@
                                         <color key="backgroundColor" name="MidnightGreen"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="160" id="Ykn-kN-BM6">
-                                        <rect key="frame" x="20" y="973.66666984558105" width="350" height="160"/>
+                                        <rect key="frame" x="20" y="981.00000381469727" width="350" height="160"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ykn-kN-BM6" id="RkH-B9-wdU">
                                             <rect key="frame" x="0.0" y="0.0" width="350" height="160"/>
@@ -295,6 +295,38 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection headerTitle=" " id="MfW-QT-hdB" userLabel="Delete">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="dy6-EP-vOr">
+                                        <rect key="frame" x="20" y="1191.3333358764648" width="350" height="43.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dy6-EP-vOr" id="5bJ-Mm-8Fc">
+                                            <rect key="frame" x="0.0" y="0.0" width="350" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1xS-wc-I7u">
+                                                    <rect key="frame" x="0.0" y="0.0" width="350" height="44"/>
+                                                    <color key="backgroundColor" name="Congo"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                    <state key="normal" title="Delete Log">
+                                                        <color key="titleColor" name="NeutralLight"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="ButtonDeleteActivity:" destination="m2d-qg-IsU" eventType="touchUpInside" id="HD1-1V-sa8"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="1xS-wc-I7u" firstAttribute="top" secondItem="5bJ-Mm-8Fc" secondAttribute="top" id="1Yb-zJ-BaH"/>
+                                                <constraint firstAttribute="trailing" secondItem="1xS-wc-I7u" secondAttribute="trailing" id="Ict-S9-bi2"/>
+                                                <constraint firstItem="1xS-wc-I7u" firstAttribute="leading" secondItem="5bJ-Mm-8Fc" secondAttribute="leading" id="kwg-PE-g5d"/>
+                                                <constraint firstAttribute="bottom" secondItem="1xS-wc-I7u" secondAttribute="bottom" id="vaR-Ma-rwJ"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" name="NeutralLight"/>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="m2d-qg-IsU" id="4Tx-dK-hT2"/>
@@ -303,13 +335,13 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Add Activity Log" id="ARy-Sk-2Pc">
                         <barButtonItem key="leftBarButtonItem" title="Back" id="nf5-Zl-wbQ">
-                            <color key="tintColor" red="0.99384063479999996" green="0.53408974409999999" blue="0.50978809599999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <color key="tintColor" name="Congo"/>
                             <connections>
                                 <action selector="BackButtonAction:" destination="m2d-qg-IsU" id="LS1-hc-gWW"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Save" id="RZh-Qy-EHU">
-                            <color key="tintColor" red="0.99384063479999996" green="0.53408974409999999" blue="0.50978809599999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <color key="tintColor" name="Congo"/>
                             <connections>
                                 <action selector="SaveButtonAction:" destination="m2d-qg-IsU" id="ZLh-pc-3N8"/>
                             </connections>
@@ -326,6 +358,7 @@
                         <outlet property="NavBarButtonBack" destination="nf5-Zl-wbQ" id="ILJ-l2-cRg"/>
                         <outlet property="NavBarButtonSave" destination="RZh-Qy-EHU" id="xHM-Hg-phk"/>
                         <outlet property="PickerViewReminder" destination="1Jv-Ji-Lad" id="Nkk-a5-emG"/>
+                        <outlet property="TableViewCellDelete" destination="dy6-EP-vOr" id="EdJ-En-CAY"/>
                         <outlet property="TextFieldDetails" destination="C3x-pz-cmP" id="qSb-7n-4Jp"/>
                         <outlet property="TextFieldTitle" destination="7Uy-sH-xBh" id="FnG-S1-xna"/>
                     </connections>
@@ -394,7 +427,7 @@
                                 <items>
                                     <navigationItem title="Select Cat" id="1tf-Vc-YDm">
                                         <barButtonItem key="leftBarButtonItem" title="Back" id="aSz-na-5UQ">
-                                            <color key="tintColor" red="0.99384063479999996" green="0.53408974409999999" blue="0.50978809599999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <color key="tintColor" name="Congo"/>
                                             <connections>
                                                 <action selector="BackButtonAction:" destination="zrZ-qt-PL6" id="wGm-Sc-ab1"/>
                                             </connections>
@@ -423,7 +456,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MgL-Xi-oqt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4713.8461538461534" y="79.620853080568722"/>
+            <point key="canvasLocation" x="4232" y="80"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="2HW-4x-R6l">
@@ -451,6 +484,9 @@
     <resources>
         <image name="chevron.right" catalog="system" width="96" height="128"/>
         <image name="circle.fill" catalog="system" width="128" height="121"/>
+        <namedColor name="Congo">
+            <color red="0.93500000238418579" green="0.55800002813339233" blue="0.52499997615814209" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
         <namedColor name="Melon">
             <color red="0.99900001287460327" green="0.75900000333786011" blue="0.70899999141693115" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -458,7 +494,7 @@
             <color red="0.10499999672174454" green="0.2669999897480011" blue="0.31499999761581421" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="NeutralLight">
-            <color red="1" green="0.98431372549019602" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.98400002717971802" blue="0.98000001907348633" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Opal">
             <color red="0.61500000953674316" green="0.75" blue="0.72399997711181641" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
