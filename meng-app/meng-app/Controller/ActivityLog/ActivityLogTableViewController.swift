@@ -70,6 +70,11 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
     var EmptyState = false
     weak var Delegate: ActivityLogTableViewProtocol?
     
+    //IDK if this works; Switch Delegating stuff
+    let ReminderHeader = ActivityLogDatePickerHeader()
+    var SwitchInt = -1 //For Testing switch delegate; DELETE ONCE DONE
+
+    
 
 //MARK: - ViewDidLoad
     override func viewDidLoad() {
@@ -79,6 +84,8 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
         
         PickerReminderFill()
         DatePickerDateDisplay()
+        //DatePickerTime.textColor = .white //Doesn't work
+        //DatePickerTime.tintColor = .yellow //this works though; only on Highlight
         
         LoadExistingData()
         
@@ -100,6 +107,10 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
         self.tableView.register(UINib(nibName: "ActivityLogDatePickerHeader", bundle: nil), forHeaderFooterViewReuseIdentifier: "ActivityLogDatePickerHeader")
         self.tableView.register(UINib(nibName: "ActivityLogActivitiesHeader", bundle: nil), forHeaderFooterViewReuseIdentifier: "ActivityLogActivitiesHeader")
         self.tableView.register(UINib(nibName: "ActivityLogDateTimeHeader", bundle: nil), forHeaderFooterViewReuseIdentifier: "ActivityLogDateTimeHeader")
+        
+        //IDK if this works; Switch Delegating stuff
+        ReminderHeader.Delegate = self
+        print(SwitchInt)
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -601,6 +612,19 @@ extension ActivityLogTableViewController: UIPickerViewDataSource {
     }
 }
 
+//Doesn't work; TimePicker Idle Colour stuff
+extension UIDatePicker {
+
+var textColor: UIColor? {
+    set {
+        setValue(newValue, forKeyPath: "textColor")
+    }
+    get {
+        return value(forKeyPath: "textColor") as? UIColor
+    }
+  }
+}
+
 
 //MARK: - CollectionView Delegate/DataSource
 extension ActivityLogTableViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -634,5 +658,15 @@ extension ActivityLogTableViewController: UICollectionViewDelegate, UICollection
         }
         ActivityList[indexPath.row].isSelected = true
         CollectionViewActivities.reloadData()
+    }
+}
+
+
+//MARK: - Reminder Switch Delegate
+//NOTE: Might need xx.delegate = self to catch data from Switch (?)
+extension ActivityLogTableViewController: ActivityLogDatePickerHeaderProtocol {
+    func DidToggleSwitch(SwitchStatus: Int) {
+        SwitchInt = SwitchStatus
+        print("Delegate Works")// This Doesn't print :(
     }
 }

@@ -48,6 +48,7 @@
                                                     <color key="tintColor" name="MidnightGreen"/>
                                                 </imageView>
                                             </subviews>
+                                            <color key="backgroundColor" name="NeutralLight"/>
                                             <constraints>
                                                 <constraint firstItem="LHi-Rp-qyK" firstAttribute="leading" secondItem="38b-5W-PLB" secondAttribute="trailing" constant="8" id="11V-Vl-AU4"/>
                                                 <constraint firstItem="yJR-hO-hFI" firstAttribute="centerY" secondItem="D3q-FD-au3" secondAttribute="centerY" id="73v-o4-VfQ"/>
@@ -88,6 +89,7 @@
                                                     <cells/>
                                                 </collectionView>
                                             </subviews>
+                                            <color key="backgroundColor" name="NeutralLight"/>
                                             <constraints>
                                                 <constraint firstItem="JNi-4h-tj0" firstAttribute="top" secondItem="Ooa-bm-4HZ" secondAttribute="top" id="HqW-rS-9XB"/>
                                                 <constraint firstAttribute="trailing" secondItem="JNi-4h-tj0" secondAttribute="trailing" id="aQ2-V9-D92"/>
@@ -117,6 +119,7 @@
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                             </subviews>
+                                            <color key="backgroundColor" name="NeutralLight"/>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="7Uy-sH-xBh" secondAttribute="trailing" constant="16" id="Czx-PQ-2b6"/>
                                                 <constraint firstItem="7Uy-sH-xBh" firstAttribute="leading" secondItem="Lde-jW-WdU" secondAttribute="leading" constant="16" id="cTB-Ff-LhS"/>
@@ -142,6 +145,7 @@
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                             </subviews>
+                                            <color key="backgroundColor" name="NeutralLight"/>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="C3x-pz-cmP" secondAttribute="bottom" constant="8" id="2r4-3r-XcQ"/>
                                                 <constraint firstItem="C3x-pz-cmP" firstAttribute="top" secondItem="pGa-Q9-4rn" secondAttribute="top" constant="8" id="EfZ-Ms-L7a"/>
@@ -224,7 +228,7 @@
                                                 </label>
                                                 <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" style="inline" translatesAutoresizingMaskIntoConstraints="NO" id="cKK-hn-qvP">
                                                     <rect key="frame" x="147" y="-3.3333333333333321" width="189" height="50.333333333333329"/>
-                                                    <color key="backgroundColor" red="0.087260700760000004" green="0.1563187838" blue="0.1843182743" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <color key="backgroundColor" red="0.99991279840000002" green="1" blue="0.99988144639999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="tintColor" name="NeutralLight"/>
                                                 </datePicker>
                                             </subviews>

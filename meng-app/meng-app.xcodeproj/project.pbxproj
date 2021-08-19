@@ -188,18 +188,10 @@
 			path = ReminderHeader;
 			sourceTree = "<group>";
 		};
-		073E332D26B3CFB20015C24F /* CustomHeader */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = CustomHeader;
-			sourceTree = "<group>";
-		};
 		0747674726B257A40054D268 /* XIB */ = {
 			isa = PBXGroup;
 			children = (
 				07DB624926BEC2A7006E9406 /* Activities */,
-				073E332D26B3CFB20015C24F /* CustomHeader */,
 				073E332B26B3CF2F0015C24F /* ReminderHeader */,
 			);
 			path = XIB;
