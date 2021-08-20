@@ -13,7 +13,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="ActivityLogStoryboard" useStoryboardIdentifierAsRestorationIdentifier="YES" id="m2d-qg-IsU" customClass="ActivityLogTableViewController" customModule="meng_app" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="TNm-T7-6xo">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="756"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" name="NeutralLight"/>
                         <color key="separatorColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -252,6 +252,15 @@
                                             <rect key="frame" x="0.0" y="0.0" width="350" height="43.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bf3-LW-LYx">
+                                                    <rect key="frame" x="0.0" y="0.0" width="350" height="44"/>
+                                                    <color key="backgroundColor" name="MidnightGreen"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="0.0"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remind Me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NOF-4U-Rl5">
                                                     <rect key="frame" x="24" y="11.666666666666664" width="86" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -270,15 +279,19 @@
                                                 </imageView>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="Bf3-LW-LYx" secondAttribute="trailing" id="LfL-9D-aMG"/>
                                                 <constraint firstItem="CAH-r3-dA0" firstAttribute="leading" secondItem="G4b-JE-khd" secondAttribute="trailing" constant="8" id="Q2v-pc-XXf"/>
                                                 <constraint firstItem="G4b-JE-khd" firstAttribute="centerY" secondItem="Kqg-vx-AVm" secondAttribute="centerY" id="VQe-zY-Kv4"/>
                                                 <constraint firstAttribute="trailing" secondItem="CAH-r3-dA0" secondAttribute="trailing" constant="24" id="YUL-eq-gzr"/>
                                                 <constraint firstItem="NOF-4U-Rl5" firstAttribute="centerY" secondItem="Kqg-vx-AVm" secondAttribute="centerY" id="am3-ht-Cbu"/>
+                                                <constraint firstItem="Bf3-LW-LYx" firstAttribute="leading" secondItem="Kqg-vx-AVm" secondAttribute="leading" id="iZW-d7-Xje"/>
                                                 <constraint firstItem="NOF-4U-Rl5" firstAttribute="leading" secondItem="Kqg-vx-AVm" secondAttribute="leading" constant="24" id="jUe-Tz-DAb"/>
+                                                <constraint firstItem="Bf3-LW-LYx" firstAttribute="top" secondItem="Kqg-vx-AVm" secondAttribute="top" id="k5a-6v-oGP"/>
+                                                <constraint firstAttribute="bottom" secondItem="Bf3-LW-LYx" secondAttribute="bottom" id="mtn-6U-sFy"/>
                                                 <constraint firstItem="CAH-r3-dA0" firstAttribute="centerY" secondItem="Kqg-vx-AVm" secondAttribute="centerY" id="ybS-rV-BKI"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" name="MidnightGreen"/>
+                                        <color key="backgroundColor" name="NeutralLight"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="160" id="Ykn-kN-BM6">
                                         <rect key="frame" x="20" y="981.00000381469727" width="350" height="160"/>
@@ -365,6 +378,7 @@
                         <outlet property="TableViewCellDelete" destination="dy6-EP-vOr" id="EdJ-En-CAY"/>
                         <outlet property="TextFieldDetails" destination="C3x-pz-cmP" id="qSb-7n-4Jp"/>
                         <outlet property="TextFieldTitle" destination="7Uy-sH-xBh" id="FnG-S1-xna"/>
+                        <outlet property="ViewReminderBackground" destination="Bf3-LW-LYx" id="bDh-Sk-29o"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6kd-QW-Yrg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -376,7 +390,7 @@
             <objects>
                 <viewController title="Select Cat View Controller" id="zrZ-qt-PL6" customClass="SelectCatViewController" customModule="meng_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1cZ-iq-v6a">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="jVE-74-RYV">

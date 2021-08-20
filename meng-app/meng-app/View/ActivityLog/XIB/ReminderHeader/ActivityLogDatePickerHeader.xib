@@ -21,7 +21,7 @@
                     <color key="textColor" name="MidnightGreen"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mKt-6W-NMY">
+                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="mKt-6W-NMY">
                     <rect key="frame" x="341" y="8.5" width="51" height="31"/>
                     <connections>
                         <action selector="SwitchPressed:" destination="-2" eventType="valueChanged" id="HpS-Dj-HwC"/>
@@ -41,7 +41,7 @@
                 <outlet property="LabelReminder" destination="qpS-GE-bVj" id="KFC-HP-wt0"/>
                 <outlet property="SwitchReminder" destination="mKt-6W-NMY" id="5Kn-g9-lAC"/>
             </connections>
-            <point key="canvasLocation" x="14" y="104"/>
+            <point key="canvasLocation" x="13.043478260869566" y="103.79464285714285"/>
         </view>
     </objects>
     <resources>

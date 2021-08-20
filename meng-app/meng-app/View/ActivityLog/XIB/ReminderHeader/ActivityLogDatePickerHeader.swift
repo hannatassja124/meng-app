@@ -8,7 +8,7 @@
 import UIKit
 
 protocol ActivityLogDatePickerHeaderProtocol {
-    func DidToggleSwitch(SwitchStatus: Int)
+    func DidToggleSwitch(SwitchStatus: Int, SwitchActual: UISwitch)
 }
 
 
@@ -27,9 +27,7 @@ class ActivityLogDatePickerHeader: UITableViewHeaderFooterView {
         else{
             SwitchStatus = 0
         }
-        Delegate?.DidToggleSwitch(SwitchStatus: SwitchStatus)
-        print("Delegate Origin")
-        print(SwitchStatus)
+        Delegate?.DidToggleSwitch(SwitchStatus: SwitchStatus, SwitchActual: SwitchReminder)
     }
 
     /*

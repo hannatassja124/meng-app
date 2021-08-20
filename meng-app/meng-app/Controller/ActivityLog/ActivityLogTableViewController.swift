@@ -44,6 +44,7 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
     @IBOutlet weak var DatePickerTime: UIDatePicker!
     
     //Section 5 - Reminder
+    @IBOutlet weak var ViewReminderBackground: UIView!
     @IBOutlet weak var LabelReminderBefore: UILabel!
     @IBOutlet weak var PickerViewReminder: UIPickerView!
     
@@ -69,10 +70,8 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
     var onViewWillDisappear: (()->())?
     var EmptyState = false
     weak var Delegate: ActivityLogTableViewProtocol?
-    
-    //IDK if this works; Switch Delegating stuff
-    let ReminderHeader = ActivityLogDatePickerHeader()
-    var SwitchInt = -1 //For Testing switch delegate; DELETE ONCE DONE
+    var ReminderToggled = false
+
 
     
 
@@ -107,10 +106,8 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
         self.tableView.register(UINib(nibName: "ActivityLogDatePickerHeader", bundle: nil), forHeaderFooterViewReuseIdentifier: "ActivityLogDatePickerHeader")
         self.tableView.register(UINib(nibName: "ActivityLogActivitiesHeader", bundle: nil), forHeaderFooterViewReuseIdentifier: "ActivityLogActivitiesHeader")
         self.tableView.register(UINib(nibName: "ActivityLogDateTimeHeader", bundle: nil), forHeaderFooterViewReuseIdentifier: "ActivityLogDateTimeHeader")
-        
-        //IDK if this works; Switch Delegating stuff
-        ReminderHeader.Delegate = self
-        print(SwitchInt)
+        ViewReminderBackground.layer.cornerRadius = 8
+        DismissKeyboard()
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -176,6 +173,12 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
         self.present(alert, animated: true, completion: nil)
     }
     
+//MARK: - Dismiss Keyboard
+    func DismissKeyboard() {
+        let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
+                view.addGestureRecognizer(tap)
+    }
+    
 
 //MARK: - Expandable/Collapsable Cells
     func hiddenPickers(fieldName: String, indexPath: IndexPath) {
@@ -190,6 +193,7 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
         self.tableView.beginUpdates()
         self.tableView.deselectRow(at: oniP, animated: true)
         self.tableView.endUpdates()
+            
         })
     }
     
@@ -199,6 +203,7 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
         let cellFormTitle = indexPath.section == 2 && indexPath.row == 0
         let cellFormDetails = indexPath.section == 2 && indexPath.row == 1
         let cellPickerReminder = indexPath.section == 4 && indexPath.row == 1
+        let cellReminderTitle = indexPath.section == 4 && indexPath.row == 0
         
         var ncHeight: CGFloat = 43.5
         
@@ -210,7 +215,11 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
             ncHeight = 160.0
         }
         
-        if (cellDatePickerDate && DatePickerDate.isHidden) || (cellPickerReminder && PickerViewReminder.isHidden) {
+        if (cellReminderTitle && ReminderToggled == true){
+            ncHeight = 43.5
+        }
+        
+        if (cellDatePickerDate && DatePickerDate.isHidden) || (cellPickerReminder && PickerViewReminder.isHidden) || (cellReminderTitle && ReminderToggled == false) || (cellPickerReminder && ReminderToggled == false) {
             ncHeight = 0.0
         }
         
@@ -258,6 +267,7 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
         }
         else if section == 4 {
             let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "ActivityLogDatePickerHeader") as? ActivityLogDatePickerHeader
+            headerView?.Delegate = self
             
             return headerView!
         } else {
@@ -336,13 +346,12 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
             NewActivityLog.activityDateTime = ActualActualActualDate
             
             //Section 5
-            NewActivityLog.activityReminder = self.ReminderToMinutes()
-            /*if SwitchOff {
-             
-             }
-             else{
-             NewActivityLog.activityReminder = self.ReminderToMinutes()
-             }*/
+            if ReminderToggled == false {
+                NewActivityLog.activityReminder = 0
+            }
+            else{
+                NewActivityLog.activityReminder = self.ReminderToMinutes()
+            }
         }
         
         
@@ -391,13 +400,12 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
             EditedActivity!.activityDateTime = ActualActualActualDate
             
             //Section 5
-            EditedActivity!.activityReminder = self.ReminderToMinutes()
-            /*if SwitchOff {
-             
-             }
-             else{
-             NewActivityLog.activityReminder = self.ReminderToMinutes()
-             }*/
+            if ReminderToggled == false {
+                EditedActivity!.activityReminder = 0
+            }
+            else{
+                EditedActivity!.activityReminder = self.ReminderToMinutes()
+            }
         }
         do {
             try context.save()
@@ -455,6 +463,13 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
             
             //Section 5
             ReminderChosen = EditedActivity!.activityReminder
+            
+            if EditedActivity!.activityReminder == 0 {
+                ReminderToggled = false
+            }
+            else{
+                ReminderToggled = true
+            }
             
             PickerViewReminder.selectRow(Int(self.MinutesToReminder()), inComponent: 0, animated: true)
             LabelReminderBefore.text = RemindBeforeData[Int(self.MinutesToReminder())]
@@ -663,10 +678,23 @@ extension ActivityLogTableViewController: UICollectionViewDelegate, UICollection
 
 
 //MARK: - Reminder Switch Delegate
-//NOTE: Might need xx.delegate = self to catch data from Switch (?)
 extension ActivityLogTableViewController: ActivityLogDatePickerHeaderProtocol {
-    func DidToggleSwitch(SwitchStatus: Int) {
-        SwitchInt = SwitchStatus
-        print("Delegate Works")// This Doesn't print :(
+    func DidToggleSwitch(SwitchStatus: Int, SwitchActual: UISwitch) {
+        //To retain SwitchActual.isOn state on Load (Existing Data Load ONLY)
+        SwitchActual.isOn = ReminderToggled //doesnt do anything
+        
+        if SwitchStatus == 0{
+            ReminderToggled = false
+        }
+        else{
+            ReminderToggled = true
+        }
+        UIView.animate(withDuration:0.3, animations: { () -> Void in
+            self.tableView.beginUpdates()
+            self.tableView.endUpdates()
+        })
+        
+        //To retain SwitchActual.isOn state on reload
+        SwitchActual.isOn = ReminderToggled //doesnt do anything
     }
 }
