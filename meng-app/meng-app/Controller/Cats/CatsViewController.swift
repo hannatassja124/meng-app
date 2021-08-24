@@ -19,12 +19,7 @@ class CatsViewController: UIViewController, UICollectionViewDelegate {
 
     //MARK: - Lifecycle
     override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.        
-        catsCollectionView.delegate = self
-        catsCollectionView.dataSource = self
-        
+        super.viewDidLoad()        
         initNib()
         initSearchController()
         print(cats.count)
