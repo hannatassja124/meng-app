@@ -15,7 +15,8 @@ class CatsViewController: UIViewController, UICollectionViewDelegate {
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var cats:[Cats] = [Cats()]
     var originalCats:[Cats] = []
-    let searchController = UISearchController()
+//    let searchController = UISearchController()
+    let searchController = SearchHelper.createSearchController()
 
     //MARK: - Lifecycle
     override func viewDidLoad() {
@@ -39,15 +40,11 @@ class CatsViewController: UIViewController, UICollectionViewDelegate {
     }
     
     private func initSearchController(){
-        searchController.loadViewIfNeeded()
         searchController.searchResultsUpdater = self
-        searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.enablesReturnKeyAutomatically = false
-        searchController.searchBar.returnKeyType = UIReturnKeyType.done
+        searchController.searchBar.delegate = self
         definesPresentationContext = true
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
-        searchController.searchBar.delegate = self
     }
 
 
