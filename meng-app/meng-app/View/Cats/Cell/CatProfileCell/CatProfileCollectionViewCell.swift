@@ -8,17 +8,20 @@
 import UIKit
 
 class CatProfileCollectionViewCell: UICollectionViewCell {
+    //MARK: - Outlets
     @IBOutlet weak var petImage: UIImageView!
     @IBOutlet weak var petGenderIcon: UIImageView!
     @IBOutlet weak var petTagsColor: UIImageView!
     @IBOutlet weak var petNameLabel: UILabel!
     
+    //MARK: - Variables
     var data:Cats?{
         didSet{
             cellConfig()
         }
     }
     
+    //MARK: - Functions
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
