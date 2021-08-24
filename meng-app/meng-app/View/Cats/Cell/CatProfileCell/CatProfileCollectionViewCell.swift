@@ -13,6 +13,12 @@ class CatProfileCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var petTagsColor: UIImageView!
     @IBOutlet weak var petNameLabel: UILabel!
     
+    var data:Cats?{
+        didSet{
+            cellConfig()
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -33,6 +39,24 @@ class CatProfileCollectionViewCell: UICollectionViewCell {
         petImage.image = UIImage(named: "CatProfileDefault")
         petGenderIcon.image = UIImage(named: "Male")
         petNameLabel.text = "CatName"
+    }
+    
+    private func cellConfig(){
+        guard let catData = data else {
+            return
+        }
+        
+        if let image = catData.image {
+            petImage.image = UIImage(data: image)
+        }
+        //name
+        if let name = catData.name {
+            petNameLabel.text = "\(name)"
+        }
+        //gender icon
+        petGenderIcon.image = UIImage(named: (catData.gender == 0 ? "Male" : "Female"))
+        //tint color
+        petTagsColor.tintColor = TagsHelper.checkColor(tagsNumber: catData.colorTags)
     }
 
 }

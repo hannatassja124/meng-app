@@ -89,19 +89,8 @@ extension CatsViewController: UICollectionViewDataSource{
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CatProfileCell", for: indexPath) as? CatProfileCollectionViewCell else {
                 fatalError("cat profile cell not found")
             }
-//          assign data ke CollectionView cell
-            //image
-            if let image = cats[indexPath.row - 1].image {
-                cell.petImage.image = UIImage(data: image)
-            }
-            //name
-            if let name = cats[indexPath.row - 1].name {
-                cell.petNameLabel.text = "\(name)"
-            }
-            //gender icon
-            cell.petGenderIcon.image = UIImage(named: (cats[indexPath.row - 1].gender == 0 ? "Male" : "Female"))
-            //tint color
-            cell.petTagsColor.tintColor = TagsHelper.checkColor(tagsNumber: cats[indexPath.row-1].colorTags)
+            
+            cell.data = cats[indexPath.row - 1]
                         
             return cell
         }
