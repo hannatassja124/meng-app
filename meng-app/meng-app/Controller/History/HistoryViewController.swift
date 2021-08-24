@@ -8,14 +8,6 @@
 import UIKit
 
 //MARK: - Struct data model
-struct GroupedActivities {
-    var sectionTitle:String
-    var activities = [Activity]()
-    
-    init(sectionTitle:String) {
-        self.sectionTitle = sectionTitle
-    }
-}
 
 class HistoryViewController: UIViewController {
     //MARK: - Constant id
@@ -151,7 +143,6 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource{
             fatalError("ActivitiesTableViewCell not found")
         }
         
-        
         let currentData = groupedActivties[indexPath.section].activities[indexPath.row]
         //activity title
         if let activityTitle = currentData.activityTitle {
@@ -174,7 +165,7 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource{
 
         }
         //cat tags color
-        cell.activitiesColorTagImage.tintColor = TagsHelper.checkColor(tagsNumber: selectedCat.colorTags)
+//        cell.activitiesColorTagImage.tintColor = TagsHelper.checkColor(tagsNumber: selectedCat.colorTags)
         
         cell.selectionStyle = .none
         
