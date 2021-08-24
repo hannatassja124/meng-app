@@ -45,7 +45,6 @@ class CatsViewController: UIViewController, UICollectionViewDelegate {
         searchController.searchBar.enablesReturnKeyAutomatically = false
         searchController.searchBar.returnKeyType = UIReturnKeyType.done
         definesPresentationContext = true
-        
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
         searchController.searchBar.delegate = self
@@ -90,7 +89,6 @@ extension CatsViewController: UICollectionViewDataSource{
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CatProfileCell", for: indexPath) as? CatProfileCollectionViewCell else {
                 fatalError("cat profile cell not found")
             }
-            
 //          assign data ke CollectionView cell
             //image
             if let image = cats[indexPath.row - 1].image {
