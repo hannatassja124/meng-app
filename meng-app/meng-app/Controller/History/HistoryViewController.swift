@@ -58,12 +58,8 @@ class HistoryViewController: UIViewController {
     }
     
     private func initiateTableView(){
-        activitiesTableView.delegate = self
-        activitiesTableView.dataSource = self
-        
         self.activitiesTableView.register(UINib.init(nibName: activitiesCellId, bundle: nil), forCellReuseIdentifier: activitiesCellId)
         activitiesTableView.separatorColor = .clear
-        
     }
     
     private func checkIfActivitiesEmptyOrNot(){
