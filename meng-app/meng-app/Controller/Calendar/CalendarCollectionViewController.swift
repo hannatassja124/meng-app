@@ -18,7 +18,7 @@ class CalendarCollectionViewController: UIViewController, UICollectionViewDelega
     let calendar = Calendar.current
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var activities = [Activity()]
-    var activityModel = [String]()
+    var activityModel = Set<String>()
     var arrayActivityHasEvent = 0
     var selectedIndex = Int()
     
@@ -28,6 +28,7 @@ class CalendarCollectionViewController: UIViewController, UICollectionViewDelega
         setMonthView()
         
         retrieveData()
+        print(activityModel)
     }
     
     func retrieveData() {
@@ -39,7 +40,7 @@ class CalendarCollectionViewController: UIViewController, UICollectionViewDelega
                 dateFormater.dateFormat = "dd"
                 for (index, item) in activities.enumerated() {
                     let numberInInt = Int(dateFormater.string(from: activities[index].activityDateTime ?? Date()))
-                    activityModel.append("\(numberInInt ?? 0)")
+                    activityModel.insert("\(numberInInt ?? 0)")
                 }
                 arrayActivityHasEvent = activityModel.count
 //                collectionView.reloadData()
@@ -102,33 +103,26 @@ class CalendarCollectionViewController: UIViewController, UICollectionViewDelega
             collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .left)
             cell.isSelected = true
         }
-
-        if totalSquares[indexPath.item].isEmpty {
-            cell.isUserInteractionEnabled = false
-        }
-//        if activityModel.contains("\(indexPath.row+1)") {
-//            cell.dayOfMonth.textColor = #colorLiteral(red: 0.9946215749, green: 0.5330578685, blue: 0.5085751414, alpha: 1)
-//            if activityModel.count > arrayActivityHasEvent {
-//                if "\(indexPath.row + 1)" == activityModel.last {
-//                    cell.contentView.backgroundColor =  #colorLiteral(red: 0.9946215749, green: 0.5330578685, blue: 0.5085751414, alpha: 1)
-//                    cell.dayOfMonth.textColor = .white
-//                }
-//            }
-//        } else {
-//            cell.dayOfMonth.textColor = UIColor.black
-//        }
-//
+        
+        print("test 2")
+        
+        
         return cell
     }
     
     @IBAction func previousMonth(_ sender: Any) {
         selectedDate = CalendarHelper().minusMonth(date: selectedDate)
+        activityModel.removeAll()
+        retrieveData()
         setMonthView()
     }
     
     
     @IBAction func nextMonth(_ sender: Any) {
         selectedDate = CalendarHelper().plusMonth(date: selectedDate)
+        activityModel.removeAll()
+        retrieveData()
+        print("test 1")
         setMonthView()
     }
     
@@ -139,25 +133,8 @@ class CalendarCollectionViewController: UIViewController, UICollectionViewDelega
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        
-//        if activityModel.contains("\(indexPath.row+1)") {
-////            activityModel.removeLast()
-////            activityModel.append("\(indexPath.row+1)")
-////            let indexObject = activityModel.firstIndex(of: "\(indexPath.row+1)")
-////            guard let index = indexObject else { return }
-////            activityModel.remove(at: index)
-//        } else {
-//            if activityModel.count == arrayActivityHasEvent {
-//                activityModel.append("\(indexPath.row+1)")
-//            } else {
-//                activityModel.removeLast()
-//                activityModel.append("\(indexPath.row+1)")
-//            }
-//        }
-        
         let selectedDateCell = CalendarHelper().yearString(date: selectedDate) + "-" + CalendarHelper().monthNumber(date: selectedDate) + "-" + totalSquares[indexPath.item] + " 00:00:00 +0700"
         
-        //collectionView.reloadData()
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss Z"

@@ -130,6 +130,7 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
         EmptyCheck()
         if (EmptyState == false) {
             SaveActivityLog()
+            onViewWillDisappear!()
             self.dismiss(animated: true, completion: nil)
         }
         EmptyState = false
