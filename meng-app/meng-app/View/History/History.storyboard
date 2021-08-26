@@ -48,6 +48,10 @@
                                 <color key="tintColor" name="NeutralLight"/>
                                 <inset key="scrollIndicatorInsets" minX="24" minY="0.0" maxX="24" maxY="0.0"/>
                                 <color key="sectionIndexBackgroundColor" name="NeutralLight"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="ceM-V5-pLz" id="7En-S4-bCH"/>
+                                    <outlet property="delegate" destination="ceM-V5-pLz" id="Ukg-1O-ZBh"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="cPf-cw-IsO"/>

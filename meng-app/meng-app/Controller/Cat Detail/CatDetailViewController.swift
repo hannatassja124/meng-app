@@ -23,6 +23,8 @@ class CatDetailViewController: UIViewController {
     @IBOutlet weak var catMedicalNotes: UILabel!
     @IBOutlet weak var vetName: UILabel!
     @IBOutlet weak var vetNo: UILabel!
+    @IBOutlet weak var vetContactView: UIView!
+    
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
@@ -113,7 +115,13 @@ class CatDetailViewController: UIViewController {
         }
         //cat vet phoneNo
         if let vetPhoneNoData = cat.vetPhoneNo {
-            vetNo.text = "\(vetPhoneNoData != "" ? vetPhoneNoData : "No Data")"
+            if vetPhoneNoData == "" {
+//                vetContactView.isHidden = true
+                vetContactView.frame = CGRect(x: 0, y: 0, width: vetContactView.frame.width, height: vetContactView.frame.height * 0)
+            }
+            else{
+                vetNo.text = "\(vetPhoneNoData != "" ? vetPhoneNoData : "No Data")"
+            }
         }
     }
 

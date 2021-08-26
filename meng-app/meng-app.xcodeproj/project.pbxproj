@@ -35,6 +35,8 @@
 		1932CFD026B2494800E7FE06 /* TagsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1932CFCF26B2494800E7FE06 /* TagsHelper.swift */; };
 		19636ECD26AF9E4100EBD377 /* AddNewCatCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19636ECB26AF9E4100EBD377 /* AddNewCatCollectionViewCell.swift */; };
 		19636ECE26AF9E4100EBD377 /* AddNewCatCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19636ECC26AF9E4100EBD377 /* AddNewCatCollectionViewCell.xib */; };
+		19F6644C26D4A83800E37FA2 /* GroupedActivities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F6644B26D4A83800E37FA2 /* GroupedActivities.swift */; };
+		19F6644E26D4AEE800E37FA2 /* SearchHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F6644D26D4AEE800E37FA2 /* SearchHelper.swift */; };
 		F91BC74526C9AF0200DF1600 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F91BC74426C9AF0200DF1600 /* Onboarding.storyboard */; };
 		F91BC74826C9AF2600DF1600 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91BC74726C9AF2600DF1600 /* OnboardingViewController.swift */; };
 		F91BC74A26C9B6A300DF1600 /* OnboardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91BC74926C9B6A300DF1600 /* OnboardingModel.swift */; };
@@ -101,6 +103,8 @@
 		1932CFCF26B2494800E7FE06 /* TagsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsHelper.swift; sourceTree = "<group>"; };
 		19636ECB26AF9E4100EBD377 /* AddNewCatCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewCatCollectionViewCell.swift; sourceTree = "<group>"; };
 		19636ECC26AF9E4100EBD377 /* AddNewCatCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddNewCatCollectionViewCell.xib; sourceTree = "<group>"; };
+		19F6644B26D4A83800E37FA2 /* GroupedActivities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupedActivities.swift; sourceTree = "<group>"; };
+		19F6644D26D4AEE800E37FA2 /* SearchHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHelper.swift; sourceTree = "<group>"; };
 		F91BC74426C9AF0200DF1600 /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 		F91BC74726C9AF2600DF1600 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		F91BC74926C9B6A300DF1600 /* OnboardingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingModel.swift; sourceTree = "<group>"; };
@@ -349,6 +353,7 @@
 				F97787E126B43CB300F4CD01 /* CalendarHelper.swift */,
 				F92EDAEF26BDD9770051B9DF /* TypeHelper.swift */,
 				F92EDAF126BDDAF10051B9DF /* ReminderHelper.swift */,
+				19F6644D26D4AEE800E37FA2 /* SearchHelper.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -418,6 +423,7 @@
 				077B96EB26C012A000117F67 /* ActivitiesCatModel.swift */,
 				F91BC74926C9B6A300DF1600 /* OnboardingModel.swift */,
 				F91BC75026C9CB7F00DF1600 /* Core.swift */,
+				19F6644B26D4A83800E37FA2 /* GroupedActivities.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -657,7 +663,9 @@
 				0799D24126BED46A00511015 /* ActivitiesTVC.swift in Sources */,
 				F995E4F826A99E9700DA5C50 /* ViewController.swift in Sources */,
 				F9DF6C6C26B7488900DCF044 /* ActivityDetailViewController.swift in Sources */,
+				19F6644E26D4AEE800E37FA2 /* SearchHelper.swift in Sources */,
 				03437BBB26B25CB40070BF1E /* AddNewCatTableView.swift in Sources */,
+				19F6644C26D4A83800E37FA2 /* GroupedActivities.swift in Sources */,
 				F995E51626A9A9D000DA5C50 /* DashboardViewController.swift in Sources */,
 				1932CFD026B2494800E7FE06 /* TagsHelper.swift in Sources */,
 				F91BC74D26C9B9C100DF1600 /* OnboardingCollectionViewCell.swift in Sources */,
@@ -844,7 +852,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 4;
-				DEVELOPMENT_TEAM = R8CWTPS5QZ;
+				DEVELOPMENT_TEAM = 282R274LXF;
 				INFOPLIST_FILE = "meng-app/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -864,7 +872,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 4;
-				DEVELOPMENT_TEAM = R8CWTPS5QZ;
+				DEVELOPMENT_TEAM = 282R274LXF;
 				INFOPLIST_FILE = "meng-app/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
