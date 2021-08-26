@@ -162,6 +162,7 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
         
         if indexPath.section == 0 {
             cell.object = upcoming[indexPath.row]
+            cell.backgroundCell.backgroundColor = #colorLiteral(red: 0.1036602035, green: 0.2654651999, blue: 0.3154058456, alpha: 1)
         } else {
             cell.object = recent[indexPath.row]
             cell.backgroundCell.backgroundColor = #colorLiteral(red: 0.0880939886, green: 0.2219112515, blue: 0.2635231912, alpha: 0.7)
