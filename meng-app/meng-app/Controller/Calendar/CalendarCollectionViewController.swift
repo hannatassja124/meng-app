@@ -6,9 +6,11 @@
 //
 
 import UIKit
+import CoreData
 
-class CalendarCollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
-    
+var objchildVc = CalendarCollectionViewController()
+
+class CalendarCollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, parentDelegate {
     
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -18,7 +20,8 @@ class CalendarCollectionViewController: UIViewController, UICollectionViewDelega
     let calendar = Calendar.current
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var activities = [Activity()]
-    var activityModel = Set<String>()
+    //var activityModel = Set<String>()
+    var activityModel = [String]()
     var arrayActivityHasEvent = 0
     var selectedIndex = Int()
     
@@ -34,17 +37,22 @@ class CalendarCollectionViewController: UIViewController, UICollectionViewDelega
     func retrieveData() {
         do {
             activities = try context.fetch(Activity.fetchRequest())
-//            print("test", activities[0].activityDateTime)
-            if activities.count != 0 {
+            let monthFilter = activities.filter(){$0.activityDateTime!.month == selectedDate.month}
+            if monthFilter.count != 0 {
                 let dateFormater = DateFormatter()
                 dateFormater.dateFormat = "dd"
-                for (index, item) in activities.enumerated() {
-                    let numberInInt = Int(dateFormater.string(from: activities[index].activityDateTime ?? Date()))
-                    activityModel.insert("\(numberInInt ?? 0)")
+                for (index, _) in monthFilter.enumerated() {
+                    let numberInInt = Int(dateFormater.string(from: monthFilter[index].activityDateTime ?? Date()))
+                    activityModel.append("\(numberInInt ?? 0)")
                 }
                 arrayActivityHasEvent = activityModel.count
-//                collectionView.reloadData()
+                print("count", arrayActivityHasEvent)
             }
+            
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+            
         } catch {
             print("error")
         }
@@ -81,10 +89,17 @@ class CalendarCollectionViewController: UIViewController, UICollectionViewDelega
             }
             count += 1
         }
-        
+        print("nil", selectedDate)
         monthLabel.text = CalendarHelper().monthString(date: selectedDate)
             + " " + CalendarHelper().yearString(date: selectedDate)
         collectionView.reloadData()
+    }
+    
+    func setMark(){
+        //selectedDate = Date()
+        activityModel.removeAll()
+        setMonthView()
+        retrieveData()
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -96,7 +111,6 @@ class CalendarCollectionViewController: UIViewController, UICollectionViewDelega
         
         cell.dayOfMonth.text = totalSquares[indexPath.item]
 
-        
         let defaultDate = "\(calendar.component(.day, from: selectedDate))"
 
         if totalSquares[indexPath.item] ==  defaultDate {
@@ -104,26 +118,29 @@ class CalendarCollectionViewController: UIViewController, UICollectionViewDelega
             cell.isSelected = true
         }
         
-        print("test 2")
+        cell.markImage.isHidden = true
+        if activityModel.contains(totalSquares[indexPath.item]){
+            print("total", totalSquares[indexPath.item])
+            cell.markImage.isHidden = false
+        }
         
+        cell.isUserInteractionEnabled = true
+        if totalSquares[indexPath.item].isEmpty {
+            cell.isUserInteractionEnabled = false
+        }
         
         return cell
     }
     
     @IBAction func previousMonth(_ sender: Any) {
         selectedDate = CalendarHelper().minusMonth(date: selectedDate)
-        activityModel.removeAll()
-        retrieveData()
-        setMonthView()
+        setMark()
     }
     
     
     @IBAction func nextMonth(_ sender: Any) {
         selectedDate = CalendarHelper().plusMonth(date: selectedDate)
-        activityModel.removeAll()
-        retrieveData()
-        print("test 1")
-        setMonthView()
+        setMark()
     }
     
     override open var shouldAutorotate: Bool
@@ -158,3 +175,11 @@ class CalendarCollectionViewController: UIViewController, UICollectionViewDelega
     
 }
 
+extension Date {
+    var month: Int {
+        return NSCalendar(calendarIdentifier: NSCalendar.Identifier.gregorian)!.component(.month, from: self as Date)
+    }
+    var year: Int {
+        return NSCalendar(calendarIdentifier: NSCalendar.Identifier.gregorian)!.component(.year, from: self as Date)
+    }
+}
