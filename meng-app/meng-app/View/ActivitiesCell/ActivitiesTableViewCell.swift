@@ -14,6 +14,7 @@ class ActivitiesTableViewCell: UITableViewCell {
     @IBOutlet weak var activityCatNameLabel: UILabel!
     @IBOutlet weak var activityTimeLabel: UILabel!
     @IBOutlet weak var activitiesColorTagImage: UIImageView!
+    @IBOutlet weak var backgroundCell: UIView!
     
     var object: Activity? {
         didSet {
@@ -35,7 +36,7 @@ class ActivitiesTableViewCell: UITableViewCell {
     
     func cellConfig() {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "hh:mm a"
+        dateFormatter.dateFormat = "MMM dd yyyy, hh:mm a"
 
         guard let obj = object else { return }
 //        let name = obj.cats?.value(forKey: "name")
@@ -51,6 +52,7 @@ class ActivitiesTableViewCell: UITableViewCell {
             activitiesColorTagImage.tintColor = TagsHelper.checkColor(tagsNumber: catName[0].colorTags)
             activityCatNameLabel.text = "\(catName[0].name ?? "no cat name")"
         }
+        
         
         activityTitleLabel.text = obj.activityTitle
         activityTimeLabel.text = dateFormatter.string(from: obj.activityDateTime ?? Date())

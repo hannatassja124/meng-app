@@ -8,6 +8,9 @@
 import UIKit
 import CoreData
 
+protocol parentDelegate: AnyObject {
+    func setMark()
+}
 
 class CalendarViewController: UIViewController {
 
@@ -21,6 +24,8 @@ class CalendarViewController: UIViewController {
     var cats = [Cats()]
     let calendar = Calendar.current
     let dateFormatter = DateFormatter()
+    
+    weak var delegate: parentDelegate? = nil
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -46,19 +51,6 @@ class CalendarViewController: UIViewController {
         dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss Z"
         
         retrieveData(activityDate: dateFormatter.date(from: combinedDate)!)
-        
-//        let year = calendar.component(.year, from: Date())
-//        let month = calendar.component(.month, from: Date())
-//        let day = calendar.component(.day, from: Date())
-//
-//        let combinedDate = "\(year)-\(month)-\(day) 00:00:00 +0700"
-//
-//        dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss Z"
-//
-//        retrieveData(activityDate: dateFormatter.date(from: combinedDate)!)
-        
-       //self.tableView.reloadData()
-
     }
     
     override func viewDidLayoutSubviews() {
@@ -81,8 +73,6 @@ class CalendarViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        let storyboard = UIStoryboard(name: "ActivityLog", bundle: nil)
-//        let vc = storyboard.instantiateViewController(withIdentifier: "ActivityLogStoryboard") as! ActivityLogTableViewController
         if segue.identifier == "activityLogSegue" {
             let vc = segue.destination as! UINavigationController
             let target = vc.topViewController as! ActivityLogTableViewController
@@ -94,6 +84,8 @@ class CalendarViewController: UIViewController {
             dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss Z"
             
             target.onViewWillDisappear = {
+                //self.delegate?.setMark()
+                objchildVc.setMark()
                 self.retrieveData(activityDate: self.dateFormatter.date(from: combinedDate)!)
             }
         }
