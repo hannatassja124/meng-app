@@ -7,8 +7,6 @@
 
 import UIKit
 
-//MARK: - Struct data model
-
 class HistoryViewController: UIViewController {
     //MARK: - Constant id
     let activitiesCellId = "ActivitiesTableViewCell"
