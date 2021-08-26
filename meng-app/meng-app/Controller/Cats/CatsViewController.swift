@@ -15,16 +15,12 @@ class CatsViewController: UIViewController, UICollectionViewDelegate {
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var cats:[Cats] = [Cats()]
     var originalCats:[Cats] = []
-    let searchController = UISearchController()
+//    let searchController = UISearchController()
+    let searchController = SearchHelper.createSearchController()
 
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.        
-        catsCollectionView.delegate = self
-        catsCollectionView.dataSource = self
-        
         initNib()
         initSearchController()
         print(cats.count)
@@ -39,25 +35,16 @@ class CatsViewController: UIViewController, UICollectionViewDelegate {
     
     //MARK: - Function
     private func initNib(){
-        let addCatNib = UINib(nibName: "\(AddNewCatCollectionViewCell.self)", bundle: nil)
-        catsCollectionView.register(addCatNib, forCellWithReuseIdentifier: "AddNewCatCell")
-        
-        let catProfileNib = UINib(nibName: "\(CatProfileCollectionViewCell.self)", bundle: nil)
-        catsCollectionView.register(catProfileNib, forCellWithReuseIdentifier: "CatProfileCell")
-
+        catsCollectionView.register(UINib(nibName: "\(AddNewCatCollectionViewCell.self)", bundle: nil), forCellWithReuseIdentifier: "AddNewCatCell")
+        catsCollectionView.register(UINib(nibName: "\(CatProfileCollectionViewCell.self)", bundle: nil), forCellWithReuseIdentifier: "CatProfileCell")
     }
     
     private func initSearchController(){
-        searchController.loadViewIfNeeded()
         searchController.searchResultsUpdater = self
-        searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.enablesReturnKeyAutomatically = false
-        searchController.searchBar.returnKeyType = UIReturnKeyType.done
+        searchController.searchBar.delegate = self
         definesPresentationContext = true
-        
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
-        searchController.searchBar.delegate = self
     }
 
 
@@ -100,19 +87,7 @@ extension CatsViewController: UICollectionViewDataSource{
                 fatalError("cat profile cell not found")
             }
             
-//          assign data ke CollectionView cell
-            //image
-            if let image = cats[indexPath.row - 1].image {
-                cell.petImage.image = UIImage(data: image)
-            }
-            //name
-            if let name = cats[indexPath.row - 1].name {
-                cell.petNameLabel.text = "\(name)"
-            }
-            //gender icon
-            cell.petGenderIcon.image = UIImage(named: (cats[indexPath.row - 1].gender == 0 ? "Male" : "Female"))
-            //tint color
-            cell.petTagsColor.tintColor = TagsHelper.checkColor(tagsNumber: cats[indexPath.row-1].colorTags)
+            cell.data = cats[indexPath.row - 1]
                         
             return cell
         }
@@ -169,7 +144,9 @@ extension CatsViewController: UISearchResultsUpdating, UISearchBarDelegate{
         else{
             cats = originalCats
         }
-        catsCollectionView.reloadData()
+        DispatchQueue.main.async {
+            self.catsCollectionView.reloadData()
+        }
     }
 }
 

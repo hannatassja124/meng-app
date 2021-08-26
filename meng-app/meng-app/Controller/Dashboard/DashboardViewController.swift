@@ -12,6 +12,11 @@ class DashboardViewController: UIViewController {
 
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var emptyImage: UIImageView!
+    @IBOutlet weak var addActivityButton: UIButton!
+    @IBOutlet weak var emptyTextLabel: UILabel!
+    
+    
     
     var sections = ["Upcoming Activities", "Recent Activities"]
     
@@ -26,12 +31,14 @@ class DashboardViewController: UIViewController {
         super.viewDidLoad()
 
         initView()
-//        retrieveDate(activityDate: dateFormat())
+        retrieveDate(activityDate: dateFormat())
+        checkIfEmptyOrNot()
         // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
         retrieveDate(activityDate: dateFormat())
+        checkIfEmptyOrNot()
     }
     
     func initView() {
@@ -61,7 +68,10 @@ class DashboardViewController: UIViewController {
             let fr_upcoming: NSFetchRequest<Activity>
             fr_upcoming = Activity.fetchRequest()
           
-            fr_upcoming.predicate = NSPredicate(format: "activityDateTime >= %@ && activityDateTime <= %@", activityDate as CVarArg, activityDate+604800 as CVarArg)
+            fr_upcoming.predicate = NSPredicate(format: "activityDateTime >= %@ && activityDateTime <= %@", activityDate as CVarArg, activityDate+(2592000) as CVarArg)
+            
+            print("date awal", activityDate)
+            print("date akhir", activityDate+(2592000))
             
             upcoming = try context.fetch(fr_upcoming)
             
@@ -70,7 +80,7 @@ class DashboardViewController: UIViewController {
             
             let fr_recent: NSFetchRequest<Activity>
             fr_recent = Activity.fetchRequest()
-            fr_recent.predicate = NSPredicate(format: "activityDateTime <= %@ && activityDateTime >= %@", activityDate as CVarArg, activityDate-604800 as CVarArg)
+            fr_recent.predicate = NSPredicate(format: "activityDateTime <= %@ && activityDateTime >= %@", activityDate as CVarArg, activityDate-(2592000) as CVarArg)
             
             recent = try context.fetch(fr_recent)
             
@@ -94,32 +104,70 @@ class DashboardViewController: UIViewController {
         }
     }
     
+    func checkIfEmptyOrNot(){
+        if self.upcoming.count == 0 && self.recent.count == 0 {
+            emptyImage.isHidden = false
+            emptyTextLabel.isHidden = false
+            addActivityButton.isHidden = false
+            tableView.isHidden = true
+        } else {
+            emptyImage.isHidden = true
+            emptyTextLabel.isHidden = true
+            addActivityButton.isHidden = true
+            tableView.isHidden = false
+            tableView.backgroundColor = #colorLiteral(red: 0.9945624471, green: 0.9800158143, blue: 0.9757309556, alpha: 1)
+        }
+    }
+    
+    
+    @IBAction func moveToPageAddActivity(_ sender: Any) {
+        print("test")
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "activityLogSegue" {
+            let vc = segue.destination as! UINavigationController
+            let target = vc.topViewController as! ActivityLogTableViewController
+            
+            let year = calendar.component(.year, from: Date())
+            let month = calendar.component(.month, from: Date())
+            let day = calendar.component(.day, from: Date())
+            let combinedDate = "\(year)-\(month)-\(day) 00:00:00 +0700"
+            dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss Z"
+            
+            target.onViewWillDisappear = {
+                self.retrieveDate(activityDate: self.dateFormatter.date(from: combinedDate)!)
+                self.checkIfEmptyOrNot()
+                
+            }
+        }
+    }
+    
 
 }
 
 extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return self.upcoming.count
+                return self.upcoming.count
         } else if section == 1 {
-            return self.recent.count
+                return self.recent.count
         }
         
         return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ActivitiesTableViewCell", for: indexPath) as! ActivitiesTableViewCell
+        
         if indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ActivitiesTableViewCell", for: indexPath) as! ActivitiesTableViewCell
             cell.object = upcoming[indexPath.row]
-
-            return cell
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ActivitiesTableViewCell", for: indexPath) as! ActivitiesTableViewCell
             cell.object = recent[indexPath.row]
-            
-            return cell
+            cell.backgroundCell.backgroundColor = #colorLiteral(red: 0.0880939886, green: 0.2219112515, blue: 0.2635231912, alpha: 0.7)
         }
+        
+        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

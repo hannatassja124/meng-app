@@ -44,6 +44,8 @@ class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextVie
     @IBOutlet var catProfileDataTableView: UITableView!
     @IBOutlet weak var catProfileDataDeleteTableView: UITableViewCell!
     
+    //MARK: - Variables
+    
     var colorTagsPickerData:[String] = [String]()
     var genderPickerData:[String] = [String]()
     var breedPickerData:[String] = [String]()
@@ -51,9 +53,6 @@ class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextVie
     var onViewWillDisappear: (()->())?
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var editedCat:Cats? = nil
-//    var catsDB: [Cats] = []
-//    var receivePlanIndex: Int = -1
-    
     weak var delegate: AddNewCatTableViewProtocol?
     
     //MARK: - ViewDidLoad
@@ -65,6 +64,7 @@ class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextVie
         checkIfEditOrNot()
         
         nameField()
+//        ncCatWeightTF.keyboardType = .decimalPad
         ncCatColorTagsPicker.tag = 1
         ncCatGenderPicker.tag = 2
         ncCatBreedPicker.tag = 3
@@ -74,6 +74,11 @@ class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextVie
         ncCatDOBDate()
         pickerCatBreedFill()
         pickerDataNeuteredFill()
+        ncCatNameTF.delegate = self
+        ncCatWeightTF.delegate = self
+        ncCatFeedingTF.delegate = self
+        ncCatVetsName.delegate = self
+        ncCatVetsPhoneNumber.delegate = self
         ncCatNotesTV.delegate = self
         hiddenPickers(fieldName: "init", indexPath: [-1])
         if editedCat == nil {
@@ -82,8 +87,6 @@ class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextVie
         else {
             catProfileDataDeleteTableView.isHidden = false
         }
-        
-//        saveDummy()
     }
     
     //MARK: - IBActions
@@ -93,13 +96,22 @@ class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextVie
             let alertNCImage = UIAlertController(title: "You have not insert your cat's image", message: "You must insert your cat's image before saving", preferredStyle: .alert)
 
             alertNCImage.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            
+//            alertNCImage.view.subviews.first?.subviews.first?.subviews.first?.backgroundColor = UIColor.white
+//
+//            alertNCImage.view.tintColor = UIColor.black
 
             self.present(alertNCImage, animated: true)
+        
         }
         else if ncCatNameTF.text == "" {
             let alertNCName = UIAlertController(title: "You have not insert your cat's name", message: "You must insert your cat's name before saving", preferredStyle: .alert)
 
             alertNCName.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            
+//            alertNCName.view.subviews.first?.subviews.first?.subviews.first?.backgroundColor = UIColor.white
+//
+//            alertNCName.view.tintColor = UIColor.black
 
             self.present(alertNCName, animated: true)
         }
@@ -107,6 +119,7 @@ class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextVie
             saveCatProfileData()
             self.dismiss(animated: true, completion: nil)
         }
+        
     }
     
     @IBAction func cancelButton(_ sender: Any) {
@@ -148,17 +161,13 @@ class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextVie
         
     }
     //MARK: - Functions
+    
 // Delete Cat Data
     func deleteConfirm(alertAction: UIAlertAction!) {
-//        let catActivities = editedCat?.activities?.allObjects as! [Activity]
-//            for data in catActivities {
-//                context.delete(data as Activity)
-//            }
         context.delete(editedCat!)
         do {
             try context.save()
             DispatchQueue.main.async {
-//                self.catProfileDataTableView.reloadData()
                 self.delegate?.backToRoot()
                 self.dismiss(animated: true, completion: nil)
             }
@@ -282,42 +291,6 @@ class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextVie
             print(ncCatNotesTV.text!)
         }
     }
-    
-// Data Dummy
-//    func saveDummy() {
-//        let dummyCatProfile = Cats(context: context)
-//
-//        dummyCatProfile.image = UIImage(named: "Meng-2")?.jpegData(compressionQuality: 1.0) ?? nil
-//        dummyCatProfile.name =  "Kucing Oren"
-//        dummyCatProfile.colorTags = 0
-//        dummyCatProfile.gender = 0
-//        dummyCatProfile.dateOfBirth = Date()
-//        dummyCatProfile.breed = "Abyssinian"
-//        dummyCatProfile.isNeutered = true
-//        dummyCatProfile.weight = 2.5
-//        dummyCatProfile.feeding = "Dry Food Royal Canin"
-//        dummyCatProfile.vetName = "Juminten"
-//        dummyCatProfile.vetPhoneNo = "0812893752930"
-//        dummyCatProfile.notes = "Alergi Kucing Putih"
-//
-//        let dummyActivities = Activity(context: context)
-//
-//        dummyActivities.activityDateTime = Date()
-//        dummyActivities.activityDetail = "Medicate Cat to Vet"
-//        dummyActivities.activityNotificationId = UUID()
-//        dummyActivities.activityReminder = 2
-//        dummyActivities.activityTitle = "Meds"
-//        dummyActivities.activityType = "Treatment"
-//
-//        dummyCatProfile.addToActivities(dummyActivities)
-//        do {
-//            try context.save()
-//        } catch {
-//
-//        }
-//        onViewWillDisappear!()
-//        }
-    
     
 // Untuk Name Text Field
     func nameField() {
@@ -502,6 +475,30 @@ class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextVie
         else if ncCatNeuteredIP as IndexPath == indexPath {
             hiddenPickers(fieldName: "catNeutered", indexPath: indexPath)
         }
+    }
+}
+
+extension AddNewCatTableView: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == ncCatNameTF {
+            textField.resignFirstResponder()
+        }
+        else if textField == ncCatWeightTF {
+            textField.resignFirstResponder()
+        }
+        else if textField == ncCatFeedingTF {
+            textField.resignFirstResponder()
+        }
+        else if textField == ncCatVetsName {
+            textField.resignFirstResponder()
+        }
+        else if textField == ncCatVetsPhoneNumber {
+            textField.resignFirstResponder()
+        }
+        else if textField == ncCatNotesTV {
+            textField.resignFirstResponder()
+        }
+        return true
     }
 }
 

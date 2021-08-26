@@ -183,7 +183,7 @@
                                 <rect key="frame" x="3" y="89" width="318" height="253"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="pGL-WC-eTd">
-                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="itemSize" width="30" height="30"/>
                                     <size key="estimatedItemSize" width="40" height="40"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -191,31 +191,44 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="calCell" id="87j-XC-SWO" customClass="CalendarCell" customModule="meng_app" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="45" height="45"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Ipl-gg-1yM">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="45" height="45"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="web-SZ-NhA">
-                                                    <rect key="frame" x="21.666666666666668" y="16" width="7" height="18"/>
+                                                    <rect key="frame" x="19" y="13.666666666666664" width="7" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" name="MidnightGreen"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="d2B-6m-3Da">
+                                                    <rect key="frame" x="20" y="32.666666666666664" width="5" height="5"/>
+                                                    <color key="tintColor" name="Congo"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="5" id="1Wf-Cs-dwR"/>
+                                                        <constraint firstAttribute="height" constant="6.3300000000000001" id="aCj-60-tdP"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="web-SZ-NhA" firstAttribute="centerY" secondItem="Ipl-gg-1yM" secondAttribute="centerY" id="PGE-1J-Kyd"/>
-                                                <constraint firstItem="web-SZ-NhA" firstAttribute="centerX" secondItem="Ipl-gg-1yM" secondAttribute="centerX" id="bJ7-D1-aDA"/>
+                                                <constraint firstItem="d2B-6m-3Da" firstAttribute="top" secondItem="web-SZ-NhA" secondAttribute="bottom" constant="0.33000000000000002" id="9Ej-Kq-xme"/>
+                                                <constraint firstItem="web-SZ-NhA" firstAttribute="centerX" secondItem="Ipl-gg-1yM" secondAttribute="centerX" id="HFx-Tz-SOF"/>
+                                                <constraint firstAttribute="trailing" secondItem="d2B-6m-3Da" secondAttribute="trailing" constant="20" symbolic="YES" id="Mq8-tq-YWQ"/>
+                                                <constraint firstItem="web-SZ-NhA" firstAttribute="centerY" secondItem="Ipl-gg-1yM" secondAttribute="centerY" id="Q3L-DT-4Pe"/>
+                                                <constraint firstItem="d2B-6m-3Da" firstAttribute="leading" secondItem="Ipl-gg-1yM" secondAttribute="leading" constant="20" symbolic="YES" id="aQN-WM-xU8"/>
                                             </constraints>
                                         </collectionViewCellContentView>
+                                        <size key="customSize" width="45" height="45"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="21"/>
+                                                <real key="value" value="23"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <outlet property="dayOfMonth" destination="web-SZ-NhA" id="AP8-rV-4Hn"/>
+                                            <outlet property="markImage" destination="d2B-6m-3Da" id="G0l-62-geg"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -297,7 +310,11 @@
         <image name="calendar" catalog="system" width="128" height="106"/>
         <image name="chevron.left" catalog="system" width="96" height="128"/>
         <image name="chevron.right" catalog="system" width="96" height="128"/>
+        <image name="circle.fill" catalog="system" width="128" height="121"/>
         <image name="plus" catalog="system" width="128" height="113"/>
+        <namedColor name="Congo">
+            <color red="0.93500000238418579" green="0.55800002813339233" blue="0.52499997615814209" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
         <namedColor name="Melon">
             <color red="0.99900001287460327" green="0.75900000333786011" blue="0.70899999141693115" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
