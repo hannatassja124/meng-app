@@ -7,16 +7,6 @@
 
 import UIKit
 
-//MARK: - Struct data model
-struct GroupedActivities {
-    var sectionTitle:String
-    var activities = [Activity]()
-    
-    init(sectionTitle:String) {
-        self.sectionTitle = sectionTitle
-    }
-}
-
 class HistoryViewController: UIViewController {
     //MARK: - Constant id
     let activitiesCellId = "ActivitiesTableViewCell"
@@ -38,7 +28,7 @@ class HistoryViewController: UIViewController {
         for view in self.navigationController?.navigationBar.subviews ?? [] {
             let subview = view.subviews
             if subview.count > 0, let label = subview[0] as? UILabel {
-                label.textColor = UIColor(named: "MidnightGreen")!
+                label.textColor = UIColor(named: "MidnightGreen") ?? UIColor.black
             }
         }
     }
@@ -54,16 +44,12 @@ class HistoryViewController: UIViewController {
     private func setupUI() {
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationController?.navigationBar.barTintColor = .white
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(named: "MidnightGreen")!]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(named: "MidnightGreen") ?? UIColor.black]
     }
     
     private func initiateTableView(){
-        activitiesTableView.delegate = self
-        activitiesTableView.dataSource = self
-        
         self.activitiesTableView.register(UINib.init(nibName: activitiesCellId, bundle: nil), forCellReuseIdentifier: activitiesCellId)
         activitiesTableView.separatorColor = .clear
-        
     }
     
     private func checkIfActivitiesEmptyOrNot(){
@@ -80,7 +66,9 @@ class HistoryViewController: UIViewController {
     
     private func sortActivitiesByDate(){
         //sort and filter data descending by date
-        let catActivites = selectedCat.activities?.allObjects as! [Activity]
+        guard let catActivites = selectedCat.activities?.allObjects as? [Activity] else {
+            return
+        }
         
         var convertedCatActivities:[Activity] = []
         
@@ -88,12 +76,13 @@ class HistoryViewController: UIViewController {
         dateformatter.dateFormat = "MMMM dd, YYYY"
         
         for data in catActivites {
-            if data.activityDateTime! < Date() && data.activityDateTime! >= Calendar.current.date(byAdding: .day, value: -30, to: Date())! {
+            guard let activityDate = data.activityDateTime else { return }
+            if activityDate < Date() && activityDate >= Calendar.current.date(byAdding: .day, value: -30, to: Date())! {
                 convertedCatActivities.append(data)
             }
         }
         
-        var sortedCatActivites = convertedCatActivities.sorted(by: {$0.activityDateTime?.compare($1.activityDateTime!) == .orderedDescending})
+        let sortedCatActivites = convertedCatActivities.sorted(by: {$0.activityDateTime?.compare($1.activityDateTime ?? Date()) == .orderedDescending})
         if sortedCatActivites.count == 0 {
             return
         }
@@ -102,16 +91,18 @@ class HistoryViewController: UIViewController {
         var lastDate = sortedCatActivites[sectionIndex].activityDateTime!
         groupedActivties.append(GroupedActivities(sectionTitle: dateformatter.string(from: lastDate)))
         for act in sortedCatActivites {
-            print(dateformatter.string(from: act.activityDateTime!) == dateformatter.string(from: lastDate))
-            if dateformatter.string(from: act.activityDateTime!) == dateformatter.string(from: lastDate) {
+            guard let currActivityDate = act.activityDateTime else {
+                continue
+            }
+            if dateformatter.string(from: currActivityDate) == dateformatter.string(from: lastDate) {
                 groupedActivties[sectionIndex].activities.append(act)
                 print("tanggal sama")
             }
             else{
-                groupedActivties.append(GroupedActivities(sectionTitle: dateformatter.string(from: act.activityDateTime!)))
+                groupedActivties.append(GroupedActivities(sectionTitle: dateformatter.string(from: currActivityDate)))
                 sectionIndex += 1
                 groupedActivties[sectionIndex].activities.append(act)
-                lastDate = act.activityDateTime!
+                lastDate = currActivityDate
                 print("tanggal beda")
             }
         }
@@ -145,18 +136,35 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource{
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: activitiesCellId, for: indexPath) as! ActivitiesTableViewCell
         
-        cell.activityTitleLabel.text = "\(groupedActivties[indexPath.section].activities[indexPath.row].activityTitle!)"
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: activitiesCellId, for: indexPath) as? ActivitiesTableViewCell else {
+            fatalError("ActivitiesTableViewCell not found")
+        }
         
-        let dateformatter = DateFormatter()
-        dateformatter.dateFormat = "hh:mm a"
-        cell.activityTimeLabel.text = "\(dateformatter.string(from: groupedActivties[indexPath.section].activities[indexPath.row].activityDateTime!))"
+        let currentData = groupedActivties[indexPath.section].activities[indexPath.row]
+        //activity title
+        if let activityTitle = currentData.activityTitle {
+            cell.activityTitleLabel.text = "\(activityTitle)"
+        }
+        //date
+        if let date = currentData.activityDateTime {
+            let dateformatter = DateFormatter()
+            dateformatter.dateFormat = "hh:mm a"
+            cell.activityTimeLabel.text = "\(dateformatter.string(from: date))"
+
+        }
+        //cat name
+        if let catName = selectedCat.name {
+            cell.activityCatNameLabel.text = "\(catName)"
+        }
+        //cat activity type
+        if let activity = currentData.activityType {
+            cell.activityTypeImage.image = UIImage(named: "\(activity)")
+
+        }
+        //cat tags color
+//        cell.activitiesColorTagImage.tintColor = TagsHelper.checkColor(tagsNumber: selectedCat.colorTags)
         
-        cell.activityCatNameLabel.text = "\(selectedCat.name!)"
-        cell.activityTypeImage.image = UIImage(named: "\(groupedActivties[indexPath.section].activities[indexPath.row].activityType!)")
-        
-        cell.activitiesColorTagImage.tintColor = TagsHelper.checkColor(tagsNumber: selectedCat.colorTags)
         cell.selectionStyle = .none
         
         return cell
@@ -166,9 +174,11 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "ActivityDetail", bundle: nil)
        
-        let vc = storyboard.instantiateViewController(withIdentifier: "ActivityDetailStoryboard") as! ActivityDetailViewController
-        vc.details = groupedActivties[indexPath.section].activities[indexPath.row]
+        guard let vc = storyboard.instantiateViewController(withIdentifier: "ActivityDetailStoryboard") as? ActivityDetailViewController else {
+            fatalError("ActivityDetailViewController not found")
+        }
         
+        vc.details = groupedActivties[indexPath.section].activities[indexPath.row]
         
         let nc = UINavigationController(rootViewController: vc)
         nc.navigationBar.isTranslucent = false

@@ -176,16 +176,26 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
         dateFormatter.dateFormat = "hh:mm a"
         
         //catname
-        let name = data.cats!.value(forKey: "name") //NSSet
-        let catName = (name as AnyObject).allObjects //Swift Array
         
-        //color tag
-        let color = data.cats!.value(forKey: "colorTags") //NSSet
-        let colorTag = (color as AnyObject).allObjects //Swift Array
+        //let cats = data.cats as! Set<Cats>
+        
+//        let name = data.cats!.value(forKey: "name") //NSSet
+//        let catName = (name as AnyObject).allObjects //Swift Array
+//
+//        //color tag
+//        let color = data.cats!.value(forKey: "colorTags") //NSSet
+//        let colorTag = (color as AnyObject).allObjects //Swift Array
+        
+//        print("cats", cats.filter({$0.isNeutered == true}))
+        
+        if let catName = data.cats!.allObjects as? [Cats], !catName.isEmpty{
+            cell.activitiesColorTagImage.tintColor = TagsHelper.checkColor(tagsNumber: catName[0].colorTags)
+            cell.activityCatNameLabel.text = "\(catName[0].name ?? "no cat name")"
+        }
         
         cell.activityTitleLabel.text = data.activityTitle
         cell.activityTimeLabel.text = dateFormatter.string(from: data.activityDateTime!)
-//        cell.activityCatNameLabel.text = "\(catName![0])"
+        //cell.activityCatNameLabel.text = "\(catDetail[0])"
         cell.activityTypeImage.image = UIImage(named: data.activityType!)
 //        cell.activitiesColorTagImage.tintColor = TagsHelper.checkColor(tagsNumber: colorTag![0] as! Int16)
         

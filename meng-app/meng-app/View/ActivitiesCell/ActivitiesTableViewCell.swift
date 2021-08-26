@@ -38,14 +38,20 @@ class ActivitiesTableViewCell: UITableViewCell {
         dateFormatter.dateFormat = "hh:mm a"
 
         guard let obj = object else { return }
-        let name = obj.cats?.value(forKey: "name")
-//        let name = object.cats.value(forKey: "name") //NSSet
-        let catName = (name as AnyObject).allObjects //Swift Array
+//        let name = obj.cats?.value(forKey: "name")
+////        let name = object.cats.value(forKey: "name") //NSSet
+//        let catName = (name as AnyObject).allObjects //Swift Array
+//
+//        //color tag
+//        let color = obj.cats?.value(forKey: "colorTags") //NSSet
+//        let colorTag = (color as AnyObject).allObjects //Swift Array
 
-        //color tag
-        let color = obj.cats?.value(forKey: "colorTags") //NSSet
-        let colorTag = (color as AnyObject).allObjects //Swift Array
-
+        
+        if let catName = obj.cats!.allObjects as? [Cats], !catName.isEmpty{
+            activitiesColorTagImage.tintColor = TagsHelper.checkColor(tagsNumber: catName[0].colorTags)
+            activityCatNameLabel.text = "\(catName[0].name ?? "no cat name")"
+        }
+        
         activityTitleLabel.text = obj.activityTitle
         activityTimeLabel.text = dateFormatter.string(from: obj.activityDateTime ?? Date())
         

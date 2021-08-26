@@ -78,10 +78,10 @@
         <!--Onboarding-->
         <scene sceneID="lrR-ye-89f">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="sX8-Qp-gEd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewControllerPlaceholder storyboardName="Onboarding" id="jCe-PL-0oB" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="o3d-kI-PgD"/>
                 </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sX8-Qp-gEd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1550" y="884"/>
         </scene>

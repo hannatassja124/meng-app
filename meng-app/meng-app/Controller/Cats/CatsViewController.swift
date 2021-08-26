@@ -15,49 +15,36 @@ class CatsViewController: UIViewController, UICollectionViewDelegate {
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var cats:[Cats] = [Cats()]
     var originalCats:[Cats] = []
-    let searchController = UISearchController()
+//    let searchController = UISearchController()
+    let searchController = SearchHelper.createSearchController()
 
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.        
-        catsCollectionView.delegate = self
-        catsCollectionView.dataSource = self
-        
         initNib()
         initSearchController()
         print(cats.count)
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.navigationBar.barTintColor = UIColor(named: "MidnightGreen")!
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(named: "NeutralLight")!]
+        self.navigationController?.navigationBar.barTintColor = UIColor(named: "MidnightGreen")
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(named: "NeutralLight") ?? UIColor.black]
 
         self.retrieveData()
     }
     
     //MARK: - Function
     private func initNib(){
-        let addCatNib = UINib(nibName: "\(AddNewCatCollectionViewCell.self)", bundle: nil)
-        catsCollectionView.register(addCatNib, forCellWithReuseIdentifier: "AddNewCatCell")
-        
-        let catProfileNib = UINib(nibName: "\(CatProfileCollectionViewCell.self)", bundle: nil)
-        catsCollectionView.register(catProfileNib, forCellWithReuseIdentifier: "CatProfileCell")
-
+        catsCollectionView.register(UINib(nibName: "\(AddNewCatCollectionViewCell.self)", bundle: nil), forCellWithReuseIdentifier: "AddNewCatCell")
+        catsCollectionView.register(UINib(nibName: "\(CatProfileCollectionViewCell.self)", bundle: nil), forCellWithReuseIdentifier: "CatProfileCell")
     }
     
     private func initSearchController(){
-        searchController.loadViewIfNeeded()
         searchController.searchResultsUpdater = self
-        searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.enablesReturnKeyAutomatically = false
-        searchController.searchBar.returnKeyType = UIReturnKeyType.done
+        searchController.searchBar.delegate = self
         definesPresentationContext = true
-        
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
-        searchController.searchBar.delegate = self
     }
 
 
@@ -89,18 +76,18 @@ extension CatsViewController: UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.row == 0 {
-            return collectionView.dequeueReusableCell(withReuseIdentifier: "AddNewCatCell", for: indexPath) as! AddNewCatCollectionViewCell
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AddNewCatCell", for: indexPath) as? AddNewCatCollectionViewCell else {
+                fatalError("add new cat cell not found")
+            }
+            
+            return cell
         }
         else{
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CatProfileCell", for: indexPath) as! CatProfileCollectionViewCell
-            
-//          assign data ke CollectionView cell
-            if let image = cats[indexPath.row - 1].image {
-                cell.petImage.image = UIImage(data: image)
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CatProfileCell", for: indexPath) as? CatProfileCollectionViewCell else {
+                fatalError("cat profile cell not found")
             }
-            cell.petNameLabel.text = "\(cats[indexPath.row - 1].name!)"
-            cell.petGenderIcon.image = UIImage(named: (cats[indexPath.row - 1].gender == 0 ? "Male" : "Female"))
-            cell.petTagsColor.tintColor = TagsHelper.checkColor(tagsNumber: cats[indexPath.row-1].colorTags)
+            
+            cell.data = cats[indexPath.row - 1]
                         
             return cell
         }
@@ -110,7 +97,9 @@ extension CatsViewController: UICollectionViewDataSource{
         print(indexPath.row)
         if indexPath.row == 0{
             let storyboard = UIStoryboard(name: "AddNewCat", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "addNewCat") as! AddNewCatTableView
+            guard let vc  = storyboard.instantiateViewController(withIdentifier: "addNewCat") as? AddNewCatTableView else {
+                fatalError("vc not found")
+            }
             
             vc.onViewWillDisappear = {
                 self.retrieveData()
@@ -125,7 +114,9 @@ extension CatsViewController: UICollectionViewDataSource{
         }
         else{
             //bakal buka Cat Profile Detail
-            let vc = storyboard!.instantiateViewController(identifier: "CatDetail") as! CatDetailViewController
+            guard let vc = storyboard?.instantiateViewController(identifier: "CatDetail") as? CatDetailViewController else {
+                fatalError("vc not found")
+            }
             vc.currCat = cats[indexPath.row - 1]
             navigationController?.pushViewController(vc, animated: true)
             
@@ -144,13 +135,18 @@ extension CatsViewController: UISearchResultsUpdating, UISearchBarDelegate{
        
         if text != ""{
             cats = originalCats.filter{ (cats: Cats) -> Bool in
-                return (cats.name?.lowercased().contains(text.lowercased()))!
+                if let filtered = cats.name?.lowercased().contains(text.lowercased()) {
+                    return filtered
+                }
+                return false
             }
         }
         else{
             cats = originalCats
         }
-        catsCollectionView.reloadData()
+        DispatchQueue.main.async {
+            self.catsCollectionView.reloadData()
+        }
     }
 }
 

@@ -8,11 +8,20 @@
 import UIKit
 
 class CatProfileCollectionViewCell: UICollectionViewCell {
+    //MARK: - Outlets
     @IBOutlet weak var petImage: UIImageView!
     @IBOutlet weak var petGenderIcon: UIImageView!
     @IBOutlet weak var petTagsColor: UIImageView!
     @IBOutlet weak var petNameLabel: UILabel!
     
+    //MARK: - Variables
+    var data:Cats?{
+        didSet{
+            cellConfig()
+        }
+    }
+    
+    //MARK: - Functions
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -33,6 +42,24 @@ class CatProfileCollectionViewCell: UICollectionViewCell {
         petImage.image = UIImage(named: "CatProfileDefault")
         petGenderIcon.image = UIImage(named: "Male")
         petNameLabel.text = "CatName"
+    }
+    
+    private func cellConfig(){
+        guard let catData = data else {
+            return
+        }
+        
+        if let image = catData.image {
+            petImage.image = UIImage(data: image)
+        }
+        //name
+        if let name = catData.name {
+            petNameLabel.text = "\(name)"
+        }
+        //gender icon
+        petGenderIcon.image = UIImage(named: (catData.gender == 0 ? "Male" : "Female"))
+        //tint color
+        petTagsColor.tintColor = TagsHelper.checkColor(tagsNumber: catData.colorTags)
     }
 
 }
