@@ -9,28 +9,22 @@ import UIKit
 
 class GetStartedViewController: UIViewController {
 
+    // MARK: - Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
     
+    // MARK: - ACTION
     
     @IBAction func onboardingPage(_ sender: Any) {
-        let vc = storyboard?.instantiateViewController(identifier: "onboardingStoryboad") as! OnboardingViewController
+        guard let vc = storyboard?.instantiateViewController(identifier: "onboardingStoryboad") as? OnboardingViewController
+        else {
+            fatalError("no vc")
+        }
         
         vc.modalPresentationStyle = .fullScreen
         present(vc, animated: true)
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

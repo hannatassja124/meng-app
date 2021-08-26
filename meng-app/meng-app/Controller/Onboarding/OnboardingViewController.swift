@@ -8,18 +8,23 @@
 import UIKit
 
 class OnboardingViewController: UIViewController {
+    
+    // MARK: - Outlet
 
     @IBOutlet weak var onboardingPageControl: UIPageControl!
     @IBOutlet weak var onboardingCollectionView: UICollectionView!
     @IBOutlet weak var nextButton: UIButton!
     
-    var slides: [OnboardingModel] = []
+    // MARK: - Variables
     
+    var slides: [OnboardingModel] = []
     var currPage = 0 {
         didSet {
             onboardingPageControl.currentPage = currPage
         }
     }
+    
+    // MARK: - LifeCycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,13 +34,12 @@ class OnboardingViewController: UIViewController {
         OnboardingModel(title: "Manage Multiple Cats", desc: "Got multiple cats? No worries! Meng supports multiple cat profiles so you can log their  activities altogether.", image: #imageLiteral(resourceName: "Meng-2")),
         OnboardingModel(title: "Cat’s Health First!", desc: "Add your vet number for easy access in \ncase of emergency.", image: #imageLiteral(resourceName: "Meng-2"))
         ]
-
-        // Do any additional setup after loading the view.
+        
     }
     
+    // MARK: - ACTION
     
     @IBAction func nextPage(_ sender: Any) {
-        
         var ip:IndexPath
         currPage += 1
         if currPage > 2 {
@@ -45,23 +49,15 @@ class OnboardingViewController: UIViewController {
         ip = IndexPath(item: currPage, section: 0)
         onboardingCollectionView.scrollToItem(at: ip, at: .centeredHorizontally, animated: true)
     }
-    
 
     @IBAction func skipPage(_ sender: Any) {
         Core.shared.setIsNotNewUser()
         self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
+
+    // MARK: - Data Source & Delegate
 
 extension OnboardingViewController:UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -69,10 +65,10 @@ extension OnboardingViewController:UICollectionViewDelegate, UICollectionViewDat
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "onboardingCell", for: indexPath) as! OnboardingCollectionViewCell
-        
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "onboardingCell", for: indexPath) as? OnboardingCollectionViewCell else {
+            fatalError("no cell")
+        }
         cell.setup(slides[indexPath.row])
-
         return cell
     }
     
@@ -83,7 +79,6 @@ extension OnboardingViewController:UICollectionViewDelegate, UICollectionViewDat
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let width = scrollView.frame.width
         currPage = Int(scrollView.contentOffset.x / width)
-        
         onboardingPageControl.currentPage = currPage
     }
     

@@ -78,6 +78,10 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="4T7-ht-f2g" id="t2t-7V-K15"/>
+                                    <outlet property="delegate" destination="4T7-ht-f2g" id="4yV-9g-Npr"/>
+                                </connections>
                             </tableView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Meng-10" translatesAutoresizingMaskIntoConstraints="NO" id="TdU-8V-0dO">
                                 <rect key="frame" x="31" y="607" width="352" height="167"/>

@@ -140,35 +140,8 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource{
         guard let cell = tableView.dequeueReusableCell(withIdentifier: activitiesCellId, for: indexPath) as? ActivitiesTableViewCell else {
             fatalError("ActivitiesTableViewCell not found")
         }
-        
-        let currentData = groupedActivties[indexPath.section].activities[indexPath.row]
-        //activity title
-        if let activityTitle = currentData.activityTitle {
-            cell.activityTitleLabel.text = "\(activityTitle)"
-        }
-        //date
-        if let date = currentData.activityDateTime {
-            let dateformatter = DateFormatter()
-            dateformatter.dateFormat = "hh:mm a"
-            cell.activityTimeLabel.text = "\(dateformatter.string(from: date))"
-
-        }
-        //cat name
-        if let catName = selectedCat.name {
-            cell.activityCatNameLabel.text = "\(catName)"
-        }
-        //cat activity type
-        if let activity = currentData.activityType {
-            cell.activityTypeImage.image = UIImage(named: "\(activity)")
-
-        }
-        //cat tags color
-//        cell.activitiesColorTagImage.tintColor = TagsHelper.checkColor(tagsNumber: selectedCat.colorTags)
-        
-        cell.selectionStyle = .none
-        
+        cell.object = groupedActivties[indexPath.section].activities[indexPath.row]
         return cell
-
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -181,10 +154,7 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource{
         vc.details = groupedActivties[indexPath.section].activities[indexPath.row]
         
         let nc = UINavigationController(rootViewController: vc)
-        nc.navigationBar.isTranslucent = false
-        nc.navigationBar.barTintColor = #colorLiteral(red: 0.1036602035, green: 0.2654651999, blue: 0.3154058456, alpha: 1)
-        nc.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.init(cgColor: #colorLiteral(red: 0.9984837174, green: 0.9839375615, blue: 0.9796521068, alpha: 1))]
-        
+        nc.setNav(root: nc)
         self.present(nc, animated: true, completion: nil)
 
     }
