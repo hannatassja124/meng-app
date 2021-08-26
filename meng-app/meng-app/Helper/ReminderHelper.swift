@@ -20,6 +20,8 @@ class ReminderHelper {
             selectedType = "\(typeNumber/1440) days before"
         case 10080:
             selectedType = "\(typeNumber/10080) week before"
+        case 0:
+            selectedType = "None"
         default:
             selectedType = "None"
         }
