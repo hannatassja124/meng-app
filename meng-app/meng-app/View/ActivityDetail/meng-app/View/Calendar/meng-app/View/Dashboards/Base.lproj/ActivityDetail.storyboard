@@ -95,6 +95,14 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9dz-K1-lqS">
+                                <rect key="frame" x="31" y="110" width="40" height="40"/>
+                                <color key="tintColor" name="MidnightGreen"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="Bur-v4-gHF"/>
+                                    <constraint firstAttribute="height" constant="40" id="hPO-ns-JsX"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="gGC-5U-X25"/>
                         <color key="backgroundColor" name="NeutralLight"/>
@@ -111,12 +119,14 @@
                             <constraint firstItem="cEB-kK-h55" firstAttribute="leading" secondItem="gGC-5U-X25" secondAttribute="leading" constant="28" id="Or0-Gk-eoa"/>
                             <constraint firstItem="Izf-hA-ov2" firstAttribute="leading" secondItem="gGC-5U-X25" secondAttribute="leading" id="U0K-JM-xXF"/>
                             <constraint firstItem="7bM-Sx-C9A" firstAttribute="leading" secondItem="ejd-5o-fck" secondAttribute="leading" constant="96" id="Yn7-X1-xxx"/>
+                            <constraint firstItem="9dz-K1-lqS" firstAttribute="leading" secondItem="gGC-5U-X25" secondAttribute="leading" constant="31" id="YxH-vY-5YS"/>
                             <constraint firstItem="gGC-5U-X25" firstAttribute="trailing" secondItem="Izf-hA-ov2" secondAttribute="trailing" id="ZAZ-52-89h"/>
                             <constraint firstItem="Re6-dT-wkK" firstAttribute="top" secondItem="gGC-5U-X25" secondAttribute="top" constant="45" id="bPu-0p-M3r"/>
                             <constraint firstItem="ug6-Oe-aWP" firstAttribute="leading" secondItem="gGC-5U-X25" secondAttribute="leading" constant="53" id="dlg-bb-Ma0"/>
                             <constraint firstItem="ug6-Oe-aWP" firstAttribute="leading" secondItem="Re6-dT-wkK" secondAttribute="trailing" constant="9" id="iKy-Nv-tJ0"/>
                             <constraint firstItem="Izf-hA-ov2" firstAttribute="centerX" secondItem="gGC-5U-X25" secondAttribute="centerX" id="ic3-Dw-lbO"/>
                             <constraint firstItem="1UH-av-E9e" firstAttribute="top" secondItem="gGC-5U-X25" secondAttribute="top" constant="103" id="mIY-9G-ar6"/>
+                            <constraint firstItem="9dz-K1-lqS" firstAttribute="top" secondItem="gGC-5U-X25" secondAttribute="top" constant="110" id="n4j-Ji-20C"/>
                             <constraint firstItem="1UH-av-E9e" firstAttribute="leading" secondItem="gGC-5U-X25" secondAttribute="leading" constant="24" id="rG1-V1-p2x"/>
                             <constraint firstItem="TdU-8V-0dO" firstAttribute="bottom" secondItem="gGC-5U-X25" secondAttribute="bottom" id="rod-uR-hRI"/>
                             <constraint firstItem="7bM-Sx-C9A" firstAttribute="top" secondItem="CDR-4B-vjc" secondAttribute="bottom" constant="8" id="wis-6q-q8w"/>
@@ -126,19 +136,24 @@
                     </view>
                     <navigationItem key="navigationItem" title="Details" id="UfC-hl-FSm">
                         <barButtonItem key="leftBarButtonItem" title="Back" id="p5m-cR-4hb">
-                            <color key="tintColor" name="Melon"/>
+                            <color key="tintColor" name="Congo"/>
                             <connections>
                                 <action selector="backToPrevious:" destination="4T7-ht-f2g" id="TgN-hq-Cfs"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Edit" id="piQ-pl-WBm">
-                            <color key="tintColor" name="Melon"/>
+                            <color key="tintColor" name="Congo"/>
                             <connections>
                                 <action selector="goToEditActivityPage:" destination="4T7-ht-f2g" id="zWQ-jM-2DX"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityDetailLabel" destination="7bM-Sx-C9A" id="sy5-Y8-FEy"/>
+                        <outlet property="activityTitleLabel" destination="CDR-4B-vjc" id="ypo-L0-vMO"/>
+                        <outlet property="activityTypeImage" destination="9dz-K1-lqS" id="3pV-J9-Xa9"/>
+                        <outlet property="catNameLabel" destination="ug6-Oe-aWP" id="WxA-0t-v2m"/>
+                        <outlet property="colorTagImage" destination="Re6-dT-wkK" id="MEF-LY-8a1"/>
                         <outlet property="detailTableView" destination="Izf-hA-ov2" id="0F2-cb-V8c"/>
                     </connections>
                 </viewController>
@@ -172,6 +187,9 @@
     <resources>
         <image name="Meng-10" width="2363" height="1064"/>
         <image name="circle.fill" catalog="system" width="128" height="121"/>
+        <namedColor name="Congo">
+            <color red="0.93500000238418579" green="0.55800002813339233" blue="0.52499997615814209" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
         <namedColor name="Melon">
             <color red="0.99900001287460327" green="0.75900000333786011" blue="0.70899999141693115" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -179,7 +197,7 @@
             <color red="0.10499999672174454" green="0.2669999897480011" blue="0.31499999761581421" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="NeutralLight">
-            <color red="1" green="0.95300000905990601" blue="0.94099998474121094" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.98400002717971802" blue="0.98000001907348633" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

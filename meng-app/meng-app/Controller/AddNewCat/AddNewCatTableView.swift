@@ -7,8 +7,13 @@
 
 import UIKit
 
+protocol AddNewCatTableViewProtocol: AnyObject {
+    func backToRoot()
+}
+
 class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextViewDelegate {
     
+    // MARK: - IBOutlets
 // Image
     @IBOutlet weak var ncCatPhotoImage: UIImageView!
     @IBOutlet weak var ncCatColorTagsIcon: UIImageView!
@@ -34,7 +39,13 @@ class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextVie
     @IBOutlet weak var ncCatDOBPicker: UIDatePicker!
     @IBOutlet weak var ncCatBreedPicker: UIPickerView!
     @IBOutlet weak var ncCatNeuteredPicker: UIPickerView!
-
+    
+// TableView
+    @IBOutlet var catProfileDataTableView: UITableView!
+    @IBOutlet weak var catProfileDataDeleteTableView: UITableViewCell!
+    
+    //MARK: - Variables
+    
     var colorTagsPickerData:[String] = [String]()
     var genderPickerData:[String] = [String]()
     var breedPickerData:[String] = [String]()
@@ -42,13 +53,18 @@ class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextVie
     var onViewWillDisappear: (()->())?
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var editedCat:Cats? = nil
+    weak var delegate: AddNewCatTableViewProtocol?
     
+    //MARK: - ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        ncCatNotesTV.text = "Medical Notes"
+        ncCatNotesTV.textColor = .lightGray
         checkIfEditOrNot()
         
         nameField()
+//        ncCatWeightTF.keyboardType = .decimalPad
         ncCatColorTagsPicker.tag = 1
         ncCatGenderPicker.tag = 2
         ncCatBreedPicker.tag = 3
@@ -58,18 +74,52 @@ class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextVie
         ncCatDOBDate()
         pickerCatBreedFill()
         pickerDataNeuteredFill()
-        ncCatNotesTV.text = "Medical Notes"
-        ncCatNotesTV.textColor = .lightGray
+        ncCatNameTF.delegate = self
+        ncCatWeightTF.delegate = self
+        ncCatFeedingTF.delegate = self
+        ncCatVetsName.delegate = self
+        ncCatVetsPhoneNumber.delegate = self
         ncCatNotesTV.delegate = self
         hiddenPickers(fieldName: "init", indexPath: [-1])
-        
-        
+        if editedCat == nil {
+            catProfileDataDeleteTableView.isHidden = true
+        }
+        else {
+            catProfileDataDeleteTableView.isHidden = false
+        }
     }
     
+    //MARK: - IBActions
 // Buttons
     @IBAction func saveButton(_ sender: Any) {
-    saveCatProfileData()
-        self.dismiss(animated: true, completion: nil)
+        if ncCatPhotoImage.image == nil {
+            let alertNCImage = UIAlertController(title: "You have not insert your cat's image", message: "You must insert your cat's image before saving", preferredStyle: .alert)
+
+            alertNCImage.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            
+//            alertNCImage.view.subviews.first?.subviews.first?.subviews.first?.backgroundColor = UIColor.white
+//
+//            alertNCImage.view.tintColor = UIColor.black
+
+            self.present(alertNCImage, animated: true)
+        
+        }
+        else if ncCatNameTF.text == "" {
+            let alertNCName = UIAlertController(title: "You have not insert your cat's name", message: "You must insert your cat's name before saving", preferredStyle: .alert)
+
+            alertNCName.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            
+//            alertNCName.view.subviews.first?.subviews.first?.subviews.first?.backgroundColor = UIColor.white
+//
+//            alertNCName.view.tintColor = UIColor.black
+
+            self.present(alertNCName, animated: true)
+        }
+        else if ncCatPhotoImage.image != nil && ncCatNameTF.text != nil {
+            saveCatProfileData()
+            self.dismiss(animated: true, completion: nil)
+        }
+        
     }
     
     @IBAction func cancelButton(_ sender: Any) {
@@ -98,26 +148,46 @@ class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextVie
         self.present(actionsheet, animated: true, completion: nil)
     }
     
+    @IBAction func deleteProfileButton(_ sender: Any) {
+        let alert = UIAlertController(title: "Delete Cat Profile", message: "Are you sure you want to permanently delete this profile?", preferredStyle: .actionSheet)
+                 
+        let DeleteAction = UIAlertAction(title: "Delete", style: .destructive, handler: deleteConfirm)
+        let CancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler:deleteCancel)
+
+        alert.addAction(DeleteAction)
+        alert.addAction(CancelAction)
+
+        self.present(alert, animated: true, completion: nil)
+        
+    }
+    //MARK: - Functions
     
+// Delete Cat Data
+    func deleteConfirm(alertAction: UIAlertAction!) {
+        context.delete(editedCat!)
+        do {
+            try context.save()
+            DispatchQueue.main.async {
+                self.delegate?.backToRoot()
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
+        catch{
+            print("Ga kedelete")
+        }
+    }
+    
+    func deleteCancel(alertAction: UIAlertAction!){
+        editedCat = nil
+    }
     
 // Save New Cat Data
     func saveCatProfileData(){
         if editedCat == nil {
             let newCatProfile = Cats(context: context)
             
-            if ncCatPhotoImage.image == nil {
-                
-            }
-            else {
                 newCatProfile.image = ncCatPhotoImage.image?.jpegData(compressionQuality: 1.0) ?? nil
-            }
-            if ncCatNameTF.text == nil {
-                
-            }
-            else {
                 newCatProfile.name =  "\(ncCatNameTF.text ?? "")"
-            }
-            
             newCatProfile.colorTags = Int16(TagsHelper.convertColorToNumber(color: ncCatColorTagsLabel.text!))
                 if ncCatGenderLabel.text == "Male" {
                     newCatProfile.gender = 0
@@ -140,6 +210,7 @@ class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextVie
             newCatProfile.vetName = "\(ncCatVetsName.text ?? "")"
             newCatProfile.vetPhoneNo = "\(ncCatVetsPhoneNumber.text ?? "")"
             newCatProfile.notes = "\(ncCatNotesTV.text ?? "")"
+            print(ncCatNotesTV.text!)
             }
         
         // edited data
@@ -168,6 +239,7 @@ class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextVie
             editedCat!.vetName = "\(ncCatVetsName.text ?? "")"
             editedCat!.vetPhoneNo = "\(ncCatVetsPhoneNumber.text ?? "")"
             editedCat!.notes = "\(ncCatNotesTV.text ?? "")"
+            print(ncCatNotesTV.text!)
         }
         do {
             try context.save()
@@ -210,6 +282,13 @@ class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextVie
             ncCatVetsName.text = editedCat?.vetName
             ncCatVetsPhoneNumber.text = editedCat?.vetPhoneNo
             ncCatNotesTV.text = editedCat?.notes
+            if ncCatNotesTV.text == "Medical Notes" {
+                ncCatNotesTV.textColor = .lightGray
+            }
+            else {
+                ncCatNotesTV.textColor = .black
+            }
+            print(ncCatNotesTV.text!)
         }
     }
     
@@ -289,24 +368,25 @@ class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextVie
             ncCatNotesTV.textColor = .black
         }
     }
-    
+
     func textViewDidEndEditing(_ textView: UITextView) {
         if ncCatNotesTV.text == "" {
             ncCatNotesTV.text = "Medical Notes"
             ncCatNotesTV.textColor = .lightGray
         }
     }
-    
+
     func textViewDidChange() {
     }
-    
+
     func textView( _ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
             if text == "\n"{
                 ncCatNotesTV.resignFirstResponder()
             }
             return true
         }
-    
+   
+    //MARK: Data in Pickers
 // Format Date to String untuk ditampilkan ke Date Label
     @IBAction func ncCatDOBPickerAction(_ sender: Any) {
         ncCatDOBLabel.text = dateFormat(date: ncCatDOBPicker.date, formatDate: dateFormatTemp)
@@ -324,7 +404,7 @@ class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextVie
         return dateFormatter.string(from: date)
     }
     
-    
+    //MARK: Table View Display and Functions
 // Table View Display
     func hiddenPickers(fieldName: String, indexPath: IndexPath) {
         ncCatColorTagsPicker.isHidden = fieldName == "catColorTags" ? !ncCatColorTagsPicker.isHidden : true
@@ -398,6 +478,31 @@ class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextVie
     }
 }
 
+extension AddNewCatTableView: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == ncCatNameTF {
+            textField.resignFirstResponder()
+        }
+        else if textField == ncCatWeightTF {
+            textField.resignFirstResponder()
+        }
+        else if textField == ncCatFeedingTF {
+            textField.resignFirstResponder()
+        }
+        else if textField == ncCatVetsName {
+            textField.resignFirstResponder()
+        }
+        else if textField == ncCatVetsPhoneNumber {
+            textField.resignFirstResponder()
+        }
+        else if textField == ncCatNotesTV {
+            textField.resignFirstResponder()
+        }
+        return true
+    }
+}
+
+//MARK: - Extensions
 extension AddNewCatTableView: UIPickerViewDataSource {
     
     //Pickers

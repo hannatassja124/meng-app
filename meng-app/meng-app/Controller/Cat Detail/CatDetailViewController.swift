@@ -8,10 +8,10 @@
 import UIKit
 
 class CatDetailViewController: UIViewController {
-    //selected cat model
+    //MARK: - Variables
     var currCat: Cats?
     
-    //IBOutlet
+    //MARK: - Outlets
     @IBOutlet weak var catImage: UIImageView!
     @IBOutlet weak var catName: UILabel!
     @IBOutlet weak var catGenderIcon: UIImageView!
@@ -23,21 +23,49 @@ class CatDetailViewController: UIViewController {
     @IBOutlet weak var catMedicalNotes: UILabel!
     @IBOutlet weak var vetName: UILabel!
     @IBOutlet weak var vetNo: UILabel!
+    @IBOutlet weak var vetContactView: UIView!
     
     
-    
+    //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         assignDatatoPage()
-        
         // Do any additional setup after loading the view.
     }
     
-    func setupUI() {
+    override func viewWillAppear(_ animated: Bool) {
+        setupUI()
+    }
+    
+    //MARK: - Function
+    private func addActivityDummy(){
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+
+        let activity = Activity(context: context)
+        activity.activityTitle = "cukur rambut"
+        
+        var dayComponent    = DateComponents()
+        dayComponent.day    = -45 // For removing one day (yesterday): -1
+        let theCalendar     = Calendar.current
+        let prevDate        = theCalendar.date(byAdding: dayComponent, to: Date())
+        activity.activityDateTime = prevDate
+        
+        activity.activityDetail = "pake salep"
+        activity.activityType = "Treatment"
+        currCat?.addToActivities(activity)
+        do {
+            try context.save()
+        } catch  {
+            
+        }
+    }
+    
+    private func setupUI() {
         //navigationBar
         self.navigationController?.navigationBar.prefersLargeTitles = true
         //tabBar
         self.tabBarController?.tabBar.isHidden = true
+        self.tabBarController?.tabBar.isTranslucent = true
         
         //ImageGradient
         let gradient: CAGradientLayer = CAGradientLayer()
@@ -47,47 +75,78 @@ class CatDetailViewController: UIViewController {
         catImage.layer.insertSublayer(gradient, at: 0)
 
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        setupUI()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        self.tabBarController?.tabBar.isHidden = false
-        self.navigationController?.navigationBar.prefersLargeTitles = false
-    }
-    
-    func assignDatatoPage() {
-        if let image = currCat?.image {
+
+    private func assignDatatoPage() {
+        //unwrap currCat
+        guard let cat = currCat else {
+            return
+        }
+        //cat image
+        if let image = cat.image {
             catImage.image = UIImage(data: image)
         }
-        catName.text = currCat?.name ?? "Cat Name"
-        catGenderIcon.image = UIImage(named: (currCat!.gender == 0 ? "Male" : "Female"))
-        catColorTags.tintColor = TagsHelper.checkColor(tagsNumber: currCat!.colorTags)
-        let neuteredString = currCat!.isNeutered ? "Neutered" : "Not neutered"
-        catBreedAndNeutered.text = "\(currCat!.breed ?? "no data"), \(neuteredString)"
-        if let date = currCat?.dateOfBirth{
+        //cat name
+        catName.text = cat.name ?? "Cat Name"
+        //cat gender icon
+        catGenderIcon.image = UIImage(named: (cat.gender == 0 ? "Male" : "Female"))
+        //cat tint color
+        catColorTags.tintColor = TagsHelper.checkColor(tagsNumber: cat.colorTags)
+        //cat neutered
+        let neuteredString = cat.isNeutered ? "Neutered" : "Not neutered"
+        catBreedAndNeutered.text = "\(cat.breed ?? "no data"), \(neuteredString)"
+        //cat DOB
+        if let date = cat.dateOfBirth{
             let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "dd/MM/YYYY"
+            dateFormatter.dateFormat = "MMMM dd, YYYY"
             catAge.text = "\(dateFormatter.string(from: date))"
 
         }
-        catWeight.text = "\(currCat!.weight) KG"
-        catFood.text = "\(currCat?.feeding ?? "No Data")"
+        //cat weight
+        catWeight.text = "\(cat.weight) KG"
+        //cat food
+        if let catFoodData = cat.feeding {
+            catFood.text = "\(catFoodData != "" ? catFoodData : "No Data")"
+        }
+        //cat medical notes
         catMedicalNotes.text = "\(currCat?.notes ?? "No Data")"
-        vetName.text = "\(currCat?.vetName ?? "No Data")"
-        vetNo.text = "\(currCat?.vetPhoneNo ?? "No Data")"
+        //cat vet name
+        if let vetNameData = cat.vetName {
+            vetName.text = "\(vetNameData != "" ? vetNameData : "No Data")"
+        }
+        //cat vet phoneNo
+        if let vetPhoneNoData = cat.vetPhoneNo {
+            if vetPhoneNoData == "" {
+//                vetContactView.isHidden = true
+                vetContactView.frame = CGRect(x: 0, y: 0, width: vetContactView.frame.width, height: vetContactView.frame.height * 0)
+            }
+            else{
+                vetNo.text = "\(vetPhoneNoData != "" ? vetPhoneNoData : "No Data")"
+            }
+        }
     }
 
+    //MARK: - Action function
     @IBAction func goToLogActivityHistory(_ sender: Any) {
-        print("go to log activity history")
+        let storyboard = UIStoryboard(name: "History", bundle: nil)
+        
+        if let MainVC = storyboard.instantiateViewController(identifier: "HistoryNC") as? HistoryViewController {
+            if let selectedCat = currCat {
+                MainVC.selectedCat = selectedCat
+                navigationController?.pushViewController(MainVC, animated: true)
+            }
+        }
     }
     
     @IBAction func goToEditPage(_ sender: Any) {
         let storyboard = UIStoryboard(name: "AddNewCat", bundle: nil)
        
-        let vc = storyboard.instantiateViewController(withIdentifier: "addNewCat") as! AddNewCatTableView
+        
+        guard let vc = storyboard.instantiateViewController(withIdentifier: "addNewCat") as? AddNewCatTableView else {
+            fatalError("no vc found")
+        }
         vc.editedCat = currCat
+        vc.delegate = self
+        
         
         vc.onViewWillDisappear = {
             self.assignDatatoPage()
@@ -102,28 +161,28 @@ class CatDetailViewController: UIViewController {
     
     
     @IBAction func back(_ sender: Any) {
+        self.tabBarController?.tabBar.isHidden = false
+        self.tabBarController?.tabBar.isTranslucent = false
+        self.navigationController?.navigationBar.prefersLargeTitles = false
         self.navigationController?.popToRootViewController(animated: true)
     }
     
     @IBAction func contactVet(_ sender: Any) {
-        guard ((currCat?.vetPhoneNo) != nil) else {
+        guard let cat = currCat, let vetNo = cat.vetPhoneNo, vetNo != "" else {
             return
         }
-        
-        let vetNo = currCat?.vetPhoneNo!
-        
         let actionsheet = UIAlertController()
         
-        actionsheet.addAction(UIAlertAction(title: "Call \(vetNo!)", style: .default, handler: {_ in
-            if let url = URL(string: "tel://\(vetNo!)"){
+        actionsheet.addAction(UIAlertAction(title: "Call \(vetNo)", style: .default, handler: {_ in
+            if let url = URL(string: "tel://\(vetNo)"){
                 UIApplication.shared.canOpenURL(url)
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
 
             }
         }))
         
-        actionsheet.addAction(UIAlertAction(title: "Message \(vetNo!)", style: .default, handler: {_ in
-            if let url = URL(string: "sms://\(vetNo!)"){
+        actionsheet.addAction(UIAlertAction(title: "Message \(vetNo)", style: .default, handler: {_ in
+            if let url = URL(string: "sms://\(vetNo)"){
                 UIApplication.shared.canOpenURL(url)
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
 
@@ -138,3 +197,8 @@ class CatDetailViewController: UIViewController {
 }
 
 
+extension CatDetailViewController: AddNewCatTableViewProtocol {
+    func backToRoot() {
+        self.navigationController?.popViewController(animated: true)
+    }
+}

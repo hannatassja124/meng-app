@@ -2,7 +2,7 @@
 //  Cats+CoreDataProperties.swift
 //  meng-app
 //
-//  Created by Hannatassja Hardjadinata on 07/08/21.
+//  Created by Hannatassja Hardjadinata on 16/08/21.
 //
 //
 

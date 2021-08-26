@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--History Overview-->
+        <scene sceneID="joE-Fb-Td7">
+            <objects>
+                <viewController storyboardIdentifier="HistoryNC" modalPresentationStyle="fullScreen" hidesBottomBarWhenPushed="YES" id="ceM-V5-pLz" customClass="HistoryViewController" customModule="meng_app" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MK2-LC-zUL">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zFC-tO-Xeq">
+                                <rect key="frame" x="68" y="253" width="254" height="338"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Meng-sleep" translatesAutoresizingMaskIntoConstraints="NO" id="0NB-Fk-BEg">
+                                        <rect key="frame" x="8" y="0.0" width="238" height="148.66666666666666"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="0NB-Fk-BEg" secondAttribute="height" multiplier="8:5" id="PWM-rL-aBU"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You don't have any history to show at the moment" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DeZ-E8-Qwr">
+                                        <rect key="frame" x="0.0" y="148.66666666666669" width="254" height="189.33333333333331"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" name="MidnightGreen"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="DeZ-E8-Qwr" firstAttribute="top" secondItem="0NB-Fk-BEg" secondAttribute="bottom" id="1Er-WX-Zjg"/>
+                                    <constraint firstAttribute="trailing" secondItem="0NB-Fk-BEg" secondAttribute="trailing" constant="8" id="1fz-mE-tTA"/>
+                                    <constraint firstItem="DeZ-E8-Qwr" firstAttribute="leading" secondItem="zFC-tO-Xeq" secondAttribute="leading" id="AXn-bK-WtY"/>
+                                    <constraint firstAttribute="trailing" secondItem="DeZ-E8-Qwr" secondAttribute="trailing" id="OYq-JF-jg6"/>
+                                    <constraint firstAttribute="bottom" secondItem="DeZ-E8-Qwr" secondAttribute="bottom" id="hDS-mv-65J"/>
+                                    <constraint firstItem="0NB-Fk-BEg" firstAttribute="leading" secondItem="zFC-tO-Xeq" secondAttribute="leading" constant="8" id="q62-MQ-YEB"/>
+                                    <constraint firstItem="0NB-Fk-BEg" firstAttribute="top" secondItem="zFC-tO-Xeq" secondAttribute="top" id="q9w-4i-rUL"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ppa-YA-AEu">
+                                <rect key="frame" x="22" y="88" width="346" height="722"/>
+                                <color key="backgroundColor" name="NeutralLight"/>
+                                <color key="tintColor" name="NeutralLight"/>
+                                <inset key="scrollIndicatorInsets" minX="24" minY="0.0" maxX="24" maxY="0.0"/>
+                                <color key="sectionIndexBackgroundColor" name="NeutralLight"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="ceM-V5-pLz" id="7En-S4-bCH"/>
+                                    <outlet property="delegate" destination="ceM-V5-pLz" id="Ukg-1O-ZBh"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="cPf-cw-IsO"/>
+                        <color key="backgroundColor" name="NeutralLight"/>
+                        <constraints>
+                            <constraint firstItem="zFC-tO-Xeq" firstAttribute="top" secondItem="cPf-cw-IsO" secondAttribute="top" constant="165" id="3YM-l9-0d0"/>
+                            <constraint firstItem="cPf-cw-IsO" firstAttribute="trailing" secondItem="ppa-YA-AEu" secondAttribute="trailing" constant="22" id="A0B-e9-agv"/>
+                            <constraint firstItem="zFC-tO-Xeq" firstAttribute="centerY" secondItem="MK2-LC-zUL" secondAttribute="centerY" id="Rw4-WD-PVE"/>
+                            <constraint firstItem="ppa-YA-AEu" firstAttribute="top" secondItem="cPf-cw-IsO" secondAttribute="top" id="h2v-j9-oAo"/>
+                            <constraint firstItem="zFC-tO-Xeq" firstAttribute="centerX" secondItem="MK2-LC-zUL" secondAttribute="centerX" id="pQF-jM-HNE"/>
+                            <constraint firstItem="ppa-YA-AEu" firstAttribute="bottom" secondItem="cPf-cw-IsO" secondAttribute="bottom" id="ucn-EE-Nnc"/>
+                            <constraint firstItem="zFC-tO-Xeq" firstAttribute="leading" secondItem="cPf-cw-IsO" secondAttribute="leading" constant="68" id="vo3-Og-5H9"/>
+                            <constraint firstItem="ppa-YA-AEu" firstAttribute="leading" secondItem="cPf-cw-IsO" secondAttribute="leading" constant="22" id="wP0-hC-yVR"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="History Overview" largeTitleDisplayMode="always" id="4t6-F0-F2p">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="chevron.left" catalog="system" id="0hM-4c-CEM">
+                            <color key="tintColor" name="MidnightGreen"/>
+                            <connections>
+                                <action selector="back:" destination="ceM-V5-pLz" id="xOC-HS-6pU"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="activitiesTableView" destination="ppa-YA-AEu" id="k1t-MP-5jb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XeV-Y8-yJR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1620" y="-13.507109004739336"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="eQp-aT-anb">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wbm-Ak-kg2" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="cCX-Vm-T5D">
+                        <rect key="frame" x="0.0" y="44" width="390" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" name="MidnightGreen"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <fontDescription key="fontDescription" type="system" pointSize="44"/>
+                            <color key="textColor" red="0.1042111292" green="0.26606833930000001" blue="0.3153784275" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ceM-V5-pLz" kind="relationship" relationship="rootViewController" id="yrQ-5K-dvL"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FpF-gW-Bgb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="690.76923076923072" y="-13.507109004739336"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Meng-sleep" width="1182" height="709"/>
+        <image name="chevron.left" catalog="system" width="96" height="128"/>
+        <namedColor name="MidnightGreen">
+            <color red="0.10499999672174454" green="0.2669999897480011" blue="0.31499999761581421" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="NeutralLight">
+            <color red="1" green="0.98400002717971802" blue="0.98000001907348633" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

@@ -13,6 +13,14 @@ class ActivitiesTableViewCell: UITableViewCell {
     @IBOutlet weak var activityTitleLabel: UILabel!
     @IBOutlet weak var activityCatNameLabel: UILabel!
     @IBOutlet weak var activityTimeLabel: UILabel!
+    @IBOutlet weak var activitiesColorTagImage: UIImageView!
+    @IBOutlet weak var backgroundCell: UIView!
+    
+    var object: Activity? {
+        didSet {
+            cellConfig()
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -26,4 +34,32 @@ class ActivitiesTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func cellConfig() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM dd yyyy, hh:mm a"
+
+        guard let obj = object else { return }
+//        let name = obj.cats?.value(forKey: "name")
+////        let name = object.cats.value(forKey: "name") //NSSet
+//        let catName = (name as AnyObject).allObjects //Swift Array
+//
+//        //color tag
+//        let color = obj.cats?.value(forKey: "colorTags") //NSSet
+//        let colorTag = (color as AnyObject).allObjects //Swift Array
+
+        
+        if let catName = obj.cats!.allObjects as? [Cats], !catName.isEmpty{
+            activitiesColorTagImage.tintColor = TagsHelper.checkColor(tagsNumber: catName[0].colorTags)
+            activityCatNameLabel.text = "\(catName[0].name ?? "no cat name")"
+        }
+        
+        
+        activityTitleLabel.text = obj.activityTitle
+        activityTimeLabel.text = dateFormatter.string(from: obj.activityDateTime ?? Date())
+        
+//        activityCatNameLabel.text = "\(catName?[0] ?? "")"
+        activityTypeImage.image = UIImage(named: obj.activityType!)
+//        activitiesColorTagImage.tintColor = TagsHelper.checkColor(tagsNumber: colorTag![0] as! Int16)
+        selectionStyle = .none
+    }
 }

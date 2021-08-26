@@ -9,24 +9,44 @@
 /* Begin PBXBuildFile section */
 		03274CEB26B039CE00B78A54 /* AddNewCat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03274CEA26B039CE00B78A54 /* AddNewCat.storyboard */; };
 		03437BBB26B25CB40070BF1E /* AddNewCatTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03437BBA26B25CB40070BF1E /* AddNewCatTableView.swift */; };
+		0378E3A426BDC128005DA330 /* History Details.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0378E3A326BDC128005DA330 /* History Details.storyboard */; };
 		073E332A26B3AF150015C24F /* ActivityLogTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073E332926B3AF150015C24F /* ActivityLogTableViewController.swift */; };
 		0747674426B253D20054D268 /* ActivityLogDatePickerHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0747674326B253D20054D268 /* ActivityLogDatePickerHeader.swift */; };
 		0747674626B253FB0054D268 /* ActivityLogDatePickerHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0747674526B253FB0054D268 /* ActivityLogDatePickerHeader.xib */; };
 		0779832626B1B36400BFFD57 /* SelectCatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0779832526B1B36400BFFD57 /* SelectCatViewController.swift */; };
+		077B96EC26C012A000117F67 /* ActivitiesCatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077B96EB26C012A000117F67 /* ActivitiesCatModel.swift */; };
+		077B96F226C03CA800117F67 /* ActivityLogDateTimeHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077B96F126C03CA800117F67 /* ActivityLogDateTimeHeader.swift */; };
+		077B96F426C03CC900117F67 /* ActivityLogDateTimeHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 077B96F326C03CC900117F67 /* ActivityLogDateTimeHeader.xib */; };
+		077B96F626C03E6C00117F67 /* ActivityLogActivitiesHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 077B96F526C03E6C00117F67 /* ActivityLogActivitiesHeader.xib */; };
+		077B96F826C03E7A00117F67 /* ActivityLogActivitiesHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077B96F726C03E7A00117F67 /* ActivityLogActivitiesHeader.swift */; };
+		0799D24126BED46A00511015 /* ActivitiesTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0799D23F26BED46A00511015 /* ActivitiesTVC.swift */; };
+		0799D24226BED46A00511015 /* ActivitiesTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0799D24026BED46A00511015 /* ActivitiesTVC.xib */; };
+		0799D24526BED4E500511015 /* ActivitiesCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0799D24326BED4E500511015 /* ActivitiesCVC.swift */; };
+		0799D24626BED4E500511015 /* ActivitiesCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0799D24426BED4E500511015 /* ActivitiesCVC.xib */; };
+		0799D24826BEF43100511015 /* ActivitiesTypeStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0799D24726BEF43100511015 /* ActivitiesTypeStruct.swift */; };
 		07D0954726B03EAE00491BD0 /* ActivityLog.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07D0954626B03EAE00491BD0 /* ActivityLog.storyboard */; };
 		191E4FB426B1907B00836145 /* CatDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 191E4FB326B1907B00836145 /* CatDetail.storyboard */; };
 		191E4FB626B1908A00836145 /* CatDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191E4FB526B1908A00836145 /* CatDetailViewController.swift */; };
 		1920066D26B032BF00BAD2D0 /* CatProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1920066B26B032BF00BAD2D0 /* CatProfileCollectionViewCell.swift */; };
 		1920066E26B032BF00BAD2D0 /* CatProfileCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1920066C26B032BF00BAD2D0 /* CatProfileCollectionViewCell.xib */; };
 		1920067126B0440900BAD2D0 /* CatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1920067026B0440900BAD2D0 /* CatsViewController.swift */; };
+		192E971326BE54DD00BBDF9E /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192E971126BE54DD00BBDF9E /* HistoryViewController.swift */; };
+		192E971726BE550800BBDF9E /* History.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 192E971626BE550800BBDF9E /* History.storyboard */; };
 		1932CFD026B2494800E7FE06 /* TagsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1932CFCF26B2494800E7FE06 /* TagsHelper.swift */; };
 		19636ECD26AF9E4100EBD377 /* AddNewCatCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19636ECB26AF9E4100EBD377 /* AddNewCatCollectionViewCell.swift */; };
 		19636ECE26AF9E4100EBD377 /* AddNewCatCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19636ECC26AF9E4100EBD377 /* AddNewCatCollectionViewCell.xib */; };
-		F92EDAEA26BDA2A30051B9DF /* Activity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92EDAE626BDA2A30051B9DF /* Activity+CoreDataClass.swift */; };
-		F92EDAEB26BDA2A30051B9DF /* Activity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92EDAE726BDA2A30051B9DF /* Activity+CoreDataProperties.swift */; };
-		F92EDAEC26BDA2A30051B9DF /* Cats+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92EDAE826BDA2A30051B9DF /* Cats+CoreDataClass.swift */; };
-		F92EDAED26BDA2A30051B9DF /* Cats+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92EDAE926BDA2A30051B9DF /* Cats+CoreDataProperties.swift */; };
+		19F6644C26D4A83800E37FA2 /* GroupedActivities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F6644B26D4A83800E37FA2 /* GroupedActivities.swift */; };
+		19F6644E26D4AEE800E37FA2 /* SearchHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F6644D26D4AEE800E37FA2 /* SearchHelper.swift */; };
+		F91BC74526C9AF0200DF1600 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F91BC74426C9AF0200DF1600 /* Onboarding.storyboard */; };
+		F91BC74826C9AF2600DF1600 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91BC74726C9AF2600DF1600 /* OnboardingViewController.swift */; };
+		F91BC74A26C9B6A300DF1600 /* OnboardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91BC74926C9B6A300DF1600 /* OnboardingModel.swift */; };
+		F91BC74D26C9B9C100DF1600 /* OnboardingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91BC74C26C9B9C100DF1600 /* OnboardingCollectionViewCell.swift */; };
+		F91BC74F26C9CB5C00DF1600 /* GetStartedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91BC74E26C9CB5C00DF1600 /* GetStartedViewController.swift */; };
+		F91BC75126C9CB7F00DF1600 /* Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91BC75026C9CB7F00DF1600 /* Core.swift */; };
+		F92EDAF026BDD9770051B9DF /* TypeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92EDAEF26BDD9770051B9DF /* TypeHelper.swift */; };
+		F92EDAF226BDDAF10051B9DF /* ReminderHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92EDAF126BDDAF10051B9DF /* ReminderHelper.swift */; };
 		F94AD29826AEF19D005686ED /* UiCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94AD29726AEF19D005686ED /* UiCustom.swift */; };
+		F950008D26C0CF08003F1B6C /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F950008C26C0CF08003F1B6C /* EventModel.swift */; };
 		F96BBDD026BB31DC0065C589 /* ActivityDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F96BBDCE26BB31DC0065C589 /* ActivityDetail.storyboard */; };
 		F97787E226B43CB300F4CD01 /* CalendarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97787E126B43CB300F4CD01 /* CalendarHelper.swift */; };
 		F995E4F426A99E9700DA5C50 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F995E4F326A99E9700DA5C50 /* AppDelegate.swift */; };
@@ -47,30 +67,54 @@
 		F9B6086126AFEAC9005EF315 /* ActivitiesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9B6085F26AFEAC9005EF315 /* ActivitiesTableViewCell.xib */; };
 		F9CAC8A426B2A4E200D46ED8 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CAC8A326B2A4E200D46ED8 /* CalendarCell.swift */; };
 		F9CAC8A626B2DF1800D46ED8 /* CalendarCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CAC8A526B2DF1800D46ED8 /* CalendarCollectionViewController.swift */; };
+		F9D8588526CA818E000E85BD /* Cats+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D8588126CA818E000E85BD /* Cats+CoreDataClass.swift */; };
+		F9D8588626CA818E000E85BD /* Cats+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D8588226CA818E000E85BD /* Cats+CoreDataProperties.swift */; };
+		F9D8588726CA818E000E85BD /* Activity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D8588326CA818E000E85BD /* Activity+CoreDataClass.swift */; };
+		F9D8588826CA818E000E85BD /* Activity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D8588426CA818E000E85BD /* Activity+CoreDataProperties.swift */; };
 		F9DF6C6C26B7488900DCF044 /* ActivityDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9DF6C6B26B7488900DCF044 /* ActivityDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		03274CEA26B039CE00B78A54 /* AddNewCat.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddNewCat.storyboard; sourceTree = "<group>"; };
 		03437BBA26B25CB40070BF1E /* AddNewCatTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewCatTableView.swift; sourceTree = "<group>"; };
+		0378E3A326BDC128005DA330 /* History Details.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "History Details.storyboard"; sourceTree = "<group>"; };
 		073E332926B3AF150015C24F /* ActivityLogTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityLogTableViewController.swift; sourceTree = "<group>"; };
 		0747674326B253D20054D268 /* ActivityLogDatePickerHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityLogDatePickerHeader.swift; sourceTree = "<group>"; };
 		0747674526B253FB0054D268 /* ActivityLogDatePickerHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityLogDatePickerHeader.xib; sourceTree = "<group>"; };
 		0779832526B1B36400BFFD57 /* SelectCatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCatViewController.swift; sourceTree = "<group>"; };
+		077B96EB26C012A000117F67 /* ActivitiesCatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesCatModel.swift; sourceTree = "<group>"; };
+		077B96F126C03CA800117F67 /* ActivityLogDateTimeHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityLogDateTimeHeader.swift; sourceTree = "<group>"; };
+		077B96F326C03CC900117F67 /* ActivityLogDateTimeHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityLogDateTimeHeader.xib; sourceTree = "<group>"; };
+		077B96F526C03E6C00117F67 /* ActivityLogActivitiesHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityLogActivitiesHeader.xib; sourceTree = "<group>"; };
+		077B96F726C03E7A00117F67 /* ActivityLogActivitiesHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityLogActivitiesHeader.swift; sourceTree = "<group>"; };
+		0799D23F26BED46A00511015 /* ActivitiesTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesTVC.swift; sourceTree = "<group>"; };
+		0799D24026BED46A00511015 /* ActivitiesTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivitiesTVC.xib; sourceTree = "<group>"; };
+		0799D24326BED4E500511015 /* ActivitiesCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesCVC.swift; sourceTree = "<group>"; };
+		0799D24426BED4E500511015 /* ActivitiesCVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivitiesCVC.xib; sourceTree = "<group>"; };
+		0799D24726BEF43100511015 /* ActivitiesTypeStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesTypeStruct.swift; sourceTree = "<group>"; };
 		07D0954626B03EAE00491BD0 /* ActivityLog.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ActivityLog.storyboard; sourceTree = "<group>"; };
 		191E4FB326B1907B00836145 /* CatDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CatDetail.storyboard; sourceTree = "<group>"; };
 		191E4FB526B1908A00836145 /* CatDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatDetailViewController.swift; sourceTree = "<group>"; };
 		1920066B26B032BF00BAD2D0 /* CatProfileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatProfileCollectionViewCell.swift; sourceTree = "<group>"; };
 		1920066C26B032BF00BAD2D0 /* CatProfileCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CatProfileCollectionViewCell.xib; sourceTree = "<group>"; };
 		1920067026B0440900BAD2D0 /* CatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatsViewController.swift; sourceTree = "<group>"; };
+		192E971126BE54DD00BBDF9E /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
+		192E971626BE550800BBDF9E /* History.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = History.storyboard; sourceTree = "<group>"; };
 		1932CFCF26B2494800E7FE06 /* TagsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsHelper.swift; sourceTree = "<group>"; };
 		19636ECB26AF9E4100EBD377 /* AddNewCatCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewCatCollectionViewCell.swift; sourceTree = "<group>"; };
 		19636ECC26AF9E4100EBD377 /* AddNewCatCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddNewCatCollectionViewCell.xib; sourceTree = "<group>"; };
-		F92EDAE626BDA2A30051B9DF /* Activity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Activity+CoreDataClass.swift"; sourceTree = "<group>"; };
-		F92EDAE726BDA2A30051B9DF /* Activity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Activity+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		F92EDAE826BDA2A30051B9DF /* Cats+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cats+CoreDataClass.swift"; sourceTree = "<group>"; };
-		F92EDAE926BDA2A30051B9DF /* Cats+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cats+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		19F6644B26D4A83800E37FA2 /* GroupedActivities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupedActivities.swift; sourceTree = "<group>"; };
+		19F6644D26D4AEE800E37FA2 /* SearchHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHelper.swift; sourceTree = "<group>"; };
+		F91BC74426C9AF0200DF1600 /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
+		F91BC74726C9AF2600DF1600 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		F91BC74926C9B6A300DF1600 /* OnboardingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingModel.swift; sourceTree = "<group>"; };
+		F91BC74C26C9B9C100DF1600 /* OnboardingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCollectionViewCell.swift; sourceTree = "<group>"; };
+		F91BC74E26C9CB5C00DF1600 /* GetStartedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedViewController.swift; sourceTree = "<group>"; };
+		F91BC75026C9CB7F00DF1600 /* Core.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Core.swift; sourceTree = "<group>"; };
+		F92EDAEF26BDD9770051B9DF /* TypeHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeHelper.swift; sourceTree = "<group>"; };
+		F92EDAF126BDDAF10051B9DF /* ReminderHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderHelper.swift; sourceTree = "<group>"; };
 		F94AD29726AEF19D005686ED /* UiCustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UiCustom.swift; sourceTree = "<group>"; };
+		F950008C26C0CF08003F1B6C /* EventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
 		F96BBDCF26BB31DC0065C589 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "meng-app/View/Calendar/meng-app/View/Dashboards/Base.lproj/ActivityDetail.storyboard"; sourceTree = "<group>"; };
 		F97787E126B43CB300F4CD01 /* CalendarHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHelper.swift; sourceTree = "<group>"; };
 		F995E4F026A99E9700DA5C50 /* meng-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "meng-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -93,7 +137,10 @@
 		F9B6085F26AFEAC9005EF315 /* ActivitiesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivitiesTableViewCell.xib; sourceTree = "<group>"; };
 		F9CAC8A326B2A4E200D46ED8 /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 		F9CAC8A526B2DF1800D46ED8 /* CalendarCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCollectionViewController.swift; sourceTree = "<group>"; };
-		F9D98ECD26B391B200707871 /* CalendarHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHelper.swift; sourceTree = "<group>"; };
+		F9D8588126CA818E000E85BD /* Cats+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cats+CoreDataClass.swift"; sourceTree = "<group>"; };
+		F9D8588226CA818E000E85BD /* Cats+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cats+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		F9D8588326CA818E000E85BD /* Activity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Activity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		F9D8588426CA818E000E85BD /* Activity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Activity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		F9DF6C6B26B7488900DCF044 /* ActivityDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -124,26 +171,31 @@
 			path = AddNewCat;
 			sourceTree = "<group>";
 		};
+		0378E3A226BDC0E8005DA330 /* History Details */ = {
+			isa = PBXGroup;
+			children = (
+				0378E3A326BDC128005DA330 /* History Details.storyboard */,
+			);
+			path = "History Details";
+			sourceTree = "<group>";
+		};
 		073E332B26B3CF2F0015C24F /* ReminderHeader */ = {
 			isa = PBXGroup;
 			children = (
 				0747674326B253D20054D268 /* ActivityLogDatePickerHeader.swift */,
 				0747674526B253FB0054D268 /* ActivityLogDatePickerHeader.xib */,
+				077B96F326C03CC900117F67 /* ActivityLogDateTimeHeader.xib */,
+				077B96F126C03CA800117F67 /* ActivityLogDateTimeHeader.swift */,
+				077B96F526C03E6C00117F67 /* ActivityLogActivitiesHeader.xib */,
+				077B96F726C03E7A00117F67 /* ActivityLogActivitiesHeader.swift */,
 			);
 			path = ReminderHeader;
-			sourceTree = "<group>";
-		};
-		073E332D26B3CFB20015C24F /* CustomHeader */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = CustomHeader;
 			sourceTree = "<group>";
 		};
 		0747674726B257A40054D268 /* XIB */ = {
 			isa = PBXGroup;
 			children = (
-				073E332D26B3CFB20015C24F /* CustomHeader */,
+				07DB624926BEC2A7006E9406 /* Activities */,
 				073E332B26B3CF2F0015C24F /* ReminderHeader */,
 			);
 			path = XIB;
@@ -165,6 +217,17 @@
 				0779832526B1B36400BFFD57 /* SelectCatViewController.swift */,
 			);
 			path = ActivityLog;
+			sourceTree = "<group>";
+		};
+		07DB624926BEC2A7006E9406 /* Activities */ = {
+			isa = PBXGroup;
+			children = (
+				0799D23F26BED46A00511015 /* ActivitiesTVC.swift */,
+				0799D24026BED46A00511015 /* ActivitiesTVC.xib */,
+				0799D24326BED4E500511015 /* ActivitiesCVC.swift */,
+				0799D24426BED4E500511015 /* ActivitiesCVC.xib */,
+			);
+			path = Activities;
 			sourceTree = "<group>";
 		};
 		191E4FAD26B18EA900836145 /* Cat Detail */ = {
@@ -189,6 +252,22 @@
 				1920067026B0440900BAD2D0 /* CatsViewController.swift */,
 			);
 			path = Cats;
+			sourceTree = "<group>";
+		};
+		192E971026BE53FD00BBDF9E /* History */ = {
+			isa = PBXGroup;
+			children = (
+				192E971626BE550800BBDF9E /* History.storyboard */,
+			);
+			path = History;
+			sourceTree = "<group>";
+		};
+		192E971526BE54F700BBDF9E /* History */ = {
+			isa = PBXGroup;
+			children = (
+				192E971126BE54DD00BBDF9E /* HistoryViewController.swift */,
+			);
+			path = History;
 			sourceTree = "<group>";
 		};
 		19636EC726AF9E1000EBD377 /* Cell */ = {
@@ -218,6 +297,32 @@
 			path = CatProfileCell;
 			sourceTree = "<group>";
 		};
+		F91BC74326C9AEE600DF1600 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				F91BC74B26C9B87000DF1600 /* OnboardingCell */,
+				F91BC74426C9AF0200DF1600 /* Onboarding.storyboard */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		F91BC74626C9AF1600DF1600 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				F91BC74726C9AF2600DF1600 /* OnboardingViewController.swift */,
+				F91BC74E26C9CB5C00DF1600 /* GetStartedViewController.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		F91BC74B26C9B87000DF1600 /* OnboardingCell */ = {
+			isa = PBXGroup;
+			children = (
+				F91BC74C26C9B9C100DF1600 /* OnboardingCollectionViewCell.swift */,
+			);
+			path = OnboardingCell;
+			sourceTree = "<group>";
+		};
 		F96BBDCD26BB31910065C589 /* ActivityDetail */ = {
 			isa = PBXGroup;
 			children = (
@@ -229,7 +334,6 @@
 		F97787DB26B4389700F4CD01 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
-				F9D98ECD26B391B200707871 /* CalendarHelper.swift */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -239,6 +343,9 @@
 			children = (
 				1932CFCF26B2494800E7FE06 /* TagsHelper.swift */,
 				F97787E126B43CB300F4CD01 /* CalendarHelper.swift */,
+				F92EDAEF26BDD9770051B9DF /* TypeHelper.swift */,
+				F92EDAF126BDDAF10051B9DF /* ReminderHelper.swift */,
+				19F6644D26D4AEE800E37FA2 /* SearchHelper.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -279,6 +386,9 @@
 		F995E50A26A99EBC00DA5C50 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F91BC74326C9AEE600DF1600 /* Onboarding */,
+				0378E3A226BDC0E8005DA330 /* History Details */,
+				192E971026BE53FD00BBDF9E /* History */,
 				F995E51326A9A9AC00DA5C50 /* Dashboards */,
 				F96BBDCD26BB31910065C589 /* ActivityDetail */,
 				F9B6085D26AFEAA7005EF315 /* ActivitiesCell */,
@@ -296,10 +406,16 @@
 		F995E50B26A99EC100DA5C50 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				F92EDAE626BDA2A30051B9DF /* Activity+CoreDataClass.swift */,
-				F92EDAE726BDA2A30051B9DF /* Activity+CoreDataProperties.swift */,
-				F92EDAE826BDA2A30051B9DF /* Cats+CoreDataClass.swift */,
-				F92EDAE926BDA2A30051B9DF /* Cats+CoreDataProperties.swift */,
+				F9D8588126CA818E000E85BD /* Cats+CoreDataClass.swift */,
+				F9D8588226CA818E000E85BD /* Cats+CoreDataProperties.swift */,
+				F9D8588326CA818E000E85BD /* Activity+CoreDataClass.swift */,
+				F9D8588426CA818E000E85BD /* Activity+CoreDataProperties.swift */,
+				F950008C26C0CF08003F1B6C /* EventModel.swift */,
+				0799D24726BEF43100511015 /* ActivitiesTypeStruct.swift */,
+				077B96EB26C012A000117F67 /* ActivitiesCatModel.swift */,
+				F91BC74926C9B6A300DF1600 /* OnboardingModel.swift */,
+				F91BC75026C9CB7F00DF1600 /* Core.swift */,
+				19F6644B26D4A83800E37FA2 /* GroupedActivities.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -307,6 +423,8 @@
 		F995E50C26A99EC700DA5C50 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				F91BC74626C9AF1600DF1600 /* Onboarding */,
+				192E971526BE54F700BBDF9E /* History */,
 				F9DF6C6A26B7487800DCF044 /* ActivityDetail */,
 				F9B6085A26AFE987005EF315 /* Calendar */,
 				07D0954526B03E7200491BD0 /* ActivityLog */,
@@ -480,16 +598,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				191E4FB426B1907B00836145 /* CatDetail.storyboard in Resources */,
+				077B96F626C03E6C00117F67 /* ActivityLogActivitiesHeader.xib in Resources */,
 				F995E50326A99E9800DA5C50 /* LaunchScreen.storyboard in Resources */,
 				F9A45AC726AD392E00B64134 /* Dashboard.storyboard in Resources */,
 				F9A45ACA26AD393D00B64134 /* Cats.storyboard in Resources */,
+				0799D24226BED46A00511015 /* ActivitiesTVC.xib in Resources */,
 				0747674626B253FB0054D268 /* ActivityLogDatePickerHeader.xib in Resources */,
 				F96BBDD026BB31DC0065C589 /* ActivityDetail.storyboard in Resources */,
 				F995E50026A99E9800DA5C50 /* Assets.xcassets in Resources */,
 				F9B6086126AFEAC9005EF315 /* ActivitiesTableViewCell.xib in Resources */,
 				07D0954726B03EAE00491BD0 /* ActivityLog.storyboard in Resources */,
+				F91BC74526C9AF0200DF1600 /* Onboarding.storyboard in Resources */,
+				0378E3A426BDC128005DA330 /* History Details.storyboard in Resources */,
 				F995E4FB26A99E9700DA5C50 /* Main.storyboard in Resources */,
+				077B96F426C03CC900117F67 /* ActivityLogDateTimeHeader.xib in Resources */,
 				F9A45AC526AD390D00B64134 /* Calendar.storyboard in Resources */,
+				0799D24626BED4E500511015 /* ActivitiesCVC.xib in Resources */,
+				192E971726BE550800BBDF9E /* History.storyboard in Resources */,
 				03274CEB26B039CE00B78A54 /* AddNewCat.storyboard in Resources */,
 				1920066E26B032BF00BAD2D0 /* CatProfileCollectionViewCell.xib in Resources */,
 				19636ECE26AF9E4100EBD377 /* AddNewCatCollectionViewCell.xib in Resources */,
@@ -505,31 +630,48 @@
 			buildActionMask = 2147483647;
 			files = (
 				F9B6085C26AFEA2F005EF315 /* CalendarViewController.swift in Sources */,
-				F92EDAEA26BDA2A30051B9DF /* Activity+CoreDataClass.swift in Sources */,
 				F9CAC8A426B2A4E200D46ED8 /* CalendarCell.swift in Sources */,
+				077B96F226C03CA800117F67 /* ActivityLogDateTimeHeader.swift in Sources */,
 				F9B6086026AFEAC9005EF315 /* ActivitiesTableViewCell.swift in Sources */,
 				073E332A26B3AF150015C24F /* ActivityLogTableViewController.swift in Sources */,
+				F9D8588626CA818E000E85BD /* Cats+CoreDataProperties.swift in Sources */,
 				1920067126B0440900BAD2D0 /* CatsViewController.swift in Sources */,
+				F9D8588526CA818E000E85BD /* Cats+CoreDataClass.swift in Sources */,
+				192E971326BE54DD00BBDF9E /* HistoryViewController.swift in Sources */,
 				191E4FB626B1908A00836145 /* CatDetailViewController.swift in Sources */,
 				F94AD29826AEF19D005686ED /* UiCustom.swift in Sources */,
 				19636ECD26AF9E4100EBD377 /* AddNewCatCollectionViewCell.swift in Sources */,
 				F995E4FE26A99E9700DA5C50 /* meng_app.xcdatamodeld in Sources */,
 				1920066D26B032BF00BAD2D0 /* CatProfileCollectionViewCell.swift in Sources */,
+				F91BC75126C9CB7F00DF1600 /* Core.swift in Sources */,
+				F92EDAF026BDD9770051B9DF /* TypeHelper.swift in Sources */,
+				F9D8588726CA818E000E85BD /* Activity+CoreDataClass.swift in Sources */,
+				0799D24526BED4E500511015 /* ActivitiesCVC.swift in Sources */,
+				0799D24826BEF43100511015 /* ActivitiesTypeStruct.swift in Sources */,
+				077B96EC26C012A000117F67 /* ActivitiesCatModel.swift in Sources */,
+				F9D8588826CA818E000E85BD /* Activity+CoreDataProperties.swift in Sources */,
 				F97787E226B43CB300F4CD01 /* CalendarHelper.swift in Sources */,
 				F9CAC8A626B2DF1800D46ED8 /* CalendarCollectionViewController.swift in Sources */,
+				0799D24126BED46A00511015 /* ActivitiesTVC.swift in Sources */,
 				F995E4F826A99E9700DA5C50 /* ViewController.swift in Sources */,
 				F9DF6C6C26B7488900DCF044 /* ActivityDetailViewController.swift in Sources */,
+				19F6644E26D4AEE800E37FA2 /* SearchHelper.swift in Sources */,
 				03437BBB26B25CB40070BF1E /* AddNewCatTableView.swift in Sources */,
+				19F6644C26D4A83800E37FA2 /* GroupedActivities.swift in Sources */,
 				F995E51626A9A9D000DA5C50 /* DashboardViewController.swift in Sources */,
 				1932CFD026B2494800E7FE06 /* TagsHelper.swift in Sources */,
-				F92EDAED26BDA2A30051B9DF /* Cats+CoreDataProperties.swift in Sources */,
+				F91BC74D26C9B9C100DF1600 /* OnboardingCollectionViewCell.swift in Sources */,
+				F91BC74A26C9B6A300DF1600 /* OnboardingModel.swift in Sources */,
 				F995E51B26A9AA5200DA5C50 /* DashboardCellViewController.swift in Sources */,
-				F92EDAEC26BDA2A30051B9DF /* Cats+CoreDataClass.swift in Sources */,
 				F995E4F426A99E9700DA5C50 /* AppDelegate.swift in Sources */,
-				F92EDAEB26BDA2A30051B9DF /* Activity+CoreDataProperties.swift in Sources */,
+				F950008D26C0CF08003F1B6C /* EventModel.swift in Sources */,
+				077B96F826C03E7A00117F67 /* ActivityLogActivitiesHeader.swift in Sources */,
+				F91BC74826C9AF2600DF1600 /* OnboardingViewController.swift in Sources */,
 				0747674426B253D20054D268 /* ActivityLogDatePickerHeader.swift in Sources */,
+				F92EDAF226BDDAF10051B9DF /* ReminderHelper.swift in Sources */,
 				0779832626B1B36400BFFD57 /* SelectCatViewController.swift in Sources */,
 				F995E4F626A99E9700DA5C50 /* SceneDelegate.swift in Sources */,
+				F91BC74F26C9CB5C00DF1600 /* GetStartedViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -701,6 +843,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = KBSYTU5GMJ;
 				INFOPLIST_FILE = "meng-app/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -720,6 +863,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = KBSYTU5GMJ;
 				INFOPLIST_FILE = "meng-app/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
