@@ -1,1 +1,219 @@
+//MARK: - Calendar Page
 
+"Calendar" = "Kalender";
+"Dashboard" = "Dasbor";
+"Cats" = "Kucing";
+
+"Upcoming Activities" = "Aktivitas Mendatang";
+"Recent Activities" = "Aktivitas Terbaru";
+"No recent activites yet." = "Tidak ada aktivitas terbaru.";
+
+"You don’t have any upcoming or recent activities." = "Anda tidak memiliki aktivitas yang akan datang atau terbaru.";
+"Add Activity Log" = "Tambah Log Aktivitas";
+
+//MARK: - Onboarding Page
+
+"Get Started" = "Lanjutkan";
+"Next" = "Berikutnya";
+"Skip" = "Lewati";
+
+"Welcome to Meng!" = "Selamat Datang di Meng!";
+"Your personal tracker for your cat’s activities!" = "Pelacak aktivitas personal untuk kucing anda!"; 
+"Activities Tracked!" = "Aktivitas Terlacak!";
+"Stay on track about your cat’s behavior and activities with activity log." = "Pantau perilaku dan aktivitas kucing Anda dengan catatan aktivitas.";
+
+"Manage Multiple Cats" = "Kelola Banyak Kucing";
+"Got multiple cats? No worries! Meng supports multiple cat profiles so you can log their activities altogether." = "Punya banyak kucing? Jangan khawatir! Meng mendukung beberapa profil kucing agar Anda dapat mencatat aktivitas mereka sekaligus.";
+
+"Cat’s Health First!" = "Kesehatan Kucing Utama!";
+"Add your vet number for easy access in case of emergency." = "Tambahkan nomor dokter hewan Anda untuk akses mudah dalam keadaan darurat.";
+
+//MARK: - Calendar Page
+
+"Calender" = "Kalender";
+
+"June" = "Juni";
+"SUN" = "MIN";
+"MON" = "SEN";
+"TUE" = "SEL";
+"WED" = "RAB";
+"THU" = "KAM";
+"FRI" = "JUM";
+"SAT" = "SAB";
+
+"Activities" = "Aktivitas";
+"Tap the + button to add activity log!" =
+"Tekan tombol + untuk menambah log aktivitas!";
+
+"Dashboard" = "Dasbor";
+"Cats" = "Kucing";
+
+//MARK: - Add Activity Log Page
+
+"Add Activity Log" = "Tambah Log Aktivitas";
+"Cancel" = "Batalkan";
+"Save" = "Simpan";
+
+"Select Cat" = "Pilih Kucing";
+
+"Activities" = "Aktivitas";
+"Vaccine" = "Vaksin";
+"Appointment" = "Janji temu";
+"Treatment" = "Perawatan";
+"Symptoms" = "Gejala";
+"Others" = "Lain-lain";
+
+"Title" = "Judul";
+"Details" = "Detail";
+
+"Date and Time" = "Tanggal dan Waktu";
+"Date" = "Tanggal";
+"Time" = "Waktu";
+"Jun 27, 2020" = "27 Jun 2020";
+
+"Alert" = "Peringatan";
+"Remind Me" = "Ingatkan Saya";
+"1 hour before" = "1 jam sebelumnya";
+
+//MARK: - Activity Details Page
+
+"Details" = "Detail";
+"Back" = "Kembali";
+"Edit" = "Edit";
+
+"Date and Time" = "Tanggal dan Waktu";
+"Date" = "Tanggal";
+"Time" = "Waktu";
+"Jun 27, 2020" = "27 Jun 2020";
+
+"Alert" = "Peringatan";
+"1 hour before" = "1 jam sebelumnya";
+
+//MARK: - Edit Activity Details Page
+
+"Edit Activity Details" = "Edit Detail Aktivitas";
+"Cancel" = "Batalkan";
+"Save" = "Simpan";
+
+"Select Cat" = "Pilih Kucing";
+
+"Activities" = "Aktivitas";
+"Vaccine" = "Vaksin";
+"Appointment" = "Janji temu";
+"Treatment" = "Perawatan";
+"Symptoms" = "Gejala";
+"Others" = "Lain-lain";
+
+"Title" = "Judul";
+"Details" = "Detail";
+
+"Date and Time" = "Tanggal dan Waktu";
+"Date" = "Tanggal";
+"Time" = "Waktu";
+"Jun 27, 2020" = "27 Jun 2020";
+
+"Alert" = "Peringatan";
+"Remind Me" = "Ingatkan Saya";
+"1 hour before" = "1 jam sebelumnya";
+
+"Delete Log" = "Hapus Log";
+
+//MARK: - History Details Page
+
+
+"History Details" = "Detail Riwayat";
+"Back" = "Kembali";
+"Edit" = "Edit";
+
+"Date and Time" = "Tanggal dan Waktu";
+"Date" = "Tanggal";
+"Time" = "Waktu";
+"Jun 27, 2020" = "27 Jun 2020";
+
+"Alert" = "Peringatan";
+"1 hour before" = "1 jam sebelumnya";
+
+//MARK: - Edit History Details Page
+
+
+"Edit History Details" = "Edit Detail Riwayat";
+"Cancel" = "Batalkan";
+"Save" = "Simpan";
+
+"Select Cat" = "Pilih Kucing";
+
+"Activities" = "Aktivitas";
+"Vaccine" = "Vaksin";
+"Appointment" = "Janji temu";
+"Treatment" = "Perawatan";
+"Symptoms" = "Gejala";
+"Others" = "Lain-lain";
+
+"Title" = "Judul";
+"Details" = "Detail";
+
+"Date and Time" = "Tanggal dan Waktu";
+"Date" = "Tanggal";
+"Time" = "Waktu";
+"Jun 27, 2020" = "27 Jun 2020";
+
+"Alert" = "Peringatan";
+"Remind Me" = "Ingatkan Saya";
+"1 hour before" = "1 jam sebelumnya";
+
+"Delete Log" = "Hapus Log";
+
+//MARK: - Cat Profile Page
+
+"Cat Profile" = "Profil Kucing";
+"You haven’t add any cat profile yet." = "Anda belum menambahkan profil kucing";
+"Add Cat Profile" = "Tambahkan Profil";
+"Add New Cat" = "Tambah Kucing Baru";
+"Search" = "Cari";
+
+//MARK: - Cat Detail Page
+"Edit" = "Edit";
+"Log Activity History" = "Riwayat Log Aktivitas";
+"Vet Contact" = "Kontak Dokter Hewan";
+
+//MARK: - Add Cat Profile Page
+"Add Photo" = "Tambah Foto";
+"Name" = "Nama";
+"Tags" = "Tag";
+"Gender" = "Jenis Kelamin";
+"Date of Birth" = "Tanggal Lahir";
+"Breed" = "Ras";
+"Neutered" = "Steril";
+"Weight" = "Berat";
+"Feeding" = "Makanan";
+"Medical Notes" = "Catatan Medis";
+
+//MARK: - Call Vet
+"Call" = "Panggil";
+"Text" = "Pesan";
+"Cancel" = "Batalkan";
+
+//MARK: - HISTORY
+
+"History Overview" = "Ikhtisar Riwayat";
+"You don’t have any history to show at the moment." = "Anda tidak memiliki riwayat untuk ditampilkan saat ini.";
+
+//MARK: - ADD CAT PROFILE INPUT FIELD
+
+
+"Cancel" = "Batalkan";
+"Save" = "Simpan";
+
+"Green" = "Hijau";
+"Yellow" = "Kuning";
+"Red" = "Merah";
+"Blue" = "Biru";
+"Indigo" = "Nila";
+"Purple" = "Ungu";
+"Pink" = "Merah Muda";
+"White" = "Putih";
+"Black" = "Hitam";
+"Female" = "Perempuan";
+"Male" = "Laki-Laki";
+"No" = "Tidak";
+"Yes" = "Ya";
