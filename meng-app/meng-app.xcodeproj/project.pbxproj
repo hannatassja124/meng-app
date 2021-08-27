@@ -70,12 +70,66 @@
 		F9B6086126AFEAC9005EF315 /* ActivitiesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9B6085F26AFEAC9005EF315 /* ActivitiesTableViewCell.xib */; };
 		F9CAC8A426B2A4E200D46ED8 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CAC8A326B2A4E200D46ED8 /* CalendarCell.swift */; };
 		F9CAC8A626B2DF1800D46ED8 /* CalendarCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CAC8A526B2DF1800D46ED8 /* CalendarCollectionViewController.swift */; };
+		F9D09D6F26D90F8C004CFF0A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F9D09D6E26D90F8C004CFF0A /* Assets.xcassets */; };
+		F9D09D7626D90F8D004CFF0A /* MengWatch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = F9D09D7526D90F8D004CFF0A /* MengWatch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		F9D09D7B26D90F8D004CFF0A /* meng_appApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D09D7A26D90F8D004CFF0A /* meng_appApp.swift */; };
+		F9D09D7D26D90F8D004CFF0A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D09D7C26D90F8D004CFF0A /* ContentView.swift */; };
+		F9D09D7F26D90F8D004CFF0A /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D09D7E26D90F8D004CFF0A /* NotificationController.swift */; };
+		F9D09D8126D90F8D004CFF0A /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D09D8026D90F8D004CFF0A /* NotificationView.swift */; };
+		F9D09D8326D90F8D004CFF0A /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D09D8226D90F8D004CFF0A /* ComplicationController.swift */; };
+		F9D09D8526D90F8D004CFF0A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F9D09D8426D90F8D004CFF0A /* Assets.xcassets */; };
+		F9D09D8826D90F8D004CFF0A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F9D09D8726D90F8D004CFF0A /* Preview Assets.xcassets */; };
+		F9D09D8D26D90F8D004CFF0A /* MengWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = F9D09D6C26D90F8C004CFF0A /* MengWatch.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		F9D09D9726D91013004CFF0A /* Upcoming.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D09D9626D91013004CFF0A /* Upcoming.swift */; };
+		F9D09D9926D910B0004CFF0A /* UpcomingRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D09D9826D910B0004CFF0A /* UpcomingRow.swift */; };
 		F9D8588526CA818E000E85BD /* Cats+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D8588126CA818E000E85BD /* Cats+CoreDataClass.swift */; };
 		F9D8588626CA818E000E85BD /* Cats+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D8588226CA818E000E85BD /* Cats+CoreDataProperties.swift */; };
 		F9D8588726CA818E000E85BD /* Activity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D8588326CA818E000E85BD /* Activity+CoreDataClass.swift */; };
 		F9D8588826CA818E000E85BD /* Activity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D8588426CA818E000E85BD /* Activity+CoreDataProperties.swift */; };
 		F9DF6C6C26B7488900DCF044 /* ActivityDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9DF6C6B26B7488900DCF044 /* ActivityDetailViewController.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F9D09D7726D90F8D004CFF0A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F995E4E826A99E9700DA5C50 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F9D09D7426D90F8D004CFF0A;
+			remoteInfo = "MengWatch Extension";
+		};
+		F9D09D8B26D90F8D004CFF0A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F995E4E826A99E9700DA5C50 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F9D09D6B26D90F8C004CFF0A;
+			remoteInfo = MengWatch;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F9D09D8E26D90F8D004CFF0A /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				F9D09D8D26D90F8D004CFF0A /* MengWatch.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F9D09D9126D90F8D004CFF0A /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				F9D09D7626D90F8D004CFF0A /* MengWatch Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		03274CEA26B039CE00B78A54 /* AddNewCat.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddNewCat.storyboard; sourceTree = "<group>"; };
@@ -143,6 +197,21 @@
 		F9B6085F26AFEAC9005EF315 /* ActivitiesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivitiesTableViewCell.xib; sourceTree = "<group>"; };
 		F9CAC8A326B2A4E200D46ED8 /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 		F9CAC8A526B2DF1800D46ED8 /* CalendarCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCollectionViewController.swift; sourceTree = "<group>"; };
+		F9D09D6C26D90F8C004CFF0A /* MengWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MengWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F9D09D6E26D90F8C004CFF0A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F9D09D7026D90F8C004CFF0A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F9D09D7526D90F8D004CFF0A /* MengWatch Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "MengWatch Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F9D09D7A26D90F8D004CFF0A /* meng_appApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = meng_appApp.swift; sourceTree = "<group>"; };
+		F9D09D7C26D90F8D004CFF0A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		F9D09D7E26D90F8D004CFF0A /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		F9D09D8026D90F8D004CFF0A /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
+		F9D09D8226D90F8D004CFF0A /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
+		F9D09D8426D90F8D004CFF0A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F9D09D8726D90F8D004CFF0A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		F9D09D8926D90F8D004CFF0A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F9D09D8A26D90F8D004CFF0A /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		F9D09D9626D91013004CFF0A /* Upcoming.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Upcoming.swift; sourceTree = "<group>"; };
+		F9D09D9826D910B0004CFF0A /* UpcomingRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingRow.swift; sourceTree = "<group>"; };
 		F9D8588126CA818E000E85BD /* Cats+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cats+CoreDataClass.swift"; sourceTree = "<group>"; };
 		F9D8588226CA818E000E85BD /* Cats+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cats+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		F9D8588326CA818E000E85BD /* Activity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Activity+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -152,6 +221,13 @@
 
 /* Begin PBXFrameworksBuildPhase section */
 		F995E4ED26A99E9700DA5C50 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F9D09D7226D90F8D004CFF0A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -360,6 +436,8 @@
 			isa = PBXGroup;
 			children = (
 				F995E4F226A99E9700DA5C50 /* meng-app */,
+				F9D09D6D26D90F8C004CFF0A /* MengWatch */,
+				F9D09D7926D90F8D004CFF0A /* MengWatch Extension */,
 				F995E4F126A99E9700DA5C50 /* Products */,
 				F97787DB26B4389700F4CD01 /* Recovered References */,
 			);
@@ -369,6 +447,8 @@
 			isa = PBXGroup;
 			children = (
 				F995E4F026A99E9700DA5C50 /* meng-app.app */,
+				F9D09D6C26D90F8C004CFF0A /* MengWatch.app */,
+				F9D09D7526D90F8D004CFF0A /* MengWatch Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -533,6 +613,41 @@
 			path = ActivitiesCell;
 			sourceTree = "<group>";
 		};
+		F9D09D6D26D90F8C004CFF0A /* MengWatch */ = {
+			isa = PBXGroup;
+			children = (
+				F9D09D6E26D90F8C004CFF0A /* Assets.xcassets */,
+				F9D09D7026D90F8C004CFF0A /* Info.plist */,
+			);
+			path = MengWatch;
+			sourceTree = "<group>";
+		};
+		F9D09D7926D90F8D004CFF0A /* MengWatch Extension */ = {
+			isa = PBXGroup;
+			children = (
+				F9D09D7A26D90F8D004CFF0A /* meng_appApp.swift */,
+				F9D09D7C26D90F8D004CFF0A /* ContentView.swift */,
+				F9D09D7E26D90F8D004CFF0A /* NotificationController.swift */,
+				F9D09D8026D90F8D004CFF0A /* NotificationView.swift */,
+				F9D09D8226D90F8D004CFF0A /* ComplicationController.swift */,
+				F9D09D8426D90F8D004CFF0A /* Assets.xcassets */,
+				F9D09D8926D90F8D004CFF0A /* Info.plist */,
+				F9D09D8A26D90F8D004CFF0A /* PushNotificationPayload.apns */,
+				F9D09D8626D90F8D004CFF0A /* Preview Content */,
+				F9D09D9626D91013004CFF0A /* Upcoming.swift */,
+				F9D09D9826D910B0004CFF0A /* UpcomingRow.swift */,
+			);
+			path = "MengWatch Extension";
+			sourceTree = "<group>";
+		};
+		F9D09D8626D90F8D004CFF0A /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				F9D09D8726D90F8D004CFF0A /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
 		F9D98ECF26B40C1400707871 /* CalendarCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -559,15 +674,51 @@
 				F995E4EC26A99E9700DA5C50 /* Sources */,
 				F995E4ED26A99E9700DA5C50 /* Frameworks */,
 				F995E4EE26A99E9700DA5C50 /* Resources */,
+				F9D09D8E26D90F8D004CFF0A /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				F9D09D8C26D90F8D004CFF0A /* PBXTargetDependency */,
 			);
 			name = "meng-app";
 			productName = "meng-app";
 			productReference = F995E4F026A99E9700DA5C50 /* meng-app.app */;
 			productType = "com.apple.product-type.application";
+		};
+		F9D09D6B26D90F8C004CFF0A /* MengWatch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F9D09D9526D90F8D004CFF0A /* Build configuration list for PBXNativeTarget "MengWatch" */;
+			buildPhases = (
+				F9D09D6A26D90F8C004CFF0A /* Resources */,
+				F9D09D9126D90F8D004CFF0A /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F9D09D7826D90F8D004CFF0A /* PBXTargetDependency */,
+			);
+			name = MengWatch;
+			productName = MengWatch;
+			productReference = F9D09D6C26D90F8C004CFF0A /* MengWatch.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		F9D09D7426D90F8D004CFF0A /* MengWatch Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F9D09D9426D90F8D004CFF0A /* Build configuration list for PBXNativeTarget "MengWatch Extension" */;
+			buildPhases = (
+				F9D09D7126D90F8D004CFF0A /* Sources */,
+				F9D09D7226D90F8D004CFF0A /* Frameworks */,
+				F9D09D7326D90F8D004CFF0A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "MengWatch Extension";
+			productName = "MengWatch Extension";
+			productReference = F9D09D7526D90F8D004CFF0A /* MengWatch Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -579,6 +730,12 @@
 				LastUpgradeCheck = 1250;
 				TargetAttributes = {
 					F995E4EF26A99E9700DA5C50 = {
+						CreatedOnToolsVersion = 12.5.1;
+					};
+					F9D09D6B26D90F8C004CFF0A = {
+						CreatedOnToolsVersion = 12.5.1;
+					};
+					F9D09D7426D90F8D004CFF0A = {
 						CreatedOnToolsVersion = 12.5.1;
 					};
 				};
@@ -597,6 +754,8 @@
 			projectRoot = "";
 			targets = (
 				F995E4EF26A99E9700DA5C50 /* meng-app */,
+				F9D09D6B26D90F8C004CFF0A /* MengWatch */,
+				F9D09D7426D90F8D004CFF0A /* MengWatch Extension */,
 			);
 		};
 /* End PBXProject section */
@@ -628,6 +787,23 @@
 				1920066E26B032BF00BAD2D0 /* CatProfileCollectionViewCell.xib in Resources */,
 				19636ECE26AF9E4100EBD377 /* AddNewCatCollectionViewCell.xib in Resources */,
 				F995E51C26A9AA5200DA5C50 /* DashboardCellViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F9D09D6A26D90F8C004CFF0A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F9D09D6F26D90F8C004CFF0A /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F9D09D7326D90F8D004CFF0A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F9D09D8826D90F8D004CFF0A /* Preview Assets.xcassets in Resources */,
+				F9D09D8526D90F8D004CFF0A /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -687,7 +863,34 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F9D09D7126D90F8D004CFF0A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F9D09D9926D910B0004CFF0A /* UpcomingRow.swift in Sources */,
+				F9D09D7F26D90F8D004CFF0A /* NotificationController.swift in Sources */,
+				F9D09D7D26D90F8D004CFF0A /* ContentView.swift in Sources */,
+				F9D09D8326D90F8D004CFF0A /* ComplicationController.swift in Sources */,
+				F9D09D7B26D90F8D004CFF0A /* meng_appApp.swift in Sources */,
+				F9D09D8126D90F8D004CFF0A /* NotificationView.swift in Sources */,
+				F9D09D9726D91013004CFF0A /* Upcoming.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F9D09D7826D90F8D004CFF0A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F9D09D7426D90F8D004CFF0A /* MengWatch Extension */;
+			targetProxy = F9D09D7726D90F8D004CFF0A /* PBXContainerItemProxy */;
+		};
+		F9D09D8C26D90F8D004CFF0A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F9D09D6B26D90F8C004CFF0A /* MengWatch */;
+			targetProxy = F9D09D8B26D90F8D004CFF0A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		F96BBDCE26BB31DC0065C589 /* ActivityDetail.storyboard */ = {
@@ -889,6 +1092,94 @@
 			};
 			name = Release;
 		};
+		F9D09D8F26D90F8D004CFF0A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = KBSYTU5GMJ;
+				IBSC_MODULE = MengWatch_Extension;
+				INFOPLIST_FILE = MengWatch/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.hannatassja.meng-app.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 7.4;
+			};
+			name = Debug;
+		};
+		F9D09D9026D90F8D004CFF0A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = KBSYTU5GMJ;
+				IBSC_MODULE = MengWatch_Extension;
+				INFOPLIST_FILE = MengWatch/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.hannatassja.meng-app.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 7.4;
+			};
+			name = Release;
+		};
+		F9D09D9226D90F8D004CFF0A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"MengWatch Extension/Preview Content\"";
+				DEVELOPMENT_TEAM = KBSYTU5GMJ;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "MengWatch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.hannatassja.meng-app.watchkitapp.watchkitextension";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 7.4;
+			};
+			name = Debug;
+		};
+		F9D09D9326D90F8D004CFF0A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"MengWatch Extension/Preview Content\"";
+				DEVELOPMENT_TEAM = KBSYTU5GMJ;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "MengWatch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.hannatassja.meng-app.watchkitapp.watchkitextension";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 7.4;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -906,6 +1197,24 @@
 			buildConfigurations = (
 				F995E50826A99E9800DA5C50 /* Debug */,
 				F995E50926A99E9800DA5C50 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F9D09D9426D90F8D004CFF0A /* Build configuration list for PBXNativeTarget "MengWatch Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F9D09D9226D90F8D004CFF0A /* Debug */,
+				F9D09D9326D90F8D004CFF0A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F9D09D9526D90F8D004CFF0A /* Build configuration list for PBXNativeTarget "MengWatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F9D09D8F26D90F8D004CFF0A /* Debug */,
+				F9D09D9026D90F8D004CFF0A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
