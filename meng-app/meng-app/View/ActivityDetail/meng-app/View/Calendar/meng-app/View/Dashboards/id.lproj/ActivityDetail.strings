@@ -1,0 +1,27 @@
+
+/* Class = "UILabel"; text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "; ObjectID = "7bM-Sx-C9A"; */
+"7bM-Sx-C9A.text" = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ";
+
+/* Class = "UILabel"; text = "Monthly Checkup"; ObjectID = "CDR-4B-vjc"; */
+"CDR-4B-vjc.text" = "Monthly Checkup";
+
+/* Class = "UILabel"; text = "Detail"; ObjectID = "E5N-Ca-FuE"; */
+"E5N-Ca-FuE.text" = "Detail";
+
+/* Class = "UINavigationItem"; title = "Details"; ObjectID = "UfC-hl-FSm"; */
+"UfC-hl-FSm.title" = "Details";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "Uw5-cv-ewZ"; */
+"Uw5-cv-ewZ.text" = "Title";
+
+/* Class = "UILabel"; text = "Date & Time"; ObjectID = "cEB-kK-h55"; */
+"cEB-kK-h55.text" = "Date & Time";
+
+/* Class = "UIBarButtonItem"; title = "Back"; ObjectID = "p5m-cR-4hb"; */
+"p5m-cR-4hb.title" = "Back";
+
+/* Class = "UIBarButtonItem"; title = "Edit"; ObjectID = "piQ-pl-WBm"; */
+"piQ-pl-WBm.title" = "Edit";
+
+/* Class = "UILabel"; text = "Kaspar"; ObjectID = "ug6-Oe-aWP"; */
+"ug6-Oe-aWP.text" = "Kaspar";
