@@ -14,50 +14,43 @@ protocol parentDelegate: AnyObject {
 
 class CalendarViewController: UIViewController {
 
-    let activitiesCellId = "ActivitiesTableViewCell"
-
+    // MARK: - Outlets
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var calendarUIView: UIView!
+    
+    // MARK: - Delegate
+    
+    weak var delegate: parentDelegate? = nil
 
+    // MARK: - Variables
+    
+    let activitiesCellId = "ActivitiesTableViewCell"
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var activities = [Activity()]
     var cats = [Cats()]
     let calendar = Calendar.current
     let dateFormatter = DateFormatter()
     
-    weak var delegate: parentDelegate? = nil
-    
     // MARK: - Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
-        self.tableView.register(UINib.init(nibName: activitiesCellId, bundle: nil), forCellReuseIdentifier: activitiesCellId)
-        tableView.separatorColor =  .clear
-        tableView.backgroundColor = .clear
-        
-        //save()
-        
+        initView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let year = calendar.component(.year, from: Date())
-        let month = calendar.component(.month, from: Date())
-        let day = calendar.component(.day, from: Date())
-        
-        let combinedDate = "\(year)-\(month)-\(day) 00:00:00 +0700"
-        
-        dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss Z"
-        
-        retrieveData(activityDate: dateFormatter.date(from: combinedDate)!)
+        retrieveData(activityDate: CalendarHelper().formatDate())
     }
     
     override func viewDidLayoutSubviews() {
-        
         if Core.shared.isNewUser(){
             let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
-            let vc = storyboard.instantiateViewController(identifier: "getStartedStoryboard") as! GetStartedViewController
+            
+            guard let vc = storyboard.instantiateViewController(identifier: "getStartedStoryboard") as? GetStartedViewController else {
+                fatalError("no vc")
+            }
             vc.modalPresentationStyle =  .fullScreen
             present(vc, animated: true)
         }
@@ -74,75 +67,43 @@ class CalendarViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "activityLogSegue" {
-            let vc = segue.destination as! UINavigationController
-            let target = vc.topViewController as! ActivityLogTableViewController
             
-            let year = calendar.component(.year, from: Date())
-            let month = calendar.component(.month, from: Date())
-            let day = calendar.component(.day, from: Date())
-            let combinedDate = "\(year)-\(month)-\(day) 00:00:00 +0700"
-            dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss Z"
+            guard let vc = segue.destination as? UINavigationController else {
+                fatalError("no vc")
+            }
+            
+            guard let target = vc.topViewController as? ActivityLogTableViewController else {
+                fatalError("no target")
+            }
             
             target.onViewWillDisappear = {
-                //self.delegate?.setMark()
                 objchildVc.setMark()
-                self.retrieveData(activityDate: self.dateFormatter.date(from: combinedDate)!)
+                self.retrieveData(activityDate: CalendarHelper().formatDate())
             }
         }
     }
     
     // MARK: - Function
     
+    func initView(){
+        self.tableView.register(UINib.init(nibName: activitiesCellId, bundle: nil), forCellReuseIdentifier: activitiesCellId)
+        self.tableView.separatorColor = .clear
+        self.tableView.backgroundColor = .clear
+    }
+    
     func retrieveData(activityDate : Date) {
         do {
-            print("retrieve data")
-            
             let fr: NSFetchRequest<Activity>
             fr = Activity.fetchRequest()
             print()
             fr.predicate = NSPredicate(format: "activityDateTime >= %@ && activityDateTime <= %@", activityDate as CVarArg, activityDate+86400 as CVarArg)
-            
             activities = try context.fetch(fr)
-            print("jumlah", activities.count)
-            
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
         } catch {
             print("error")
         }
-        
-    }
-    
-    func save() {
-
-        let activity = Activity(context: context)
-        activity.activityTitle = "Test"
-        activity.activityDateTime = Date()
-        activity.activityDetail = "Help"
-        activity.activityType = "1"
-        activity.activityReminder = 60
-        
-        
-        let cats = Cats(context: context)
-        cats.name = "Tulul"
-        cats.colorTags = 1
-        
-        activity.addToCats(cats)
-        
-        
-        do {
-            try context.save()
-        } catch {
-            print("error")
-        }
-        
-    }
-    
-    // MARK: calendar - ACTION
-    
-    @IBAction func addActivityPage(_ sender: Any) {
-        
     }
 
 }
@@ -156,101 +117,26 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
         } else {
             self.tableView.restore()
         }
-        
         return self.activities.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: activitiesCellId, for: indexPath) as! ActivitiesTableViewCell
-        
-        let data = activities[indexPath.row]
-        
-        dateFormatter.dateFormat = "hh:mm a"
-        
-        //catname
-        
-        //let cats = data.cats as! Set<Cats>
-        
-//        let name = data.cats!.value(forKey: "name") //NSSet
-//        let catName = (name as AnyObject).allObjects //Swift Array
-//
-//        //color tag
-//        let color = data.cats!.value(forKey: "colorTags") //NSSet
-//        let colorTag = (color as AnyObject).allObjects //Swift Array
-        
-//        print("cats", cats.filter({$0.isNeutered == true}))
-        
-        if let catName = data.cats!.allObjects as? [Cats], !catName.isEmpty{
-            cell.activitiesColorTagImage.tintColor = TagsHelper.checkColor(tagsNumber: catName[0].colorTags)
-            cell.activityCatNameLabel.text = "\(catName[0].name ?? "no cat name")"
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: activitiesCellId, for: indexPath) as? ActivitiesTableViewCell else {
+            fatalError("no cell")
         }
-        
-        cell.activityTitleLabel.text = data.activityTitle
-        cell.activityTimeLabel.text = dateFormatter.string(from: data.activityDateTime!)
-        //cell.activityCatNameLabel.text = "\(catDetail[0])"
-        cell.activityTypeImage.image = UIImage(named: data.activityType!)
-//        cell.activitiesColorTagImage.tintColor = TagsHelper.checkColor(tagsNumber: colorTag![0] as! Int16)
-        
-        cell.selectionStyle = .none
-        
+        cell.object = activities[indexPath.row]
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "ActivityDetail", bundle: nil)
-       
-        let vc = storyboard.instantiateViewController(withIdentifier: "ActivityDetailStoryboard") as! ActivityDetailViewController
-        
+        guard let vc = storyboard.instantiateViewController(withIdentifier: "ActivityDetailStoryboard") as? ActivityDetailViewController else {
+            fatalError("no vc")
+        }
         vc.details =  activities[indexPath.row]
-        
         let nc = UINavigationController(rootViewController: vc)
-        nc.navigationBar.isTranslucent = false
-        nc.navigationBar.barTintColor = #colorLiteral(red: 0.1036602035, green: 0.2654651999, blue: 0.3154058456, alpha: 1)
-        nc.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.init(cgColor: #colorLiteral(red: 0.9914727807, green: 0.9720076919, blue: 0.9678100944, alpha: 1))]
-        
-        
+        nc.setNav(root: nc)
         self.present(nc, animated: true, completion: nil)
-        
     }
     
-}
-
-extension UITableView {
-    
-    
-    func setEmptyMessage(_ message: String) {
-        
-        let messageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.bounds.size.width, height: self.bounds.size.height))
-        messageLabel.text = message
-        messageLabel.textColor = #colorLiteral(red: 0.108859323, green: 0.3016951084, blue: 0.3573893309, alpha: 0.4)
-        messageLabel.numberOfLines = 0
-        messageLabel.textAlignment = .center
-        messageLabel.font = UIFont.systemFont(ofSize: 13.0)
-        messageLabel.sizeToFit()
-
-        //self.backgroundView?.addSubview(messageLabel)
-        self.backgroundView = messageLabel
-        self.separatorStyle = .none
-        
-        var bgImage: UIImageView?
-        let image: UIImage = UIImage(named: "Meng-3")!
-        bgImage = UIImageView(image: image)
-        bgImage!.frame = CGRect(x: 95, y: 12, width: 160, height: 100)
-        //bgImage?.center = self.backgroundView!.center
-        
-        
-        self.backgroundView?.addSubview(bgImage!)
-        
-        let constraints = [
-            bgImage!.centerXAnchor.constraint(equalTo: superview!.centerXAnchor),
-            bgImage!.centerYAnchor.constraint(equalTo: superview!.centerYAnchor)
-        ]
-        
-        NSLayoutConstraint.activate(constraints)
-    }
-
-    func restore() {
-        self.backgroundView = nil
-        self.separatorStyle = .singleLine
-    }
 }

@@ -10,33 +10,39 @@ import CoreData
 
 var objchildVc = CalendarCollectionViewController()
 
-class CalendarCollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, parentDelegate {
+class CalendarCollectionViewController: UIViewController, parentDelegate {
+    
+    // MARK: - Outlet
     
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    // MARK: - Variables
     
     var selectedDate = Date()
     var totalSquares = [String]()
     let calendar = Calendar.current
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var activities = [Activity()]
-    //var activityModel = Set<String>()
     var activityModel = [String]()
     var arrayActivityHasEvent = 0
     var selectedIndex = Int()
+    
+    // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setCellsView()
         setMonthView()
-        
         retrieveData()
-        print(activityModel)
     }
+    
+    // MARK: - Function
     
     func retrieveData() {
         do {
             activities = try context.fetch(Activity.fetchRequest())
+            
             let monthFilter = activities.filter(){$0.activityDateTime!.month == selectedDate.month}
             if monthFilter.count != 0 {
                 let dateFormater = DateFormatter()
@@ -46,11 +52,10 @@ class CalendarCollectionViewController: UIViewController, UICollectionViewDelega
                     activityModel.append("\(numberInInt ?? 0)")
                 }
                 arrayActivityHasEvent = activityModel.count
-                print("count", arrayActivityHasEvent)
             }
             
             DispatchQueue.main.async {
-                self.collectionView.reloadData()
+                self.collectionView?.reloadData()
             }
             
         } catch {
@@ -63,7 +68,9 @@ class CalendarCollectionViewController: UIViewController, UICollectionViewDelega
         let width = (collectionView.frame.size.width - 2)/8
         let heigth = (collectionView.frame.size.height - 2)/8
         
-        let flowLayout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        guard let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout else {
+            fatalError("no flow layout")
+        }
         flowLayout.itemSize = CGSize(width: width, height: heigth)
     }
     
@@ -89,28 +96,51 @@ class CalendarCollectionViewController: UIViewController, UICollectionViewDelega
             }
             count += 1
         }
-        print("nil", selectedDate)
-        monthLabel.text = CalendarHelper().monthString(date: selectedDate)
+
+        monthLabel?.text = CalendarHelper().monthString(date: selectedDate)
             + " " + CalendarHelper().yearString(date: selectedDate)
-        collectionView.reloadData()
+        collectionView?.reloadData()
     }
     
     func setMark(){
-        //selectedDate = Date()
         activityModel.removeAll()
         setMonthView()
         retrieveData()
     }
+    
+    // MARK: - Action
+    
+    @IBAction func previousMonth(_ sender: Any) {
+        selectedDate = CalendarHelper().minusMonth(date: selectedDate)
+        setMark()
+    }
+    
+    @IBAction func nextMonth(_ sender: Any) {
+        selectedDate = CalendarHelper().plusMonth(date: selectedDate)
+        setMark()
+    }
+    
+    override open var shouldAutorotate: Bool
+    {
+        return false
+    }
+
+}
+
+// MARK: - Delegate & Data Source
+
+extension CalendarCollectionViewController:  UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         totalSquares.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "calCell", for: indexPath) as! CalendarCell
-        
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "calCell", for: indexPath) as? CalendarCell else {
+            fatalError("no cell")
+        }
         cell.dayOfMonth.text = totalSquares[indexPath.item]
-
+        
         let defaultDate = "\(calendar.component(.day, from: selectedDate))"
 
         if totalSquares[indexPath.item] ==  defaultDate {
@@ -120,7 +150,6 @@ class CalendarCollectionViewController: UIViewController, UICollectionViewDelega
         
         cell.markImage.isHidden = true
         if activityModel.contains(totalSquares[indexPath.item]){
-            print("total", totalSquares[indexPath.item])
             cell.markImage.isHidden = false
         }
         
@@ -132,54 +161,21 @@ class CalendarCollectionViewController: UIViewController, UICollectionViewDelega
         return cell
     }
     
-    @IBAction func previousMonth(_ sender: Any) {
-        selectedDate = CalendarHelper().minusMonth(date: selectedDate)
-        setMark()
-    }
-    
-    
-    @IBAction func nextMonth(_ sender: Any) {
-        selectedDate = CalendarHelper().plusMonth(date: selectedDate)
-        setMark()
-    }
-    
-    override open var shouldAutorotate: Bool
-    {
-            return false
-    }
-
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
         let selectedDateCell = CalendarHelper().yearString(date: selectedDate) + "-" + CalendarHelper().monthNumber(date: selectedDate) + "-" + totalSquares[indexPath.item] + " 00:00:00 +0700"
-        
-        
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss Z"
+        guard let vc = parent as? CalendarViewController else {
+            fatalError("no vc")
+        }
         
-        let vc = parent as! CalendarViewController
-        print("selected date", dateFormatter.date(from: selectedDateCell)!)
-        vc.retrieveData(activityDate: dateFormatter.date(from: selectedDateCell)!)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        if let selectDate = dateFormatter.date(from: selectedDateCell) {
+            vc.retrieveData(activityDate: selectDate)
+        }
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         collectionView.allowsMultipleSelection = false
         return 1
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-
-    }
-    
-}
-
-extension Date {
-    var month: Int {
-        return NSCalendar(calendarIdentifier: NSCalendar.Identifier.gregorian)!.component(.month, from: self as Date)
-    }
-    var year: Int {
-        return NSCalendar(calendarIdentifier: NSCalendar.Identifier.gregorian)!.component(.year, from: self as Date)
     }
 }

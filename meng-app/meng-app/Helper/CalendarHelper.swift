@@ -65,4 +65,18 @@ class CalendarHelper {
         return components.weekday! - 1
     }
     
+    func formatDate() -> Date {
+        let year = calendar.component(.year, from: Date())
+        let month = calendar.component(.month, from: Date())
+        let day = calendar.component(.day, from: Date())
+        
+        let dateFormatter = DateFormatter()
+        
+        let combinedDate = "\(year)-\(month)-\(day) 00:00:00 +0700"
+        
+        dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss Z"
+        
+        return dateFormatter.date(from: combinedDate)!
+    }
+    
 }

@@ -9,9 +9,6 @@
 //Delete
 //Reminder Switch to hide Reminder Cell & NOT save data
 
-//NEW STUFF
-//Lines: 17 71 78 151 458
-
 import UIKit
 
 protocol ActivityLogTableViewProtocol: AnyObject {
@@ -107,7 +104,6 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
         self.tableView.register(UINib(nibName: "ActivityLogActivitiesHeader", bundle: nil), forHeaderFooterViewReuseIdentifier: "ActivityLogActivitiesHeader")
         self.tableView.register(UINib(nibName: "ActivityLogDateTimeHeader", bundle: nil), forHeaderFooterViewReuseIdentifier: "ActivityLogDateTimeHeader")
         ViewReminderBackground.layer.cornerRadius = 8
-        DismissKeyboard()
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -153,10 +149,15 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
 //MARK: - Button Functions
     @IBAction func SaveButtonAction(_ sender: Any) {
         EmptyCheck()
-        if (EmptyState == false) {
+        if (EmptyState == false && EditedActivity == nil) {
             SaveActivityLog()
-            onViewWillDisappear!()
+            onViewWillDisappear?()
             self.dismiss(animated: true, completion: nil)
+        }
+        else if (EmptyState == false && EditedActivity != nil){
+            SaveActivityLog()
+            onViewWillDisappear?()
+            self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
         }
         EmptyState = false
     }
@@ -172,12 +173,6 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
         alert.addAction(DeleteAction)
         alert.addAction(CancelAction)
         self.present(alert, animated: true, completion: nil)
-    }
-    
-//MARK: - Dismiss Keyboard
-    func DismissKeyboard() {
-        let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
-                view.addGestureRecognizer(tap)
     }
     
 
@@ -484,7 +479,8 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
             try context.save()
             DispatchQueue.main.async {
                 self.Delegate?.backToRoot()
-                self.dismiss(animated: true, completion: nil)
+                self.onViewWillDisappear?()
+                self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
             }
         }
         catch{
@@ -699,3 +695,9 @@ extension ActivityLogTableViewController: ActivityLogDatePickerHeaderProtocol {
         SwitchActual.isOn = ReminderToggled //doesnt do anything
     }
 }
+
+//extension ActivityLogTableViewController: UITextFieldDelegate {
+//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//        <#code#>
+//    }
+//}

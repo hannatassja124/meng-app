@@ -16,6 +16,12 @@ class ActivitiesTableViewCell: UITableViewCell {
     @IBOutlet weak var activitiesColorTagImage: UIImageView!
     @IBOutlet weak var backgroundCell: UIView!
     
+    var objDashboard: Activity? {
+        didSet {
+            cellConfigDashboard()
+        }
+    }
+    
     var object: Activity? {
         didSet {
             cellConfig()
@@ -24,42 +30,51 @@ class ActivitiesTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
     func cellConfig() {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MMM dd yyyy, hh:mm a"
+        dateFormatter.dateFormat = "hh:mm a"
 
         guard let obj = object else { return }
-//        let name = obj.cats?.value(forKey: "name")
-////        let name = object.cats.value(forKey: "name") //NSSet
-//        let catName = (name as AnyObject).allObjects //Swift Array
-//
-//        //color tag
-//        let color = obj.cats?.value(forKey: "colorTags") //NSSet
-//        let colorTag = (color as AnyObject).allObjects //Swift Array
 
-        
         if let catName = obj.cats!.allObjects as? [Cats], !catName.isEmpty{
             activitiesColorTagImage.tintColor = TagsHelper.checkColor(tagsNumber: catName[0].colorTags)
             activityCatNameLabel.text = "\(catName[0].name ?? "no cat name")"
         }
         
+        activityTitleLabel.text = obj.activityTitle
+        if let time =  obj.activityDateTime {
+            activityTimeLabel.text = dateFormatter.string(from: time)
+        }
+        if let image = obj.activityType {
+            activityTypeImage.image = UIImage(named: image)
+        }
+        selectionStyle = .none
+    }
+    
+    func cellConfigDashboard() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM dd yyyy, hh:mm a"
+
+        guard let obj = objDashboard else { return }
+    
+        if let catName = obj.cats!.allObjects as? [Cats], !catName.isEmpty{
+            activitiesColorTagImage.tintColor = TagsHelper.checkColor(tagsNumber: catName[0].colorTags)
+            activityCatNameLabel.text = "\(catName[0].name ?? "no cat name")"
+        }
         
         activityTitleLabel.text = obj.activityTitle
-        activityTimeLabel.text = dateFormatter.string(from: obj.activityDateTime ?? Date())
-        
-//        activityCatNameLabel.text = "\(catName?[0] ?? "")"
-        activityTypeImage.image = UIImage(named: obj.activityType!)
-//        activitiesColorTagImage.tintColor = TagsHelper.checkColor(tagsNumber: colorTag![0] as! Int16)
+        if let time =  obj.activityDateTime {
+            activityTimeLabel.text = dateFormatter.string(from: time)
+        }
+        if let image = obj.activityType {
+            activityTypeImage.image = UIImage(named: image)
+        }
         selectionStyle = .none
     }
 }

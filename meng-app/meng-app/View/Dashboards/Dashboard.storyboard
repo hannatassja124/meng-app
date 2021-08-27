@@ -44,7 +44,6 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="moveToPageAddActivity:" destination="AgL-KO-Cl6" eventType="touchUpInside" id="YAX-4X-s8C"/>
                                     <segue destination="Mgn-vv-Wah" kind="presentation" identifier="activityLogSegue" id="WrQ-z0-5X6"/>
                                 </connections>
                             </button>
