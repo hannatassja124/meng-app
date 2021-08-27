@@ -75,6 +75,7 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
 //MARK: - ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
+        overrideUserInterfaceStyle = .dark
         
         retrieveData()
         
@@ -82,6 +83,9 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
         DatePickerDateDisplay()
         //DatePickerTime.textColor = .white //Doesn't work
         //DatePickerTime.tintColor = .yellow //this works though; only on Highlight
+        
+        TextFieldTitle.delegate = self
+        TextFieldDetails.delegate = self
         
         LoadExistingData()
         
@@ -419,7 +423,7 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
             guard let cat = EditedActivity?.cats?.allObjects as? [Cats] else {
                 return
             }
-            
+            selectedCatIndex = cat.count-1 //NEED THE INDEX
             LabelCat.text = cat[cat.count - 1].name
             ImageCatColour.tintColor = TagsHelper.checkColor(tagsNumber: cat[cat.count - 1].colorTags)
             
@@ -693,6 +697,20 @@ extension ActivityLogTableViewController: ActivityLogDatePickerHeaderProtocol {
         
         //To retain SwitchActual.isOn state on reload
         SwitchActual.isOn = ReminderToggled //doesnt do anything
+    }
+}
+
+
+//MARK: - Keyboard Dismiss
+extension ActivityLogTableViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == TextFieldTitle {
+            textField.resignFirstResponder()
+        }
+        else if textField == TextFieldDetails {
+            textField.resignFirstResponder()
+        }
+        return true
     }
 }
 
