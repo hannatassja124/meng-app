@@ -10,6 +10,7 @@ import SwiftUI
 @main
 struct meng_appApp: App {
     @SceneBuilder var body: some Scene {
+        
         WindowGroup {
             NavigationView {
                 ContentView()
