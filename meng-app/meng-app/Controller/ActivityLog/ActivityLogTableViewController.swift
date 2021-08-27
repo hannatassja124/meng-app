@@ -9,9 +9,6 @@
 //Delete
 //Reminder Switch to hide Reminder Cell & NOT save data
 
-//NEW STUFF
-//Lines: 17 71 78 151 458
-
 import UIKit
 
 protocol ActivityLogTableViewProtocol: AnyObject {
