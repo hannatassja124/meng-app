@@ -154,7 +154,8 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
         EmptyCheck()
         if (EmptyState == false) {
             SaveActivityLog()
-            onViewWillDisappear!()
+            onViewWillDisappear?()
+            self.dismiss(animated: true, completion: nil)
             self.dismiss(animated: true, completion: nil)
         }
         EmptyState = false
@@ -477,6 +478,7 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
             try context.save()
             DispatchQueue.main.async {
                 self.Delegate?.backToRoot()
+                self.dismiss(animated: true, completion: nil)
                 self.dismiss(animated: true, completion: nil)
             }
         }
