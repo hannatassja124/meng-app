@@ -107,7 +107,6 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
         self.tableView.register(UINib(nibName: "ActivityLogActivitiesHeader", bundle: nil), forHeaderFooterViewReuseIdentifier: "ActivityLogActivitiesHeader")
         self.tableView.register(UINib(nibName: "ActivityLogDateTimeHeader", bundle: nil), forHeaderFooterViewReuseIdentifier: "ActivityLogDateTimeHeader")
         ViewReminderBackground.layer.cornerRadius = 8
-        DismissKeyboard()
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -155,7 +154,8 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
         EmptyCheck()
         if (EmptyState == false) {
             SaveActivityLog()
-            onViewWillDisappear!()
+            onViewWillDisappear?()
+            self.dismiss(animated: true, completion: nil)
             self.dismiss(animated: true, completion: nil)
         }
         EmptyState = false
@@ -172,12 +172,6 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
         alert.addAction(DeleteAction)
         alert.addAction(CancelAction)
         self.present(alert, animated: true, completion: nil)
-    }
-    
-//MARK: - Dismiss Keyboard
-    func DismissKeyboard() {
-        let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
-                view.addGestureRecognizer(tap)
     }
     
 
@@ -485,6 +479,7 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
             DispatchQueue.main.async {
                 self.Delegate?.backToRoot()
                 self.dismiss(animated: true, completion: nil)
+                self.dismiss(animated: true, completion: nil)
             }
         }
         catch{
@@ -699,3 +694,9 @@ extension ActivityLogTableViewController: ActivityLogDatePickerHeaderProtocol {
         SwitchActual.isOn = ReminderToggled //doesnt do anything
     }
 }
+
+//extension ActivityLogTableViewController: UITextFieldDelegate {
+//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//        <#code#>
+//    }
+//}
