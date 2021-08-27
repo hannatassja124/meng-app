@@ -12,6 +12,7 @@ class CalendarCell: UICollectionViewCell {
     
     
     @IBOutlet weak var dayOfMonth: UILabel!
+    @IBOutlet weak var markImage: UIImageView!
     
     var dateIsHaveEvent: Bool? {
         didSet {
@@ -30,6 +31,10 @@ class CalendarCell: UICollectionViewCell {
         guard let object = dateIsHaveEvent else { return }
         self.contentView.backgroundColor = object ? #colorLiteral(red: 0.9946215749, green: 0.5330578685, blue: 0.5085751414, alpha: 1) : UIColor.clear
         dayOfMonth.textColor = object ? UIColor.white : UIColor.black
+    }
+    
+    func setMark(){
+        
     }
     
 //    var isSetDate: Bool {
