@@ -51,24 +51,19 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
     
 //MARK: - Variables
     var RemindBeforeData:[String] = [String]()
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var EditedActivity:Activity? = nil
     let dateFormatTemp =  "MMMM dd, yyyy"
     var ReminderChosen: Int64 = 0
     var SelectedActivitiesIndex: Int = -1
     var ActivityList = [ActivitiesTypeStruct(name: "Vaccine", iconName: "Vaccine"), ActivitiesTypeStruct(name: "Appointment", iconName: "Appointment"), ActivitiesTypeStruct(name: "Treatment", iconName: "Treatment"), ActivitiesTypeStruct(name: "Symptoms", iconName: "Symptoms"), ActivitiesTypeStruct(name: "Others", iconName: "Others")]
-    var selectedCat = [CatData]()
-    var cats = [Cats]()
-    var selectedCatIndex: Int = -1
-    //var previouslySelectedCatIndex: Int = -1  //unused?
     var dateFormatter = DateFormatter()
     let calendar = Calendar.current
-    //var SaveSuccess = false   //unused?
     var onViewWillDisappear: (()->())?
     var EmptyState = false
     weak var Delegate: ActivityLogTableViewProtocol?
     var ReminderToggled = false
-
+    var chosenCat: Cats? = nil
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
     
 
@@ -76,8 +71,6 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         overrideUserInterfaceStyle = .dark
-        
-        retrieveData()
         
         PickerReminderFill()
         DatePickerDateDisplay()
@@ -120,31 +113,23 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
 //Selected Cat Refresh after Data Pass from Modal
     
     func SelectedCatRefresh() {
-        LabelCat.text = selectedCat[selectedCatIndex].cat.name!
-        ImageCatColour.tintColor = TagsHelper.checkColor(tagsNumber: selectedCat[selectedCatIndex].cat.colorTags)
+        if let data = chosenCat{
+            LabelCat.text = data.name!
+            ImageCatColour.tintColor = TagsHelper.checkColor(tagsNumber: data.colorTags)
+        }
     }
     
-    private func retrieveData(){
-        do {
-            cats = try context.fetch(Cats.fetchRequest())
-        } catch {
-            //error
-            print("Error when retrieving data from CoreData")
-        }
-        for cat in cats {
-            selectedCat.append(CatData(cat: cat))
-        }
-    }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let SelectCatModal = segue.destination as! SelectCatViewController
-        SelectCatModal.selectedCat = selectedCat
-        SelectCatModal.onCatSelectedModal = {(index:Int) -> Void in
-            self.selectedCat[index].isSelected = !self.selectedCat[index].isSelected
-            if self.selectedCatIndex != index && self.selectedCatIndex != -1 {
-                self.selectedCat[self.selectedCatIndex].isSelected = false
-            }
-            self.selectedCatIndex = index
+        SelectCatModal.onCatSelectedModal = {(catSelected: Cats) -> Void in
+//            self.selectedCat[index].isSelected = !self.selectedCat[index].isSelected
+//            if self.selectedCatIndex != index && self.selectedCatIndex != -1 {
+//                self.selectedCat[self.selectedCatIndex].isSelected = false
+//            }
+//            self.selectedCatIndex = index
+            self.chosenCat = catSelected
             self.SelectedCatRefresh()
         }
     }
@@ -279,7 +264,7 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
 //MARK: - Save
     //Check if Empty
     func EmptyCheck() {
-        if selectedCatIndex == -1 {
+        if chosenCat == nil {
             let Alert = UIAlertController(title: "Error", message: "Please select a Cat.", preferredStyle: .alert)
             Alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in NSLog("The \"OK\" alert occured.")}))
             self.present(Alert, animated: true, completion: nil)
@@ -311,7 +296,9 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
             let NewActivityLog = Activity(context: context)
             
             //Section 1
-            NewActivityLog.addToCats(cats[selectedCatIndex])
+            if let data = chosenCat{
+                NewActivityLog.addToCats(data)
+            }
             
             //Section 2
             if SelectedActivitiesIndex == 0 {
@@ -363,7 +350,9 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
                 return
             }
             EditedActivity?.removeFromCats(cat[cat.count - 1])
-            EditedActivity?.addToCats(cats[selectedCatIndex])
+            if let data = chosenCat{
+                EditedActivity?.addToCats(data)
+            }
             
             //Section 2
             if SelectedActivitiesIndex == 0 {
@@ -423,7 +412,7 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
             guard let cat = EditedActivity?.cats?.allObjects as? [Cats] else {
                 return
             }
-            selectedCatIndex = cat.count-1 //NEED THE INDEX
+            chosenCat = cat[cat.count - 1]
             LabelCat.text = cat[cat.count - 1].name
             ImageCatColour.tintColor = TagsHelper.checkColor(tagsNumber: cat[cat.count - 1].colorTags)
             

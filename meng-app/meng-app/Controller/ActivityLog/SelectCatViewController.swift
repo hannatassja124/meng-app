@@ -19,9 +19,9 @@ class SelectCatViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var NavBarButtonBack: UIBarButtonItem!
     @IBOutlet weak var TableView: UITableView!
     
-    var selectedCat = [CatData]()
-    var onCatSelectedModal: ((_ index:Int)-> Void)?
-
+    var onCatSelectedModal: ((_ catSelected:Cats)-> Void)?
+    var cats = [Cats]()
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
 //MARK: - NavBar
     @IBAction func BackButtonAction(_ sender: Any) {
@@ -32,10 +32,21 @@ class SelectCatViewController: UIViewController, UITableViewDelegate, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        retrieveData()
         TableView.delegate = self
         TableView.dataSource = self
 
         // Do any additional setup after loading the view.
+    }
+    
+    private func retrieveData(){
+        do {
+            cats = try context.fetch(Cats.fetchRequest())
+        } catch {
+            //error
+            print("Error when retrieving data from CoreData")
+        }
+        
     }
     
 
@@ -56,14 +67,14 @@ class SelectCatViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return selectedCat.count // Replace this with ActualDataArray.count
+        return cats.count // Replace this with ActualDataArray.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let Cell = tableView.dequeueReusableCell(withIdentifier: "SelectCatCell", for: indexPath) as! selectCatCell
         
-        Cell.labelCatName.text = selectedCat[indexPath.row].cat.name
-        Cell.imageCatColor.tintColor = TagsHelper.checkColor(tagsNumber: selectedCat[indexPath.row].cat.colorTags)
+        Cell.labelCatName.text = cats[indexPath.row].name
+        Cell.imageCatColor.tintColor = TagsHelper.checkColor(tagsNumber: cats[indexPath.row].colorTags)
         return Cell
     }
 
@@ -72,7 +83,7 @@ class SelectCatViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        self.onCatSelectedModal!(indexPath.row)
+        self.onCatSelectedModal!(cats[indexPath.row])
         self.dismiss(animated: true, completion: nil) //Dismiss Modal on Cell Click
     }
 }
