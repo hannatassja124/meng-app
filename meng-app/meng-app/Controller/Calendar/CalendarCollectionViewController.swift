@@ -55,7 +55,7 @@ class CalendarCollectionViewController: UIViewController, parentDelegate {
             }
             
             DispatchQueue.main.async {
-                self.collectionView.reloadData()
+                self.collectionView?.reloadData()
             }
             
         } catch {
@@ -97,9 +97,9 @@ class CalendarCollectionViewController: UIViewController, parentDelegate {
             count += 1
         }
 
-        monthLabel.text = CalendarHelper().monthString(date: selectedDate)
+        monthLabel?.text = CalendarHelper().monthString(date: selectedDate)
             + " " + CalendarHelper().yearString(date: selectedDate)
-        collectionView.reloadData()
+        collectionView?.reloadData()
     }
     
     func setMark(){

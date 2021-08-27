@@ -9,9 +9,6 @@
 //Delete
 //Reminder Switch to hide Reminder Cell & NOT save data
 
-//NEW STUFF
-//Lines: 17 71 78 151 458
-
 import UIKit
 
 protocol ActivityLogTableViewProtocol: AnyObject {
@@ -152,11 +149,15 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
 //MARK: - Button Functions
     @IBAction func SaveButtonAction(_ sender: Any) {
         EmptyCheck()
-        if (EmptyState == false) {
+        if (EmptyState == false && EditedActivity == nil) {
             SaveActivityLog()
             onViewWillDisappear?()
             self.dismiss(animated: true, completion: nil)
-            self.dismiss(animated: true, completion: nil)
+        }
+        else if (EmptyState == false && EditedActivity != nil){
+            SaveActivityLog()
+            onViewWillDisappear?()
+            self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
         }
         EmptyState = false
     }
@@ -478,8 +479,8 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
             try context.save()
             DispatchQueue.main.async {
                 self.Delegate?.backToRoot()
-                self.dismiss(animated: true, completion: nil)
-                self.dismiss(animated: true, completion: nil)
+                self.onViewWillDisappear?()
+                self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
             }
         }
         catch{
