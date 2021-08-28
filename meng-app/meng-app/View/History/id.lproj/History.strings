@@ -1,0 +1,9 @@
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "0hM-4c-CEM"; */
+"0hM-4c-CEM.title" = "Item";
+
+/* Class = "UINavigationItem"; title = "History Overview"; ObjectID = "4t6-F0-F2p"; */
+"4t6-F0-F2p.title" = "Ikhtisar Riwayat";
+
+/* Class = "UILabel"; text = "You don't have any history to show at the moment"; ObjectID = "DeZ-E8-Qwr"; */
+"DeZ-E8-Qwr.text" = "Anda tidak memiliki riwayat untuk ditampilkan saat ini.";
