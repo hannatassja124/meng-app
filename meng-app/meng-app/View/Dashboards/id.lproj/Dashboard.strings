@@ -1,0 +1,12 @@
+
+/* Class = "UINavigationItem"; title = "Dashboard"; ObjectID = "3gv-er-avu"; */
+"3gv-er-avu.title" = "Dashbor";
+
+/* Class = "UIButton"; normalTitle = "Add Activity Log"; ObjectID = "JQm-HJ-I57"; */
+"JQm-HJ-I57.normalTitle" = "Tambah Aktivitas";
+
+/* Class = "UITabBarItem"; title = "Dashboard"; ObjectID = "w0D-QB-2EE"; */
+"w0D-QB-2EE.title" = "Dashbor";
+
+/* Class = "UILabel"; text = "You don't have any upcoming or recent activities."; ObjectID = "wyn-dN-AXe"; */
+"wyn-dN-AXe.text" = "Anda tidak memiliki aktivitas.";
