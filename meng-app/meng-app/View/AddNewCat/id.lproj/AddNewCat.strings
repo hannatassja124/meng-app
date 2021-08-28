@@ -1,0 +1,60 @@
+
+/* Class = "UILabel"; text = "Select"; ObjectID = "1Ob-Ki-HBB"; */
+"1Ob-Ki-HBB.text" = "Pilih";
+
+/* Class = "UIButton"; normalTitle = "Add Photo"; ObjectID = "2KT-ab-ZNa"; */
+"2KT-ab-ZNa.normalTitle" = "Tambah Foto";
+
+/* Class = "UITextField"; placeholder = "Weight"; ObjectID = "4Pi-H5-CSW"; */
+"4Pi-H5-CSW.placeholder" = "Berat";
+
+/* Class = "UITextField"; placeholder = "Feeding"; ObjectID = "5SK-4b-47c"; */
+"5SK-4b-47c.placeholder" = "Pakan";
+
+/* Class = "UILabel"; text = "Select"; ObjectID = "67H-Xg-U2I"; */
+"67H-Xg-U2I.text" = "Pilih";
+
+/* Class = "UITextField"; placeholder = "Vet's Phone Number"; ObjectID = "6ME-Vg-Jip"; */
+"6ME-Vg-Jip.placeholder" = "Nomor Vet";
+
+/* Class = "UINavigationItem"; title = "Cat Profile Data"; ObjectID = "9Sy-Dm-IqM"; */
+"9Sy-Dm-IqM.title" = "Data Kucing";
+
+/* Class = "UITableViewController"; title = "AddNewCatTableViewController"; ObjectID = "C9J-F4-dVO"; */
+"C9J-F4-dVO.title" = "AddNewCatTableViewController";
+
+/* Class = "UILabel"; text = "Gender"; ObjectID = "HVD-Af-dqX"; */
+"HVD-Af-dqX.text" = "Gender";
+
+/* Class = "UIButton"; normalTitle = "Delete Profile"; ObjectID = "Mim-gd-zvE"; */
+"Mim-gd-zvE.normalTitle" = "Hapus Profil";
+
+/* Class = "UILabel"; text = "Select"; ObjectID = "X6M-o9-3kY"; */
+"X6M-o9-3kY.text" = "Pilih";
+
+/* Class = "UILabel"; text = "Neutered"; ObjectID = "XP3-T1-c1y"; */
+"XP3-T1-c1y.text" = "Neutered";
+
+/* Class = "UILabel"; text = "Select"; ObjectID = "bYk-xy-Yp1"; */
+"bYk-xy-Yp1.text" = "Pilih";
+
+/* Class = "UILabel"; text = "Tags"; ObjectID = "dMe-2i-0VR"; */
+"dMe-2i-0VR.text" = "Tags";
+
+/* Class = "UILabel"; text = "Select"; ObjectID = "jei-bE-HxZ"; */
+"jei-bE-HxZ.text" = "Pilih";
+
+/* Class = "UILabel"; text = "Kg"; ObjectID = "mqC-Dz-feA"; */
+"mqC-Dz-feA.text" = "Kg";
+
+/* Class = "UILabel"; text = "Date of Birth"; ObjectID = "oLG-aA-wdj"; */
+"oLG-aA-wdj.text" = "TTL";
+
+/* Class = "UILabel"; text = "Breed"; ObjectID = "uez-OC-fTR"; */
+"uez-OC-fTR.text" = "Ras";
+
+/* Class = "UITextField"; placeholder = "Name"; ObjectID = "x20-D8-Dga"; */
+"x20-D8-Dga.placeholder" = "Nama";
+
+/* Class = "UITextField"; placeholder = "Vet's Name"; ObjectID = "yDx-2J-P3O"; */
+"yDx-2J-P3O.placeholder" = "Nama Vet";
