@@ -3,25 +3,25 @@
 "7bM-Sx-C9A.text" = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ";
 
 /* Class = "UILabel"; text = "Monthly Checkup"; ObjectID = "CDR-4B-vjc"; */
-"CDR-4B-vjc.text" = "Monthly Checkup";
+"CDR-4B-vjc.text" = "Cek Bulanan";
 
 /* Class = "UILabel"; text = "Detail"; ObjectID = "E5N-Ca-FuE"; */
-"E5N-Ca-FuE.text" = "Detail";
+"E5N-Ca-FuE.text" = "Detil";
 
 /* Class = "UINavigationItem"; title = "Details"; ObjectID = "UfC-hl-FSm"; */
-"UfC-hl-FSm.title" = "Details";
+"UfC-hl-FSm.title" = "Detil";
 
 /* Class = "UILabel"; text = "Title"; ObjectID = "Uw5-cv-ewZ"; */
-"Uw5-cv-ewZ.text" = "Title";
+"Uw5-cv-ewZ.text" = "Judul";
 
 /* Class = "UILabel"; text = "Date & Time"; ObjectID = "cEB-kK-h55"; */
-"cEB-kK-h55.text" = "Date & Time";
+"cEB-kK-h55.text" = "Tanggal & Waktu";
 
 /* Class = "UIBarButtonItem"; title = "Back"; ObjectID = "p5m-cR-4hb"; */
-"p5m-cR-4hb.title" = "Back";
+"p5m-cR-4hb.title" = "Kembali";
 
 /* Class = "UIBarButtonItem"; title = "Edit"; ObjectID = "piQ-pl-WBm"; */
-"piQ-pl-WBm.title" = "Edit";
+"piQ-pl-WBm.title" = "Ubah";
 
 /* Class = "UILabel"; text = "Kaspar"; ObjectID = "ug6-Oe-aWP"; */
 "ug6-Oe-aWP.text" = "Kaspar";
