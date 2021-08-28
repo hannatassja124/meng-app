@@ -3,7 +3,7 @@
 "088-3c-kWx.text" = "M";
 
 /* Class = "UINavigationItem"; title = "Calendar"; ObjectID = "0fD-yZ-TW4"; */
-"0fD-yZ-TW4.title" = "Calendar";
+"0fD-yZ-TW4.title" = "Kalender";
 
 /* Class = "UILabel"; text = "T"; ObjectID = "7g4-YX-3cO"; */
 "7g4-YX-3cO.text" = "T";
@@ -24,13 +24,13 @@
 "hOA-fV-pQ0.text" = "June 2020";
 
 /* Class = "UITabBarItem"; title = "Calendar"; ObjectID = "hye-cg-AdC"; */
-"hye-cg-AdC.title" = "Calendar";
+"hye-cg-AdC.title" = "Kalender";
 
 /* Class = "UILabel"; text = "F"; ObjectID = "mUM-fj-dwW"; */
 "mUM-fj-dwW.text" = "F";
 
 /* Class = "UILabel"; text = "Activities"; ObjectID = "vdK-wn-11S"; */
-"vdK-wn-11S.text" = "Activities";
+"vdK-wn-11S.text" = "Aktivitas";
 
 /* Class = "UILabel"; text = "1"; ObjectID = "web-SZ-NhA"; */
 "web-SZ-NhA.text" = "1";
