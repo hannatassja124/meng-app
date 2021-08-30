@@ -336,7 +336,7 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
             }
             else{
                 NewActivityLog.activityReminder = self.ReminderToMinutes()
-                UserNotifInit(date: ActualDate, before: NewActivityLog.activityReminder)
+                NewActivityLog.activityNotificationId = UserNotifInit(date: ActualDate, before: NewActivityLog.activityReminder)
             }
         }
         
@@ -390,8 +390,8 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
             }
             else{
                 EditedActivity!.activityReminder = self.ReminderToMinutes()
-                //UserNotifDel()
-                UserNotifInit(date: ActualDate, before: EditedActivity!.activityReminder)
+                UserNotifDel(uuid: EditedActivity!.activityNotificationId!)
+                EditedActivity!.activityNotificationId = UserNotifInit(date: ActualDate, before: EditedActivity!.activityReminder)
             }
         }
         do {
@@ -465,6 +465,7 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
     
 //MARK: Delete
     func deleteConfirm(alertAction: UIAlertAction!) {
+        UserNotifDel(uuid: EditedActivity!.activityNotificationId!)
         context.delete(EditedActivity!) // Force Unwrapping causes crash. Happens when User DeleteButton -> Cancel -> DeleteButton -> Confirm; Thread 1: Fatal error: Unexpectedly found nil while unwrapping an Optional value.
         do {
             try context.save()
@@ -544,7 +545,7 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
     
     
 //MARK: - UserNotification
-    func UserNotifInit(date: Date, before: Int64){
+    func UserNotifInit(date: Date, before: Int64) -> UUID{
         let minutes = Int(truncatingIfNeeded: before)
         let center = UNUserNotificationCenter.current()
         center.requestAuthorization(options: [.alert, .sound]){
@@ -552,8 +553,10 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
         }
         let content = UNMutableNotificationContent()
         content.title = "Activity Reminder"
-        let DaySet = Calendar.current.dateComponents([.day], from: date)
-        let HourSet = Calendar.current.dateComponents([.hour], from: date)
+        dateFormatter.dateFormat = "dd MMM"
+        let DaySet = dateFormatter.string(from: date)//Calendar.current.dateComponents([.day], from: date)
+        dateFormatter.dateFormat = "hh:mm a"
+        let HourSet = dateFormatter.string(from: date)//Calendar.current.dateComponents([.hour], from: date)
         content.body = "You have an upcoming Activity on \(DaySet) at \(HourSet)."
         
         let dateReminder = Calendar.current.date(byAdding: .minute, value: -(minutes), to: date)! as Date
@@ -565,10 +568,14 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
         center.add(request){
             (error) in
         }
+        return UUID()
     }
     
-    func UserNotifDel(){
-        //need helpo
+
+    
+    func UserNotifDel(uuid: UUID){
+        let center = UNUserNotificationCenter.current()
+        center.removePendingNotificationRequests(withIdentifiers: [uuid.uuidString])
     }
     
     /*
