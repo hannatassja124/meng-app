@@ -4,12 +4,10 @@
 //
 //  Created by William Giovanni Kambuno on 28/07/21.
 //
-//MARK: - !!To-Do!!
-//HELPER CODE TO CLEAN THE FOLLOWING: Reminder to Minutes & Activities Type to Integer
-//Delete
-//Reminder Switch to hide Reminder Cell & NOT save data
+
 
 import UIKit
+import UserNotifications
 
 protocol ActivityLogTableViewProtocol: AnyObject {
     func backToRoot()
@@ -51,37 +49,34 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
     
 //MARK: - Variables
     var RemindBeforeData:[String] = [String]()
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var EditedActivity:Activity? = nil
     let dateFormatTemp =  "MMMM dd, yyyy"
     var ReminderChosen: Int64 = 0
     var SelectedActivitiesIndex: Int = -1
     var ActivityList = [ActivitiesTypeStruct(name: "Vaccine", iconName: "Vaccine"), ActivitiesTypeStruct(name: "Appointment", iconName: "Appointment"), ActivitiesTypeStruct(name: "Treatment", iconName: "Treatment"), ActivitiesTypeStruct(name: "Symptoms", iconName: "Symptoms"), ActivitiesTypeStruct(name: "Others", iconName: "Others")]
-    var selectedCat = [CatData]()
-    var cats = [Cats]()
-    var selectedCatIndex: Int = -1
-    //var previouslySelectedCatIndex: Int = -1  //unused?
     var dateFormatter = DateFormatter()
     let calendar = Calendar.current
-    //var SaveSuccess = false   //unused?
     var onViewWillDisappear: (()->())?
     var EmptyState = false
     weak var Delegate: ActivityLogTableViewProtocol?
     var ReminderToggled = false
-
+    var chosenCat: Cats? = nil
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
     
 
 //MARK: - ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        retrieveData()
+        overrideUserInterfaceStyle = .dark
         
         PickerReminderFill()
         DatePickerDateDisplay()
         //DatePickerTime.textColor = .white //Doesn't work
         //DatePickerTime.tintColor = .yellow //this works though; only on Highlight
+        
+        TextFieldTitle.delegate = self
+        TextFieldDetails.delegate = self
         
         LoadExistingData()
         
@@ -116,31 +111,23 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
 //Selected Cat Refresh after Data Pass from Modal
     
     func SelectedCatRefresh() {
-        LabelCat.text = selectedCat[selectedCatIndex].cat.name!
-        ImageCatColour.tintColor = TagsHelper.checkColor(tagsNumber: selectedCat[selectedCatIndex].cat.colorTags)
+        if let data = chosenCat{
+            LabelCat.text = data.name!
+            ImageCatColour.tintColor = TagsHelper.checkColor(tagsNumber: data.colorTags)
+        }
     }
     
-    private func retrieveData(){
-        do {
-            cats = try context.fetch(Cats.fetchRequest())
-        } catch {
-            //error
-            print("Error when retrieving data from CoreData")
-        }
-        for cat in cats {
-            selectedCat.append(CatData(cat: cat))
-        }
-    }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let SelectCatModal = segue.destination as! SelectCatViewController
-        SelectCatModal.selectedCat = selectedCat
-        SelectCatModal.onCatSelectedModal = {(index:Int) -> Void in
-            self.selectedCat[index].isSelected = !self.selectedCat[index].isSelected
-            if self.selectedCatIndex != index && self.selectedCatIndex != -1 {
-                self.selectedCat[self.selectedCatIndex].isSelected = false
-            }
-            self.selectedCatIndex = index
+        SelectCatModal.onCatSelectedModal = {(catSelected: Cats) -> Void in
+//            self.selectedCat[index].isSelected = !self.selectedCat[index].isSelected
+//            if self.selectedCatIndex != index && self.selectedCatIndex != -1 {
+//                self.selectedCat[self.selectedCatIndex].isSelected = false
+//            }
+//            self.selectedCatIndex = index
+            self.chosenCat = catSelected
             self.SelectedCatRefresh()
         }
     }
@@ -275,7 +262,7 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
 //MARK: - Save
     //Check if Empty
     func EmptyCheck() {
-        if selectedCatIndex == -1 {
+        if chosenCat == nil {
             let Alert = UIAlertController(title: "Error", message: "Please select a Cat.", preferredStyle: .alert)
             Alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in NSLog("The \"OK\" alert occured.")}))
             self.present(Alert, animated: true, completion: nil)
@@ -307,7 +294,9 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
             let NewActivityLog = Activity(context: context)
             
             //Section 1
-            NewActivityLog.addToCats(cats[selectedCatIndex])
+            if let data = chosenCat{
+                NewActivityLog.addToCats(data)
+            }
             
             //Section 2
             if SelectedActivitiesIndex == 0 {
@@ -335,11 +324,11 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
             let DateDay = dateFormatter.string(from: DatePickerDate.date)
             dateFormatter.dateFormat = "hh:mm:ss a Z"
             let TimeDay = dateFormatter.string(from: DatePickerTime.date)
-            let ActualDateTime = DateDay + " " + TimeDay
+            let DateTime = DateDay + " " + TimeDay
             dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss a Z"
-            let ActualActualActualDate = dateFormatter.date(from: ActualDateTime)!
+            let ActualDate = dateFormatter.date(from: DateTime)!
             
-            NewActivityLog.activityDateTime = ActualActualActualDate
+            NewActivityLog.activityDateTime = ActualDate
             
             //Section 5
             if ReminderToggled == false {
@@ -347,6 +336,7 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
             }
             else{
                 NewActivityLog.activityReminder = self.ReminderToMinutes()
+                UserNotifInit(date: ActualDate, before: NewActivityLog.activityReminder)
             }
         }
         
@@ -359,7 +349,9 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
                 return
             }
             EditedActivity?.removeFromCats(cat[cat.count - 1])
-            EditedActivity?.addToCats(cats[selectedCatIndex])
+            if let data = chosenCat{
+                EditedActivity?.addToCats(data)
+            }
             
             //Section 2
             if SelectedActivitiesIndex == 0 {
@@ -387,13 +379,10 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
             let DateDay = dateFormatter.string(from: DatePickerDate.date)
             dateFormatter.dateFormat = "hh:mm:ss a Z"
             let TimeDay = dateFormatter.string(from: DatePickerTime.date)
-            let ActualDateTime = DateDay + " " + TimeDay
-            
+            let DateTime = DateDay + " " + TimeDay
             dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss a Z"
-            
-            let ActualActualActualDate = dateFormatter.date(from: ActualDateTime)!
-            
-            EditedActivity!.activityDateTime = ActualActualActualDate
+            let ActualDate = dateFormatter.date(from: DateTime)!
+            EditedActivity!.activityDateTime = ActualDate
             
             //Section 5
             if ReminderToggled == false {
@@ -401,6 +390,8 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
             }
             else{
                 EditedActivity!.activityReminder = self.ReminderToMinutes()
+                //UserNotifDel()
+                UserNotifInit(date: ActualDate, before: EditedActivity!.activityReminder)
             }
         }
         do {
@@ -419,7 +410,7 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
             guard let cat = EditedActivity?.cats?.allObjects as? [Cats] else {
                 return
             }
-            
+            chosenCat = cat[cat.count - 1]
             LabelCat.text = cat[cat.count - 1].name
             ImageCatColour.tintColor = TagsHelper.checkColor(tagsNumber: cat[cat.count - 1].colorTags)
             
@@ -551,6 +542,35 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
             ReminderChosen = Int64(row)
         }
     
+    
+//MARK: - UserNotification
+    func UserNotifInit(date: Date, before: Int64){
+        let minutes = Int(truncatingIfNeeded: before)
+        let center = UNUserNotificationCenter.current()
+        center.requestAuthorization(options: [.alert, .sound]){
+            (granted, error) in
+        }
+        let content = UNMutableNotificationContent()
+        content.title = "Activity Reminder"
+        let DaySet = Calendar.current.dateComponents([.day], from: date)
+        let HourSet = Calendar.current.dateComponents([.hour], from: date)
+        content.body = "You have an upcoming Activity on \(DaySet) at \(HourSet)."
+        
+        let dateReminder = Calendar.current.date(byAdding: .minute, value: -(minutes), to: date)! as Date
+        print("Printing Here: \(dateReminder)")
+        let dateSet = Calendar.current.dateComponents([.year, .month, .day, . hour, .minute, .second], from: dateReminder)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateSet, repeats: false)
+        let uuidString = UUID().uuidString
+        let request = UNNotificationRequest(identifier: uuidString, content: content, trigger: trigger)
+        center.add(request){
+            (error) in
+        }
+    }
+    
+    func UserNotifDel(){
+        //need helpo
+    }
+    
     /*
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -624,19 +644,6 @@ extension ActivityLogTableViewController: UIPickerViewDataSource {
     }
 }
 
-//Doesn't work; TimePicker Idle Colour stuff
-extension UIDatePicker {
-
-var textColor: UIColor? {
-    set {
-        setValue(newValue, forKeyPath: "textColor")
-    }
-    get {
-        return value(forKeyPath: "textColor") as? UIColor
-    }
-  }
-}
-
 
 //MARK: - CollectionView Delegate/DataSource
 extension ActivityLogTableViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -678,7 +685,7 @@ extension ActivityLogTableViewController: UICollectionViewDelegate, UICollection
 extension ActivityLogTableViewController: ActivityLogDatePickerHeaderProtocol {
     func DidToggleSwitch(SwitchStatus: Int, SwitchActual: UISwitch) {
         //To retain SwitchActual.isOn state on Load (Existing Data Load ONLY)
-        SwitchActual.isOn = ReminderToggled //doesnt do anything
+        //SwitchActual.isOn = ReminderToggled //doesnt do anything
         
         if SwitchStatus == 0{
             ReminderToggled = false
@@ -692,7 +699,21 @@ extension ActivityLogTableViewController: ActivityLogDatePickerHeaderProtocol {
         })
         
         //To retain SwitchActual.isOn state on reload
-        SwitchActual.isOn = ReminderToggled //doesnt do anything
+        //SwitchActual.isOn = ReminderToggled //doesnt do anything
+    }
+}
+
+
+//MARK: - Keyboard Dismiss
+extension ActivityLogTableViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == TextFieldTitle {
+            textField.resignFirstResponder()
+        }
+        else if textField == TextFieldDetails {
+            textField.resignFirstResponder()
+        }
+        return true
     }
 }
 
