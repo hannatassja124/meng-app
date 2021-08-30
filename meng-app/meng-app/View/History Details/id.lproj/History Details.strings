@@ -1,0 +1,18 @@
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "Wed-vp-cPi"; */
+"Wed-vp-cPi.text" = "Judul";
+
+/* Class = "UILabel"; text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "; ObjectID = "aNv-U6-6Ss"; */
+"aNv-U6-6Ss.text" = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ";
+
+/* Class = "UILabel"; text = "Activity Title"; ObjectID = "dJO-ga-wAf"; */
+"dJO-ga-wAf.text" = "Judul Aktivitas";
+
+/* Class = "UILabel"; text = "Reminders"; ObjectID = "gcQ-Os-pXG"; */
+"gcQ-Os-pXG.text" = "Pengingat";
+
+/* Class = "UILabel"; text = "Detail"; ObjectID = "pRf-Pu-Fc5"; */
+"pRf-Pu-Fc5.text" = "Detil";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "pqC-q6-4Hh"; */
+"pqC-q6-4Hh.text" = "Nama";

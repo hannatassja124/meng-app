@@ -1,0 +1,33 @@
+
+/* Class = "UILabel"; text = "Log Activity History"; ObjectID = "39s-iX-c77"; */
+"39s-iX-c77.text" = "Log Aktivitas";
+
+/* Class = "UILabel"; text = "No Data"; ObjectID = "8jT-XJ-TD3"; */
+"8jT-XJ-TD3.text" = "Tidak Ada Data";
+
+/* Class = "UILabel"; text = "No Data"; ObjectID = "8zp-48-Jef"; */
+"8zp-48-Jef.text" = "Tidak Ada Data";
+
+/* Class = "UIBarButtonItem"; title = "backButton"; ObjectID = "DFu-AE-nkx"; */
+"DFu-AE-nkx.title" = "backButton";
+
+/* Class = "UILabel"; text = "Vet Name"; ObjectID = "Xb8-Ii-2Y9"; */
+"Xb8-Ii-2Y9.text" = "Nama Vey";
+
+/* Class = "UILabel"; text = "No Data"; ObjectID = "Xor-NY-c80"; */
+"Xor-NY-c80.text" = "Tidak Ada Data";
+
+/* Class = "UILabel"; text = "vet no"; ObjectID = "arI-Tm-WlJ"; */
+"arI-Tm-WlJ.text" = "No vet";
+
+/* Class = "UIBarButtonItem"; title = "Edit"; ObjectID = "coj-NS-JW7"; */
+"coj-NS-JW7.title" = "Ubah";
+
+/* Class = "UILabel"; text = "No Data"; ObjectID = "iJB-nm-qg0"; */
+"iJB-nm-qg0.text" = "Tidak Ada Data";
+
+/* Class = "UILabel"; text = "No Data"; ObjectID = "xXi-e5-Ixo"; */
+"xXi-e5-Ixo.text" = "Tidak Ada Data";
+
+/* Class = "UILabel"; text = "Cat Name"; ObjectID = "yjW-Vm-qcA"; */
+"yjW-Vm-qcA.text" = "Nama Kucing";

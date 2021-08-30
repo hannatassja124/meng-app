@@ -17,10 +17,10 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r48-Tj-Oi0">
-                        <rect key="frame" x="47" y="128" width="82" height="64"/>
+                        <rect key="frame" x="8" y="128" width="160" height="64"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add New Cat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Zr-M7-w01">
-                                <rect key="frame" x="1" y="49" width="80" height="16"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add New Cat" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Zr-M7-w01">
+                                <rect key="frame" x="1" y="49" width="158" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="16" id="m15-ol-oc3"/>
                                 </constraints>
@@ -29,7 +29,7 @@
                                 <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plus.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="fA1-NV-h1N">
-                                <rect key="frame" x="25" y="0.33333333333333576" width="32" height="32.666666666666671"/>
+                                <rect key="frame" x="25" y="0.33333333333333576" width="110" height="32.666666666666671"/>
                                 <color key="tintColor" name="NeutralLight"/>
                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="bold"/>
                                 <userDefinedRuntimeAttributes>
@@ -41,7 +41,6 @@
                         </subviews>
                         <color key="backgroundColor" red="0.1042111292" green="0.26606833930000001" blue="0.3153784275" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="82" id="4Bx-Fj-Ru0"/>
                             <constraint firstItem="fA1-NV-h1N" firstAttribute="centerX" secondItem="r48-Tj-Oi0" secondAttribute="centerX" id="CT8-eu-W2H"/>
                             <constraint firstItem="3Zr-M7-w01" firstAttribute="leading" secondItem="r48-Tj-Oi0" secondAttribute="leading" constant="1" id="ENu-mg-1FC"/>
                             <constraint firstAttribute="bottom" secondItem="3Zr-M7-w01" secondAttribute="bottom" constant="-1" id="NQr-SQ-WAt"/>
@@ -57,7 +56,9 @@
             <color key="backgroundColor" red="0.1042111292" green="0.26606833930000001" blue="0.3153784275" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="r48-Tj-Oi0" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="cqG-tO-06O"/>
+                <constraint firstAttribute="trailing" secondItem="r48-Tj-Oi0" secondAttribute="trailing" constant="8" id="nap-Ik-8AQ"/>
                 <constraint firstItem="r48-Tj-Oi0" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="uhO-wY-jJs"/>
+                <constraint firstItem="r48-Tj-Oi0" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="zyd-Py-DRK"/>
             </constraints>
             <size key="customSize" width="195" height="352"/>
             <userDefinedRuntimeAttributes>
@@ -71,7 +72,7 @@
     <resources>
         <image name="plus.circle" catalog="system" width="128" height="121"/>
         <namedColor name="NeutralLight">
-            <color red="1" green="0.95300000905990601" blue="0.94099998474121094" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.98400002717971802" blue="0.98000001907348633" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

@@ -1,0 +1,21 @@
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "8Xi-6N-GY7"; */
+"8Xi-6N-GY7.text" = "Judul";
+
+/* Class = "UILabel"; text = "Welcome to Meng!"; ObjectID = "Mrz-V0-37w"; */
+"Mrz-V0-37w.text" = "Selamat Datamg!";
+
+/* Class = "UIButton"; normalTitle = "Get Started"; ObjectID = "QVt-Uy-cD5"; */
+"QVt-Uy-cD5.normalTitle" = "Mulai";
+
+/* Class = "UILabel"; text = "Detail"; ObjectID = "qBa-6H-Bec"; */
+"qBa-6H-Bec.text" = "Detil";
+
+/* Class = "UIButton"; normalTitle = "Skip"; ObjectID = "qSO-Zz-INI"; */
+"qSO-Zz-INI.normalTitle" = "Lewati";
+
+/* Class = "UIButton"; normalTitle = "Next"; ObjectID = "r8m-Rd-BLh"; */
+"r8m-Rd-BLh.normalTitle" = "Selanjutnya";
+
+/* Class = "UILabel"; text = "Your personal tracker for your cat’s activities!"; ObjectID = "tqA-oX-nQn"; */
+"tqA-oX-nQn.text" = "Pelacak aktivitas personal untuk kucing anda!";

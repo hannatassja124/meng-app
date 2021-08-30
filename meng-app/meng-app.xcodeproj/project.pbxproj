@@ -7,9 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		03274CEB26B039CE00B78A54 /* AddNewCat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03274CEA26B039CE00B78A54 /* AddNewCat.storyboard */; };
 		03437BBB26B25CB40070BF1E /* AddNewCatTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03437BBA26B25CB40070BF1E /* AddNewCatTableView.swift */; };
-		0378E3A426BDC128005DA330 /* History Details.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0378E3A326BDC128005DA330 /* History Details.storyboard */; };
 		073E332A26B3AF150015C24F /* ActivityLogTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073E332926B3AF150015C24F /* ActivityLogTableViewController.swift */; };
 		0747674426B253D20054D268 /* ActivityLogDatePickerHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0747674326B253D20054D268 /* ActivityLogDatePickerHeader.swift */; };
 		0747674626B253FB0054D268 /* ActivityLogDatePickerHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0747674526B253FB0054D268 /* ActivityLogDatePickerHeader.xib */; };
@@ -25,19 +23,23 @@
 		0799D24626BED4E500511015 /* ActivitiesCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0799D24426BED4E500511015 /* ActivitiesCVC.xib */; };
 		0799D24826BEF43100511015 /* ActivitiesTypeStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0799D24726BEF43100511015 /* ActivitiesTypeStruct.swift */; };
 		07D0954726B03EAE00491BD0 /* ActivityLog.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07D0954626B03EAE00491BD0 /* ActivityLog.storyboard */; };
-		191E4FB426B1907B00836145 /* CatDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 191E4FB326B1907B00836145 /* CatDetail.storyboard */; };
 		191E4FB626B1908A00836145 /* CatDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191E4FB526B1908A00836145 /* CatDetailViewController.swift */; };
 		1920066D26B032BF00BAD2D0 /* CatProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1920066B26B032BF00BAD2D0 /* CatProfileCollectionViewCell.swift */; };
 		1920066E26B032BF00BAD2D0 /* CatProfileCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1920066C26B032BF00BAD2D0 /* CatProfileCollectionViewCell.xib */; };
 		1920067126B0440900BAD2D0 /* CatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1920067026B0440900BAD2D0 /* CatsViewController.swift */; };
+		192D98F526D894830015020D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 192D98F726D894830015020D /* Localizable.strings */; };
 		192E971326BE54DD00BBDF9E /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192E971126BE54DD00BBDF9E /* HistoryViewController.swift */; };
-		192E971726BE550800BBDF9E /* History.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 192E971626BE550800BBDF9E /* History.storyboard */; };
 		1932CFD026B2494800E7FE06 /* TagsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1932CFCF26B2494800E7FE06 /* TagsHelper.swift */; };
+		19332FF726DA2752008FDECA /* AddNewCatCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19332FF926DA2752008FDECA /* AddNewCatCollectionViewCell.xib */; };
+		19332FFE26DA281F008FDECA /* AddNewCat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1933300026DA281F008FDECA /* AddNewCat.storyboard */; };
+		1933300326DA298D008FDECA /* CatDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1933300526DA298D008FDECA /* CatDetail.storyboard */; };
+		1933300826DA2A35008FDECA /* ActivitiesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1933300A26DA2A35008FDECA /* ActivitiesTableViewCell.xib */; };
+		1933300D26DA2A6F008FDECA /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1933300F26DA2A6F008FDECA /* Dashboard.storyboard */; };
+		1933301226DA2AA4008FDECA /* History.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1933301426DA2AA4008FDECA /* History.storyboard */; };
+		1933301726DA2AF9008FDECA /* History Details.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1933301926DA2AF9008FDECA /* History Details.storyboard */; };
 		19636ECD26AF9E4100EBD377 /* AddNewCatCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19636ECB26AF9E4100EBD377 /* AddNewCatCollectionViewCell.swift */; };
-		19636ECE26AF9E4100EBD377 /* AddNewCatCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19636ECC26AF9E4100EBD377 /* AddNewCatCollectionViewCell.xib */; };
 		19F6644C26D4A83800E37FA2 /* GroupedActivities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F6644B26D4A83800E37FA2 /* GroupedActivities.swift */; };
 		19F6644E26D4AEE800E37FA2 /* SearchHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F6644D26D4AEE800E37FA2 /* SearchHelper.swift */; };
-		F91BC74526C9AF0200DF1600 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F91BC74426C9AF0200DF1600 /* Onboarding.storyboard */; };
 		F91BC74826C9AF2600DF1600 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91BC74726C9AF2600DF1600 /* OnboardingViewController.swift */; };
 		F91BC74A26C9B6A300DF1600 /* OnboardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91BC74926C9B6A300DF1600 /* OnboardingModel.swift */; };
 		F91BC74D26C9B9C100DF1600 /* OnboardingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91BC74C26C9B9C100DF1600 /* OnboardingCollectionViewCell.swift */; };
@@ -63,11 +65,9 @@
 		F995E51B26A9AA5200DA5C50 /* DashboardCellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F995E51926A9AA5200DA5C50 /* DashboardCellViewController.swift */; };
 		F995E51C26A9AA5200DA5C50 /* DashboardCellViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F995E51A26A9AA5200DA5C50 /* DashboardCellViewController.xib */; };
 		F9A45AC526AD390D00B64134 /* Calendar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9A45AC326AD390D00B64134 /* Calendar.storyboard */; };
-		F9A45AC726AD392E00B64134 /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9A45AC626AD392E00B64134 /* Dashboard.storyboard */; };
 		F9A45ACA26AD393D00B64134 /* Cats.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9A45AC826AD393D00B64134 /* Cats.storyboard */; };
 		F9B6085C26AFEA2F005EF315 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B6085B26AFEA2F005EF315 /* CalendarViewController.swift */; };
 		F9B6086026AFEAC9005EF315 /* ActivitiesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B6085E26AFEAC9005EF315 /* ActivitiesTableViewCell.swift */; };
-		F9B6086126AFEAC9005EF315 /* ActivitiesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9B6085F26AFEAC9005EF315 /* ActivitiesTableViewCell.xib */; };
 		F9CAC8A426B2A4E200D46ED8 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CAC8A326B2A4E200D46ED8 /* CalendarCell.swift */; };
 		F9CAC8A626B2DF1800D46ED8 /* CalendarCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CAC8A526B2DF1800D46ED8 /* CalendarCollectionViewController.swift */; };
 		F9D09D6F26D90F8C004CFF0A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F9D09D6E26D90F8C004CFF0A /* Assets.xcassets */; };
@@ -132,9 +132,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		03274CEA26B039CE00B78A54 /* AddNewCat.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddNewCat.storyboard; sourceTree = "<group>"; };
 		03437BBA26B25CB40070BF1E /* AddNewCatTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewCatTableView.swift; sourceTree = "<group>"; };
-		0378E3A326BDC128005DA330 /* History Details.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "History Details.storyboard"; sourceTree = "<group>"; };
 		073E332926B3AF150015C24F /* ActivityLogTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityLogTableViewController.swift; sourceTree = "<group>"; };
 		0747674326B253D20054D268 /* ActivityLogDatePickerHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityLogDatePickerHeader.swift; sourceTree = "<group>"; };
 		0747674526B253FB0054D268 /* ActivityLogDatePickerHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityLogDatePickerHeader.xib; sourceTree = "<group>"; };
@@ -150,19 +148,36 @@
 		0799D24426BED4E500511015 /* ActivitiesCVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivitiesCVC.xib; sourceTree = "<group>"; };
 		0799D24726BEF43100511015 /* ActivitiesTypeStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesTypeStruct.swift; sourceTree = "<group>"; };
 		07D0954626B03EAE00491BD0 /* ActivityLog.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ActivityLog.storyboard; sourceTree = "<group>"; };
-		191E4FB326B1907B00836145 /* CatDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CatDetail.storyboard; sourceTree = "<group>"; };
 		191E4FB526B1908A00836145 /* CatDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatDetailViewController.swift; sourceTree = "<group>"; };
 		1920066B26B032BF00BAD2D0 /* CatProfileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatProfileCollectionViewCell.swift; sourceTree = "<group>"; };
 		1920066C26B032BF00BAD2D0 /* CatProfileCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CatProfileCollectionViewCell.xib; sourceTree = "<group>"; };
 		1920067026B0440900BAD2D0 /* CatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatsViewController.swift; sourceTree = "<group>"; };
+		192D98F626D894830015020D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		192D98F826D894AB0015020D /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = "meng-app/View/Calendar/meng-app/View/Dashboards/id.lproj/ActivityDetail.strings"; sourceTree = "<group>"; };
+		192D98F926D894AB0015020D /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = "meng-app/View/Dashboards/id.lproj/Calendar.strings"; sourceTree = "<group>"; };
+		192D98FA26D894AB0015020D /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = "meng-app/View/Dashboards/id.lproj/Cats.strings"; sourceTree = "<group>"; };
+		192D98FB26D894AB0015020D /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/Main.strings; sourceTree = "<group>"; };
+		192D98FC26D894AB0015020D /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		192D98FD26D894AB0015020D /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/Localizable.strings; sourceTree = "<group>"; };
 		192E971126BE54DD00BBDF9E /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
-		192E971626BE550800BBDF9E /* History.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = History.storyboard; sourceTree = "<group>"; };
 		1932CFCF26B2494800E7FE06 /* TagsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsHelper.swift; sourceTree = "<group>"; };
+		19332FF826DA2752008FDECA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AddNewCatCollectionViewCell.xib; sourceTree = "<group>"; };
+		19332FFD26DA2757008FDECA /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/AddNewCatCollectionViewCell.strings; sourceTree = "<group>"; };
+		19332FFF26DA281F008FDECA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/AddNewCat.storyboard; sourceTree = "<group>"; };
+		1933300226DA2822008FDECA /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/AddNewCat.strings; sourceTree = "<group>"; };
+		1933300426DA298D008FDECA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/CatDetail.storyboard; sourceTree = "<group>"; };
+		1933300726DA2993008FDECA /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/CatDetail.strings; sourceTree = "<group>"; };
+		1933300926DA2A35008FDECA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ActivitiesTableViewCell.xib; sourceTree = "<group>"; };
+		1933300C26DA2A38008FDECA /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/ActivitiesTableViewCell.strings; sourceTree = "<group>"; };
+		1933300E26DA2A6F008FDECA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Dashboard.storyboard; sourceTree = "<group>"; };
+		1933301126DA2A70008FDECA /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/Dashboard.strings; sourceTree = "<group>"; };
+		1933301326DA2AA4008FDECA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/History.storyboard; sourceTree = "<group>"; };
+		1933301626DA2AA6008FDECA /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/History.strings; sourceTree = "<group>"; };
+		1933301826DA2AF9008FDECA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Base.lproj/History Details.storyboard"; sourceTree = "<group>"; };
+		1933301B26DA2AFD008FDECA /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = "id.lproj/History Details.strings"; sourceTree = "<group>"; };
 		19636ECB26AF9E4100EBD377 /* AddNewCatCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewCatCollectionViewCell.swift; sourceTree = "<group>"; };
-		19636ECC26AF9E4100EBD377 /* AddNewCatCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddNewCatCollectionViewCell.xib; sourceTree = "<group>"; };
 		19F6644B26D4A83800E37FA2 /* GroupedActivities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupedActivities.swift; sourceTree = "<group>"; };
 		19F6644D26D4AEE800E37FA2 /* SearchHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHelper.swift; sourceTree = "<group>"; };
-		F91BC74426C9AF0200DF1600 /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 		F91BC74726C9AF2600DF1600 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		F91BC74926C9B6A300DF1600 /* OnboardingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingModel.swift; sourceTree = "<group>"; };
 		F91BC74C26C9B9C100DF1600 /* OnboardingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -190,11 +205,9 @@
 		F995E51926A9AA5200DA5C50 /* DashboardCellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardCellViewController.swift; sourceTree = "<group>"; };
 		F995E51A26A9AA5200DA5C50 /* DashboardCellViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DashboardCellViewController.xib; sourceTree = "<group>"; };
 		F9A45AC426AD390D00B64134 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "meng-app/View/Dashboards/Base.lproj/Calendar.storyboard"; sourceTree = "<group>"; };
-		F9A45AC626AD392E00B64134 /* Dashboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Dashboard.storyboard; sourceTree = "<group>"; };
 		F9A45AC926AD393D00B64134 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "meng-app/View/Dashboards/Base.lproj/Cats.storyboard"; sourceTree = "<group>"; };
 		F9B6085B26AFEA2F005EF315 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		F9B6085E26AFEAC9005EF315 /* ActivitiesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesTableViewCell.swift; sourceTree = "<group>"; };
-		F9B6085F26AFEAC9005EF315 /* ActivitiesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivitiesTableViewCell.xib; sourceTree = "<group>"; };
 		F9CAC8A326B2A4E200D46ED8 /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 		F9CAC8A526B2DF1800D46ED8 /* CalendarCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCollectionViewController.swift; sourceTree = "<group>"; };
 		F9D09D6C26D90F8C004CFF0A /* MengWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MengWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -240,7 +253,7 @@
 		03274CE926B039A500B78A54 /* AddNewCat */ = {
 			isa = PBXGroup;
 			children = (
-				03274CEA26B039CE00B78A54 /* AddNewCat.storyboard */,
+				1933300026DA281F008FDECA /* AddNewCat.storyboard */,
 			);
 			path = AddNewCat;
 			sourceTree = "<group>";
@@ -256,7 +269,7 @@
 		0378E3A226BDC0E8005DA330 /* History Details */ = {
 			isa = PBXGroup;
 			children = (
-				0378E3A326BDC128005DA330 /* History Details.storyboard */,
+				1933301926DA2AF9008FDECA /* History Details.storyboard */,
 			);
 			path = "History Details";
 			sourceTree = "<group>";
@@ -315,7 +328,7 @@
 		191E4FAD26B18EA900836145 /* Cat Detail */ = {
 			isa = PBXGroup;
 			children = (
-				191E4FB326B1907B00836145 /* CatDetail.storyboard */,
+				1933300526DA298D008FDECA /* CatDetail.storyboard */,
 			);
 			path = "Cat Detail";
 			sourceTree = "<group>";
@@ -336,10 +349,18 @@
 			path = Cats;
 			sourceTree = "<group>";
 		};
+		192D98F226D894190015020D /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				192D98F726D894830015020D /* Localizable.strings */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
 		192E971026BE53FD00BBDF9E /* History */ = {
 			isa = PBXGroup;
 			children = (
-				192E971626BE550800BBDF9E /* History.storyboard */,
+				1933301426DA2AA4008FDECA /* History.storyboard */,
 			);
 			path = History;
 			sourceTree = "<group>";
@@ -365,7 +386,7 @@
 			isa = PBXGroup;
 			children = (
 				19636ECB26AF9E4100EBD377 /* AddNewCatCollectionViewCell.swift */,
-				19636ECC26AF9E4100EBD377 /* AddNewCatCollectionViewCell.xib */,
+				19332FF926DA2752008FDECA /* AddNewCatCollectionViewCell.xib */,
 			);
 			path = AddNewCatCell;
 			sourceTree = "<group>";
@@ -383,7 +404,6 @@
 			isa = PBXGroup;
 			children = (
 				F91BC74B26C9B87000DF1600 /* OnboardingCell */,
-				F91BC74426C9AF0200DF1600 /* Onboarding.storyboard */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -456,6 +476,7 @@
 		F995E4F226A99E9700DA5C50 /* meng-app */ = {
 			isa = PBXGroup;
 			children = (
+				192D98F226D894190015020D /* Localization */,
 				F97787E026B43C9E00F4CD01 /* Helper */,
 				F995E51026A9A88E00DA5C50 /* Delegate */,
 				F995E50E26A99FAA00DA5C50 /* Extensions */,
@@ -554,7 +575,7 @@
 		F995E51326A9A9AC00DA5C50 /* Dashboards */ = {
 			isa = PBXGroup;
 			children = (
-				F9A45AC626AD392E00B64134 /* Dashboard.storyboard */,
+				1933300F26DA2A6F008FDECA /* Dashboard.storyboard */,
 				F995E51826A9AA1A00DA5C50 /* DashboardCell */,
 			);
 			path = Dashboards;
@@ -608,7 +629,7 @@
 			isa = PBXGroup;
 			children = (
 				F9B6085E26AFEAC9005EF315 /* ActivitiesTableViewCell.swift */,
-				F9B6085F26AFEAC9005EF315 /* ActivitiesTableViewCell.xib */,
+				1933300A26DA2A35008FDECA /* ActivitiesTableViewCell.xib */,
 			);
 			path = ActivitiesCell;
 			sourceTree = "<group>";
@@ -747,6 +768,7 @@
 			knownRegions = (
 				en,
 				Base,
+				id,
 			);
 			mainGroup = F995E4E726A99E9700DA5C50;
 			productRefGroup = F995E4F126A99E9700DA5C50 /* Products */;
@@ -765,27 +787,27 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				191E4FB426B1907B00836145 /* CatDetail.storyboard in Resources */,
+				1933300326DA298D008FDECA /* CatDetail.storyboard in Resources */,
 				077B96F626C03E6C00117F67 /* ActivityLogActivitiesHeader.xib in Resources */,
+				192D98F526D894830015020D /* Localizable.strings in Resources */,
 				F995E50326A99E9800DA5C50 /* LaunchScreen.storyboard in Resources */,
-				F9A45AC726AD392E00B64134 /* Dashboard.storyboard in Resources */,
+				1933300D26DA2A6F008FDECA /* Dashboard.storyboard in Resources */,
 				F9A45ACA26AD393D00B64134 /* Cats.storyboard in Resources */,
 				0799D24226BED46A00511015 /* ActivitiesTVC.xib in Resources */,
 				0747674626B253FB0054D268 /* ActivityLogDatePickerHeader.xib in Resources */,
 				F96BBDD026BB31DC0065C589 /* ActivityDetail.storyboard in Resources */,
 				F995E50026A99E9800DA5C50 /* Assets.xcassets in Resources */,
-				F9B6086126AFEAC9005EF315 /* ActivitiesTableViewCell.xib in Resources */,
+				1933300826DA2A35008FDECA /* ActivitiesTableViewCell.xib in Resources */,
 				07D0954726B03EAE00491BD0 /* ActivityLog.storyboard in Resources */,
-				F91BC74526C9AF0200DF1600 /* Onboarding.storyboard in Resources */,
-				0378E3A426BDC128005DA330 /* History Details.storyboard in Resources */,
+				1933301726DA2AF9008FDECA /* History Details.storyboard in Resources */,
 				F995E4FB26A99E9700DA5C50 /* Main.storyboard in Resources */,
 				077B96F426C03CC900117F67 /* ActivityLogDateTimeHeader.xib in Resources */,
 				F9A45AC526AD390D00B64134 /* Calendar.storyboard in Resources */,
 				0799D24626BED4E500511015 /* ActivitiesCVC.xib in Resources */,
-				192E971726BE550800BBDF9E /* History.storyboard in Resources */,
-				03274CEB26B039CE00B78A54 /* AddNewCat.storyboard in Resources */,
+				1933301226DA2AA4008FDECA /* History.storyboard in Resources */,
+				19332FFE26DA281F008FDECA /* AddNewCat.storyboard in Resources */,
 				1920066E26B032BF00BAD2D0 /* CatProfileCollectionViewCell.xib in Resources */,
-				19636ECE26AF9E4100EBD377 /* AddNewCatCollectionViewCell.xib in Resources */,
+				19332FF726DA2752008FDECA /* AddNewCatCollectionViewCell.xib in Resources */,
 				F995E51C26A9AA5200DA5C50 /* DashboardCellViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -893,10 +915,83 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		192D98F726D894830015020D /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				192D98F626D894830015020D /* en */,
+				192D98FD26D894AB0015020D /* id */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		19332FF926DA2752008FDECA /* AddNewCatCollectionViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				19332FF826DA2752008FDECA /* Base */,
+				19332FFD26DA2757008FDECA /* id */,
+			);
+			name = AddNewCatCollectionViewCell.xib;
+			sourceTree = "<group>";
+		};
+		1933300026DA281F008FDECA /* AddNewCat.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				19332FFF26DA281F008FDECA /* Base */,
+				1933300226DA2822008FDECA /* id */,
+			);
+			name = AddNewCat.storyboard;
+			sourceTree = "<group>";
+		};
+		1933300526DA298D008FDECA /* CatDetail.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1933300426DA298D008FDECA /* Base */,
+				1933300726DA2993008FDECA /* id */,
+			);
+			name = CatDetail.storyboard;
+			sourceTree = "<group>";
+		};
+		1933300A26DA2A35008FDECA /* ActivitiesTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1933300926DA2A35008FDECA /* Base */,
+				1933300C26DA2A38008FDECA /* id */,
+			);
+			name = ActivitiesTableViewCell.xib;
+			sourceTree = "<group>";
+		};
+		1933300F26DA2A6F008FDECA /* Dashboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1933300E26DA2A6F008FDECA /* Base */,
+				1933301126DA2A70008FDECA /* id */,
+			);
+			name = Dashboard.storyboard;
+			sourceTree = "<group>";
+		};
+		1933301426DA2AA4008FDECA /* History.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1933301326DA2AA4008FDECA /* Base */,
+				1933301626DA2AA6008FDECA /* id */,
+			);
+			name = History.storyboard;
+			sourceTree = "<group>";
+		};
+		1933301926DA2AF9008FDECA /* History Details.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1933301826DA2AF9008FDECA /* Base */,
+				1933301B26DA2AFD008FDECA /* id */,
+			);
+			name = "History Details.storyboard";
+			sourceTree = "<group>";
+		};
 		F96BBDCE26BB31DC0065C589 /* ActivityDetail.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				F96BBDCF26BB31DC0065C589 /* Base */,
+				192D98F826D894AB0015020D /* id */,
 			);
 			name = ActivityDetail.storyboard;
 			sourceTree = "<group>";
@@ -905,6 +1000,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				F995E4FA26A99E9700DA5C50 /* Base */,
+				192D98FB26D894AB0015020D /* id */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -913,6 +1009,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				F995E50226A99E9800DA5C50 /* Base */,
+				192D98FC26D894AB0015020D /* id */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -921,6 +1018,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				F9A45AC426AD390D00B64134 /* Base */,
+				192D98F926D894AB0015020D /* id */,
 			);
 			name = Calendar.storyboard;
 			sourceTree = "<group>";
@@ -929,6 +1027,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				F9A45AC926AD393D00B64134 /* Base */,
+				192D98FA26D894AB0015020D /* id */,
 			);
 			name = Cats.storyboard;
 			sourceTree = "<group>";
@@ -940,6 +1039,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1001,6 +1101,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1059,7 +1160,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 4;
-				DEVELOPMENT_TEAM = KBSYTU5GMJ;
+				DEVELOPMENT_TEAM = 282R274LXF;
 				INFOPLIST_FILE = "meng-app/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1079,7 +1180,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 4;
-				DEVELOPMENT_TEAM = KBSYTU5GMJ;
+				DEVELOPMENT_TEAM = 282R274LXF;
 				INFOPLIST_FILE = "meng-app/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
