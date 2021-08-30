@@ -171,8 +171,9 @@ class CatDetailViewController: UIViewController {
             return
         }
         let actionsheet = UIAlertController()
-        
-        actionsheet.addAction(UIAlertAction(title: "Call \(vetNo)", style: .default, handler: {_ in
+        let callstr = NSLocalizedString("Call", comment: "this is a call string")
+        let msgstr = NSLocalizedString("Text", comment: "this is a call string")
+        actionsheet.addAction(UIAlertAction(title: "\(callstr) \(vetNo)", style: .default, handler: {_ in
             if let url = URL(string: "tel://\(vetNo)"){
                 UIApplication.shared.canOpenURL(url)
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
@@ -180,7 +181,7 @@ class CatDetailViewController: UIViewController {
             }
         }))
         
-        actionsheet.addAction(UIAlertAction(title: "Message \(vetNo)", style: .default, handler: {_ in
+        actionsheet.addAction(UIAlertAction(title: "\(msgstr) \(vetNo)", style: .default, handler: {_ in
             if let url = URL(string: "sms://\(vetNo)"){
                 UIApplication.shared.canOpenURL(url)
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
