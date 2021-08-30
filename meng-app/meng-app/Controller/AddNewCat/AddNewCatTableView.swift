@@ -59,7 +59,7 @@ class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        ncCatNotesTV.text = "Medical Notes"
+        ncCatNotesTV.text = NSLocalizedString("Medical Notes", comment: "string of catatan medis")
         ncCatNotesTV.textColor = .lightGray
         checkIfEditOrNot()
         
@@ -282,7 +282,7 @@ class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextVie
             ncCatVetsName.text = editedCat?.vetName
             ncCatVetsPhoneNumber.text = editedCat?.vetPhoneNo
             ncCatNotesTV.text = editedCat?.notes
-            if ncCatNotesTV.text == "Medical Notes" {
+            if ncCatNotesTV.text == NSLocalizedString("Medical Notes", comment: "string of catatan medis") {
                 ncCatNotesTV.textColor = .lightGray
             }
             else {
@@ -362,7 +362,7 @@ class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextVie
     
 // Notes Placeholder
     func textViewDidBeginEditing(_ textView: UITextView){
-        if ncCatNotesTV.text == "Medical Notes" {
+        if ncCatNotesTV.text == NSLocalizedString("Medical Notes", comment: "string of catatan medis") {
             print("Text View Did Begin Editing")
             ncCatNotesTV.text = ""
             ncCatNotesTV.textColor = .black
@@ -371,7 +371,7 @@ class AddNewCatTableView: UITableViewController, UIPickerViewDelegate, UITextVie
 
     func textViewDidEndEditing(_ textView: UITextView) {
         if ncCatNotesTV.text == "" {
-            ncCatNotesTV.text = "Medical Notes"
+            ncCatNotesTV.text = NSLocalizedString("Medical Notes", comment: "string of catatan medis")
             ncCatNotesTV.textColor = .lightGray
         }
     }
