@@ -4,12 +4,10 @@
 //
 //  Created by William Giovanni Kambuno on 28/07/21.
 //
-//MARK: - !!To-Do!!
-//HELPER CODE TO CLEAN THE FOLLOWING: Reminder to Minutes & Activities Type to Integer
-//Delete
-//Reminder Switch to hide Reminder Cell & NOT save data
+
 
 import UIKit
+import UserNotifications
 
 protocol ActivityLogTableViewProtocol: AnyObject {
     func backToRoot()
@@ -326,11 +324,11 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
             let DateDay = dateFormatter.string(from: DatePickerDate.date)
             dateFormatter.dateFormat = "hh:mm:ss a Z"
             let TimeDay = dateFormatter.string(from: DatePickerTime.date)
-            let ActualDateTime = DateDay + " " + TimeDay
+            let DateTime = DateDay + " " + TimeDay
             dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss a Z"
-            let ActualActualActualDate = dateFormatter.date(from: ActualDateTime)!
+            let ActualDate = dateFormatter.date(from: DateTime)!
             
-            NewActivityLog.activityDateTime = ActualActualActualDate
+            NewActivityLog.activityDateTime = ActualDate
             
             //Section 5
             if ReminderToggled == false {
@@ -338,6 +336,7 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
             }
             else{
                 NewActivityLog.activityReminder = self.ReminderToMinutes()
+                UserNotifInit(date: ActualDate, before: NewActivityLog.activityReminder)
             }
         }
         
@@ -380,13 +379,10 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
             let DateDay = dateFormatter.string(from: DatePickerDate.date)
             dateFormatter.dateFormat = "hh:mm:ss a Z"
             let TimeDay = dateFormatter.string(from: DatePickerTime.date)
-            let ActualDateTime = DateDay + " " + TimeDay
-            
+            let DateTime = DateDay + " " + TimeDay
             dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss a Z"
-            
-            let ActualActualActualDate = dateFormatter.date(from: ActualDateTime)!
-            
-            EditedActivity!.activityDateTime = ActualActualActualDate
+            let ActualDate = dateFormatter.date(from: DateTime)!
+            EditedActivity!.activityDateTime = ActualDate
             
             //Section 5
             if ReminderToggled == false {
@@ -394,6 +390,8 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
             }
             else{
                 EditedActivity!.activityReminder = self.ReminderToMinutes()
+                //UserNotifDel()
+                UserNotifInit(date: ActualDate, before: EditedActivity!.activityReminder)
             }
         }
         do {
@@ -544,6 +542,35 @@ class ActivityLogTableViewController: UITableViewController, UIPickerViewDelegat
             ReminderChosen = Int64(row)
         }
     
+    
+//MARK: - UserNotification
+    func UserNotifInit(date: Date, before: Int64){
+        let minutes = Int(truncatingIfNeeded: before)
+        let center = UNUserNotificationCenter.current()
+        center.requestAuthorization(options: [.alert, .sound]){
+            (granted, error) in
+        }
+        let content = UNMutableNotificationContent()
+        content.title = "Activity Reminder"
+        let DaySet = Calendar.current.dateComponents([.day], from: date)
+        let HourSet = Calendar.current.dateComponents([.hour], from: date)
+        content.body = "You have an upcoming Activity on \(DaySet) at \(HourSet)."
+        
+        let dateReminder = Calendar.current.date(byAdding: .minute, value: -(minutes), to: date)! as Date
+        print("Printing Here: \(dateReminder)")
+        let dateSet = Calendar.current.dateComponents([.year, .month, .day, . hour, .minute, .second], from: dateReminder)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateSet, repeats: false)
+        let uuidString = UUID().uuidString
+        let request = UNNotificationRequest(identifier: uuidString, content: content, trigger: trigger)
+        center.add(request){
+            (error) in
+        }
+    }
+    
+    func UserNotifDel(){
+        //need helpo
+    }
+    
     /*
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -617,19 +644,6 @@ extension ActivityLogTableViewController: UIPickerViewDataSource {
     }
 }
 
-//Doesn't work; TimePicker Idle Colour stuff
-extension UIDatePicker {
-
-var textColor: UIColor? {
-    set {
-        setValue(newValue, forKeyPath: "textColor")
-    }
-    get {
-        return value(forKeyPath: "textColor") as? UIColor
-    }
-  }
-}
-
 
 //MARK: - CollectionView Delegate/DataSource
 extension ActivityLogTableViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -671,7 +685,7 @@ extension ActivityLogTableViewController: UICollectionViewDelegate, UICollection
 extension ActivityLogTableViewController: ActivityLogDatePickerHeaderProtocol {
     func DidToggleSwitch(SwitchStatus: Int, SwitchActual: UISwitch) {
         //To retain SwitchActual.isOn state on Load (Existing Data Load ONLY)
-        SwitchActual.isOn = ReminderToggled //doesnt do anything
+        //SwitchActual.isOn = ReminderToggled //doesnt do anything
         
         if SwitchStatus == 0{
             ReminderToggled = false
@@ -685,7 +699,7 @@ extension ActivityLogTableViewController: ActivityLogDatePickerHeaderProtocol {
         })
         
         //To retain SwitchActual.isOn state on reload
-        SwitchActual.isOn = ReminderToggled //doesnt do anything
+        //SwitchActual.isOn = ReminderToggled //doesnt do anything
     }
 }
 
