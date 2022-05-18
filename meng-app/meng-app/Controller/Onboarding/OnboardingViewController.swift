@@ -45,6 +45,7 @@ class OnboardingViewController: UIViewController {
         if currPage > 2 {
             Core.shared.setIsNotNewUser()
             self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
+            return
         }
         ip = IndexPath(item: currPage, section: 0)
         onboardingCollectionView.scrollToItem(at: ip, at: .centeredHorizontally, animated: true)
